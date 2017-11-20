@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=source
 set BUILDDIR=build
-set SPHINXPROJ=test_doc
+set SPHINXPROJ=Smart[Fleet] Document
 
 if "%1" == "" goto help
 
