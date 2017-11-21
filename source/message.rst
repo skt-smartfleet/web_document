@@ -16,8 +16,8 @@ Smart[Fleet] 플랫폼에 연동되는 다양한 차량 센서들이 플랫폼�
 메시지 기본 구조
 -----------------------------
 
-Smart[Fleet] 플랫폼의 기본 메시지 구조는 ``Header``와 ``Payload`` 형태로 구조화 되어 있습니다.
-각 메시지는 해당 메시지의 타입인 ``ty``로 구분하고 ``ty``에 따라 ``pld`` child의 내용이 상이합니다.
+Smart[Fleet] 플랫폼의 기본 메시지 구조는 ``Header`` 와 ``Payload`` 형태로 구조화 되어 있습니다.
+각 메시지는 해당 메시지의 타입인 ``ty`` 로 구분하고 ``ty`` 에 따라 ``pld`` child의 내용이 상이합니다.
 
 .. role:: underline
         :class: underline
