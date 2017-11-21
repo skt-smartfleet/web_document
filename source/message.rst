@@ -58,7 +58,7 @@ GPS 단말에서 발생한 위치 데이터를 플랫폼에 전달하기 위해 
 
 
 Message Header
-==============
+~~~~~~~~~~~~~~
 
 +-------+------+-----+-----------------------------------+-------+
 | Key   | Type | M/O | Description                       | Note  |
@@ -78,6 +78,143 @@ Payload Types
 ~~~~~~~~~~~~~~
 
 .. _microtrip-message-format:
+
+.. _Trip_GPS:
+
+Trip Message
+^^^^^^^^^^^^^^^^^^^^
+
+Trip Message는 차량이 운행이 종료된 후에 전달하는 메시지이다.
+
+========  =======  ========  ====================================  ===========
+Key       Type     M/O       Description                           Note
+========  =======  ========  ====================================  ===========
+tid       Int      M         Trip 고유 번호                          
+stt       Int      M         Trip의 시작 날짜 및 시간                   UTC
+edt       Int      M         Trip의 종료 날짜 및 시간                   UTC
+dis       Int      O         Trip의 주행거리                          Meter
+stlat     Int      O         운행 시작 좌표의 위도 
+stlon     Int      O         운행 시작 좌표의 경도 
+edlat     Int      O         운행 종료 좌표의 위도 
+edlon     Int      O         운행 종료 좌표의 경도 
+hsts      Int      O         Trip의 최고 속도
+mesp      Int      O         Trip의 평균 속도
+fwv       String   O         펌웨어 버전
+dtvt      Int      O         주행시간
+========  =======  ========  ====================================  ===========
+
+Example Code :
+
+.. code-block:: json
+
+    {
+        "ty" : 1,
+        "ts" : 1505434907995,
+        "pld" : {
+              "tid" : 10,
+              "stt" : 1505433907995,
+              "edt" : 1505434907995,  
+              "dis" : 101,                  
+              "stlon" : 127.114513,
+              "stlat" : 37.380241,
+              "edlon" : 126.114513,
+              "edlat" : 36.380241,
+              "hsts" : 121,
+              "mesp" : 63,
+              "fwv" : "1.0.1",
+              "dtvt" : 88
+        }
+    }
+
+
+.. _Microtrip_GPS:
+
+Microtrip
+^^^^^^^^^^^^^^^^^^^^
+
+Microtrip 메세지는 차량이 운행을 시작한 후 설정된 주기에 따라 전송하는 차량 운행에 대한 위치 데이터이다.
+주기는 각 어플리케이션 마다 상이하므로, 아래의 값은 플랫폼에 전송하는 해당 시점에 데이터를 추출하여 기입하도록 한다.
+
+========  =======  ========  ========================================================
+Key       Type     M/O       Description
+========  =======  ========  ========================================================
+tid       Int      M         Trip 고유 번호
+lat       Int      M         위도 (WGS84)
+lon       Int      M         경도 (WGS84)
+alt       Int      M         고도 (WGS84)
+clt       Int      M         단말기 기준 수집 시간
+sp        Int      O         Ground Speed (based on NMEA Protocol / km/h)
+dop       Int      O         Dilution of Precision 값 (based on NMEA protcol)
+nos       Int      O         위성 갯수 정보 (based on NMEA protocol)
+tdis      Int      O         Microtrip 동안 이동한 거리
+========  =======  ========  ========================================================        
+
+
+Example Code :
+
+.. code-block:: json
+
+    {
+        "ts" : 1505434907995,
+        "ty" : 2,
+        "pld" : {
+              "tid" : 1,
+              "lon" : 127.114513,
+              "lat" : 37.380241,
+              "alt" : 280.2,
+              "clt" : 1505434907995,
+              "sp" : 10.2,
+              "dop" : 15.2,
+              "nos" : 5
+        }
+    }
+
+
+Aggregated Microtrip
+^^^^^^^^^^^^^^^^^^^^
+Microtrip 데이터는 여러개의 데이터를 모아서 한번에 보낼 수 있습니다. 각 수집한 Microtrip 데이터는 JSON Array 데이터를 기반으로 다음과 같이 패킷을 합쳐 보낼 수 있습니다.
+
+
+.. code-block:: json
+
+    {
+        "ty":2,
+        "ts":1508215121898,
+        "pld":
+        [
+            { 
+                "tid":301,
+                "lon":127.062512,
+                "lat":37.510296,
+                "alt":102,
+                "sp":90,
+                "dop":13,
+                "nos":5,
+                "clt":1508215121888
+            },
+            {
+                "tid":301,
+                "lon":127.062512,
+                "lat":37.510296,
+                "alt":113,
+                "sp":74,
+                "dop":11,
+                "nos":4,
+                "clt":1508215121893
+            },
+            {
+                "tid":301,
+                "lon":127.062512,
+                "lat":37.510296,
+                "alt":115,
+                "sp":71,
+                "dop":14,
+                "nos":5,
+                "clt":1508215121898
+            }
+        ]
+    }
+
 
 Microtrip
 ^^^^^^^^^^^
