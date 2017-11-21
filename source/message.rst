@@ -616,14 +616,14 @@ OBD 단말을 제어하기 위한 RPC Message Type을 명세합니다. 기술되
 |br|
 
 Vendor Specific Message
-~~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 .. rst-class:: text-align-justify
 
 각 단말 업체에서 별도로 관리하는 제어 요청 메시지이며, 다른 제어 메시지도 본 포맷을 확장하여 명시됩니다.
 
 Request
-^^^^^^^
+~~~~~~~
 
 .. rst-class:: table-width-fix
 .. rst-class:: text-align-justify
@@ -639,7 +639,7 @@ Request
 .. _vendor-specific-msg-response:
 
 Response
-^^^^^^^^
+~~~~~~~~
 
 .. rst-class:: table-width-fix
 .. rst-class:: text-align-justify
@@ -658,7 +658,7 @@ Response
 .. _vendor-specific-msg-result:
 
 Result
-^^^^^^
+~~~~~~
 
 .. rst-class:: table-width-fix
 .. rst-class:: text-align-justify
@@ -681,7 +681,7 @@ Result
 |br|
 
 Device Activation
-~~~~~~~~~~~~~~~~~
+-----------------
 
 .. rst-class:: text-align-justify
 
@@ -690,7 +690,7 @@ Device Activation
 .. _device-activation-request:
 
 Request
-^^^^^^^
+~~~~~~~
 
 .. rst-class:: text-align-justify
 .. rst-class:: table-width-fix
@@ -741,7 +741,7 @@ Request
 .. _device-activation-response:
 
 Response
-^^^^^^^^
+~~~~~~~~
 
 .. rst-class:: table-width-fix
 .. rst-class:: text-align-justify
@@ -768,7 +768,7 @@ Response
 .. _device-activation-result:
 
 Result
-^^^^^^
+~~~~~~
 
 .. rst-class:: table-width-fix
 .. rst-class:: text-align-justify
@@ -801,14 +801,14 @@ Result
 |br|
 
 Firmware Update
-~~~~~~~~~~~~~~~
+---------------
 
 .. rst-class:: text-align-justify
 
 차량용 OBD의 펌웨어 업데이트를 위한 RPC 메시지를 명세합니다.
 
 Request
-^^^^^^^
+~~~~~~~
 
 .. rst-class:: table-width-fix
 .. rst-class:: text-align-justify
@@ -840,7 +840,7 @@ Request
   }
 
 Response
-^^^^^^^^
+~~~~~~~~
 
 .. rst-class:: table-width-fix
 .. rst-class:: text-align-justify
@@ -868,14 +868,14 @@ Response
 |br|
 
 OBD Reset
-~~~~~~~~~
+----------
 
 .. rst-class:: text-align-justify
 
 차량용 OBD의 재시작을 위한 RPC 메시지
 
 Request
-^^^^^^^
+~~~~~~~
 
 .. rst-class:: text-align-justify
 .. rst-class:: table-width-fix
@@ -898,7 +898,7 @@ Request
   }
 
 Response
-^^^^^^^^
+~~~~~~~~
 
 .. rst-class:: text-align-justify
 .. rst-class:: table-width-fix
@@ -923,7 +923,7 @@ Response
   }
 
 Result
-^^^^^^
+~~~~~~
 
 .. rst-class:: text-align-justify
 .. rst-class:: table-width-fix
@@ -954,14 +954,14 @@ Result
 |br|
 
 Device Serial Number Check
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------
 
 .. rst-class:: text-align-justify
 
 차량용 OBD의 시리얼 번호 확인용 RPC 메시지
 
 Request
-^^^^^^^
+~~~~~~~
 
 .. rst-class:: text-align-justify
 .. rst-class:: table-width-fix
@@ -984,7 +984,7 @@ Request
   }
 
 Response
-^^^^^^^^
+~~~~~~~~
 
 .. rst-class:: text-align-justify
 .. rst-class:: table-width-fix
@@ -1009,7 +1009,7 @@ Response
   }
 
 Result
-^^^^^^
+~~~~~~
 
 .. rst-class:: text-align-justify
 .. rst-class:: table-width-fix
@@ -1042,14 +1042,14 @@ Result
 |br|
 
 Clear Device Data
-~~~~~~~~~~~~~~~~~
+------------------
 
 .. rst-class:: text-align-justify
 
 차량용 OBD 데이터 삭제
 
 Request
-^^^^^^^
+~~~~~~~
 
 .. rst-class:: text-align-justify
 .. rst-class:: table-width-fix
@@ -1072,7 +1072,7 @@ Request
   }
 
 Response
-^^^^^^^^
+~~~~~~~~
 
 .. rst-class:: text-align-justify
 .. rst-class:: table-width-fix
@@ -1097,7 +1097,7 @@ Response
   }
 
 Result
-^^^^^^
+~~~~~~
 
 .. rst-class:: text-align-justify
 
@@ -1126,14 +1126,14 @@ Result
 |br|
 
 Firmware Update (Chunk-based)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 .. rst-class:: text-align-justify
 
 Chunk 기반으로 차량용 OBD의 펌웨어 업데이트를 위한 RPC 메시지를 명세합니다.
 
 Request
-^^^^^^^
+~~~~~~~
 
 .. rst-class:: text-align-justify
 .. rst-class:: table-width-fix
@@ -1171,7 +1171,7 @@ Request
   }
 
 Response
-^^^^^^^^
+~~~~~~~~
 
 .. rst-class:: text-align-justify
 .. rst-class:: table-width-fix
@@ -1196,7 +1196,7 @@ Response
   }
 
 Result
-^^^^^^
+~~~~~~
 
 .. rst-class:: text-align-justify
 .. rst-class:: table-width-fix
@@ -1226,10 +1226,10 @@ Result
 |br|
 
 Common Response Code for RPC Result
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------
 
 Code Class
-^^^^^^^^^^
+~~~~~~~~~~~
 
 .. rst-class:: text-align-justify
 .. rst-class:: table-width-fix
@@ -1245,7 +1245,7 @@ Code Class
 +----------------+------+-----------------------------------------------------+
 
 Successful Response Class
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. rst-class:: text-align-justify
 .. rst-class:: table-width-fix
@@ -1259,7 +1259,7 @@ Successful Response Class
 +------+----------------------------+
 
 Sensor Error Response Class
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. rst-class:: text-align-justify
 .. rst-class:: table-width-fix
