@@ -51,7 +51,7 @@ Smart[Fleet] 플랫폼의 기본 메시지 구조는 ``Header`` 와 ``Payload`` 
 센서 타입별 메시지 포맷
 -----------------------------
 
-GPS 센서 메시지 포맷
+GPS
 ----------------------
 
 GPS 단말에서 발생한 위치 데이터를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다. 
@@ -219,8 +219,36 @@ Microtrip 데이터는 여러개의 데이터를 모아서 한번에 보낼 수 
     }
 
 
-Microtrip
-^^^^^^^^^^^
+OBD
+-----
+
+OBD 단말에서 발생한 데이터를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다. 
+
+Message Header
+~~~~~~~~~~~~~~
+
+.. rst-class:: table-width-fix
+.. rst-class:: text-align-justify
+
+========  =======  ========  ========================================   
+Key       Type     M/O       Description
+========  =======  ========  ========================================   
+ty        Int      M         - 전달하고자 하는 페이로드 타입
+                             
+                             3. Trip_OBD_
+                             4. Microtrip_OBD_
+ts        Int      O         정보 수집 시간
+pld                M         Payload_ 타입 참고
+========  =======  ========  ========================================       
+
+.. note:: 페이로드가 Microtrip 여러개를 Aggregation 하여 전송할 때는 시간의 순서에 맞추어 전송하여야 한다. 플랫폼에서 시간에 따라 Re-ordering을 수행하지 않음.
+.. note:: 표에 M/O는 Mandatory/Optional의 약자로, Mandatory는 필수로 포함해야하는 데이터를 Optional은 필요에 따라 기입이 여부를 개발사에 판단합니다.
+
+Payload Type
+~~~~~~~~~~~~~~
+
+OBD Microtrip
+^^^^^^^^^^^^^^
 
 .. rst-class:: text-align-justify
 
@@ -318,7 +346,7 @@ Microtrip 메세지는 차량이 운행을 시작한 후 설정된 주기에 따
 |br|
 |br|
 
-Trip
+OBD Trip
 ^^^^^^^^
 
 .. rst-class:: text-align-justify
@@ -411,6 +439,97 @@ Trip Message는 차량이 운행이 종료된 후에 전달하는 메시지입�
 
 |br|
 |br|
+
+
+ADAS
+-----
+
+ADAS 단말에서 발생한 데이터를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다. 
+
+Message Header
+~~~~~~~~~~~~~~
+
+.. rst-class:: table-width-fix
+.. rst-class:: text-align-justify
+
+========  =======  ========  ========================================   
+Key       Type     M/O       Description
+========  =======  ========  ========================================   
+ty        Int      M         - 전달하고자 하는 페이로드 타입
+                             
+                             5. Microtrip_ADAS
+ts        Int      O         정보 수집 시간
+pld                M         아래 각 페이로드 메시지를 참고
+========  =======  ========  ========================================      
+
+
+Payload Type
+~~~~~~~~~~~~~~
+
+ADAS Microtrip
+^^^^^^^^^^^^^^
+
+.. rst-class:: text-align-justify
+
+ADAS Periodic 메세지는 ADAS 단말에서 인지한 ADAS 및 GPS 위치 정보를 주기적으로 올릴때 사용하는 메시지 포맷입니다.
+일반적으로는 ADAS와 GPS가 함께 있는 경우에 활용하며, 메시지는 ADAS 부착 차량의 운행 시작부터 운행 종료까지 주기적으로 전송합니다.
+
+.. rst-class:: table-width-fix
+.. rst-class:: text-align-justify
+
+========  =======  ========  ========================================================
+Key       Type     M/O       Description
+========  =======  ========  ========================================================
+tid       Int      M         Trip 고유 번호
+lat       Int      M         위도 (WGS84)
+lon       Int      M         경도 (WGS84)
+dop       Int      O         Dilution of Precision 값 (based on NMEA protcol)
+nos       Int      O         위성 갯수 정보 (based on NMEA protocol)
+dir       Int      M         - 방향 지시등 정보
+                             ====  ===================
+                             Bit   Description
+                             ====  ===================
+                             30    방향 지시등 점등 없음
+                             31    좌측 지시등 점등
+                             32    우측 지시등 점등
+                             33    비상등 점등
+                             ====  ===================  
+sp        Int      M         차량 속도 (km/h)                     
+ldw       Int      M         - Lane Departure Warning
+                             ====  ===================
+                             Bit   Description
+                             ====  ===================
+                             30    LDW 없음
+                             31    좌측 LDW 이슈 발생
+                             32    우측 LDW 이슈 발생
+                             ====  ===================   
+fcw       Int      M         - Forward Collision Warning
+                             ====  ===================
+                             Bit   Description
+                             ====  ===================
+                             30    FCW 없음
+                             31    1차 경보 (위험 경보)
+                             32    2차 경보 (안전거리 미확보 경보)
+                             ====  ===================  
+========  =======  ========  ========================================================        
+
+Example Code :
+
+.. code-block:: json
+
+    {
+        "ts" : 1505434907995,
+        "ty" : 5,
+        "pld" : {
+              "tid" : 11123,
+              "lon" : 127.114513,
+              "lat" : 37.380241,
+              "sp" : 113,
+              "dir" : 31,
+              "ldw" : 32,
+              "fcw" : 30
+        }
+    }
 
 Diagnostic Information
 ^^^^^^^^^^^^^^^^^^^^^^
