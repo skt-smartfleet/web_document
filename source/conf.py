@@ -54,7 +54,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Smart[Fleet] Platform'
-copyright = 'COPYRIGHT ⓒ SK TELECOM.LTD. ALL RIGHTS RESERVED.'
+copyright = 'COPYRIGHT. SK TELECOM.LTD. ALL RIGHTS RESERVED.'
 author = 'hbahn'
 
 # The version info for the project you're documenting, acts as replacement for
