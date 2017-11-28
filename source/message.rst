@@ -503,8 +503,10 @@ ldw       Int      M         - Lane Departure Warning
                              31    좌측 LDW 이슈 발생
                              32    우측 LDW 이슈 발생
                              ====  ===================
-rlanedist Int      O         차량과 오른쪽 차선과의 거리 (단위 : cm)
-llanedist Int      O         차량과 왼쪽 차선과의 거리 (단위 : cm)
+rld       Int      O         - 차량과 오른쪽 차선과의 거리 (Right Lane Distance)
+                             - 단위 : cm
+lld       Int      O         - 차량과 왼쪽 차선과의 거리 (Left Lane Distance)
+                             - 단위 : cm
 fcw       Int      M         - Forward Collision Warning
                              ====  ===================
                              Bit   Description
@@ -513,8 +515,8 @@ fcw       Int      M         - Forward Collision Warning
                              31    1차 경보 : CIPV (Closest In Path Vehicle) detected
                              32    2차 경보 : 안전거리 미확보 경보
                              ====  ===================
-headway   Int      O         전방 차량과의 거리 (단위 : m)
-brakesig  Int      O         브레이크
+hdw       Int      O         전방 차량과의 거리 (단위 : m)
+brk       Int      O         브레이크
                              ====  ===================
                              Bit   Description
                              ====  ===================
