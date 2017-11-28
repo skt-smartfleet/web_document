@@ -562,11 +562,14 @@ Example Code :
               "sp" : 113,
               "dir" : 31,
               "ldw" : 32,
-              "rlanedist" : 20,
-              "llanedist" : 50,
+              "rld" : 20,
+              "lld" : 50,
               "fcw" : 30,
-              "headway" : 50,
-              "brakesig" : 0
+              "hdw" : 50,
+              "brk" : 0,
+              "chcmr" : 0,
+              "chdir" : 0,
+              "chbrk" : 0
         }
     }
 
