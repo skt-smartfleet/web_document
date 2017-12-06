@@ -2220,23 +2220,23 @@ Procedure
 |br|
 |br|
 
-OBD Device Procedure
+Device Procedure
 ~~~~~~~~~~~~~~~~~~~~
 
 .. rst-class:: text-align-justify
 
 단말 활성화 작업까지 마쳤다면 실제로 운행 데이터를 송수신할 차례입니다.
 |br|
-OBD 단말이 데이터를 전송하는 프로시저를 명세합니다.
+단말이 데이터를 전송하는 프로시저를 명세합니다.
 
 |br|
 
-OBD Trip Data
+Trip Data
 ^^^^^^^^^^^^^
 
 .. rst-class:: text-align-justify
 
-OBD 센서에서 발생한 운행 기록을 위한 정보를 업로드 하는 절차를 기술합니다.
+센서에서 발생한 운행 기록을 위한 정보를 업로드 하는 절차를 기술합니다.
 
 |br|
 
@@ -2283,12 +2283,12 @@ Procedure
 |br|
 |br|
 
-OBD Event Data
+Event Data
 ^^^^^^^^^^^^^^
 
 .. rst-class:: text-align-justify
 
-OBD 센서에서 발생한 운행 이벤트 정보를 업로드 하는 절차를 기술합니다.
+센서에서 발생한 운행 이벤트 정보를 업로드 하는 절차를 기술합니다.
 
 |br|
 
