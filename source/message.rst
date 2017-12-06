@@ -456,8 +456,8 @@ Message Header
 Key       Type     M/O       Description
 ========  =======  ========  ========================================
 ty        Int      M         - 전달하고자 하는 페이로드 타입
-
-                             5. Microtrip_ADAS
+                             5. Trip_ADAS
+                             6. Microtrip_ADAS
 ts        Int      O         정보 수집 시간
 pld                M         아래 각 페이로드 메시지를 참고
 ========  =======  ========  ========================================
@@ -466,12 +466,45 @@ pld                M         아래 각 페이로드 메시지를 참고
 Payload Type
 ~~~~~~~~~~~~~~
 
+ADAS Trip
+^^^^^^^^^
+ADAS Trip 메세지는 ADAS 단말이 주행을 완료한 경우에 사용하는 메시지 포맷입니다.
+
+.. rst-class:: table-width-fix
+.. rst-class:: text-align-justify
+
+========  =======  ========  ========================================================
+Key       Type     M/O       Description
+========  =======  ========  ========================================================
+tid       Int      M         Trip 고유 번호
+lat       Int      M         운행 종료 시 위도 (WGS84)
+lon       Int      M         운행 종료 시 경도 (WGS84)
+dop       Int      O         Dilution of Precision 값 (based on NMEA protcol)
+nos       Int      O         위성 갯수 정보 (based on NMEA protocol)
+========  =======  ========  ========================================================
+
+Example Code :
+
+.. code-block:: json
+
+    {
+        "ts" : 1505434907995,
+        "ty" : 5,
+        "pld" : {
+              "tid" : 11123,
+              "lon" : 127.114513,
+              "lat" : 37.380241,
+        }
+    }
+
+
+
 ADAS Microtrip
 ^^^^^^^^^^^^^^
 
 .. rst-class:: text-align-justify
 
-ADAS Periodic 메세지는 ADAS 단말에서 인지한 ADAS 및 GPS 위치 정보를 주기적으로 올릴때 사용하는 메시지 포맷입니다.
+ADAS Microtrip 메세지는 ADAS 단말에서 인지한 ADAS 및 GPS 위치 정보를 주기적으로 올릴때 사용하는 메시지 포맷입니다.
 일반적으로는 ADAS와 GPS가 함께 있는 경우에 활용하며, 메시지는 ADAS 부착 차량의 운행 시작부터 운행 종료까지 주기적으로 전송합니다.
 
 .. rst-class:: table-width-fix
@@ -554,7 +587,7 @@ Example Code :
 
     {
         "ts" : 1505434907995,
-        "ty" : 5,
+        "ty" : 6,
         "pld" : {
               "tid" : 11123,
               "lon" : 127.114513,
