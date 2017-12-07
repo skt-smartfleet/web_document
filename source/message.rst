@@ -606,12 +606,14 @@ Example Code :
         }
     }
 
-
+|br|
+|br|
 -----------------------------
 이벤트 데이터 포맷
 -----------------------------
 
 단말에서 비주기적으로 발생한 이벤트를 플랫폼에 전송하기 위한 메시지 포맷입니다.
+
 
 이벤트 메시지 포맷
 --------------
@@ -622,22 +624,23 @@ Message Header
 .. rst-class:: table-width-fix
 .. rst-class:: text-align-justify
 
-========  =======  ========  ========================================
-Key       Type     M/O       Description
-========  =======  ========  ========================================
-ty        Int      M         - 전달하고자 하는 이벤트 타입
++------+--------+-----+---------------------------------+
+| Key  | Type   | M/O | Description                     |
++======+========+=====+=================================+
+| ty   | Int    | M   | 전달하고자 하는 이벤트 타입            |
+|      |        |     | 20. Diagnostic Information      |
+|      |        |     | 21. Collision warning (Driving) |
+|      |        |     | 22. Collision warning (Parking) |
+|      |        |     | 23. Battery Warning             |
+|      |        |     | 24. Unplugged Warning           |
+|      |        |     | 25. Turn-off Warning            |
+|      |        |     | 26. ADAS Event                  |
++------+--------+-----+---------------------------------+
+| ts   | String | M   | 정보 수집 시간 (Platform 수집 기준)   |
++------+--------+-----+---------------------------------+
+| pld  |        | M   | 아래 각 페이로드 메시지를 참고         |
++------+--------+-----+---------------------------------+
 
-                             10. Diagnostic Information
-							 11. Collision warning (Driving)
-							 12. Collision warning (Paramsking)
-							 13. Battery Warning
-							 14. Unplugged Warning
-							 15. Turn-off Warning
-							 16. ADAS Event
-
-ts        Int      O         정보 수집 시간
-pld                M         아래 각 페이로드 메시지를 참고
-========  =======  ========  ========================================
 
 Payload Type
 ~~~~~~~~~~~~~~
