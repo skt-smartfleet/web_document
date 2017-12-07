@@ -614,7 +614,7 @@ Example Code :
 -----------------------------
 
 단말에서 비주기적으로 발생한 이벤트를 플랫폼에 전송하기 위한 메시지 포맷입니다.
-이벤트 기반 데이터 전송을 위한 프로시저는 `3.4.4.2 Event Data <event-data-procedure>`__ 를 참고 부탁 드립니다.
+이벤트 기반 데이터 전송을 위한 프로시저는 3.4.4.2 Event Data `event-data`_ 를 참고 부탁 드립니다.
 
 이벤트 메시지 포맷
 --------------
@@ -1601,3 +1601,6 @@ Sensor Error Response Class
 
 |br|
 |br|
+
+
+.. _event-data: http://smart-fleet-docs.readthedocs.io/ko/latest/procedure/#event-data
