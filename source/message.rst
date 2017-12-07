@@ -616,11 +616,8 @@ Example Code :
 단말에서 비주기적으로 발생한 이벤트를 플랫폼에 전송하기 위한 메시지 포맷입니다.
 이벤트 기반 데이터 전송을 위한 프로시저는 `3.4.4.2 Event Data`_ 를 참고 부탁 드립니다.
 
-이벤트 메시지 포맷
---------------
-
 Message Header
-~~~~~~~~~~~~~~
+--------------
 
 .. rst-class:: table-width-fix
 .. rst-class:: text-align-justify
@@ -645,10 +642,10 @@ pld                M         아래 각 페이로드 메시지를 참고
 |br|
 
 Payload Type
-~~~~~~~~~~~~~~
+------------
 
 Diagnostic Information
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 OBD에서 인지한 차량 진단 코드(DTC)를 전송하는 메시지를 정의합니다.
 
@@ -697,7 +694,7 @@ OBD에서 인지한 차량 진단 코드(DTC)를 전송하는 메시지를 정�
 
 
 Collision warning (Driving)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 운행 중 OBD가 감지한 차량 접촉 사고에 대한 위치 정보를 전달하는 메세지를 정의합니다.
 
@@ -730,7 +727,7 @@ dclon     Int      M         경도 (WGS84)
 |br|
 
 Collision warning (Parking)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. rst-class:: text-align-justify
 
@@ -763,7 +760,7 @@ plon      Int      M         경도 (WGS84)
 |br|
 
 Battery Warning
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 .. rst-class:: text-align-justify
 
@@ -794,7 +791,7 @@ wbv       Int      M         배터리 전압
 |br|
 
 Unplugged Warning
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 .. rst-class:: text-align-justify
 
@@ -827,7 +824,7 @@ pt        Int      M         부착 시간
 |br|
 
 Turn-off Warning
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 .. rst-class:: text-align-justify
 
@@ -859,7 +856,7 @@ OBD가 종료된 경우, 종료 이전에 종료에 대한 이유를 플랫폼�
 |br|
 
 ADAS Event
-^^^^^^^^^^
+~~~~~~~~~~
 
 ADAS에서 인지한 이벤트 정보를 전송하는 메시지 포맷입니다.
 
