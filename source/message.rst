@@ -697,8 +697,6 @@ OBD에서 인지한 차량 진단 코드(DTC)를 전송하는 메시지를 정�
 Collision warning (Driving)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. rst-class:: text-align-justify
-
 운행 중 OBD가 감지한 차량 접촉 사고에 대한 위치 정보를 전달하는 메세지를 정의합니다.
 
 .. rst-class:: table-width-fix
