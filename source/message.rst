@@ -705,13 +705,13 @@ Collision warning (Driving)
 .. rst-class:: text-align-justify
 
 +-------+------+-----+------------------------------+
-| Key   | Type | M/O | Description                  |
+| Key   | Type | M/O | Description                 |
 +=======+======+=====+==============================+
-| tid   | Int  | O   | Trip 고유 번호                 |
+| tid   | Int  | O   | Trip 고유 번호                |
 +-------+------+-----+------------------------------+
-| dclat | Int  | M   | 위도                          |
+| dclat | Int  | M   | 위도                         |
 +-------+------+-----+------------------------------+
-| dclon | Int  | M   | 경도                          |
+| dclon | Int  | M   | 경도                         |
 +-------+------+-----+------------------------------+
 
 :underline:`Example Code`
