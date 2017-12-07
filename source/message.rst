@@ -77,6 +77,8 @@ pld                M         아래 각 페이로드 메시지를 참고
 
 .. _payload-types:
 
+|br|
+
 Payload Types
 ~~~~~~~~~~~~~~
 
@@ -129,6 +131,7 @@ Example Code :
         }
     }
 
+|br|
 
 .. _Microtrip_GPS:
 
@@ -172,6 +175,7 @@ Example Code :
         }
     }
 
+|br|
 
 Aggregated Microtrip
 ^^^^^^^^^^^^^^^^^^^^
@@ -218,6 +222,7 @@ Microtrip 데이터는 여러개의 데이터를 모아서 한번에 보낼 수 
         ]
     }
 
+|br|
 
 OBD
 -----
@@ -243,6 +248,8 @@ pld                M         Payload_ 타입 참고
 
 .. note:: 페이로드가 Microtrip 여러개를 Aggregation 하여 전송할 때는 시간의 순서에 맞추어 전송하여야 한다. 플랫폼에서 시간에 따라 Re-ordering을 수행하지 않음.
 .. note:: 표에 M/O는 Mandatory/Optional의 약자로, Mandatory는 필수로 포함해야하는 데이터를 Optional은 필요에 따라 기입이 여부를 개발사에 판단합니다.
+
+|br|
 
 Payload Type
 ~~~~~~~~~~~~~~
