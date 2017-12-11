@@ -616,6 +616,115 @@ Example Code :
 |br|
 |br|
 
+
+BlackBox
+-----
+
+BlackBox 단말에서 발생한 데이터를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다.
+
+Message Header
+~~~~~~~~~~~~~~
+
+.. rst-class:: table-width-fix
+.. rst-class:: text-align-justify
+
+========  =======  ========  ========================================
+Key       Type     M/O       Description
+========  =======  ========  ========================================
+ty        Int      M         - 전달하고자 하는 페이로드 타입
+                             7. Trip_BlackBox
+                             8. Microtrip_BlackBox
+ts        Int      O         정보 수집 시간
+pld                M         아래 각 페이로드 메시지를 참고
+========  =======  ========  ========================================
+
+
+Payload Type
+~~~~~~~~~~~~~~
+
+BlackBox Trip
+^^^^^^^^^^^^^
+BlackBox Trip 메세지는 BlackBox 단말이 주행 또는 주차 상태를 완료한 경우에 사용하는 메시지 포맷입니다.
+단 BlackBox의 Trip은 주행과 주차로 설정합니다.
+
+.. rst-class:: table-width-fix
+.. rst-class:: text-align-justify
+
+========  =======  ========  ========================================================
+Key       Type     M/O       Description
+========  =======  ========  ========================================================
+tid       Int      M         Trip 고유 번호
+lat       Int      M         운행 종료 시 위도 (WGS84)
+lon       Int      M         운행 종료 시 경도 (WGS84)
+try       Int      M         - Trip 타입
+                             1. Driving  
+                             2. Parking
+vlt       Int      M         자동차 배터리 전압 (운행 종료 시)
+========  =======  ========  ========================================================
+
+Example Code :
+
+.. code-block:: json
+
+    {
+        "ts" : 1505434907995,
+        "ty" : 7,
+        "pld" : {
+              "tid" : 11123,
+              "lon" : 127.114513,
+              "lat" : 37.380241,
+              "try" : 1,
+              "vlt" : 12.1
+        }
+    }
+
+
+
+BlackBox Microtrip
+^^^^^^^^^^^^^^^^^^
+
+.. rst-class:: text-align-justify
+
+BlackBox Microtrip 메세지는 Blackbox 단말에서 인지한 정보를 주기적으로 플랫폼에서 사용하는 메시지 포맷입니다.
+일반적으로는 ADAS와 GPS가 함께 있는 경우에 활용하며, 메시지는 ADAS 부착 차량의 운행 시작부터 운행 종료까지 주기적으로 전송합니다.
+
+.. rst-class:: table-width-fix
+.. rst-class:: text-align-justify
+
+========  =======  ========  ======================================================================
+Key       Type     M/O       Description
+========  =======  ========  ======================================================================
+tid       Int      M         Trip 고유 번호
+try       Int      M         - Trip 타입
+                             1. Driving  
+                             2. Parking
+lat       Int      O         위도 (WGS84) ``Mandatory when Driving``
+lon       Int      O         경도 (WGS84) ``Mandatory when Driving``
+sp        Int      O         Ground Speed (based on NMEA Protocol, km/h) ``Mandatory when Driving``
+vlt       Int      O         자동차 배터리 전압 ``Mandatory when Parking``
+tem       Int      O         자동차 내부 온도 ``Mandatory when Parking``
+tim       Int      O         주차 시간 (or 주차 남은 시간) ``Mandatory when Parking``
+========  =======  ========  ======================================================================
+
+Example Code :
+
+.. code-block:: json
+
+    {
+        "ts" : 1505434907995,
+        "ty" : 6,
+        "pld" : {
+              "tid" : 11123,
+              "try" : 1
+              "lon" : 127.114513,
+              "lat" : 37.380241,
+              "sp" : 113,
+        }
+    }
+
+
+
+
 -----------------------------
 이벤트 데이터 포맷
 -----------------------------
