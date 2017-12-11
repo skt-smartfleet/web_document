@@ -751,6 +751,11 @@ ty        Int      M         - 전달하고자 하는 이벤트 타입
                               105. Unplugged Warning
                               106. Turn-off Warning
                               107. ADAS Event
+                              108. BlackBox Booting
+                              109. BlackBox Mode Change
+                              110. BlackBox Setting Report Message
+                              111. BlackBox Capture Image Message
+                              
 ts        Int      O         정보 수집 시간
 pld                M         아래 각 페이로드 메시지를 참고
 ========  =======  ========  ========================================
