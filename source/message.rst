@@ -722,8 +722,8 @@ Example Code :
         }
     }
 
-
-
+|br|
+|br|
 
 -----------------------------
 이벤트 데이터 포맷
@@ -744,13 +744,13 @@ Key       Type     M/O       Description
 ========  =======  ========  ========================================
 ty        Int      M         - 전달하고자 하는 이벤트 타입
 
-                              20. Diagnostic Information
-                              21. Collision warning (Driving)
-                              22. Collision warning (Parking)
-                              23. Battery Warning
-                              24. Unplugged Warning
-                              25. Turn-off Warning
-                              26. ADAS Event
+                              101. Diagnostic Information
+                              102. Collision warning (Driving)
+                              103. Collision warning (Parking)
+                              104. Battery Warning
+                              105. Unplugged Warning
+                              106. Turn-off Warning
+                              107. ADAS Event
 ts        Int      O         정보 수집 시간
 pld                M         아래 각 페이로드 메시지를 참고
 ========  =======  ========  ========================================
