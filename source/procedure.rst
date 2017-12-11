@@ -2286,6 +2286,7 @@ Procedure
 Event Data
 ^^^^^^^^^^^^^^
 
+.. _event-data-procedure:
 .. rst-class:: text-align-justify
 
 센서에서 발생한 운행 이벤트 정보를 업로드 하는 절차를 기술합니다.
