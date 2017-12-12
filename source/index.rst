@@ -29,6 +29,8 @@ Contents:
    introduction
    architecture
    procedure
+   entity
+   device
    api
    sdk
    message

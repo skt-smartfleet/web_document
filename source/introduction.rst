@@ -8,15 +8,13 @@ Smart[Fleet] 플랫폼 소개
 .. rst-class:: text-align-justify
 
 Smart[Fleet] 플랫폼은 SK텔레콤(이하 SKT)에서 제공하는 커넥티드카 플랫폼으로 커넥티드카 솔루션을 개발하고자 파트너사들에게 보다 쉽고, 빠르고, 다양한 서비스를 안전하게 개발할 수 있는 다양한 기능들을 제공합니다.
-|br|
+
 Smart[Fleet] 플랫폼은 아래 그림과 같이 코어 엔진 부분에 차량 모니터링(Monitor), 경로 최적화(Route), 차량과 통신(V2X), 데이터 분석(Data), 교통정보 분석(Traffic) 등의 5개 차량 관제 핵심 기능을 제공합니다.
-|br|
+
 본 문서는 5개 핵심 기능들과 파트너사들의 장치들이 연동하기 기능개발 절차와 기술 규격에 대해서 정의하고 있습니다.
-|br|
 
 .. image:: ../images/introduction/1.png
 
-|br|
 |br|
 
 주요 특징
@@ -88,7 +86,6 @@ SKT는 커넥티드카 솔루션 및 서비스를 기획하는 파트너들의 �
 .. image:: ../images/introduction/2.png
 
 |br|
-|br|
 
 제공 주요 기능
 -----------------------
@@ -97,9 +94,7 @@ SKT는 커넥티드카 솔루션 및 서비스를 기획하는 파트너들의 �
 
 Smart[Fleet] 플랫폼은 파트너업체들이 커넥티드카 단말의 성능 시험이나 시장에서 경쟁력있는 커넥티드카 서비스 개발을 쉽게 할 수 있도록 Smart[Fleet] 포털 및 REST API 등을 통하여 다양한 기능을 제공합니다.
 
-|br|
 
 .. image:: ../images/introduction/3.png
 
-|br|
 |br|

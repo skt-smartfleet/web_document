@@ -77,8 +77,6 @@ pld                M         아래 각 페이로드 메시지를 참고
 
 .. _payload-types:
 
-|br|
-
 Payload Types
 ~~~~~~~~~~~~~~
 
@@ -463,6 +461,7 @@ Message Header
 Key       Type     M/O       Description
 ========  =======  ========  ========================================
 ty        Int      M         - 전달하고자 하는 페이로드 타입
+
                              5. Trip_ADAS
                              6. Microtrip_ADAS
 ts        Int      O         정보 수집 시간
@@ -657,7 +656,7 @@ tid       Int      M         Trip 고유 번호
 lat       Int      M         운행 종료 시 위도 (WGS84)
 lon       Int      M         운행 종료 시 경도 (WGS84)
 try       Int      M         - Trip 타입
-                             1. Driving  
+                             1. Driving
                              2. Parking
 vlt       Int      M         자동차 배터리 전압 (운행 종료 시)
 ========  =======  ========  ========================================================
@@ -696,7 +695,7 @@ Key       Type     M/O       Description
 ========  =======  ========  ======================================================================
 tid       Int      M         Trip 고유 번호
 try       Int      M         - Trip 타입
-                             1. Driving  
+                             1. Driving
                              2. Parking
 lat       Int      O         위도 (WGS84) ``Mandatory when Driving``
 lon       Int      O         경도 (WGS84) ``Mandatory when Driving``
@@ -755,7 +754,7 @@ ty        Int      M         - 전달하고자 하는 이벤트 타입
                               109. BlackBox Mode Change
                               110. BlackBox Setting Report Message
                               111. BlackBox Capture Image Message
-                              
+
 ts        Int      O         정보 수집 시간
 pld                M         아래 각 페이로드 메시지를 참고
 ========  =======  ========  ========================================
