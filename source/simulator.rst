@@ -9,16 +9,9 @@
 
 본 가이드 문서 중 3.4. Device 연동 절차/*링크*/ 또는 아래 그림의 서비스 연동 기본 절차에서 볼 수 있듯이 서비스를 이용하려면 어플리케이션과 디바이스(센서) 둘다 필요합니다.
 
-|br|
-
 .. image:: ../images/simulator/7.png
 
-|br|
-
 SKT에서는 개발 파트너분들 중 센서/디바이스 혹은 어플리케이션 하나만 테스트를 원할 경우를 대비하여 디바이스/센서 및 애플리케이션 대행 역할을 담당하는 테스트용 시뮬레이터를 제공합니다.
-
-|br|
-|br|
 
 Smart[Fleet] Device Simulator
 -------------------------------
@@ -31,11 +24,7 @@ Smart[Fleet] Device Simulator는 디바이스/센서 역할을 대행해주는 O
 
 - Smart[Fleet] Device Simulator : https://github.com/skt-smartfleet/device-simulator
 
-|br|
-
 .. image:: ../images/simulator/7_1.png
-
-|br|
 
 .. rst-class:: text-align-justify
 
@@ -63,9 +52,6 @@ Smart[Fleet] Device Simulator는 디바이스/센서 역할을 대행해주는 O
 
 .. _Repository Issue: https://github.com/skt-smartfleet/device-simulator/issues
 
-|br|
-|br|
-
 .. _web-application-simulator:
 
 Smart[Fleet] Web Application Simulator
@@ -79,16 +65,12 @@ Smart[Fleet] Web Application Simulator는 OBD 운행 데이터 확인 및 RPC �
 
 - Smart[Fleet] Web Application Simulator : https://github.com/skt-smartfleet/simpleweb
 
-|br|
-
 .. image:: ../images/simulator/7_2.png
-
-|br|
 
 .. rst-class:: text-align-justify
 
-해당 애플리케이션은 node.js 기반으로 구현되어 있습니다. 본 시뮬레이터가 정상적으로 동작하기 위해서는 node.js가 설치되어 있어야 합니다. 애플리케이션을 이용하기 위해 차량, 센서 정보가 있는 Smart [Fleet] 계정이 필요합니다. 계정이 없을 경우 본 가이드 문서 :ref:`3.2. 구성요소 등록 절차 <entity-procedure>` 를 참조하여 계정을 생성하시기 바랍니다.
-|br|
+해당 애플리케이션은 node.js 기반으로 구현되어 있습니다. 본 시뮬레이터가 정상적으로 동작하기 위해서는 node.js가 설치되어 있어야 합니다. 애플리케이션을 이용하기 위해 차량, 센서 정보가 있는 Smart [Fleet] 계정이 필요합니다. 계정이 없을 경우 본 가이드 문서 :ref:`4. 구성요소 등록 절차 <entity-registration>` 를 참조하여 계정을 생성하시기 바랍니다.
+
 Smart[Fleet] Web Application 페이지는 4개의 View로 구성되며 10초마다 최신 Microtrip 운행 정보를 가져옵니다.
 
 .. rst-class:: text-align-justify
@@ -101,6 +83,3 @@ Smart[Fleet] Web Application 페이지는 4개의 View로 구성되며 10초마�
 .. rst-class:: text-align-justify
 
 하단에는 RPC 버튼이 있어서, 해당 버튼을 클릭하면 RPC 요청을 전송합니다. 해당 요청에 대한 결과는 페이지 상단에 토스트 메세지로 올라옵니다.
-
-|br|
-|br|
