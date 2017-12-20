@@ -21,12 +21,19 @@ Embedded C
 
 .. rst-class:: text-align-justify
 
-GitHub : `https://github.com/skt-smartfleet/Sensor-sdk-embedded-C <https://github.com/skt-smartfleet/Sensor-sdk-embedded-C>`__
+GitHub : `https://github.com/skt-smartfleet/device-simulator-c <https://github.com/skt-smartfleet/device-simulator-c>`__
 
 사용 방법 및 제공 라이브러리
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*(README.md 파일 추가)*
+.. rst-class:: text-align-justify
+
+본 시뮬레이터는 SKT의 Smart[Fleet] 플랫폼 프로토콜을 따르는 GPS, OBD 단말의 동작을 나타내는 시뮬레이터입니다.
+Smart[Fleet] 플랫폼의 `기술문서 <http://smart-fleet-docs.readthedocs.io/ko/latest/>`__ 를 기반으로 구성되어 있습니다.
+사용 방법과 제공 라이브러리에 대한 설명은 `README.md <https://github.com/skt-smartfleet/device-simulator-c/blob/master/README.md>`__ 를 참조하시기 바랍니다.
+
+|br|
+|br|
 
 .. _android-sdk:
 
@@ -38,31 +45,43 @@ Android
 
 .. rst-class:: text-align-justify
 
-GitHub : `https://github.com/skt-smartfleet/Sensor-sdk-android <https://github.com/skt-smartfleet/Sensor-sdk-android>`__
+GitHub : `https://github.com/skt-smartfleet/device-sdk-android <https://github.com/skt-smartfleet/device-sdk-android>`__
 
 사용 방법 및 제공 라이브러리
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*(README.md 파일 추가)*
+.. rst-class:: text-align-justify
+
+SKT의 Smart[Fleet] 플랫폼 프로토콜을 따르는 단말의 동작을 나타내는 Android SDK입니다.
+Smart[Fleet] 플랫폼의 `기술문서 <http://smart-fleet-docs.readthedocs.io/ko/latest/>`__ 를 기반으로 구성되어 있습니다.
+사용 방법과 제공 라이브러리에 대한 설명은 `README.md <https://github.com/skt-smartfleet/device-sdk-android/blob/master/README.md>`__ 를 참조하시기 바랍니다.
+
+|br|
+|br|
 
 .. _object-c-sdk:
 
-Object-C (iOS)
---------------
+iOS
+-----
 
 소스 (Source) & 도구
 ~~~~~~~~~~~~~~~~~~~~
 
 .. rst-class:: text-align-justify
 
-GitHub : `https://github.com/skt-smartfleet/Sensor-sdk-iOS <https://github.com/skt-smartfleet/Sensor-sdk-iOS>`__
-
-|br|
+GitHub : `https://github.com/skt-smartfleet/device-sdk-ios <https://github.com/skt-smartfleet/device-sdk-ios>`__
 
 사용 방법 및 제공 라이브러리
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*(README.md 파일 추가)*
+.. rst-class:: text-align-justify
+
+SKT의 Smart[Fleet] 플랫폼 프로토콜을 따르는 단말의 동작을 나타내는 iOS SDK입니다.
+Smart[Fleet] 플랫폼의 `기술문서 <http://smart-fleet-docs.readthedocs.io/ko/latest/>`__ 를 기반으로 구성되어 있습니다.
+사용 방법과 제공 라이브러리에 대한 설명은 `README.md <https://github.com/skt-smartfleet/device-sdk-ios/blob/master/README.md>`__ 를 참조하시기 바랍니다.
+
+|br|
+|br|
 
 JAVA
 ----
@@ -72,11 +91,17 @@ JAVA
 
 .. rst-class:: text-align-justify
 
-GitHub : `https://github.com/skt-smartfleet/Sensor-sdk-java <https://github.com/skt-smartfleet/Sensor-sdk-java>`__
+GitHub : `https://github.com/skt-smartfleet/device-sdk-java <https://github.com/skt-smartfleet/device-sdk-java>`__
 
 사용 방법 및 제공 라이브러리
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. rst-class:: text-align-justify
 
-*(README.md 파일 추가)*
+SKT의 Smart[Fleet] 플랫폼 프로토콜을 따르는 단말의 동작을 나타내는 JAVA SDK입니다.
+Smart[Fleet] 플랫폼의 `기술문서 <http://smart-fleet-docs.readthedocs.io/ko/latest/>`__ 를 기반으로 구성되어 있습니다.
+사용 방법과 제공 라이브러리에 대한 설명은 `README.md <https://github.com/skt-smartfleet/device-sdk-java/blob/master/README.md>`__ 를 참조하시기 바랍니다.
+
+.. rst-class:: text-align-justify
+
+|br|
