@@ -59,12 +59,12 @@ Smart[Fleet] Device Simulator
 
 .. _web-application-simulator:
 
-Smart[Fleet] Simple Web App
----------------------------------------
+Smart[Fleet] Web Application Simulator
+--------------------------------------------------
 
 .. rst-class:: text-align-justify
 
-Smart[Fleet] Simple Web App은 OBD 운행 데이터 확인 및 RPC 요청 기능을 구현한 웹 애플리케이션입니다. 추가 사용 설명과 프로그램 다운로드는 아래 사이트를 방문하시기 바랍니다.
+Smart[Fleet]  Web Application Simulator는 OBD 운행 데이터 확인 및 RPC 요청 기능을 구현한 웹 애플리케이션입니다. 추가 사용 설명과 프로그램 다운로드는 아래 사이트를 방문하시기 바랍니다.
 
 .. rst-class:: text-align-justify
 
