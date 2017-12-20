@@ -21,16 +21,16 @@ Embedded C
 
 .. rst-class:: text-align-justify
 
-GitHub : `https://github.com/skt-smartfleet/device-simulator-c <https://github.com/skt-smartfleet/device-simulator-c>`__
+GitHub : `https://github.com/skt-smartfleet/device-sdk-embedded-c <https://github.com/skt-smartfleet/device-sdk-embedded-c>`__
 
 사용 방법 및 제공 라이브러리
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. rst-class:: text-align-justify
 
-본 시뮬레이터는 SKT의 Smart[Fleet] 플랫폼 프로토콜을 따르는 GPS, OBD 단말의 동작을 나타내는 시뮬레이터입니다.
+SKT의 Smart[Fleet] 플랫폼 프로토콜을 따르는 단말의 동작을 나타내는 Arduino SDK입니다.
 Smart[Fleet] 플랫폼의 `기술문서 <http://smart-fleet-docs.readthedocs.io/ko/latest/>`__ 를 기반으로 구성되어 있습니다.
-사용 방법과 제공 라이브러리에 대한 설명은 `README.md <https://github.com/skt-smartfleet/device-simulator-c/blob/master/README.md>`__ 를 참조하시기 바랍니다.
+사용 방법과 제공 라이브러리에 대한 설명은 `README.md <https://github.com/skt-smartfleet/device-sdk-embedded-c/blob/master/README.md>`__ 를 참조하시기 바랍니다.
 
 |br|
 |br|
