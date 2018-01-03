@@ -1016,7 +1016,7 @@ RPC 메시지 포맷
 
 .. rst-class:: text-align-justify
 
-OBD 단말을 제어하기 위한 RPC Message Type을 명세합니다. 기술되지 않는 제어는 단말과 어플리케이션 상호 간에만 규약 되어 있다면, Vendor Specific Message를 사용합니다.
+Device를 제어하기 위한 RPC Message Type을 명세합니다. 기술되지 않는 제어는 단말과 어플리케이션 상호 간에만 규약 되어 있다면, Vendor Specific Message를 사용합니다.
 
 Vendor Specific Message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
