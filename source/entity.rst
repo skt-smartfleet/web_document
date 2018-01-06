@@ -183,11 +183,9 @@ API를 활용한 등록
 +-------------------+---------+-----------------------------------------+
 | description       | string  | 추가 정보                               |
 +-------------------+---------+-----------------------------------------+
-| rpcNotifyHost     | string  | RPC 결과를 전송받기 위한 서버 호스트    |
+| notifyHost        | string  | Push 메시지 수신 서버 경로 정보         | 
 +-------------------+---------+-----------------------------------------+
-| rpcNotifyPort     | integer | RPC 결과를 전송받기 위한 서버 포트      |
-+-------------------+---------+-----------------------------------------+
-| rpcNotifyBasePath | string  | RPC 결과를 전송받기 위한 서버 기본 경로 |
+| notifyMsgType     | integer | 수신하고자 하는 Push 메시지 타입 정보   |
 +-------------------+---------+-----------------------------------------+
 
 - Example Code
@@ -212,9 +210,8 @@ API를 활용한 등록
         "sktManagerEmail":"manager@skt.com",
         "cooperationTask":"수리",
         "description":"additional description",
-        "rpcNotifyHost":"localhost",
-        "rpcNotifyPort":9000,
-        "rpcNotifyBasePath":"/rpc_noti"
+        "notifyHost":"http://192.168.0.100:9090/noti",
+        "notifyMsgType":0f
     }
 
 :underline:`Response (code: 200)`
@@ -241,9 +238,8 @@ API를 활용한 등록
         "sktManagerEmail": "manager@skt.com",
         "cooperationTask": "수리",
         "description": "additional description",
-        "rpcNotifyHost": "localhost",
-        "rpcNotifyPort": 9000,
-        "rpcNotifyBasePath": "/rpc_noti"
+        "notifyHost":"http://192.168.0.100:9090/noti",
+        "notifyMsgType":0f
     }
 
 .. rst-class:: text-align-justify
