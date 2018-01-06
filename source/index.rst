@@ -35,3 +35,4 @@ Contents:
    sdk
    message
    simulator
+   bestpractice
