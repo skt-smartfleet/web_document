@@ -211,7 +211,7 @@ API를 활용한 등록
         "cooperationTask":"수리",
         "description":"additional description",
         "notifyHost":"http://192.168.0.100:9090/noti",
-        "notifyMsgType":0f
+        "notifyMsgType":"0f"
     }
 
 :underline:`Response (code: 200)`
@@ -238,8 +238,8 @@ API를 활용한 등록
         "sktManagerEmail": "manager@skt.com",
         "cooperationTask": "수리",
         "description": "additional description",
-        "notifyHost":"http://192.168.0.100:9090/noti",
-        "notifyMsgType":0f
+        "notifyHost": "http://192.168.0.100:9090/noti",
+        "notifyMsgType": "0f"
     }
 
 .. rst-class:: text-align-justify
