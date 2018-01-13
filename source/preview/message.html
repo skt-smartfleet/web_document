@@ -1,0 +1,3758 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>8. 메시지 포맷 &mdash; Smart[Fleet] Platform 1.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Smart[Fleet] Platform 1.0.1 documentation" href="index.html"/>
+        <link rel="next" title="9. 테스트용 시뮬레이터" href="simulator.html"/>
+        <link rel="prev" title="7. SDK" href="sdk.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Smart[Fleet] Platform
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Smart[Fleet] 플랫폼 소개</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">2. 주요 구성요소 (Entity Architecture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="procedure.html">3. 서비스 세부 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity.html">4. 구성요소(Entity) 등록</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">5. Device 연동 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">6. API 규격</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk.html">7. SDK</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. 메시지 포맷</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">8.1. 메시지 기본 구조</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#message-format-for-sensor">8.1.1. 메시지 타입</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">8.1.1.1. 주기보고 메세지 타입</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">8.1.1.2. 이벤트 메세지 타입</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#aggregated-microtrip">8.1.2. Aggregated Microtrip</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">8.2. 센서 타입별 주기보고 메시지 포맷</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gps">8.2.1. GPS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#message-header">8.2.1.1. Message Header</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#payload-types">8.2.1.2. Payload Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gps-microtrip">8.2.1.3. GPS Microtrip</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#obd">8.2.2. OBD</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">8.2.2.1. Message Header</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#payload-type">8.2.2.2. Payload Type</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#adas">8.2.3. ADAS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">8.2.3.1. Message Header</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">8.2.3.2. Payload Type</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#blackbox">8.2.4. BlackBox</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">8.2.4.1. Message Header</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">8.2.4.2. Payload Type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#event-message-format">8.3. 이벤트 데이터 포맷</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">8.3.1. Message Header</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#event-message-format-payload-type">8.3.2. Payload Type</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#diagnostic-information">8.3.2.1. Diagnostic Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#collision-warning-driving">8.3.2.2. Collision warning (Driving)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#collision-warning-parking">8.3.2.3. Collision warning (Parking)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#battery-warning">8.3.2.4. Battery Warning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unplugged-warning">8.3.2.5. Unplugged Warning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#turn-off-warning">8.3.2.6. Turn-off Warning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adas-event">8.3.2.7. ADAS Event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">8.3.2.8. BlackBox 부팅 이벤트</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">8.3.2.9. BlackBox 모드 변경 이벤트</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">8.3.2.10. BlackBox 사용자 세팅 이벤트 메시지</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">8.3.2.11. BlackBox 이미지 업로드 이벤트 메시지</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">8.3.2.12. BlackBox 인지 이벤트 메시지</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#rpc">8.4. RPC 메시지 포맷</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vendor-specific-message">8.4.1. Vendor Specific Message</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#request">8.4.1.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#response">8.4.1.2. Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#result">8.4.1.3. Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#device-activation">8.4.2. Device Activation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device-activation-request">8.4.2.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device-activation-response">8.4.2.2. Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device-activation-result">8.4.2.3. Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#firmware-update">8.4.3. Firmware Update</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id23">8.4.3.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">8.4.3.2. Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#obd-reset">8.4.4. OBD Reset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id25">8.4.4.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">8.4.4.2. Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27">8.4.4.3. Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#device-serial-number-check">8.4.5. Device Serial Number Check</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id28">8.4.5.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id29">8.4.5.2. Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id30">8.4.5.3. Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#clear-device-data">8.4.6. Clear Device Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id31">8.4.6.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id32">8.4.6.2. Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id33">8.4.6.3. Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#firmware-update-chunk-based">8.4.7. Firmware Update (Chunk-based)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id34">8.4.7.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id35">8.4.7.2. Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id36">8.4.7.3. Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#common-response-code-for-rpc-result">8.4.8. Common Response Code for RPC Result</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#code-class">8.4.8.1. Code Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#successful-response-class">8.4.8.2. Successful Response Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sensor-error-response-class">8.4.8.3. Sensor Error Response Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="simulator.html">9. 테스트용 시뮬레이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bestpractice.html">10. Best Practices</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Smart[Fleet] Platform</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>8. 메시지 포맷</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/message.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="message-format">
+<span id="id1"></span><h1>8. 메시지 포맷<a class="headerlink" href="#message-format" title="Permalink to this headline">¶</a></h1>
+<p class="text-align-justify">Smart[Fleet] 플랫폼에 연동되는 다양한 차량 센서들이 플랫폼에 전송하는 메세지에 대해서 정의합니다.</p>
+<p>이 매뉴얼은 단말이 MQTTS 프로토콜로 Smart[Fleet] 플랫폼과 연동하기 위한 메시지 포맷입니다. Entity 등록을 위한 HTTP Rest API 사용은 <a class="reference internal" href="entity.html#entity-registration"><span class="std std-ref">4. 구성요소(Entity) 등록</span></a> 문서를, App 개발자를 위한 Smart[Fleet] API 는 <a class="reference internal" href="api.html#api-specification"><span class="std std-ref">6. API 규격</span></a> 문서를 참고하십시오.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">본 장에 명세된 표 내용 중 <code class="docutils literal"><span class="pre">M</span></code> / <code class="docutils literal"><span class="pre">O</span></code> 는 <code class="docutils literal"><span class="pre">Mandatory</span></code> / <code class="docutils literal"><span class="pre">Optional</span></code> 의 약자로, Mandatory는 필수로 포함해야 하는 데이터를 Optional은 필요에 따라 기입이 여부를 개발사에서 판단하시면 됩니다.</p>
+</div>
+<div class="section" id="id2">
+<h2>8.1. 메시지 기본 구조<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Smart[Fleet] 플랫폼의 기본 메시지 구조는 <code class="docutils literal"><span class="pre">Header</span></code> 와 <code class="docutils literal"><span class="pre">Payload</span></code> 형태로 구조화 되어 있습니다. 각 메시지는 해당 메시지의 타입인 <code class="docutils literal"><span class="pre">ty</span></code> 로 구분하고 <code class="docutils literal"><span class="pre">ty</span></code> 에 따라 <code class="docutils literal"><span class="pre">pld</span></code> child의 내용이 상이합니다.</p>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    // Header
+    &quot;ts&quot; : 1505434907995,
+
+    // Message Type
+    &quot;ty&quot; : 2,
+
+    // Payload
+    &quot;pld&quot; : {
+        &quot;tid&quot; : 1,
+        &quot;fc&quot; : 12,
+        &quot;lon&quot; : 127.114513,
+        &quot;lat&quot; : 37.380241,
+        &quot;rpm&quot; : 323,
+        &quot;em&quot; : 28,
+        &quot;el&quot; : 25,
+        &quot;xyz&quot; : &quot;23123,49923,123&quot;,
+        &quot;vv&quot; : &quot;11.4&quot;
+    }
+}
+</pre></div>
+</div>
+<div class="section" id="message-format-for-sensor">
+<span id="id3"></span><h3>8.1.1. 메시지 타입<a class="headerlink" href="#message-format-for-sensor" title="Permalink to this headline">¶</a></h3>
+<p>Smart[Fleet] 플랫폼은 외부 인터페이스와 다양한 형태의 메시지 주고 받을 때,
+해당 메세지를 <code class="docutils literal"><span class="pre">ty</span></code> 값으로 구분하여 인식하게 됩니다.</p>
+<div class="table-width-fix text-align-justify section" id="id4">
+<h4>8.1.1.1. 주기보고 메세지 타입<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>주기보고 메시지는 Smart[Fleet] 규격을 따르는 단말 또는 센서가 주기적으로 차량의 운행 정보를 전달할 때
+명세하는 메시지 타입입니다. 아래 표와 같이 센서 타입별로 구분되어 있습니다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ty</th>
+<th class="head">설명</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>GPS 단말의 Trip 메세지</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>GPS 단말의 MicroTrip 메시지</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>OBD 단말의 Trip 메시지</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>OBD 단말의 MicroTrip 메시지</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>ADAS 단말의 Trip 메시지</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>ADAS 단말의 MicroTrip 메시지</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>BlackBox 단말의 Trip 메시지</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>BlackBox 단말의 MicroTrip 메시지</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id5">
+<h4>8.1.1.2. 이벤트 메세지 타입<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p>이벤트 메시지는 Smart[Fleet] 규격을 따르는 단말 또는 센서가 인식한 이벤트 메시지를 Smart[Fleet]에 전송할 때
+명세하는 메시지 타입입니다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ty</th>
+<th class="head">설명</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>101</td>
+<td>차량 고장 및 진단 이벤트 메시지</td>
+</tr>
+<tr class="row-odd"><td>102</td>
+<td>운행 중 차량 사고 이벤트 메시지</td>
+</tr>
+<tr class="row-even"><td>103</td>
+<td>주차 중 차량 충격 이벤트 메시지</td>
+</tr>
+<tr class="row-odd"><td>104</td>
+<td>차량 배터리 이상 이벤트 메시지</td>
+</tr>
+<tr class="row-even"><td>105</td>
+<td>차량 센서 탈착 이벤트 메시지</td>
+</tr>
+<tr class="row-odd"><td>106</td>
+<td>차량 센서 종료 이벤트 메시지</td>
+</tr>
+<tr class="row-even"><td>107</td>
+<td>ADAS 센서가 감지한 이벤트 메시지</td>
+</tr>
+<tr class="row-odd"><td>108</td>
+<td>BlackBox 부팅 이벤트 메시지</td>
+</tr>
+<tr class="row-even"><td>109</td>
+<td>BlackBox 모드 변경 이벤트 메시지</td>
+</tr>
+<tr class="row-odd"><td>110</td>
+<td>BlackBox 세팅 이벤트 메시지</td>
+</tr>
+<tr class="row-even"><td>111</td>
+<td>BlackBox 이미지 업로드 리포트 메시지</td>
+</tr>
+<tr class="row-odd"><td>112</td>
+<td>BlackBox 센서 인식 이벤트 메시지</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="aggregated-microtrip">
+<h3>8.1.2. Aggregated Microtrip<a class="headerlink" href="#aggregated-microtrip" title="Permalink to this headline">¶</a></h3>
+<p>Microtrip 데이터는 여러개의 데이터를 모아서 한번에 보낼 수 있습니다. 각 수집한 Microtrip 데이터는 JSON Array 데이터를 기반으로 다음과 같이 패킷을 합쳐 보낼 수 있습니다.</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ty&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;ts&quot;</span><span class="p">:</span><span class="mi">1508215121898</span><span class="p">,</span>
+    <span class="nt">&quot;pld&quot;</span><span class="p">:</span>
+    <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;tid&quot;</span><span class="p">:</span><span class="mi">301</span><span class="p">,</span>
+            <span class="nt">&quot;lon&quot;</span><span class="p">:</span><span class="mf">127.062512</span><span class="p">,</span>
+            <span class="nt">&quot;lat&quot;</span><span class="p">:</span><span class="mf">37.510296</span><span class="p">,</span>
+            <span class="nt">&quot;alt&quot;</span><span class="p">:</span><span class="mi">102</span><span class="p">,</span>
+            <span class="nt">&quot;sp&quot;</span><span class="p">:</span><span class="mi">90</span><span class="p">,</span>
+            <span class="nt">&quot;dop&quot;</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span>
+            <span class="nt">&quot;nos&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+            <span class="nt">&quot;clt&quot;</span><span class="p">:</span><span class="mi">1508215121888</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;tid&quot;</span><span class="p">:</span><span class="mi">301</span><span class="p">,</span>
+            <span class="nt">&quot;lon&quot;</span><span class="p">:</span><span class="mf">127.062512</span><span class="p">,</span>
+            <span class="nt">&quot;lat&quot;</span><span class="p">:</span><span class="mf">37.510296</span><span class="p">,</span>
+            <span class="nt">&quot;alt&quot;</span><span class="p">:</span><span class="mi">113</span><span class="p">,</span>
+            <span class="nt">&quot;sp&quot;</span><span class="p">:</span><span class="mi">74</span><span class="p">,</span>
+            <span class="nt">&quot;dop&quot;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span>
+            <span class="nt">&quot;nos&quot;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+            <span class="nt">&quot;clt&quot;</span><span class="p">:</span><span class="mi">1508215121893</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;tid&quot;</span><span class="p">:</span><span class="mi">301</span><span class="p">,</span>
+            <span class="nt">&quot;lon&quot;</span><span class="p">:</span><span class="mf">127.062512</span><span class="p">,</span>
+            <span class="nt">&quot;lat&quot;</span><span class="p">:</span><span class="mf">37.510296</span><span class="p">,</span>
+            <span class="nt">&quot;alt&quot;</span><span class="p">:</span><span class="mi">115</span><span class="p">,</span>
+            <span class="nt">&quot;sp&quot;</span><span class="p">:</span><span class="mi">71</span><span class="p">,</span>
+            <span class="nt">&quot;dop&quot;</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span>
+            <span class="nt">&quot;nos&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+            <span class="nt">&quot;clt&quot;</span><span class="p">:</span><span class="mi">1508215121898</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">페이로드가 Microtrip 여러개를 Aggregation 하여 전송할 때는 시간의 순서에 맞추어 전송하여야 합니다. 플랫폼에서 시간에 따라 Re-ordering을 수행하지 않습니다.</p>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>8.2. 센서 타입별 주기보고 메시지 포맷<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="gps">
+<h3>8.2.1. GPS<a class="headerlink" href="#gps" title="Permalink to this headline">¶</a></h3>
+<p>GPS 단말에서 발생한 위치 데이터를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다.</p>
+<div class="section" id="message-header">
+<h4>8.2.1.1. Message Header<a class="headerlink" href="#message-header" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="13%" />
+<col width="11%" />
+<col width="13%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ty</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>전달하고자 하는 페이로드 타입</li>
+</ul>
+<ol class="last arabic simple">
+<li><a class="reference internal" href="#trip-gps">Trip_GPS</a></li>
+<li><a class="reference internal" href="#microtrip-gps">Microtrip_GPS</a></li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>ts</td>
+<td>Int</td>
+<td>O</td>
+<td>정보 수집 시간</td>
+</tr>
+<tr class="row-even"><td>pld</td>
+<td>&#160;</td>
+<td>M</td>
+<td>아래 각 페이로드 메시지를 참고</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">표에 M/O는 Mandatory/Optional의 약자로, Mandatory는 필수로 포함해야하는 데이터를 Optional은 필요에 따라 기입이 여부를 개발사에 판단합니다.</p>
+</div>
+</div>
+<div class="section" id="payload-types">
+<h4>8.2.1.2. Payload Types<a class="headerlink" href="#payload-types" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="gps-trip-message">
+<span id="trip-gps"></span><h5>8.2.1.2.1. GPS Trip Message<a class="headerlink" href="#gps-trip-message" title="Permalink to this headline">¶</a></h5>
+<p>Trip Message는 차량이 운행이 종료된 후에 전달하는 메시지입니다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="10%" />
+<col width="11%" />
+<col width="51%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+<th class="head">Note</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip 고유 번호</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>stt</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip의 시작 날짜 및 시간</td>
+<td>UTC</td>
+</tr>
+<tr class="row-even"><td>edt</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip의 종료 날짜 및 시간</td>
+<td>UTC</td>
+</tr>
+<tr class="row-odd"><td>dis</td>
+<td>Int</td>
+<td>O</td>
+<td>Trip의 주행거리</td>
+<td>Meter</td>
+</tr>
+<tr class="row-even"><td>stlat</td>
+<td>Int</td>
+<td>O</td>
+<td>운행 시작 좌표의 위도</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>stlon</td>
+<td>Int</td>
+<td>O</td>
+<td>운행 시작 좌표의 경도</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>edlat</td>
+<td>Int</td>
+<td>O</td>
+<td>운행 종료 좌표의 위도</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>edlon</td>
+<td>Int</td>
+<td>O</td>
+<td>운행 종료 좌표의 경도</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>hsts</td>
+<td>Int</td>
+<td>O</td>
+<td>Trip의 최고 속도</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>mesp</td>
+<td>Int</td>
+<td>O</td>
+<td>Trip의 평균 속도</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>fwv</td>
+<td>String</td>
+<td>O</td>
+<td>펌웨어 버전</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>dtvt</td>
+<td>Int</td>
+<td>O</td>
+<td>주행시간</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+    <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;tid&quot;</span> <span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+          <span class="nt">&quot;stt&quot;</span> <span class="p">:</span> <span class="mi">1505433907995</span><span class="p">,</span>
+          <span class="nt">&quot;edt&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+          <span class="nt">&quot;dis&quot;</span> <span class="p">:</span> <span class="mi">101</span><span class="p">,</span>
+          <span class="nt">&quot;stlon&quot;</span> <span class="p">:</span> <span class="mf">127.114513</span><span class="p">,</span>
+          <span class="nt">&quot;stlat&quot;</span> <span class="p">:</span> <span class="mf">37.380241</span><span class="p">,</span>
+          <span class="nt">&quot;edlon&quot;</span> <span class="p">:</span> <span class="mf">126.114513</span><span class="p">,</span>
+          <span class="nt">&quot;edlat&quot;</span> <span class="p">:</span> <span class="mf">36.380241</span><span class="p">,</span>
+          <span class="nt">&quot;hsts&quot;</span> <span class="p">:</span> <span class="mi">121</span><span class="p">,</span>
+          <span class="nt">&quot;mesp&quot;</span> <span class="p">:</span> <span class="mi">63</span><span class="p">,</span>
+          <span class="nt">&quot;fwv&quot;</span> <span class="p">:</span> <span class="s2">&quot;1.0.1&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;dtvt&quot;</span> <span class="p">:</span> <span class="mi">88</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="gps-microtrip">
+<span id="microtrip-gps"></span><h4>8.2.1.3. GPS Microtrip<a class="headerlink" href="#gps-microtrip" title="Permalink to this headline">¶</a></h4>
+<p>Microtrip 메세지는 차량이 운행을 시작한 후 설정된 주기에 따라 전송하는 차량 운행에 대한 위치 데이터입니다. 주기는 각 어플리케이션 마다 상이하므로, 아래의 값은 플랫폼에 전송하는 해당 시점에 데이터를 추출하여 기입합니다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip 고유 번호</td>
+</tr>
+<tr class="row-odd"><td>lat</td>
+<td>Int</td>
+<td>M</td>
+<td>위도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>lon</td>
+<td>Int</td>
+<td>M</td>
+<td>경도 (WGS84)</td>
+</tr>
+<tr class="row-odd"><td>alt</td>
+<td>Int</td>
+<td>M</td>
+<td>고도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>clt</td>
+<td>Int</td>
+<td>M</td>
+<td>단말기 기준 수집 시간</td>
+</tr>
+<tr class="row-odd"><td>sp</td>
+<td>Int</td>
+<td>O</td>
+<td>Ground Speed (based on NMEA Protocol / km/h)</td>
+</tr>
+<tr class="row-even"><td>dop</td>
+<td>Int</td>
+<td>O</td>
+<td>Dilution of Precision 값 (based on NMEA protcol)</td>
+</tr>
+<tr class="row-odd"><td>nos</td>
+<td>Int</td>
+<td>O</td>
+<td>위성 갯수 정보 (based on NMEA protocol)</td>
+</tr>
+<tr class="row-even"><td>tdis</td>
+<td>Int</td>
+<td>O</td>
+<td>Microtrip 동안 이동한 거리</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+    <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;tid&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nt">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">127.114513</span><span class="p">,</span>
+          <span class="nt">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">37.380241</span><span class="p">,</span>
+          <span class="nt">&quot;alt&quot;</span> <span class="p">:</span> <span class="mf">280.2</span><span class="p">,</span>
+          <span class="nt">&quot;clt&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+          <span class="nt">&quot;sp&quot;</span> <span class="p">:</span> <span class="mf">10.2</span><span class="p">,</span>
+          <span class="nt">&quot;dop&quot;</span> <span class="p">:</span> <span class="mf">15.2</span><span class="p">,</span>
+          <span class="nt">&quot;nos&quot;</span> <span class="p">:</span> <span class="mi">5</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="obd">
+<h3>8.2.2. OBD<a class="headerlink" href="#obd" title="Permalink to this headline">¶</a></h3>
+<p>OBD 단말에서 발생한 데이터를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다.</p>
+<div class="section" id="id7">
+<h4>8.2.2.1. Message Header<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="13%" />
+<col width="11%" />
+<col width="13%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ty</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>전달하고자 하는 페이로드 타입</li>
+</ul>
+<ol class="last arabic simple" start="3">
+<li><a class="reference internal" href="#trip-obd">Trip_OBD</a></li>
+<li><a class="reference internal" href="#microtrip-obd">Microtrip_OBD</a></li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>ts</td>
+<td>Int</td>
+<td>O</td>
+<td>정보 수집 시간</td>
+</tr>
+<tr class="row-even"><td>pld</td>
+<td>&#160;</td>
+<td>M</td>
+<td>아래 각 페이로드 메시지를 참고</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="payload-type">
+<h4>8.2.2.2. Payload Type<a class="headerlink" href="#payload-type" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="obd-trip">
+<span id="trip-obd"></span><h5>8.2.2.2.1. OBD Trip<a class="headerlink" href="#obd-trip" title="Permalink to this headline">¶</a></h5>
+<p class="text-align-justify">Trip Message는 차량이 운행이 종료된 후에 전달하는 메시지입니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="12%" />
+<col width="10%" />
+<col width="8%" />
+<col width="58%" />
+<col width="12%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+<th class="head">Note</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip 고유 번호</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>stt</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip의 시작 날짜 및 시간</td>
+<td>UTC</td>
+</tr>
+<tr class="row-even"><td>edt</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip의 종료 날짜 및 시간</td>
+<td>UTC</td>
+</tr>
+<tr class="row-odd"><td>dis</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip의 주행거리</td>
+<td>Meter</td>
+</tr>
+<tr class="row-even"><td>tdis</td>
+<td>Int</td>
+<td>M</td>
+<td>차량의 총 주행거리</td>
+<td>Meter</td>
+</tr>
+<tr class="row-odd"><td>fc</td>
+<td>Int</td>
+<td>M</td>
+<td>연료소모량</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>stlat</td>
+<td>Int</td>
+<td>M</td>
+<td>운행 시작 좌표의 위도</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>stlon</td>
+<td>Int</td>
+<td>M</td>
+<td>운행 시작 좌표의 경도</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>edlat</td>
+<td>Int</td>
+<td>M</td>
+<td>운행 종료 좌표의 위도</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>edlon</td>
+<td>Int</td>
+<td>M</td>
+<td>운행 종료 좌표의 경도</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>ctp</td>
+<td>Int</td>
+<td>M</td>
+<td>부동액(냉각수) 평균온도</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>coe</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip의 탄소 배출량</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>fct</td>
+<td>Int</td>
+<td>M</td>
+<td>연료차단 상태의 운행시간</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>hsts</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip의 최고 속도</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>mesp</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip의 평균 속도</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>idt</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip의 공회전 시간</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>btv</td>
+<td>Int</td>
+<td>M</td>
+<td>배터리 전압(시동OFF후 전압)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>gnv</td>
+<td>Int</td>
+<td>M</td>
+<td>발전기 전압(주행중 최고 전압)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>wut</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip의 웜업시간(주행전 시동 시간)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>usm</td>
+<td>Int</td>
+<td>O</td>
+<td>BT가 연결된 휴대폰 번호</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>est</td>
+<td>Int</td>
+<td>O</td>
+<td>80~100km 운행 시간</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>fwv</td>
+<td>Int</td>
+<td>O</td>
+<td>펌웨어 버전</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>dtvt</td>
+<td>Int</td>
+<td>O</td>
+<td>주행시간</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+    <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;tid&quot;</span> <span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="nt">&quot;stt&quot;</span> <span class="p">:</span> <span class="mi">1505433907995</span><span class="p">,</span>
+        <span class="nt">&quot;edt&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+        <span class="nt">&quot;dis&quot;</span> <span class="p">:</span> <span class="mi">101</span><span class="p">,</span>
+        <span class="nt">&quot;tdis&quot;</span> <span class="p">:</span> <span class="mi">16813</span><span class="p">,</span>
+        <span class="nt">&quot;fc&quot;</span> <span class="p">:</span> <span class="mi">83</span><span class="p">,</span>
+        <span class="nt">&quot;stlon&quot;</span> <span class="p">:</span> <span class="mf">127.114513</span><span class="p">,</span>
+        <span class="nt">&quot;stlat&quot;</span> <span class="p">:</span> <span class="mf">37.380241</span><span class="p">,</span>
+        <span class="nt">&quot;edlon&quot;</span> <span class="p">:</span> <span class="mf">126.114513</span><span class="p">,</span>
+        <span class="nt">&quot;edlat&quot;</span> <span class="p">:</span> <span class="mf">36.380241</span><span class="p">,</span>
+        <span class="nt">&quot;ctp&quot;</span> <span class="p">:</span> <span class="mi">48</span><span class="p">,</span>
+        <span class="nt">&quot;coe&quot;</span> <span class="p">:</span> <span class="mi">392</span><span class="p">,</span>
+        <span class="nt">&quot;fct&quot;</span> <span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+        <span class="nt">&quot;hsts&quot;</span> <span class="p">:</span> <span class="mi">121</span><span class="p">,</span>
+        <span class="nt">&quot;mesp&quot;</span> <span class="p">:</span> <span class="mi">63</span><span class="p">,</span>
+        <span class="nt">&quot;idt&quot;</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="nt">&quot;btv&quot;</span> <span class="p">:</span> <span class="mf">14.5</span><span class="p">,</span>
+        <span class="nt">&quot;gnv&quot;</span> <span class="p">:</span> <span class="mf">12.3</span><span class="p">,</span>
+        <span class="nt">&quot;wut&quot;</span> <span class="p">:</span> <span class="mi">181</span><span class="p">,</span>
+        <span class="nt">&quot;dtvt&quot;</span> <span class="p">:</span><span class="mi">2301</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="obd-microtrip">
+<span id="microtrip-obd"></span><h5>8.2.2.2.2. OBD Microtrip<a class="headerlink" href="#obd-microtrip" title="Permalink to this headline">¶</a></h5>
+<p class="text-align-justify">Microtrip 메세지는 차량이 운행을 시작한 후 설정된 주기에 따라 전송하는 차량 운행 상세 데이터입니다. 주기는 각 어플리케이션 마다 상이하므로, 아래의 값은 플랫폼에 전송하는 해당 시점에 데이터를 추출하여 기입합니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="7%" />
+<col width="8%" />
+<col width="5%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip 고유 번호</td>
+</tr>
+<tr class="row-odd"><td>fc</td>
+<td>Int</td>
+<td>O</td>
+<td>연료소모량</td>
+</tr>
+<tr class="row-even"><td>lat</td>
+<td>Int</td>
+<td>M</td>
+<td>위도 (WGS84)</td>
+</tr>
+<tr class="row-odd"><td>lon</td>
+<td>Int</td>
+<td>M</td>
+<td>경도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>lc</td>
+<td>Int</td>
+<td>O</td>
+<td>측정 한 위치 값의 정확도</td>
+</tr>
+<tr class="row-odd"><td>clt</td>
+<td>Int</td>
+<td>M</td>
+<td>단말기 기준 수집 시간</td>
+</tr>
+<tr class="row-even"><td>cdit</td>
+<td>Int</td>
+<td>O</td>
+<td>Trip의 현재시점까지 주행거리</td>
+</tr>
+<tr class="row-odd"><td>rpm</td>
+<td>Int</td>
+<td>O</td>
+<td>rpm</td>
+</tr>
+<tr class="row-even"><td>sp</td>
+<td>Int</td>
+<td>O</td>
+<td>차량 속도</td>
+</tr>
+<tr class="row-odd"><td>em</td>
+<td>Int</td>
+<td>O</td>
+<td><p class="first">한 주기 동안 발생한 이벤트에 대해서 Hexa String으로 표기한다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bit</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>급출발</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>급좌회전</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>급우회전</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>급유턴</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>급감속</td>
+</tr>
+<tr class="row-odd"><td>5</td>
+<td>급가속</td>
+</tr>
+<tr class="row-even"><td>6</td>
+<td>급정지</td>
+</tr>
+<tr class="row-odd"><td>7</td>
+<td>Reserved</td>
+</tr>
+</tbody>
+</table>
+<p>한 주기 동안 차량이 급유턴과 급가속을 동시에 진행한 경우에는 <strong>28</strong> 로 표현</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="23%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bit</th>
+<th class="head">7</th>
+<th class="head">6</th>
+<th class="head">5</th>
+<th class="head">4</th>
+<th class="head">3</th>
+<th class="head">2</th>
+<th class="head">1</th>
+<th class="head">0</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Value</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-odd"><td>el</td>
+<td>Int</td>
+<td>O</td>
+<td>엔진 부하</td>
+</tr>
+<tr class="row-even"><td>xyz</td>
+<td>Int</td>
+<td>O</td>
+<td>가속도 X, Y 및 각속도 Y 값 (Delimeter는comma)</td>
+</tr>
+<tr class="row-odd"><td>vv</td>
+<td>Int</td>
+<td>O</td>
+<td>배터리 전압 (시동 OFF 후 전압)</td>
+</tr>
+<tr class="row-even"><td>tpos</td>
+<td>Int</td>
+<td>O</td>
+<td>엑셀 포지션 값</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+    <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;tid&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;fc&quot;</span> <span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+        <span class="nt">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">127.114513</span><span class="p">,</span>
+        <span class="nt">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">37.380241</span><span class="p">,</span>
+        <span class="nt">&quot;rpm&quot;</span> <span class="p">:</span> <span class="mi">323</span><span class="p">,</span>
+        <span class="nt">&quot;em&quot;</span> <span class="p">:</span> <span class="mi">28</span><span class="p">,</span>
+        <span class="nt">&quot;el&quot;</span> <span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+        <span class="nt">&quot;xyz&quot;</span> <span class="p">:</span> <span class="s2">&quot;23123,49923,123&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;vv&quot;</span> <span class="p">:</span> <span class="s2">&quot;11.4&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="adas">
+<h3>8.2.3. ADAS<a class="headerlink" href="#adas" title="Permalink to this headline">¶</a></h3>
+<p>ADAS 단말에서 발생한 데이터를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다.</p>
+<div class="section" id="id8">
+<h4>8.2.3.1. Message Header<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="13%" />
+<col width="11%" />
+<col width="13%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ty</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>전달하고자 하는 페이로드 타입</li>
+</ul>
+<ol class="last arabic simple" start="5">
+<li><a class="reference internal" href="#trip-adas">Trip_ADAS</a></li>
+<li><a class="reference internal" href="#microtrip-adas">Microtrip_ADAS</a></li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>ts</td>
+<td>Int</td>
+<td>O</td>
+<td>정보 수집 시간</td>
+</tr>
+<tr class="row-even"><td>pld</td>
+<td>&#160;</td>
+<td>M</td>
+<td>아래 각 페이로드 메시지를 참고</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id9">
+<h4>8.2.3.2. Payload Type<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="adas-trip">
+<span id="trip-adas"></span><h5>8.2.3.2.1. ADAS Trip<a class="headerlink" href="#adas-trip" title="Permalink to this headline">¶</a></h5>
+<p>ADAS Trip 메세지는 ADAS 단말이 주행을 완료한 경우에 사용하는 메시지 포맷입니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip 고유 번호</td>
+</tr>
+<tr class="row-odd"><td>lat</td>
+<td>Int</td>
+<td>M</td>
+<td>운행 종료 시 위도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>lon</td>
+<td>Int</td>
+<td>M</td>
+<td>운행 종료 시 경도 (WGS84)</td>
+</tr>
+<tr class="row-odd"><td>dop</td>
+<td>Int</td>
+<td>O</td>
+<td>Dilution of Precision 값 (based on NMEA protcol)</td>
+</tr>
+<tr class="row-even"><td>nos</td>
+<td>Int</td>
+<td>O</td>
+<td>위성 갯수 정보 (based on NMEA protocol)</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+    <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;tid&quot;</span> <span class="p">:</span> <span class="mi">11123</span><span class="p">,</span>
+        <span class="nt">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">127.114513</span><span class="p">,</span>
+        <span class="nt">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">37.380241</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adas-microtrip">
+<span id="microtrip-adas"></span><h5>8.2.3.2.2. ADAS Microtrip<a class="headerlink" href="#adas-microtrip" title="Permalink to this headline">¶</a></h5>
+<p class="text-align-justify">ADAS Microtrip 메세지는 ADAS 단말에서 인지한 ADAS 및 GPS 위치 정보를 주기적으로 올릴때 사용하는 메시지 포맷입니다. 일반적으로는 ADAS와 GPS가 함께 있는 경우에 활용하며, 메시지는 ADAS 부착 차량의 운행 시작부터 운행 종료까지 주기적으로 전송합니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip 고유 번호</td>
+</tr>
+<tr class="row-odd"><td>lat</td>
+<td>Int</td>
+<td>M</td>
+<td>위도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>lon</td>
+<td>Int</td>
+<td>M</td>
+<td>경도 (WGS84)</td>
+</tr>
+<tr class="row-odd"><td>dop</td>
+<td>Int</td>
+<td>O</td>
+<td>Dilution of Precision 값 (based on NMEA protcol)</td>
+</tr>
+<tr class="row-even"><td>nos</td>
+<td>Int</td>
+<td>O</td>
+<td>위성 갯수 정보 (based on NMEA protocol)</td>
+</tr>
+<tr class="row-odd"><td>dir</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>방향지시등 정보</li>
+</ul>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bit</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>30</td>
+<td>방향지시등 점등 없음</td>
+</tr>
+<tr class="row-odd"><td>31</td>
+<td>좌측 방향지시등 점등</td>
+</tr>
+<tr class="row-even"><td>32</td>
+<td>우측 방향지시등 점등</td>
+</tr>
+<tr class="row-odd"><td>33</td>
+<td>비상등 점등</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td>sp</td>
+<td>Int</td>
+<td>M</td>
+<td>차량 속도 (km/h)</td>
+</tr>
+<tr class="row-odd"><td>ldw</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>Lane Departure Warning</li>
+</ul>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bit</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>30</td>
+<td>LDW 없음</td>
+</tr>
+<tr class="row-odd"><td>31</td>
+<td>좌측 LDW 이슈 발생</td>
+</tr>
+<tr class="row-even"><td>32</td>
+<td>우측 LDW 이슈 발생</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-odd"><td>rld</td>
+<td>Int</td>
+<td>O</td>
+<td><ul class="first last simple">
+<li>차량과 오른쪽 차선과의 거리 (Right Lane Distance)</li>
+<li>단위 : cm</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>lld</td>
+<td>Int</td>
+<td>O</td>
+<td><ul class="first last simple">
+<li>차량과 왼쪽 차선과의 거리 (Left Lane Distance)</li>
+<li>단위 : cm</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>fcw</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>Forward Collision Warning</li>
+</ul>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bit</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>30</td>
+<td>FCW 없음</td>
+</tr>
+<tr class="row-odd"><td>31</td>
+<td>1차 경보 : CIPV (Closest In Path Vehicle) detected</td>
+</tr>
+<tr class="row-even"><td>32</td>
+<td>2차 경보 : 안전거리 미확보 경보</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-odd"><td>hdw</td>
+<td>Int</td>
+<td>O</td>
+<td>전방 차량과의 거리 (단위 : m)</td>
+</tr>
+<tr class="row-even"><td>brk</td>
+<td>Int</td>
+<td>O</td>
+<td><ul class="first simple">
+<li>브레이크</li>
+</ul>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bit</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>No Brake hit</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>Brake hit</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td>chcmr</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>카메라 고장진단</li>
+</ul>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bit</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>카메라 정상</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>카메라 고장</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td>chdir</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>방향지시등 고장진단</li>
+</ul>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bit</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>방향지시등 정상</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>왼쪽 방향지시등 고장</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>오른쪽 방향지시등 고장</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>양쪽 방향지시등 고장</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td>chbrk</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>브레이크 고장진단</li>
+</ul>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bit</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>브레이크 정상</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>브레이크 고장</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+    <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;tid&quot;</span> <span class="p">:</span> <span class="mi">11123</span><span class="p">,</span>
+        <span class="nt">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">127.114513</span><span class="p">,</span>
+        <span class="nt">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">37.380241</span><span class="p">,</span>
+        <span class="nt">&quot;sp&quot;</span> <span class="p">:</span> <span class="mi">113</span><span class="p">,</span>
+        <span class="nt">&quot;dir&quot;</span> <span class="p">:</span> <span class="mi">31</span><span class="p">,</span>
+        <span class="nt">&quot;ldw&quot;</span> <span class="p">:</span> <span class="mi">32</span><span class="p">,</span>
+        <span class="nt">&quot;rld&quot;</span> <span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="nt">&quot;lld&quot;</span> <span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="nt">&quot;fcw&quot;</span> <span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+        <span class="nt">&quot;hdw&quot;</span> <span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="nt">&quot;brk&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;chcmr&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;chdir&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;chbrk&quot;</span> <span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="blackbox">
+<h3>8.2.4. BlackBox<a class="headerlink" href="#blackbox" title="Permalink to this headline">¶</a></h3>
+<p>BlackBox 단말에서 발생한 데이터를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다.</p>
+<div class="section" id="id10">
+<h4>8.2.4.1. Message Header<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="13%" />
+<col width="11%" />
+<col width="13%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ty</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>전달하고자 하는 페이로드 타입</li>
+</ul>
+<ol class="last arabic simple" start="7">
+<li><a class="reference internal" href="#trip-blackbox">Trip_BlackBox</a></li>
+<li><a class="reference internal" href="#microtrip-blackbox">Microtrip_BlackBox</a></li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>ts</td>
+<td>Int</td>
+<td>O</td>
+<td>정보 수집 시간</td>
+</tr>
+<tr class="row-even"><td>pld</td>
+<td>&#160;</td>
+<td>M</td>
+<td>아래 각 페이로드 메시지를 참고</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id11">
+<h4>8.2.4.2. Payload Type<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="blackbox-trip">
+<span id="trip-blackbox"></span><h5>8.2.4.2.1. BlackBox Trip<a class="headerlink" href="#blackbox-trip" title="Permalink to this headline">¶</a></h5>
+<p>BlackBox Trip 메세지는 BlackBox 단말이 주행 또는 주차 상태를 완료한 경우에 사용하는 메시지 포맷입니다. 단 BlackBox의 Trip은 주행과 주차로 설정합니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip 고유 번호</td>
+</tr>
+<tr class="row-odd"><td>lat</td>
+<td>Int</td>
+<td>M</td>
+<td>운행 종료 시 위도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>lon</td>
+<td>Int</td>
+<td>M</td>
+<td>운행 종료 시 경도 (WGS84)</td>
+</tr>
+<tr class="row-odd"><td>try</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>Trip 타입</li>
+</ul>
+<ol class="last arabic simple">
+<li>Driving</li>
+<li>Parking</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>vlt</td>
+<td>Int</td>
+<td>M</td>
+<td>자동차 배터리 전압 (운행 종료 시)</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+    <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;tid&quot;</span> <span class="p">:</span> <span class="mi">11123</span><span class="p">,</span>
+        <span class="nt">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">127.114513</span><span class="p">,</span>
+        <span class="nt">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">37.380241</span><span class="p">,</span>
+        <span class="nt">&quot;try&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;vlt&quot;</span> <span class="p">:</span> <span class="mf">12.1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="blackbox-microtrip">
+<span id="microtrip-blackbox"></span><h5>8.2.4.2.2. BlackBox Microtrip<a class="headerlink" href="#blackbox-microtrip" title="Permalink to this headline">¶</a></h5>
+<p class="text-align-justify">BlackBox Microtrip 메세지는 Blackbox 단말에서 인지한 정보를 주기적으로 플랫폼에서 사용하는 메시지 포맷입니다. 일반적으로는 ADAS와 GPS가 함께 있는 경우에 활용하며, 메시지는 ADAS 부착 차량의 운행 시작부터 운행 종료까지 주기적으로 전송합니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="9%" />
+<col width="8%" />
+<col width="9%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>M</td>
+<td>Trip 고유 번호</td>
+</tr>
+<tr class="row-odd"><td>try</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>Trip 타입</li>
+</ul>
+<ol class="last arabic simple">
+<li>Driving</li>
+<li>Parking</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>lat</td>
+<td>Int</td>
+<td>O</td>
+<td>위도 (WGS84) <code class="docutils literal"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Driving</span></code></td>
+</tr>
+<tr class="row-odd"><td>lon</td>
+<td>Int</td>
+<td>O</td>
+<td>경도 (WGS84) <code class="docutils literal"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Driving</span></code></td>
+</tr>
+<tr class="row-even"><td>sp</td>
+<td>Int</td>
+<td>O</td>
+<td>Ground Speed (based on NMEA Protocol, km/h) <code class="docutils literal"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Driving</span></code></td>
+</tr>
+<tr class="row-odd"><td>vlt</td>
+<td>Int</td>
+<td>O</td>
+<td>자동차 배터리 전압 <code class="docutils literal"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Parking</span></code></td>
+</tr>
+<tr class="row-even"><td>tem</td>
+<td>Int</td>
+<td>O</td>
+<td>자동차 내부 온도 <code class="docutils literal"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Parking</span></code></td>
+</tr>
+<tr class="row-odd"><td>tim</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 시간 (or 주차 남은 시간) <code class="docutils literal"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Parking</span></code></td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+    <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;tid&quot;</span> <span class="p">:</span> <span class="mi">11123</span><span class="p">,</span>
+        <span class="nt">&quot;try&quot;</span> <span class="p">:</span> <span class="mi">1</span>
+        <span class="s2">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">127.114513</span><span class="p">,</span>
+        <span class="nt">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">37.380241</span><span class="p">,</span>
+        <span class="nt">&quot;sp&quot;</span> <span class="p">:</span> <span class="mi">113</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="event-message-format">
+<span id="id12"></span><h2>8.3. 이벤트 데이터 포맷<a class="headerlink" href="#event-message-format" title="Permalink to this headline">¶</a></h2>
+<p>단말에서 비주기적으로 발생한 이벤트를 플랫폼에 전송하기 위한 메시지 포맷입니다. 이벤트 기반 데이터 전송을 위한 프로시저는 <a class="reference internal" href="device.html#event-data-procedure"><span class="std std-ref">5.4.2 Event Data</span></a> 를 참고하십시오.</p>
+<div class="section" id="id13">
+<h3>8.3.1. Message Header<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="13%" />
+<col width="11%" />
+<col width="13%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ty</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first last simple">
+<li>전달하고자 하는 이벤트 타입</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>ts</td>
+<td>Int</td>
+<td>O</td>
+<td>정보 수집 시간</td>
+</tr>
+<tr class="row-even"><td>pld</td>
+<td>&#160;</td>
+<td>M</td>
+<td>아래 각 페이로드 메시지를 참고</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="event-message-format-payload-type">
+<span id="id14"></span><h3>8.3.2. Payload Type<a class="headerlink" href="#event-message-format-payload-type" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="diagnostic-information">
+<h4>8.3.2.1. Diagnostic Information<a class="headerlink" href="#diagnostic-information" title="Permalink to this headline">¶</a></h4>
+<p>OBD에서 인지한 차량 진단 코드(DTC)를 전송하는 메시지를 정의합니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="12%" />
+<col width="15%" />
+<col width="10%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>O</td>
+<td>Trip 고유 번호(Not required)</td>
+</tr>
+<tr class="row-odd"><td>dtcc</td>
+<td>String</td>
+<td>M</td>
+<td>차량고장코드 (Delimeter Comma)</td>
+</tr>
+<tr class="row-even"><td>dtck</td>
+<td>Int</td>
+<td>M</td>
+<td>0=confirm 1=pending 2=permanent</td>
+</tr>
+<tr class="row-odd"><td>dtcs</td>
+<td>Int</td>
+<td>M</td>
+<td>DTC Code의 개수</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="text-align-justify">OBD가 플랫폼에 DTC 코드를 전송하는 방식은 2가지입니다.</p>
+<ul class="text-align-justify last simple">
+<li>차량 주행이 시작한 후에 감지된 Diagnostic Information을 전송하는 방법</li>
+<li>플랫폼을 통해서 OBD에 DTC 코드 보고를 요청하는 RPC 방법</li>
+</ul>
+</div>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+    <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">101</span><span class="p">,</span>
+    <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;tid&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;dtcc&quot;</span><span class="p">:</span> <span class="s2">&quot;P2502&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;dtck&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;dtcs&quot;</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="collision-warning-driving">
+<h4>8.3.2.2. Collision warning (Driving)<a class="headerlink" href="#collision-warning-driving" title="Permalink to this headline">¶</a></h4>
+<p>운행 중 OBD가 감지한 차량 접촉 사고에 대한 위치 정보를 전달하는 메세지를 정의합니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>O</td>
+<td>Trip 고유 번호</td>
+</tr>
+<tr class="row-odd"><td>dclat</td>
+<td>Int</td>
+<td>M</td>
+<td>위도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>dclon</td>
+<td>Int</td>
+<td>M</td>
+<td>경도 (WGS84)</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+    <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">102</span><span class="p">,</span>
+    <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;tid&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;dclat&quot;</span> <span class="p">:</span> <span class="mf">37.380241</span><span class="p">,</span>
+        <span class="nt">&quot;dclon&quot;</span> <span class="p">:</span> <span class="mf">127.114513</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="collision-warning-parking">
+<h4>8.3.2.3. Collision warning (Parking)<a class="headerlink" href="#collision-warning-parking" title="Permalink to this headline">¶</a></h4>
+<p class="text-align-justify">주차 중 OBD가 감지한 차량 접촉 사고에 대한 위치 정보를 전달하는 메세지를 정의합니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>O</td>
+<td>Trip 고유 번호</td>
+</tr>
+<tr class="row-odd"><td>plat</td>
+<td>Int</td>
+<td>M</td>
+<td>위도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>plon</td>
+<td>Int</td>
+<td>M</td>
+<td>경도 (WGS84)</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+  <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">103</span><span class="p">,</span>
+  <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;tid&quot;</span> <span class="p">:</span> <span class="mi">101</span><span class="p">,</span>
+      <span class="nt">&quot;plat&quot;</span> <span class="p">:</span> <span class="mf">37.380241</span><span class="p">,</span>
+      <span class="nt">&quot;plon&quot;</span> <span class="p">:</span> <span class="mf">127.114513</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="battery-warning">
+<h4>8.3.2.4. Battery Warning<a class="headerlink" href="#battery-warning" title="Permalink to this headline">¶</a></h4>
+<p class="text-align-justify">차량 배터리 소모에 대한 위험 알림 메시지를 정의합니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>O</td>
+<td>Trip 고유 번호</td>
+</tr>
+<tr class="row-odd"><td>wbv</td>
+<td>Int</td>
+<td>M</td>
+<td>배터리 전압</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+  <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">104</span><span class="p">,</span>
+  <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;wbv&quot;</span> <span class="p">:</span> <span class="mi">13</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="unplugged-warning">
+<h4>8.3.2.5. Unplugged Warning<a class="headerlink" href="#unplugged-warning" title="Permalink to this headline">¶</a></h4>
+<p class="text-align-justify">OBD가 차량으로부터 탈착되는 이벤트에 대한 알림 메시지를 정의합니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>O</td>
+<td>Trip 고유 번호</td>
+</tr>
+<tr class="row-odd"><td>unpt</td>
+<td>Int</td>
+<td>M</td>
+<td>탈착 시간</td>
+</tr>
+<tr class="row-even"><td>pt</td>
+<td>Int</td>
+<td>M</td>
+<td>부착 시간</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+  <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">105</span><span class="p">,</span>
+  <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;unpt&quot;</span><span class="p">:</span> <span class="mi">1505433907995</span><span class="p">,</span>
+      <span class="nt">&quot;pt&quot;</span><span class="p">:</span> <span class="mi">1505434907995</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="turn-off-warning">
+<h4>8.3.2.6. Turn-off Warning<a class="headerlink" href="#turn-off-warning" title="Permalink to this headline">¶</a></h4>
+<p class="text-align-justify">OBD가 종료된 경우, 종료 이전에 종료에 대한 이유를 플랫폼에 전달하기 위한 알림 매시지를 정의합니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="15%" />
+<col width="24%" />
+<col width="15%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>O</td>
+<td>Trip 고유 번호</td>
+</tr>
+<tr class="row-odd"><td>rs</td>
+<td>String</td>
+<td>M</td>
+<td>단말 종료 원인</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+  <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">106</span><span class="p">,</span>
+  <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;rs&quot;</span><span class="p">:</span> <span class="s2">&quot;unexpected reason&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adas-event">
+<h4>8.3.2.7. ADAS Event<a class="headerlink" href="#adas-event" title="Permalink to this headline">¶</a></h4>
+<p>ADAS에서 인지한 이벤트 정보를 전송하는 메시지 포맷입니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>O</td>
+<td>Trip 고유 번호</td>
+</tr>
+<tr class="row-odd"><td>lat</td>
+<td>Int</td>
+<td>O</td>
+<td>위도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>lon</td>
+<td>Int</td>
+<td>O</td>
+<td>경도 (WGS84)</td>
+</tr>
+<tr class="row-odd"><td>dop</td>
+<td>Int</td>
+<td>O</td>
+<td>Dilution of Precision 값 (based on NMEA protcol)</td>
+</tr>
+<tr class="row-even"><td>nos</td>
+<td>Int</td>
+<td>O</td>
+<td>위성 갯수 정보 (based on NMEA protocol)</td>
+</tr>
+<tr class="row-odd"><td>dir</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>방향 지시등 정보</li>
+</ul>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bit</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>30</td>
+<td>방향 지시등 점등 없음</td>
+</tr>
+<tr class="row-odd"><td>31</td>
+<td>좌측 지시등 점등</td>
+</tr>
+<tr class="row-even"><td>32</td>
+<td>우측 지시등 점등</td>
+</tr>
+<tr class="row-odd"><td>33</td>
+<td>비상등 점등</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td>sp</td>
+<td>Int</td>
+<td>M</td>
+<td>차량 속도 (km/h)</td>
+</tr>
+<tr class="row-odd"><td>ldw</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>Lane Departure Warning</li>
+</ul>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bit</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>30</td>
+<td>LDW 없음</td>
+</tr>
+<tr class="row-odd"><td>31</td>
+<td>좌측 LDW 이슈 발생</td>
+</tr>
+<tr class="row-even"><td>32</td>
+<td>우측 LDW 이슈 발생</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-odd"><td>fcw</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>Forward Collision Warning</li>
+</ul>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bit</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>30</td>
+<td>FCW 없음</td>
+</tr>
+<tr class="row-odd"><td>31</td>
+<td>1차 경보 (위험 경보)</td>
+</tr>
+<tr class="row-even"><td>32</td>
+<td>2차 경보 (안전거리 미확보 경보)</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
+    <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">107</span><span class="p">,</span>
+    <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;tid&quot;</span> <span class="p">:</span> <span class="mi">11123</span><span class="p">,</span>
+          <span class="nt">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">127.114513</span><span class="p">,</span>
+          <span class="nt">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">37.380241</span><span class="p">,</span>
+          <span class="nt">&quot;sp&quot;</span> <span class="p">:</span> <span class="mi">113</span><span class="p">,</span>
+          <span class="nt">&quot;dir&quot;</span> <span class="p">:</span> <span class="mi">31</span><span class="p">,</span>
+          <span class="nt">&quot;ldw&quot;</span> <span class="p">:</span> <span class="mi">32</span><span class="p">,</span>
+          <span class="nt">&quot;fcw&quot;</span> <span class="p">:</span> <span class="mi">30</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h4>8.3.2.8. BlackBox 부팅 이벤트<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<p>블랙박스가 정상적으로 부팅을 완료한 후에 플랫폼에 전달하는 이벤트 메세지입니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>auth</td>
+<td>Int</td>
+<td>M</td>
+<td>단말 인증 정보</td>
+</tr>
+<tr class="row-odd"><td>fwv</td>
+<td>String</td>
+<td>M</td>
+<td>단말 Firmware 버전</td>
+</tr>
+<tr class="row-even"><td>bfwv</td>
+<td>String</td>
+<td>M</td>
+<td>블랙박스 Firmware 버전</td>
+</tr>
+<tr class="row-odd"><td>bnm</td>
+<td>String</td>
+<td>M</td>
+<td>블랙박스 모델명</td>
+</tr>
+<tr class="row-even"><td>fqual</td>
+<td>Int</td>
+<td>O</td>
+<td>전방카메라 영상품질 설정</td>
+</tr>
+<tr class="row-odd"><td>fsharp</td>
+<td>Int</td>
+<td>O</td>
+<td>전방카메라 선명도 설정</td>
+</tr>
+<tr class="row-even"><td>fntbr</td>
+<td>Int</td>
+<td>O</td>
+<td>전방카메라 야간영상밝기 설정</td>
+</tr>
+<tr class="row-odd"><td>fnv</td>
+<td>Int</td>
+<td>O</td>
+<td>전방카메라 Nightvision 설정</td>
+</tr>
+<tr class="row-even"><td>fmode</td>
+<td>Int</td>
+<td>O</td>
+<td>전방카메라 영상모드 설정</td>
+</tr>
+<tr class="row-odd"><td>rqual</td>
+<td>Int</td>
+<td>O</td>
+<td>후방카메라 영상품질 설정</td>
+</tr>
+<tr class="row-even"><td>rntbr</td>
+<td>Int</td>
+<td>O</td>
+<td>후방카메라 야간영상밝기 설정</td>
+</tr>
+<tr class="row-odd"><td>rprec</td>
+<td>Int</td>
+<td>O</td>
+<td>후방카메라 주차녹화 설정</td>
+</tr>
+<tr class="row-even"><td>dcs</td>
+<td>Int</td>
+<td>O</td>
+<td>주행 충돌 민감도 설정</td>
+</tr>
+<tr class="row-odd"><td>pcs</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 충돌 민감도 설정</td>
+</tr>
+<tr class="row-even"><td>fms</td>
+<td>Int</td>
+<td>O</td>
+<td>전방 모션 민감도 설정</td>
+</tr>
+<tr class="row-odd"><td>rms</td>
+<td>Int</td>
+<td>O</td>
+<td>후방 모션 민감도 설정</td>
+</tr>
+<tr class="row-even"><td>spk</td>
+<td>Int</td>
+<td>O</td>
+<td>스피커 볼륨 설정</td>
+</tr>
+<tr class="row-odd"><td>mic</td>
+<td>Int</td>
+<td>O</td>
+<td>마이크 볼륨 설정</td>
+</tr>
+<tr class="row-even"><td>cutps</td>
+<td>Int</td>
+<td>O</td>
+<td>주차시 시스템 차단 온도 설정</td>
+</tr>
+<tr class="row-odd"><td>cutpl</td>
+<td>Int</td>
+<td>O</td>
+<td>주차시 LCD 차단 온도 설정</td>
+</tr>
+<tr class="row-even"><td>parke</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 모드 활성화 여부 설정</td>
+</tr>
+<tr class="row-odd"><td>cuv</td>
+<td>Int</td>
+<td>O</td>
+<td>주차시 전원 차단 전압 설정</td>
+</tr>
+<tr class="row-even"><td>cutm</td>
+<td>Int</td>
+<td>O</td>
+<td>주차시 전원 차단 온도 설정</td>
+</tr>
+<tr class="row-odd"><td>loff</td>
+<td>Int</td>
+<td>O</td>
+<td>라이브뷰 화면 설정</td>
+</tr>
+<tr class="row-even"><td>lbr</td>
+<td>Int</td>
+<td>O</td>
+<td>LCD 화면 밝기 설정</td>
+</tr>
+<tr class="row-odd"><td>boot</td>
+<td>Int</td>
+<td>O</td>
+<td>부팅시 PIP 화면 설정</td>
+</tr>
+<tr class="row-even"><td>menu</td>
+<td>Int</td>
+<td>O</td>
+<td>메뉴 상시 보임 설정</td>
+</tr>
+<tr class="row-odd"><td>led</td>
+<td>Int</td>
+<td>O</td>
+<td>시큐리티 LED 설정</td>
+</tr>
+<tr class="row-even"><td>pet</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 충격 감지 타이머 설정</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id16">
+<h4>8.3.2.9. BlackBox 모드 변경 이벤트<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<p>블랙박스가 주행 &lt;-&gt; 주차 모드로 상호 변경 시 전달하는 이벤트 메시지 입니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>mod</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>블랙박스 모드</li>
+</ul>
+<ol class="last arabic simple" start="0">
+<li>주행</li>
+<li>주차</li>
+<li>OFF</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>lat</td>
+<td>Int</td>
+<td>O</td>
+<td>위도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>lon</td>
+<td>Int</td>
+<td>O</td>
+<td>경도 (WGS84)</td>
+</tr>
+<tr class="row-odd"><td>tim</td>
+<td>Int</td>
+<td>O</td>
+<td>블랙박스 모드변경 시간</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id17">
+<h4>8.3.2.10. BlackBox 사용자 세팅 이벤트 메시지<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
+<p>사용자가 세팅한 블랙박스 설정 값 전달을 위한 이벤트 메시지입니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>fqual</td>
+<td>Int</td>
+<td>O</td>
+<td>전방카메라 영상품질 설정</td>
+</tr>
+<tr class="row-odd"><td>fsharp</td>
+<td>Int</td>
+<td>O</td>
+<td>전방카메라 선명도 설정</td>
+</tr>
+<tr class="row-even"><td>fntbr</td>
+<td>Int</td>
+<td>O</td>
+<td>전방카메라 야간영상밝기 설정</td>
+</tr>
+<tr class="row-odd"><td>fnv</td>
+<td>Int</td>
+<td>O</td>
+<td>전방카메라 Nightvision 설정</td>
+</tr>
+<tr class="row-even"><td>fmode</td>
+<td>Int</td>
+<td>O</td>
+<td>전방카메라 영상모드 설정</td>
+</tr>
+<tr class="row-odd"><td>rqual</td>
+<td>Int</td>
+<td>O</td>
+<td>후방카메라 영상품질 설정</td>
+</tr>
+<tr class="row-even"><td>rntbr</td>
+<td>Int</td>
+<td>O</td>
+<td>후방카메라 야간영상밝기 설정</td>
+</tr>
+<tr class="row-odd"><td>rprec</td>
+<td>Int</td>
+<td>O</td>
+<td>후방카메라 주차녹화 설정</td>
+</tr>
+<tr class="row-even"><td>dcs</td>
+<td>Int</td>
+<td>O</td>
+<td>주행 충돌 민감도 설정</td>
+</tr>
+<tr class="row-odd"><td>pcs</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 충돌 민감도 설정</td>
+</tr>
+<tr class="row-even"><td>fms</td>
+<td>Int</td>
+<td>O</td>
+<td>전방 모션 민감도 설정</td>
+</tr>
+<tr class="row-odd"><td>rms</td>
+<td>Int</td>
+<td>O</td>
+<td>후방 모션 민감도 설정</td>
+</tr>
+<tr class="row-even"><td>spk</td>
+<td>Int</td>
+<td>O</td>
+<td>스피커 볼륨 설정</td>
+</tr>
+<tr class="row-odd"><td>mic</td>
+<td>Int</td>
+<td>O</td>
+<td>마이크 볼륨 설정</td>
+</tr>
+<tr class="row-even"><td>cutps</td>
+<td>Int</td>
+<td>O</td>
+<td>주차시 시스템 차단 온도 설정</td>
+</tr>
+<tr class="row-odd"><td>cutpl</td>
+<td>Int</td>
+<td>O</td>
+<td>주차시 LCD 차단 온도 설정</td>
+</tr>
+<tr class="row-even"><td>parke</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 모드 활성화 여부 설정</td>
+</tr>
+<tr class="row-odd"><td>cuv</td>
+<td>Int</td>
+<td>O</td>
+<td>주차시 전원 차단 전압 설정</td>
+</tr>
+<tr class="row-even"><td>cutm</td>
+<td>Int</td>
+<td>O</td>
+<td>주차시 전원 차단 온도 설정</td>
+</tr>
+<tr class="row-odd"><td>loff</td>
+<td>Int</td>
+<td>O</td>
+<td>라이브뷰 화면 설정</td>
+</tr>
+<tr class="row-even"><td>lbr</td>
+<td>Int</td>
+<td>O</td>
+<td>LCD 화면 밝기 설정</td>
+</tr>
+<tr class="row-odd"><td>boot</td>
+<td>Int</td>
+<td>O</td>
+<td>부팅시 PIP 화면 설정</td>
+</tr>
+<tr class="row-even"><td>menu</td>
+<td>Int</td>
+<td>O</td>
+<td>메뉴 상시 보임 설정</td>
+</tr>
+<tr class="row-odd"><td>led</td>
+<td>Int</td>
+<td>O</td>
+<td>시큐리티 LED 설정</td>
+</tr>
+<tr class="row-even"><td>pet</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 충격 감지 타이머 설정</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id18">
+<h4>8.3.2.11. BlackBox 이미지 업로드 이벤트 메시지<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
+<p>블랙박스 장치가 촬영하고 업로드한 이벤트를 전달하기 위한 메시지입니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>kind</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>이미지 종류</li>
+</ul>
+<ol class="last arabic simple" start="0">
+<li>사용자 요청 이미지</li>
+<li>블랙박스 충격발생 이미지</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>url</td>
+<td>String</td>
+<td>M</td>
+<td>업로드된 이미지 url</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id19">
+<h4>8.3.2.12. BlackBox 인지 이벤트 메시지<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
+<p>블랙박스 장치가 인지한 차량 관련 이벤트 정보를 전달하기 위한 메시지입니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>wid</td>
+<td>Int</td>
+<td>M</td>
+<td><ul class="first simple">
+<li>블랙박스 알람 종류</li>
+</ul>
+<ol class="last arabic simple" start="0">
+<li>주차 충격ㄱ</li>
+<li>주행 중 큰 충격</li>
+<li>주행 중 위험 운전</li>
+<li>주차 중 배터리 저전압</li>
+<li>주차 중 고온</li>
+<li>긴급 녹화</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>lat</td>
+<td>Int</td>
+<td>O</td>
+<td>위도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>lon</td>
+<td>Int</td>
+<td>O</td>
+<td>경도 (WGS84)</td>
+</tr>
+<tr class="row-odd"><td>tim</td>
+<td>Int</td>
+<td>O</td>
+<td>블랙박스 알람 시간</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="rpc">
+<span id="rpc-message-format"></span><h2>8.4. RPC 메시지 포맷<a class="headerlink" href="#rpc" title="Permalink to this headline">¶</a></h2>
+<p class="text-align-justify">Device를 제어하기 위한 RPC Message Type을 명세합니다. 기술되지 않는 제어는 단말과 어플리케이션 상호 간에만 규약 되어 있다면, Vendor Specific Message를 사용합니다.</p>
+<div class="section" id="vendor-specific-message">
+<h3>8.4.1. Vendor Specific Message<a class="headerlink" href="#vendor-specific-message" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">각 단말 업체에서 별도로 관리하는 제어 요청 메시지이며, 다른 제어 메시지도 본 포맷을 확장하여 명시됩니다.</p>
+<div class="section" id="request">
+<h4>8.4.1.1. Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>method</td>
+<td>String</td>
+<td>M</td>
+<td>원격 제어하고자 하는 기능에 대해서 명세</td>
+</tr>
+<tr class="row-odd"><td>params</td>
+<td>String</td>
+<td>M</td>
+<td>기능에 대한 파라미터를 명세</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="response">
+<span id="vendor-specific-msg-response"></span><h4>8.4.1.2. Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode&nbsp;</a>에
+정의된 제어
+결과 추가</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="result">
+<span id="vendor-specific-msg-result"></span><h4>8.4.1.3. Result<a class="headerlink" href="#result" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode</a>&nbsp;에
+정의된 제어
+결과 추가</td>
+</tr>
+<tr class="row-odd"><td>addInfo</td>
+<td>String</td>
+<td>O</td>
+<td>결과 값에 따른
+추가 정보 명세</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="device-activation">
+<h3>8.4.2. Device Activation<a class="headerlink" href="#device-activation" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">차량용 센서를 차량에 부착한 후 활성화하기 위해 필요한 RPC 메시지를 명세합니다.</p>
+<div class="section" id="device-activation-request">
+<span id="id20"></span><h4>8.4.2.1. Request<a class="headerlink" href="#device-activation-request" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="11%" />
+<col width="11%" />
+<col width="7%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>method</td>
+<td>String</td>
+<td>M</td>
+<td>activationReq&nbsp;로 명세</td>
+</tr>
+<tr class="row-odd"><td>params</td>
+<td>String</td>
+<td>M</td>
+<td><table border="1" class="first last docutils">
+<colgroup>
+<col width="11%" />
+<col width="17%" />
+<col width="11%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Vid</td>
+<td>String</td>
+<td>M</td>
+<td>차량 식별 번호</td>
+</tr>
+<tr class="row-odd"><td>upp</td>
+<td>Int</td>
+<td>M</td>
+<td>Microtrip 업로드 주가 (초)</td>
+</tr>
+<tr class="row-even"><td>Elt</td>
+<td>Int</td>
+<td>M</td>
+<td>배기량 정보</td>
+</tr>
+<tr class="row-odd"><td>Fut</td>
+<td>Int</td>
+<td>M</td>
+<td><ol class="first last arabic simple">
+<li>가솔린</li>
+<li>디젤</li>
+<li>LPG</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>Mty</td>
+<td>String</td>
+<td>M</td>
+<td><ol class="first last arabic simple">
+<li>Automatic</li>
+<li>Manual</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>cyl</td>
+<td>Int</td>
+<td>O</td>
+<td>실린더 정보</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;method&quot;</span> <span class="p">:</span> <span class="s2">&quot;activationReq&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;vid&quot;</span> <span class="p">:</span> <span class="s2">&quot;25나0660&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;upp&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;elt&quot;</span> <span class="p">:</span> <span class="mi">1999</span><span class="p">,</span>
+        <span class="nt">&quot;fut&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;mty&quot;</span> <span class="p">:</span> <span class="s2">&quot;Automatic&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="device-activation-response">
+<span id="id21"></span><h4>8.4.2.2. Response<a class="headerlink" href="#device-activation-response" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode</a>&nbsp;에
+정의된 제어
+결과 추가</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="device-activation-result">
+<span id="id22"></span><h4>8.4.2.3. Result<a class="headerlink" href="#device-activation-result" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode</a>&nbsp;에 정의된 제어 결과 추가</td>
+</tr>
+<tr class="row-odd"><td>addInfo</td>
+<td>String</td>
+<td>M</td>
+<td><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="21%" />
+<col width="12%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Decsription</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>addInfo</td>
+<td>String</td>
+<td>M</td>
+<td>차량 식별 번호</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+    <span class="nt">&quot;addInfo&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;vid&quot;</span> <span class="p">:</span> <span class="s2">&quot;25나0660&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="firmware-update">
+<h3>8.4.3. Firmware Update<a class="headerlink" href="#firmware-update" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">차량용 OBD의 펌웨어 업데이트를 위한 RPC 메시지를 명세합니다.</p>
+<div class="section" id="id23">
+<h4>8.4.3.1. Request<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="10%" />
+<col width="6%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>method</td>
+<td>String</td>
+<td>M</td>
+<td>fwupdate&nbsp;로 명세</td>
+</tr>
+<tr class="row-odd"><td>params</td>
+<td>String</td>
+<td>M</td>
+<td><table border="1" class="first last docutils">
+<colgroup>
+<col width="10%" />
+<col width="16%" />
+<col width="10%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Pkv</td>
+<td>String</td>
+<td>M</td>
+<td>F/W 패키지 버전</td>
+</tr>
+<tr class="row-odd"><td>url</td>
+<td>String</td>
+<td>M</td>
+<td>F/W 패키지가 저장된 사이트 주소</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;method&quot;</span> <span class="p">:</span> <span class="s2">&quot;fwupdate&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;pkv&quot;</span> <span class="p">:</span> <span class="s2">&quot;1.0.1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;url&quot;</span> <span class="p">:</span> <span class="s2">&quot;ftp://smartfleet.sktelecom.com:10011&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id24">
+<h4>8.4.3.2. Response<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode&nbsp;</a>에
+정의된 제어
+결과 추가</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="obd-reset">
+<h3>8.4.4. OBD Reset<a class="headerlink" href="#obd-reset" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">차량용 OBD의 재시작을 위한 RPC 메시지</p>
+<div class="section" id="id25">
+<h4>8.4.4.1. Request<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="22%" />
+<col width="22%" />
+<col width="14%" />
+<col width="42%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>method</td>
+<td>String</td>
+<td>M</td>
+<td>reset&nbsp;로 명세</td>
+</tr>
+<tr class="row-odd"><td>params</td>
+<td>String</td>
+<td>M</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;method&quot;</span> <span class="p">:</span> <span class="s2">&quot;reset&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id26">
+<h4>8.4.4.2. Response<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode&nbsp;</a>에
+정의된 제어
+결과 추가</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id27">
+<h4>8.4.4.3. Result<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode</a>&nbsp;에
+정의된 제어
+결과 추가</td>
+</tr>
+<tr class="row-odd"><td>addInfo</td>
+<td>String</td>
+<td>O</td>
+<td>결과 값에 따른
+추가 정보 명세</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="device-serial-number-check">
+<h3>8.4.5. Device Serial Number Check<a class="headerlink" href="#device-serial-number-check" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">차량용 OBD의 시리얼 번호 확인용 RPC 메시지</p>
+<div class="section" id="id28">
+<h4>8.4.5.1. Request<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="22%" />
+<col width="22%" />
+<col width="14%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>method</td>
+<td>String</td>
+<td>M</td>
+<td>serial&nbsp;로 명세</td>
+</tr>
+<tr class="row-odd"><td>params</td>
+<td>String</td>
+<td>M</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;method&quot;</span> <span class="p">:</span> <span class="s2">&quot;serial&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id29">
+<h4>8.4.5.2. Response<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode&nbsp;</a>에
+정의된 제어
+결과 추가</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id30">
+<h4>8.4.5.3. Result<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode</a>&nbsp;에 정의된 제어 결과 추가</td>
+</tr>
+<tr class="row-odd"><td>addInfo</td>
+<td>String</td>
+<td>M</td>
+<td><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="21%" />
+<col width="12%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Decsription</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sn</td>
+<td>String</td>
+<td>M</td>
+<td>단말 시리얼 번호</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+    <span class="nt">&quot;addInfo&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;sn&quot;</span> <span class="p">:</span> <span class="s2">&quot;70d71b00-71c9-11e7-b3e0-e5673983c7b9&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="clear-device-data">
+<h3>8.4.6. Clear Device Data<a class="headerlink" href="#clear-device-data" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">차량용 OBD 데이터 삭제</p>
+<div class="section" id="id31">
+<h4>8.4.6.1. Request<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="13%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>method</td>
+<td>String</td>
+<td>M</td>
+<td>cleardata&nbsp;로 명세</td>
+</tr>
+<tr class="row-odd"><td>params</td>
+<td>String</td>
+<td>M</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;method&quot;</span> <span class="p">:</span> <span class="s2">&quot;cleardata&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id32">
+<h4>8.4.6.2. Response<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode&nbsp;</a>에
+정의된 제어
+결과 추가</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id33">
+<h4>8.4.6.3. Result<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode</a>&nbsp;에
+정의된 제어
+결과 추가</td>
+</tr>
+<tr class="row-odd"><td>addInfo</td>
+<td>String</td>
+<td>O</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="firmware-update-chunk-based">
+<h3>8.4.7. Firmware Update (Chunk-based)<a class="headerlink" href="#firmware-update-chunk-based" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">Chunk 기반으로 차량용 OBD의 펌웨어 업데이트를 위한 RPC 메시지를 명세합니다.</p>
+<div class="section" id="id34">
+<h4>8.4.7.1. Request<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="12%" />
+<col width="12%" />
+<col width="7%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>method</td>
+<td>String</td>
+<td>M</td>
+<td>fwupchunk&nbsp;로 명세</td>
+</tr>
+<tr class="row-odd"><td>params</td>
+<td>String</td>
+<td>M</td>
+<td><table border="1" class="first last docutils">
+<colgroup>
+<col width="13%" />
+<col width="21%" />
+<col width="13%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Tsz</td>
+<td>Int</td>
+<td>M</td>
+<td>F/W 전체 용량</td>
+</tr>
+<tr class="row-odd"><td>Csz</td>
+<td>Int</td>
+<td>M</td>
+<td>Chunk 사이즈</td>
+</tr>
+<tr class="row-even"><td>Idx</td>
+<td>Int</td>
+<td>M</td>
+<td>Chunk 데이터 인덱스</td>
+</tr>
+<tr class="row-odd"><td>pyd</td>
+<td>String</td>
+<td>M</td>
+<td>F/W Chunk 데이터</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;method&quot;</span> <span class="p">:</span> <span class="s2">&quot;fwupchunk&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;tsz&quot;</span> <span class="p">:</span> <span class="mi">4932321</span><span class="p">,</span>
+        <span class="nt">&quot;csz&quot;</span> <span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+        <span class="nt">&quot;idx&quot;</span> <span class="p">:</span> <span class="mi">13</span><span class="p">,</span>
+        <span class="nt">&quot;pyl&quot;</span> <span class="p">:</span> <span class="s2">&quot;83a27473cf0000015e82e9b55ba2747902a3706c64&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id35">
+<h4>8.4.7.2. Response<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode&nbsp;</a>에
+정의된 제어
+결과 추가</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id36">
+<h4>8.4.7.3. Result<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode</a>&nbsp;에
+정의된 제어
+결과 추가</td>
+</tr>
+<tr class="row-odd"><td>addInfo</td>
+<td>String</td>
+<td>O</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span> :</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="common-response-code-for-rpc-result">
+<h3>8.4.8. Common Response Code for RPC Result<a class="headerlink" href="#common-response-code-for-rpc-result" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="code-class">
+<h4>8.4.8.1. Code Class<a class="headerlink" href="#code-class" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="21%" />
+<col width="8%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Status Class</th>
+<th class="head">Code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Success</td>
+<td>2XXX</td>
+<td>RPC 결과가 정상적으로 동작하는 경우</td>
+</tr>
+<tr class="row-odd"><td>Sensor Error</td>
+<td>4XXX</td>
+<td>RPC 결과를 수신한 단말이 비정상적으로 동작한 경우</td>
+</tr>
+<tr class="row-even"><td>Platform Error</td>
+<td>5XXX</td>
+<td>RPC 요청에 대해서 플랫폼이 비정상적으로 동작한 경우</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="successful-response-class">
+<h4>8.4.8.2. Successful Response Class<a class="headerlink" href="#successful-response-class" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>2000</td>
+<td>RPC 정상적 수행</td>
+</tr>
+<tr class="row-odd"><td>2001</td>
+<td>RPC 메시지 정상적으로 수신</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sensor-error-response-class">
+<h4>8.4.8.3. Sensor Error Response Class<a class="headerlink" href="#sensor-error-response-class" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>4000</td>
+<td>디바이스가 수행할 수 없는 RPC 메시지 수신</td>
+</tr>
+<tr class="row-odd"><td>4001</td>
+<td>잘못된 RPC 파라미터 수신</td>
+</tr>
+<tr class="row-even"><td>4002</td>
+<td>접근 불가</td>
+</tr>
+<tr class="row-odd"><td>4003</td>
+<td>동일한 RPC 중복 수신</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="simulator.html" class="btn btn-neutral float-right" title="9. 테스트용 시뮬레이터" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sdk.html" class="btn btn-neutral" title="7. SDK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright SK TELECOM.LTD. ALL RIGHTS RESERVED..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
