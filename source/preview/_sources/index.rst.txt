@@ -12,17 +12,10 @@ Smart[Fleet] Platform Web Document
 
 .. rst-class:: table-width-fix
 
-+---------+--------------------+----------------------------------------+
-| Version | Last modified date | Change Logs                            |
-+=========+====================+========================================+
-| 1.0.0   | 2017/11/28         | Initial Publish                        |
-+---------+--------------------+----------------------------------------+
-| 1.0.1   | 2018/01/06         | Add Best Practice case                 |
-+---------+--------------------+----------------------------------------+
-| 1.0.2   | 2018/01/13         | Add Blackbox Dev. Message              |
-|         |                    | |br| Modify Message Type Definition    |
-|         |                    | |br| Modify Director Entity Property   |
-+---------+--------------------+----------------------------------------+
+SK Telecom의 Connected Car 플랫폼인 Smart[Fleet] 플랫폼의 개발자를 위한 Web Document 입니다.
+
+기술적인 질문은 openhouse@wiznet.io 으로 부탁 드립니다.
+
 
 |br|
 
@@ -42,3 +35,18 @@ Contents:
    sdk
    simulator
    bestpractice
+
+
+Change Logs:
+
++---------+--------------------+----------------------------------------+
+| Version | Last modified date | Change Logs                            |
++=========+====================+========================================+
+| 1.0.0   | 2017/11/28         | Initial Publish                        |
++---------+--------------------+----------------------------------------+
+| 1.0.1   | 2018/01/06         | Add Best Practice case                 |
++---------+--------------------+----------------------------------------+
+| 1.0.2   | 2018/01/13         | Add Blackbox Dev. Message              |
+|         |                    | |br| Modify Message Type Definition    |
+|         |                    | |br| Modify Director Entity Property   |
++---------+--------------------+----------------------------------------+
