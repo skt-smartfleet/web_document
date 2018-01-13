@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8. 메시지 포맷 &mdash; Smart[Fleet] Platform 1.0.1 documentation</title>
+  <title>7. 메시지 포맷 &mdash; Smart[Fleet] Platform 1.0.2 documentation</title>
   
 
   
@@ -37,9 +37,9 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Smart[Fleet] Platform 1.0.1 documentation" href="index.html"/>
-        <link rel="next" title="9. 테스트용 시뮬레이터" href="simulator.html"/>
-        <link rel="prev" title="7. SDK" href="sdk.html"/> 
+    <link rel="top" title="Smart[Fleet] Platform 1.0.2 documentation" href="index.html"/>
+        <link rel="next" title="8. SDK" href="sdk.html"/>
+        <link rel="prev" title="6. API 규격" href="api.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -99,112 +99,136 @@
 <li class="toctree-l1"><a class="reference internal" href="entity.html">4. 구성요소(Entity) 등록</a></li>
 <li class="toctree-l1"><a class="reference internal" href="device.html">5. Device 연동 절차</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">6. API 규격</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sdk.html">7. SDK</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">8. 메시지 포맷</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">8.1. 메시지 기본 구조</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#message-format-for-sensor">8.1.1. 메시지 타입</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id4">8.1.1.1. 주기보고 메세지 타입</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">8.1.1.2. 이벤트 메세지 타입</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. 메시지 포맷</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">7.1. 메시지 기본 구조</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#message-format-for-sensor">7.1.1. 메시지 타입</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">7.1.1.1. 주기보고 메세지 타입</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">7.1.1.2. 이벤트 메세지 타입</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#aggregated-microtrip">8.1.2. Aggregated Microtrip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aggregated-microtrip">7.1.2. Aggregated Microtrip</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">8.2. 센서 타입별 주기보고 메시지 포맷</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#gps">8.2.1. GPS</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#message-header">8.2.1.1. Message Header</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#payload-types">8.2.1.2. Payload Types</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gps-microtrip">8.2.1.3. GPS Microtrip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">7.2. 센서 타입별 주기보고 메시지 포맷</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gps">7.2.1. GPS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#message-header">7.2.1.1. Message Header</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#payload-types">7.2.1.2. Payload Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gps-microtrip">7.2.1.3. GPS Microtrip</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#obd">8.2.2. OBD</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id7">8.2.2.1. Message Header</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#payload-type">8.2.2.2. Payload Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#obd">7.2.2. OBD</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">7.2.2.1. Message Header</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#payload-type">7.2.2.2. Payload Type</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#adas">8.2.3. ADAS</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id8">8.2.3.1. Message Header</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">8.2.3.2. Payload Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adas">7.2.3. ADAS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">7.2.3.1. Message Header</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">7.2.3.2. Payload Type</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#blackbox">8.2.4. BlackBox</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id10">8.2.4.1. Message Header</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">8.2.4.2. Payload Type</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#event-message-format">8.3. 이벤트 데이터 포맷</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id13">8.3.1. Message Header</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#event-message-format-payload-type">8.3.2. Payload Type</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#diagnostic-information">8.3.2.1. Diagnostic Information</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#collision-warning-driving">8.3.2.2. Collision warning (Driving)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#collision-warning-parking">8.3.2.3. Collision warning (Parking)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#battery-warning">8.3.2.4. Battery Warning</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#unplugged-warning">8.3.2.5. Unplugged Warning</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#turn-off-warning">8.3.2.6. Turn-off Warning</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adas-event">8.3.2.7. ADAS Event</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id15">8.3.2.8. BlackBox 부팅 이벤트</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id16">8.3.2.9. BlackBox 모드 변경 이벤트</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id17">8.3.2.10. BlackBox 사용자 세팅 이벤트 메시지</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id18">8.3.2.11. BlackBox 이미지 업로드 이벤트 메시지</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id19">8.3.2.12. BlackBox 인지 이벤트 메시지</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blackbox">7.2.4. BlackBox</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">7.2.4.1. Message Header</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">7.2.4.2. Payload Type</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#rpc">8.4. RPC 메시지 포맷</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#vendor-specific-message">8.4.1. Vendor Specific Message</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#request">8.4.1.1. Request</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#response">8.4.1.2. Response</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#result">8.4.1.3. Result</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#device-activation">8.4.2. Device Activation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#device-activation-request">8.4.2.1. Request</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#device-activation-response">8.4.2.2. Response</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#device-activation-result">8.4.2.3. Result</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#firmware-update">8.4.3. Firmware Update</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id23">8.4.3.1. Request</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id24">8.4.3.2. Response</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#obd-reset">8.4.4. OBD Reset</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id25">8.4.4.1. Request</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id26">8.4.4.2. Response</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id27">8.4.4.3. Result</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#device-serial-number-check">8.4.5. Device Serial Number Check</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id28">8.4.5.1. Request</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id29">8.4.5.2. Response</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id30">8.4.5.3. Result</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#clear-device-data">8.4.6. Clear Device Data</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id31">8.4.6.1. Request</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id32">8.4.6.2. Response</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id33">8.4.6.3. Result</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#firmware-update-chunk-based">8.4.7. Firmware Update (Chunk-based)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id34">8.4.7.1. Request</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id35">8.4.7.2. Response</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id36">8.4.7.3. Result</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#common-response-code-for-rpc-result">8.4.8. Common Response Code for RPC Result</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#code-class">8.4.8.1. Code Class</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#successful-response-class">8.4.8.2. Successful Response Class</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sensor-error-response-class">8.4.8.3. Sensor Error Response Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#event-message-format">7.3. 이벤트 데이터 포맷</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">7.3.1. Message Header</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#event-message-format-payload-type">7.3.2. Payload Type</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#diagnostic-information">7.3.2.1. Diagnostic Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#collision-warning-driving">7.3.2.2. Collision warning (Driving)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#collision-warning-parking">7.3.2.3. Collision warning (Parking)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#battery-warning">7.3.2.4. Battery Warning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unplugged-warning">7.3.2.5. Unplugged Warning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#turn-off-warning">7.3.2.6. Turn-off Warning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adas-event">7.3.2.7. ADAS Event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">7.3.2.8. BlackBox 부팅 이벤트</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">7.3.2.9. BlackBox 모드 변경 이벤트</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">7.3.2.10. BlackBox 사용자 세팅 이벤트 메시지</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">7.3.2.11. BlackBox 이미지 업로드 이벤트 메시지</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">7.3.2.12. BlackBox 인지 이벤트 메시지</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#rpc">7.4. RPC 메시지 포맷</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vendor-specific-message">7.4.1. Vendor Specific Message</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#request">7.4.1.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#response">7.4.1.2. Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#result">7.4.1.3. Result</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#device-activation-obd">7.4.2. Device Activation (OBD)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device-activation-request">7.4.2.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device-activation-response">7.4.2.2. Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device-activation-result">7.4.2.3. Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#firmware-update">7.4.3. Firmware Update</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id23">7.4.3.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">7.4.3.2. Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#obd-reset">7.4.4. OBD Reset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id25">7.4.4.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">7.4.4.2. Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27">7.4.4.3. Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#device-serial-number-check">7.4.5. Device Serial Number Check</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id28">7.4.5.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id29">7.4.5.2. Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id30">7.4.5.3. Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#clear-device-data">7.4.6. Clear Device Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id31">7.4.6.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id32">7.4.6.2. Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id33">7.4.6.3. Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#firmware-update-chunk-based">7.4.7. Firmware Update (Chunk-based)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id34">7.4.7.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id35">7.4.7.2. Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id36">7.4.7.3. Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#blackbox-authentication-rpc">7.4.8. Blackbox Authentication RPC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id37">7.4.8.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id38">7.4.8.2. Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id39">7.4.8.3. Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#blackbox-power-off-rpc">7.4.9. Blackbox Power Off RPC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id40">7.4.9.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id41">7.4.9.2. Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id42">7.4.9.3. Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#blackbox-remote-setting-rpc">7.4.10. Blackbox Remote Setting RPC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id43">7.4.10.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id44">7.4.10.2. Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id45">7.4.10.3. Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#blackbox-image-capture-rpc">7.4.11. Blackbox Image Capture RPC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id46">7.4.11.1. Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id47">7.4.11.2. Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id48">7.4.11.3. Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#common-response-code-for-rpc-result">7.4.12. Common Response Code for RPC Result</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#code-class">7.4.12.1. Code Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#successful-response-class">7.4.12.2. Successful Response Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sensor-error-response-class">7.4.12.3. Sensor Error Response Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sdk.html">8. SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="simulator.html">9. 테스트용 시뮬레이터</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bestpractice.html">10. Best Practices</a></li>
 </ul>
@@ -251,7 +275,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>8. 메시지 포맷</li>
+      <li>7. 메시지 포맷</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -271,7 +295,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="message-format">
-<span id="id1"></span><h1>8. 메시지 포맷<a class="headerlink" href="#message-format" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>7. 메시지 포맷<a class="headerlink" href="#message-format" title="Permalink to this headline">¶</a></h1>
 <p class="text-align-justify">Smart[Fleet] 플랫폼에 연동되는 다양한 차량 센서들이 플랫폼에 전송하는 메세지에 대해서 정의합니다.</p>
 <p>이 매뉴얼은 단말이 MQTTS 프로토콜로 Smart[Fleet] 플랫폼과 연동하기 위한 메시지 포맷입니다. Entity 등록을 위한 HTTP Rest API 사용은 <a class="reference internal" href="entity.html#entity-registration"><span class="std std-ref">4. 구성요소(Entity) 등록</span></a> 문서를, App 개발자를 위한 Smart[Fleet] API 는 <a class="reference internal" href="api.html#api-specification"><span class="std std-ref">6. API 규격</span></a> 문서를 참고하십시오.</p>
 <div class="admonition note">
@@ -279,7 +303,7 @@
 <p class="last">본 장에 명세된 표 내용 중 <code class="docutils literal"><span class="pre">M</span></code> / <code class="docutils literal"><span class="pre">O</span></code> 는 <code class="docutils literal"><span class="pre">Mandatory</span></code> / <code class="docutils literal"><span class="pre">Optional</span></code> 의 약자로, Mandatory는 필수로 포함해야 하는 데이터를 Optional은 필요에 따라 기입이 여부를 개발사에서 판단하시면 됩니다.</p>
 </div>
 <div class="section" id="id2">
-<h2>8.1. 메시지 기본 구조<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>7.1. 메시지 기본 구조<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>Smart[Fleet] 플랫폼의 기본 메시지 구조는 <code class="docutils literal"><span class="pre">Header</span></code> 와 <code class="docutils literal"><span class="pre">Payload</span></code> 형태로 구조화 되어 있습니다. 각 메시지는 해당 메시지의 타입인 <code class="docutils literal"><span class="pre">ty</span></code> 로 구분하고 <code class="docutils literal"><span class="pre">ty</span></code> 에 따라 <code class="docutils literal"><span class="pre">pld</span></code> child의 내용이 상이합니다.</p>
 <p><span class="underline">Example Code</span> :</p>
 <div class="highlight-json"><div class="highlight"><pre><span></span>{
@@ -305,11 +329,11 @@
 </pre></div>
 </div>
 <div class="section" id="message-format-for-sensor">
-<span id="id3"></span><h3>8.1.1. 메시지 타입<a class="headerlink" href="#message-format-for-sensor" title="Permalink to this headline">¶</a></h3>
+<span id="id3"></span><h3>7.1.1. 메시지 타입<a class="headerlink" href="#message-format-for-sensor" title="Permalink to this headline">¶</a></h3>
 <p>Smart[Fleet] 플랫폼은 외부 인터페이스와 다양한 형태의 메시지 주고 받을 때,
 해당 메세지를 <code class="docutils literal"><span class="pre">ty</span></code> 값으로 구분하여 인식하게 됩니다.</p>
 <div class="table-width-fix text-align-justify section" id="id4">
-<h4>8.1.1.1. 주기보고 메세지 타입<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<h4>7.1.1.1. 주기보고 메세지 타입<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <p>주기보고 메시지는 Smart[Fleet] 규격을 따르는 단말 또는 센서가 주기적으로 차량의 운행 정보를 전달할 때
 명세하는 메시지 타입입니다. 아래 표와 같이 센서 타입별로 구분되어 있습니다.</p>
 <table border="1" class="docutils">
@@ -351,7 +375,7 @@
 </table>
 </div>
 <div class="section" id="id5">
-<h4>8.1.1.2. 이벤트 메세지 타입<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<h4>7.1.1.2. 이벤트 메세지 타입<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p>이벤트 메시지는 Smart[Fleet] 규격을 따르는 단말 또는 센서가 인식한 이벤트 메시지를 Smart[Fleet]에 전송할 때
 명세하는 메시지 타입입니다.</p>
 <table border="1" class="docutils">
@@ -406,7 +430,7 @@
 </div>
 </div>
 <div class="section" id="aggregated-microtrip">
-<h3>8.1.2. Aggregated Microtrip<a class="headerlink" href="#aggregated-microtrip" title="Permalink to this headline">¶</a></h3>
+<h3>7.1.2. Aggregated Microtrip<a class="headerlink" href="#aggregated-microtrip" title="Permalink to this headline">¶</a></h3>
 <p>Microtrip 데이터는 여러개의 데이터를 모아서 한번에 보낼 수 있습니다. 각 수집한 Microtrip 데이터는 JSON Array 데이터를 기반으로 다음과 같이 패킷을 합쳐 보낼 수 있습니다.</p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ty&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
@@ -454,12 +478,12 @@
 </div>
 </div>
 <div class="section" id="id6">
-<h2>8.2. 센서 타입별 주기보고 메시지 포맷<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2>7.2. 센서 타입별 주기보고 메시지 포맷<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="gps">
-<h3>8.2.1. GPS<a class="headerlink" href="#gps" title="Permalink to this headline">¶</a></h3>
+<h3>7.2.1. GPS<a class="headerlink" href="#gps" title="Permalink to this headline">¶</a></h3>
 <p>GPS 단말에서 발생한 위치 데이터를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다.</p>
 <div class="section" id="message-header">
-<h4>8.2.1.1. Message Header<a class="headerlink" href="#message-header" title="Permalink to this headline">¶</a></h4>
+<h4>7.2.1.1. Message Header<a class="headerlink" href="#message-header" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
 <col width="13%" />
@@ -505,9 +529,9 @@
 </div>
 </div>
 <div class="section" id="payload-types">
-<h4>8.2.1.2. Payload Types<a class="headerlink" href="#payload-types" title="Permalink to this headline">¶</a></h4>
+<h4>7.2.1.2. Payload Types<a class="headerlink" href="#payload-types" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="gps-trip-message">
-<span id="trip-gps"></span><h5>8.2.1.2.1. GPS Trip Message<a class="headerlink" href="#gps-trip-message" title="Permalink to this headline">¶</a></h5>
+<span id="trip-gps"></span><h5>7.2.1.2.1. GPS Trip Message<a class="headerlink" href="#gps-trip-message" title="Permalink to this headline">¶</a></h5>
 <p>Trip Message는 차량이 운행이 종료된 후에 전달하는 메시지입니다.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -624,7 +648,7 @@
 </div>
 </div>
 <div class="section" id="gps-microtrip">
-<span id="microtrip-gps"></span><h4>8.2.1.3. GPS Microtrip<a class="headerlink" href="#gps-microtrip" title="Permalink to this headline">¶</a></h4>
+<span id="microtrip-gps"></span><h4>7.2.1.3. GPS Microtrip<a class="headerlink" href="#gps-microtrip" title="Permalink to this headline">¶</a></h4>
 <p>Microtrip 메세지는 차량이 운행을 시작한 후 설정된 주기에 따라 전송하는 차량 운행에 대한 위치 데이터입니다. 주기는 각 어플리케이션 마다 상이하므로, 아래의 값은 플랫폼에 전송하는 해당 시점에 데이터를 추출하여 기입합니다.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -708,10 +732,10 @@
 </div>
 </div>
 <div class="section" id="obd">
-<h3>8.2.2. OBD<a class="headerlink" href="#obd" title="Permalink to this headline">¶</a></h3>
+<h3>7.2.2. OBD<a class="headerlink" href="#obd" title="Permalink to this headline">¶</a></h3>
 <p>OBD 단말에서 발생한 데이터를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다.</p>
 <div class="section" id="id7">
-<h4>8.2.2.1. Message Header<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<h4>7.2.2.1. Message Header<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
 <col width="13%" />
@@ -753,9 +777,9 @@
 </table>
 </div>
 <div class="section" id="payload-type">
-<h4>8.2.2.2. Payload Type<a class="headerlink" href="#payload-type" title="Permalink to this headline">¶</a></h4>
+<h4>7.2.2.2. Payload Type<a class="headerlink" href="#payload-type" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="obd-trip">
-<span id="trip-obd"></span><h5>8.2.2.2.1. OBD Trip<a class="headerlink" href="#obd-trip" title="Permalink to this headline">¶</a></h5>
+<span id="trip-obd"></span><h5>7.2.2.2.1. OBD Trip<a class="headerlink" href="#obd-trip" title="Permalink to this headline">¶</a></h5>
 <p class="text-align-justify">Trip Message는 차량이 운행이 종료된 후에 전달하는 메시지입니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -945,7 +969,7 @@
 </div>
 </div>
 <div class="section" id="obd-microtrip">
-<span id="microtrip-obd"></span><h5>8.2.2.2.2. OBD Microtrip<a class="headerlink" href="#obd-microtrip" title="Permalink to this headline">¶</a></h5>
+<span id="microtrip-obd"></span><h5>7.2.2.2.2. OBD Microtrip<a class="headerlink" href="#obd-microtrip" title="Permalink to this headline">¶</a></h5>
 <p class="text-align-justify">Microtrip 메세지는 차량이 운행을 시작한 후 설정된 주기에 따라 전송하는 차량 운행 상세 데이터입니다. 주기는 각 어플리케이션 마다 상이하므로, 아래의 값은 플랫폼에 전송하는 해당 시점에 데이터를 추출하여 기입합니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -1132,10 +1156,10 @@
 </div>
 </div>
 <div class="section" id="adas">
-<h3>8.2.3. ADAS<a class="headerlink" href="#adas" title="Permalink to this headline">¶</a></h3>
+<h3>7.2.3. ADAS<a class="headerlink" href="#adas" title="Permalink to this headline">¶</a></h3>
 <p>ADAS 단말에서 발생한 데이터를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다.</p>
 <div class="section" id="id8">
-<h4>8.2.3.1. Message Header<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<h4>7.2.3.1. Message Header<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
 <col width="13%" />
@@ -1177,9 +1201,9 @@
 </table>
 </div>
 <div class="section" id="id9">
-<h4>8.2.3.2. Payload Type<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<h4>7.2.3.2. Payload Type<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="adas-trip">
-<span id="trip-adas"></span><h5>8.2.3.2.1. ADAS Trip<a class="headerlink" href="#adas-trip" title="Permalink to this headline">¶</a></h5>
+<span id="trip-adas"></span><h5>7.2.3.2.1. ADAS Trip<a class="headerlink" href="#adas-trip" title="Permalink to this headline">¶</a></h5>
 <p>ADAS Trip 메세지는 ADAS 단말이 주행을 완료한 경우에 사용하는 메시지 포맷입니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -1237,7 +1261,7 @@
 </div>
 </div>
 <div class="section" id="adas-microtrip">
-<span id="microtrip-adas"></span><h5>8.2.3.2.2. ADAS Microtrip<a class="headerlink" href="#adas-microtrip" title="Permalink to this headline">¶</a></h5>
+<span id="microtrip-adas"></span><h5>7.2.3.2.2. ADAS Microtrip<a class="headerlink" href="#adas-microtrip" title="Permalink to this headline">¶</a></h5>
 <p class="text-align-justify">ADAS Microtrip 메세지는 ADAS 단말에서 인지한 ADAS 및 GPS 위치 정보를 주기적으로 올릴때 사용하는 메시지 포맷입니다. 일반적으로는 ADAS와 GPS가 함께 있는 경우에 활용하며, 메시지는 ADAS 부착 차량의 운행 시작부터 운행 종료까지 주기적으로 전송합니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -1543,10 +1567,10 @@
 </div>
 </div>
 <div class="section" id="blackbox">
-<h3>8.2.4. BlackBox<a class="headerlink" href="#blackbox" title="Permalink to this headline">¶</a></h3>
+<h3>7.2.4. BlackBox<a class="headerlink" href="#blackbox" title="Permalink to this headline">¶</a></h3>
 <p>BlackBox 단말에서 발생한 데이터를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다.</p>
 <div class="section" id="id10">
-<h4>8.2.4.1. Message Header<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<h4>7.2.4.1. Message Header<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
 <col width="13%" />
@@ -1588,9 +1612,9 @@
 </table>
 </div>
 <div class="section" id="id11">
-<h4>8.2.4.2. Payload Type<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<h4>7.2.4.2. Payload Type<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="blackbox-trip">
-<span id="trip-blackbox"></span><h5>8.2.4.2.1. BlackBox Trip<a class="headerlink" href="#blackbox-trip" title="Permalink to this headline">¶</a></h5>
+<span id="trip-blackbox"></span><h5>7.2.4.2.1. BlackBox Trip<a class="headerlink" href="#blackbox-trip" title="Permalink to this headline">¶</a></h5>
 <p>BlackBox Trip 메세지는 BlackBox 단말이 주행 또는 주차 상태를 완료한 경우에 사용하는 메시지 포맷입니다. 단 BlackBox의 Trip은 주행과 주차로 설정합니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -1657,7 +1681,7 @@
 </div>
 </div>
 <div class="section" id="blackbox-microtrip">
-<span id="microtrip-blackbox"></span><h5>8.2.4.2.2. BlackBox Microtrip<a class="headerlink" href="#blackbox-microtrip" title="Permalink to this headline">¶</a></h5>
+<span id="microtrip-blackbox"></span><h5>7.2.4.2.2. BlackBox Microtrip<a class="headerlink" href="#blackbox-microtrip" title="Permalink to this headline">¶</a></h5>
 <p class="text-align-justify">BlackBox Microtrip 메세지는 Blackbox 단말에서 인지한 정보를 주기적으로 플랫폼에서 사용하는 메시지 포맷입니다. 일반적으로는 ADAS와 GPS가 함께 있는 경우에 활용하며, 메시지는 ADAS 부착 차량의 운행 시작부터 운행 종료까지 주기적으로 전송합니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -1742,10 +1766,10 @@
 </div>
 </div>
 <div class="section" id="event-message-format">
-<span id="id12"></span><h2>8.3. 이벤트 데이터 포맷<a class="headerlink" href="#event-message-format" title="Permalink to this headline">¶</a></h2>
+<span id="id12"></span><h2>7.3. 이벤트 데이터 포맷<a class="headerlink" href="#event-message-format" title="Permalink to this headline">¶</a></h2>
 <p>단말에서 비주기적으로 발생한 이벤트를 플랫폼에 전송하기 위한 메시지 포맷입니다. 이벤트 기반 데이터 전송을 위한 프로시저는 <a class="reference internal" href="device.html#event-data-procedure"><span class="std std-ref">5.4.2 Event Data</span></a> 를 참고하십시오.</p>
 <div class="section" id="id13">
-<h3>8.3.1. Message Header<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<h3>7.3.1. Message Header<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
 <col width="13%" />
@@ -1783,9 +1807,9 @@
 </table>
 </div>
 <div class="section" id="event-message-format-payload-type">
-<span id="id14"></span><h3>8.3.2. Payload Type<a class="headerlink" href="#event-message-format-payload-type" title="Permalink to this headline">¶</a></h3>
+<span id="id14"></span><h3>7.3.2. Payload Type<a class="headerlink" href="#event-message-format-payload-type" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="diagnostic-information">
-<h4>8.3.2.1. Diagnostic Information<a class="headerlink" href="#diagnostic-information" title="Permalink to this headline">¶</a></h4>
+<h4>7.3.2.1. Diagnostic Information<a class="headerlink" href="#diagnostic-information" title="Permalink to this headline">¶</a></h4>
 <p>OBD에서 인지한 차량 진단 코드(DTC)를 전송하는 메시지를 정의합니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -1847,7 +1871,7 @@
 </div>
 </div>
 <div class="section" id="collision-warning-driving">
-<h4>8.3.2.2. Collision warning (Driving)<a class="headerlink" href="#collision-warning-driving" title="Permalink to this headline">¶</a></h4>
+<h4>7.3.2.2. Collision warning (Driving)<a class="headerlink" href="#collision-warning-driving" title="Permalink to this headline">¶</a></h4>
 <p>운행 중 OBD가 감지한 차량 접촉 사고에 대한 위치 정보를 전달하는 메세지를 정의합니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -1895,7 +1919,7 @@
 </div>
 </div>
 <div class="section" id="collision-warning-parking">
-<h4>8.3.2.3. Collision warning (Parking)<a class="headerlink" href="#collision-warning-parking" title="Permalink to this headline">¶</a></h4>
+<h4>7.3.2.3. Collision warning (Parking)<a class="headerlink" href="#collision-warning-parking" title="Permalink to this headline">¶</a></h4>
 <p class="text-align-justify">주차 중 OBD가 감지한 차량 접촉 사고에 대한 위치 정보를 전달하는 메세지를 정의합니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -1943,7 +1967,7 @@
 </div>
 </div>
 <div class="section" id="battery-warning">
-<h4>8.3.2.4. Battery Warning<a class="headerlink" href="#battery-warning" title="Permalink to this headline">¶</a></h4>
+<h4>7.3.2.4. Battery Warning<a class="headerlink" href="#battery-warning" title="Permalink to this headline">¶</a></h4>
 <p class="text-align-justify">차량 배터리 소모에 대한 위험 알림 메시지를 정의합니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -1984,7 +2008,7 @@
 </div>
 </div>
 <div class="section" id="unplugged-warning">
-<h4>8.3.2.5. Unplugged Warning<a class="headerlink" href="#unplugged-warning" title="Permalink to this headline">¶</a></h4>
+<h4>7.3.2.5. Unplugged Warning<a class="headerlink" href="#unplugged-warning" title="Permalink to this headline">¶</a></h4>
 <p class="text-align-justify">OBD가 차량으로부터 탈착되는 이벤트에 대한 알림 메시지를 정의합니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -2031,7 +2055,7 @@
 </div>
 </div>
 <div class="section" id="turn-off-warning">
-<h4>8.3.2.6. Turn-off Warning<a class="headerlink" href="#turn-off-warning" title="Permalink to this headline">¶</a></h4>
+<h4>7.3.2.6. Turn-off Warning<a class="headerlink" href="#turn-off-warning" title="Permalink to this headline">¶</a></h4>
 <p class="text-align-justify">OBD가 종료된 경우, 종료 이전에 종료에 대한 이유를 플랫폼에 전달하기 위한 알림 매시지를 정의합니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -2072,7 +2096,7 @@
 </div>
 </div>
 <div class="section" id="adas-event">
-<h4>8.3.2.7. ADAS Event<a class="headerlink" href="#adas-event" title="Permalink to this headline">¶</a></h4>
+<h4>7.3.2.7. ADAS Event<a class="headerlink" href="#adas-event" title="Permalink to this headline">¶</a></h4>
 <p>ADAS에서 인지한 이벤트 정보를 전송하는 메시지 포맷입니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -2232,7 +2256,7 @@
 </div>
 </div>
 <div class="section" id="id15">
-<h4>8.3.2.8. BlackBox 부팅 이벤트<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<h4>7.3.2.8. BlackBox 부팅 이벤트<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
 <p>블랙박스가 정상적으로 부팅을 완료한 후에 플랫폼에 전달하는 이벤트 메세지입니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -2398,7 +2422,7 @@
 </table>
 </div>
 <div class="section" id="id16">
-<h4>8.3.2.9. BlackBox 모드 변경 이벤트<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<h4>7.3.2.9. BlackBox 모드 변경 이벤트<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
 <p>블랙박스가 주행 &lt;-&gt; 주차 모드로 상호 변경 시 전달하는 이벤트 메시지 입니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -2447,7 +2471,7 @@
 </table>
 </div>
 <div class="section" id="id17">
-<h4>8.3.2.10. BlackBox 사용자 세팅 이벤트 메시지<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
+<h4>7.3.2.10. BlackBox 사용자 세팅 이벤트 메시지<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
 <p>사용자가 세팅한 블랙박스 설정 값 전달을 위한 이벤트 메시지입니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -2593,7 +2617,7 @@
 </table>
 </div>
 <div class="section" id="id18">
-<h4>8.3.2.11. BlackBox 이미지 업로드 이벤트 메시지<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
+<h4>7.3.2.11. BlackBox 이미지 업로드 이벤트 메시지<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
 <p>블랙박스 장치가 촬영하고 업로드한 이벤트를 전달하기 위한 메시지입니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -2631,7 +2655,7 @@
 </table>
 </div>
 <div class="section" id="id19">
-<h4>8.3.2.12. BlackBox 인지 이벤트 메시지<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
+<h4>7.3.2.12. BlackBox 인지 이벤트 메시지<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
 <p>블랙박스 장치가 인지한 차량 관련 이벤트 정보를 전달하기 위한 메시지입니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
@@ -2685,13 +2709,13 @@
 </div>
 </div>
 <div class="section" id="rpc">
-<span id="rpc-message-format"></span><h2>8.4. RPC 메시지 포맷<a class="headerlink" href="#rpc" title="Permalink to this headline">¶</a></h2>
+<span id="rpc-message-format"></span><h2>7.4. RPC 메시지 포맷<a class="headerlink" href="#rpc" title="Permalink to this headline">¶</a></h2>
 <p class="text-align-justify">Device를 제어하기 위한 RPC Message Type을 명세합니다. 기술되지 않는 제어는 단말과 어플리케이션 상호 간에만 규약 되어 있다면, Vendor Specific Message를 사용합니다.</p>
 <div class="section" id="vendor-specific-message">
-<h3>8.4.1. Vendor Specific Message<a class="headerlink" href="#vendor-specific-message" title="Permalink to this headline">¶</a></h3>
+<h3>7.4.1. Vendor Specific Message<a class="headerlink" href="#vendor-specific-message" title="Permalink to this headline">¶</a></h3>
 <p class="text-align-justify">각 단말 업체에서 별도로 관리하는 제어 요청 메시지이며, 다른 제어 메시지도 본 포맷을 확장하여 명시됩니다.</p>
 <div class="section" id="request">
-<h4>8.4.1.1. Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h4>
+<h4>7.4.1.1. Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
 <col width="13%" />
@@ -2721,34 +2745,11 @@
 </table>
 </div>
 <div class="section" id="response">
-<span id="vendor-specific-msg-response"></span><h4>8.4.1.2. Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h4>
-<table border="1" class="table-width-fix text-align-justify docutils">
-<colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Key</th>
-<th class="head">Type</th>
-<th class="head">M/O</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>result</td>
-<td>String</td>
-<td>M</td>
-<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode&nbsp;</a>에
-정의된 제어
-결과 추가</td>
-</tr>
-</tbody>
-</table>
+<span id="vendor-specific-msg-response"></span><h4>7.4.1.2. Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h4>
+<p>단말의 RPC 수신 여부를 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result">Common Response Code</a> 에 따라 명세 합니다.</p>
 </div>
 <div class="section" id="result">
-<span id="vendor-specific-msg-result"></span><h4>8.4.1.3. Result<a class="headerlink" href="#result" title="Permalink to this headline">¶</a></h4>
+<span id="vendor-specific-msg-result"></span><h4>7.4.1.3. Result<a class="headerlink" href="#result" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
 <col width="25%" />
@@ -2781,11 +2782,11 @@
 </table>
 </div>
 </div>
-<div class="section" id="device-activation">
-<h3>8.4.2. Device Activation<a class="headerlink" href="#device-activation" title="Permalink to this headline">¶</a></h3>
-<p class="text-align-justify">차량용 센서를 차량에 부착한 후 활성화하기 위해 필요한 RPC 메시지를 명세합니다.</p>
+<div class="section" id="device-activation-obd">
+<h3>7.4.2. Device Activation (OBD)<a class="headerlink" href="#device-activation-obd" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">차량용 OBD 센서를 차량에 부착한 후 활성화하기 위해 필요한 RPC 메시지를 명세합니다.</p>
 <div class="section" id="device-activation-request">
-<span id="id20"></span><h4>8.4.2.1. Request<a class="headerlink" href="#device-activation-request" title="Permalink to this headline">¶</a></h4>
+<span id="id20"></span><h4>7.4.2.1. Request<a class="headerlink" href="#device-activation-request" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="text-align-justify table-width-fix docutils">
 <colgroup>
 <col width="11%" />
@@ -2884,40 +2885,11 @@
 </div>
 </div>
 <div class="section" id="device-activation-response">
-<span id="id21"></span><h4>8.4.2.2. Response<a class="headerlink" href="#device-activation-response" title="Permalink to this headline">¶</a></h4>
-<table border="1" class="table-width-fix text-align-justify docutils">
-<colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Key</th>
-<th class="head">Type</th>
-<th class="head">M/O</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>result</td>
-<td>String</td>
-<td>M</td>
-<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode</a>&nbsp;에
-정의된 제어
-결과 추가</td>
-</tr>
-</tbody>
-</table>
-<p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+<span id="id21"></span><h4>7.4.2.2. Response<a class="headerlink" href="#device-activation-response" title="Permalink to this headline">¶</a></h4>
+<p>단말의 RPC 수신 여부를 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result">Common Response Code</a> 에 따라 명세 합니다.</p>
 </div>
 <div class="section" id="device-activation-result">
-<span id="id22"></span><h4>8.4.2.3. Result<a class="headerlink" href="#device-activation-result" title="Permalink to this headline">¶</a></h4>
+<span id="id22"></span><h4>7.4.2.3. Result<a class="headerlink" href="#device-activation-result" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
 <col width="17%" />
@@ -2979,10 +2951,10 @@
 </div>
 </div>
 <div class="section" id="firmware-update">
-<h3>8.4.3. Firmware Update<a class="headerlink" href="#firmware-update" title="Permalink to this headline">¶</a></h3>
+<h3>7.4.3. Firmware Update<a class="headerlink" href="#firmware-update" title="Permalink to this headline">¶</a></h3>
 <p class="text-align-justify">차량용 OBD의 펌웨어 업데이트를 위한 RPC 메시지를 명세합니다.</p>
 <div class="section" id="id23">
-<h4>8.4.3.1. Request<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
+<h4>7.4.3.1. Request<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
 <col width="10%" />
@@ -3042,51 +3014,22 @@
     <span class="nt">&quot;method&quot;</span> <span class="p">:</span> <span class="s2">&quot;fwupdate&quot;</span><span class="p">,</span>
     <span class="nt">&quot;params&quot;</span> <span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;pkv&quot;</span> <span class="p">:</span> <span class="s2">&quot;1.0.1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;url&quot;</span> <span class="p">:</span> <span class="s2">&quot;ftp://smartfleet.sktelecom.com:10011&quot;</span>
+        <span class="nt">&quot;url&quot;</span> <span class="p">:</span> <span class="s2">&quot;ftps://smartfleet.sktelecom.com:10011/dev0001/fw_1_1_3.dat&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id24">
-<h4>8.4.3.2. Response<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
-<table border="1" class="table-width-fix text-align-justify docutils">
-<colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Key</th>
-<th class="head">Type</th>
-<th class="head">M/O</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>result</td>
-<td>String</td>
-<td>M</td>
-<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode&nbsp;</a>에
-정의된 제어
-결과 추가</td>
-</tr>
-</tbody>
-</table>
-<p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+<h4>7.4.3.2. Response<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
+<p>단말의 RPC 수신 여부를 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result">Common Response Code</a> 에 따라 명세 합니다.</p>
 </div>
 </div>
 <div class="section" id="obd-reset">
-<h3>8.4.4. OBD Reset<a class="headerlink" href="#obd-reset" title="Permalink to this headline">¶</a></h3>
+<h3>7.4.4. OBD Reset<a class="headerlink" href="#obd-reset" title="Permalink to this headline">¶</a></h3>
 <p class="text-align-justify">차량용 OBD의 재시작을 위한 RPC 메시지</p>
 <div class="section" id="id25">
-<h4>8.4.4.1. Request<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
+<h4>7.4.4.1. Request<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="text-align-justify table-width-fix docutils">
 <colgroup>
 <col width="22%" />
@@ -3123,40 +3066,11 @@
 </div>
 </div>
 <div class="section" id="id26">
-<h4>8.4.4.2. Response<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
-<table border="1" class="text-align-justify table-width-fix docutils">
-<colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Key</th>
-<th class="head">Type</th>
-<th class="head">M/O</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>result</td>
-<td>String</td>
-<td>M</td>
-<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode&nbsp;</a>에
-정의된 제어
-결과 추가</td>
-</tr>
-</tbody>
-</table>
-<p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+<h4>7.4.4.2. Response<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
+<p>단말의 RPC 수신 여부를 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result">Common Response Code</a> 에 따라 명세 합니다.</p>
 </div>
 <div class="section" id="id27">
-<h4>8.4.4.3. Result<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
+<h4>7.4.4.3. Result<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="text-align-justify table-width-fix docutils">
 <colgroup>
 <col width="25%" />
@@ -3196,10 +3110,10 @@
 </div>
 </div>
 <div class="section" id="device-serial-number-check">
-<h3>8.4.5. Device Serial Number Check<a class="headerlink" href="#device-serial-number-check" title="Permalink to this headline">¶</a></h3>
+<h3>7.4.5. Device Serial Number Check<a class="headerlink" href="#device-serial-number-check" title="Permalink to this headline">¶</a></h3>
 <p class="text-align-justify">차량용 OBD의 시리얼 번호 확인용 RPC 메시지</p>
 <div class="section" id="id28">
-<h4>8.4.5.1. Request<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
+<h4>7.4.5.1. Request<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="text-align-justify table-width-fix docutils">
 <colgroup>
 <col width="22%" />
@@ -3236,40 +3150,11 @@
 </div>
 </div>
 <div class="section" id="id29">
-<h4>8.4.5.2. Response<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h4>
-<table border="1" class="text-align-justify table-width-fix docutils">
-<colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Key</th>
-<th class="head">Type</th>
-<th class="head">M/O</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>result</td>
-<td>String</td>
-<td>M</td>
-<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode&nbsp;</a>에
-정의된 제어
-결과 추가</td>
-</tr>
-</tbody>
-</table>
-<p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+<h4>7.4.5.2. Response<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h4>
+<p>단말의 RPC 수신 여부를 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result">Common Response Code</a> 에 따라 명세 합니다.</p>
 </div>
 <div class="section" id="id30">
-<h4>8.4.5.3. Result<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h4>
+<h4>7.4.5.3. Result<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="text-align-justify table-width-fix docutils">
 <colgroup>
 <col width="17%" />
@@ -3331,10 +3216,10 @@
 </div>
 </div>
 <div class="section" id="clear-device-data">
-<h3>8.4.6. Clear Device Data<a class="headerlink" href="#clear-device-data" title="Permalink to this headline">¶</a></h3>
+<h3>7.4.6. Clear Device Data<a class="headerlink" href="#clear-device-data" title="Permalink to this headline">¶</a></h3>
 <p class="text-align-justify">차량용 OBD 데이터 삭제</p>
 <div class="section" id="id31">
-<h4>8.4.6.1. Request<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h4>
+<h4>7.4.6.1. Request<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="text-align-justify table-width-fix docutils">
 <colgroup>
 <col width="20%" />
@@ -3371,40 +3256,11 @@
 </div>
 </div>
 <div class="section" id="id32">
-<h4>8.4.6.2. Response<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h4>
-<table border="1" class="text-align-justify table-width-fix docutils">
-<colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Key</th>
-<th class="head">Type</th>
-<th class="head">M/O</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>result</td>
-<td>String</td>
-<td>M</td>
-<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode&nbsp;</a>에
-정의된 제어
-결과 추가</td>
-</tr>
-</tbody>
-</table>
-<p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+<h4>7.4.6.2. Response<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h4>
+<p>단말의 RPC 수신 여부를 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result">Common Response Code</a> 에 따라 명세 합니다.</p>
 </div>
 <div class="section" id="id33">
-<h4>8.4.6.3. Result<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h4>
+<h4>7.4.6.3. Result<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="text-align-justify docutils">
 <colgroup>
 <col width="25%" />
@@ -3443,10 +3299,10 @@
 </div>
 </div>
 <div class="section" id="firmware-update-chunk-based">
-<h3>8.4.7. Firmware Update (Chunk-based)<a class="headerlink" href="#firmware-update-chunk-based" title="Permalink to this headline">¶</a></h3>
+<h3>7.4.7. Firmware Update (Chunk-based)<a class="headerlink" href="#firmware-update-chunk-based" title="Permalink to this headline">¶</a></h3>
 <p class="text-align-justify">Chunk 기반으로 차량용 OBD의 펌웨어 업데이트를 위한 RPC 메시지를 명세합니다.</p>
 <div class="section" id="id34">
-<h4>8.4.7.1. Request<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h4>
+<h4>7.4.7.1. Request<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="text-align-justify table-width-fix docutils">
 <colgroup>
 <col width="12%" />
@@ -3525,40 +3381,11 @@
 </div>
 </div>
 <div class="section" id="id35">
-<h4>8.4.7.2. Response<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h4>
-<table border="1" class="text-align-justify table-width-fix docutils">
-<colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Key</th>
-<th class="head">Type</th>
-<th class="head">M/O</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>result</td>
-<td>String</td>
-<td>M</td>
-<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode&nbsp;</a>에
-정의된 제어
-결과 추가</td>
-</tr>
-</tbody>
-</table>
-<p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+<h4>7.4.7.2. Response<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h4>
+<p>단말의 RPC 수신 여부를 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result">Common Response Code</a> 에 따라 명세 합니다.</p>
 </div>
 <div class="section" id="id36">
-<h4>8.4.7.3. Result<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h4>
+<h4>7.4.7.3. Result<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="text-align-justify table-width-fix docutils">
 <colgroup>
 <col width="25%" />
@@ -3596,10 +3423,458 @@
 </div>
 </div>
 </div>
+<div class="section" id="blackbox-authentication-rpc">
+<h3>7.4.8. Blackbox Authentication RPC<a class="headerlink" href="#blackbox-authentication-rpc" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">블랙박스 인증을 위한 RPC 메시지입니다.</p>
+<div class="section" id="id37">
+<h4>7.4.8.1. Request<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>method</td>
+<td>String</td>
+<td>M</td>
+<td><code class="docutils literal"><span class="pre">bbxauthReq</span></code></td>
+</tr>
+<tr class="row-odd"><td>params</td>
+<td>String</td>
+<td>M</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id38">
+<h4>7.4.8.2. Response<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h4>
+<p>단말의 RPC 수신 여부를 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result">Common Response Code</a> 에 따라 명세 합니다.</p>
+</div>
+<div class="section" id="id39">
+<h4>7.4.8.3. Result<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode</a>&nbsp;에
+정의된 제어
+결과 추가</td>
+</tr>
+<tr class="row-odd"><td>addInfo</td>
+<td>String</td>
+<td>O</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="blackbox-power-off-rpc">
+<h3>7.4.9. Blackbox Power Off RPC<a class="headerlink" href="#blackbox-power-off-rpc" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">원격으로 블랙박스를 종료하기 위한 메시지입니다.</p>
+<div class="section" id="id40">
+<h4>7.4.9.1. Request<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>method</td>
+<td>String</td>
+<td>M</td>
+<td><code class="docutils literal"><span class="pre">bbxpwroffReq</span></code></td>
+</tr>
+<tr class="row-odd"><td>params</td>
+<td>String</td>
+<td>M</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id41">
+<h4>7.4.9.2. Response<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h4>
+<p>단말의 RPC 수신 여부를 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result">Common Response Code</a> 에 따라 명세 합니다.</p>
+</div>
+<div class="section" id="id42">
+<h4>7.4.9.3. Result<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode</a>&nbsp;에
+정의된 제어
+결과 추가</td>
+</tr>
+<tr class="row-odd"><td>addInfo</td>
+<td>String</td>
+<td>O</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="blackbox-remote-setting-rpc">
+<h3>7.4.10. Blackbox Remote Setting RPC<a class="headerlink" href="#blackbox-remote-setting-rpc" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">원격으로 블랙박스를 설정하기 위한 메시지입니다.</p>
+<div class="section" id="id43">
+<h4>7.4.10.1. Request<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>method</td>
+<td>String</td>
+<td>M</td>
+<td><code class="docutils literal"><span class="pre">bbxsettingReq</span></code></td>
+</tr>
+<tr class="row-odd"><td>params</td>
+<td>object</td>
+<td>M</td>
+<td><table border="1" class="first last docutils">
+<colgroup>
+<col width="16%" />
+<col width="14%" />
+<col width="16%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>fqual</td>
+<td>Int</td>
+<td>O</td>
+<td>전방카메라 영상품질 설정</td>
+</tr>
+<tr class="row-odd"><td>fsharp</td>
+<td>Int</td>
+<td>O</td>
+<td>전방카메라 선명도 설정</td>
+</tr>
+<tr class="row-even"><td>fntbr</td>
+<td>Int</td>
+<td>O</td>
+<td>전방카메라 야간영상밝기 설정</td>
+</tr>
+<tr class="row-odd"><td>fnv</td>
+<td>Int</td>
+<td>O</td>
+<td>전방카메라 Nightvision 설정</td>
+</tr>
+<tr class="row-even"><td>fmode</td>
+<td>Int</td>
+<td>O</td>
+<td>전방카메라 영상모드 설정</td>
+</tr>
+<tr class="row-odd"><td>rqual</td>
+<td>Int</td>
+<td>O</td>
+<td>후방카메라 영상품질 설정</td>
+</tr>
+<tr class="row-even"><td>rntbr</td>
+<td>Int</td>
+<td>O</td>
+<td>후방카메라 야간영상밝기 설정</td>
+</tr>
+<tr class="row-odd"><td>rprec</td>
+<td>Int</td>
+<td>O</td>
+<td>후방카메라 주차녹화 설정</td>
+</tr>
+<tr class="row-even"><td>dcs</td>
+<td>Int</td>
+<td>O</td>
+<td>주행 충돌 민감도 설정</td>
+</tr>
+<tr class="row-odd"><td>pcs</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 충돌 민감도 설정</td>
+</tr>
+<tr class="row-even"><td>fms</td>
+<td>Int</td>
+<td>O</td>
+<td>전방 모션 민감도 설정</td>
+</tr>
+<tr class="row-odd"><td>rms</td>
+<td>Int</td>
+<td>O</td>
+<td>후방 모션 민감도 설정</td>
+</tr>
+<tr class="row-even"><td>spk</td>
+<td>Int</td>
+<td>O</td>
+<td>스피커 볼륨 설정</td>
+</tr>
+<tr class="row-odd"><td>mic</td>
+<td>Int</td>
+<td>O</td>
+<td>마이크 볼륨 설정</td>
+</tr>
+<tr class="row-even"><td>cutps</td>
+<td>Int</td>
+<td>O</td>
+<td>주차시 시스템 차단 온도 설정</td>
+</tr>
+<tr class="row-odd"><td>cutpl</td>
+<td>Int</td>
+<td>O</td>
+<td>주차시 LCD 차단 온도 설정</td>
+</tr>
+<tr class="row-even"><td>parke</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 모드 활성화 여부 설정</td>
+</tr>
+<tr class="row-odd"><td>cuv</td>
+<td>Int</td>
+<td>O</td>
+<td>주차시 전원 차단 전압 설정</td>
+</tr>
+<tr class="row-even"><td>cutm</td>
+<td>Int</td>
+<td>O</td>
+<td>주차시 전원 차단 온도 설정</td>
+</tr>
+<tr class="row-odd"><td>loff</td>
+<td>Int</td>
+<td>O</td>
+<td>라이브뷰 화면 설정</td>
+</tr>
+<tr class="row-even"><td>lbr</td>
+<td>Int</td>
+<td>O</td>
+<td>LCD 화면 밝기 설정</td>
+</tr>
+<tr class="row-odd"><td>boot</td>
+<td>Int</td>
+<td>O</td>
+<td>부팅시 PIP 화면 설정</td>
+</tr>
+<tr class="row-even"><td>menu</td>
+<td>Int</td>
+<td>O</td>
+<td>메뉴 상시 보임 설정</td>
+</tr>
+<tr class="row-odd"><td>led</td>
+<td>Int</td>
+<td>O</td>
+<td>시큐리티 LED 설정</td>
+</tr>
+<tr class="row-even"><td>pet</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 충격 감지 타이머 설정</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id44">
+<h4>7.4.10.2. Response<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h4>
+<p>단말의 RPC 수신 여부를 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result">Common Response Code</a> 에 따라 명세 합니다.</p>
+</div>
+<div class="section" id="id45">
+<h4>7.4.10.3. Result<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode</a>&nbsp;에
+정의된 제어
+결과 추가</td>
+</tr>
+<tr class="row-odd"><td>addInfo</td>
+<td>String</td>
+<td>O</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="blackbox-image-capture-rpc">
+<h3>7.4.11. Blackbox Image Capture RPC<a class="headerlink" href="#blackbox-image-capture-rpc" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">원격으로 블랙박스 이미지 캡쳐를 요청하는 메시지입니다.</p>
+<div class="section" id="id46">
+<h4>7.4.11.1. Request<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="8%" />
+<col width="10%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>method</td>
+<td>String</td>
+<td>M</td>
+<td><code class="docutils literal"><span class="pre">bbxcapimgReq</span></code></td>
+</tr>
+<tr class="row-odd"><td>params</td>
+<td>String</td>
+<td>M</td>
+<td><table border="1" class="first last docutils">
+<colgroup>
+<col width="15%" />
+<col width="13%" />
+<col width="15%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>url</td>
+<td>String</td>
+<td>O</td>
+<td>이미지가 업로드 될 URL
+명시되지 않는 경우 Default 경로</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id47">
+<h4>7.4.11.2. Response<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h4>
+<p>단말의 RPC 수신 여부를 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result">Common Response Code</a> 에 따라 명세 합니다.</p>
+</div>
+<div class="section" id="id48">
+<h4>7.4.11.3. Result<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>result</td>
+<td>String</td>
+<td>M</td>
+<td><a class="reference external" href="#common-response-code-for-rpc-result">resultCode</a>&nbsp;에
+정의된 제어
+결과 추가</td>
+</tr>
+<tr class="row-odd"><td>addInfo</td>
+<td>String</td>
+<td>O</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p><br /></p>
+</div>
+</div>
 <div class="section" id="common-response-code-for-rpc-result">
-<h3>8.4.8. Common Response Code for RPC Result<a class="headerlink" href="#common-response-code-for-rpc-result" title="Permalink to this headline">¶</a></h3>
+<h3>7.4.12. Common Response Code for RPC Result<a class="headerlink" href="#common-response-code-for-rpc-result" title="Permalink to this headline">¶</a></h3>
+<p>본 코드는 RPC를 수신한 단말이 수신 정상 여부 또는 제어에 대한 결과를 플랫폼 및 Application 에 전달하기 위한 값을 정의합니다.</p>
+<p>정의되지 않은 코드 이외에 Application을 위해 필요한 코드는 Application 시나리오에 따라 추가 가능하나 아래 <code class="docutils literal"><span class="pre">Code</span> <span class="pre">Class</span></code> 의 범위를 따라야 합니다.</p>
 <div class="section" id="code-class">
-<h4>8.4.8.1. Code Class<a class="headerlink" href="#code-class" title="Permalink to this headline">¶</a></h4>
+<h4>7.4.12.1. Code Class<a class="headerlink" href="#code-class" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="text-align-justify table-width-fix docutils">
 <colgroup>
 <col width="21%" />
@@ -3629,7 +3904,7 @@
 </table>
 </div>
 <div class="section" id="successful-response-class">
-<h4>8.4.8.2. Successful Response Class<a class="headerlink" href="#successful-response-class" title="Permalink to this headline">¶</a></h4>
+<h4>7.4.12.2. Successful Response Class<a class="headerlink" href="#successful-response-class" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="text-align-justify table-width-fix docutils">
 <colgroup>
 <col width="18%" />
@@ -3651,7 +3926,7 @@
 </table>
 </div>
 <div class="section" id="sensor-error-response-class">
-<h4>8.4.8.3. Sensor Error Response Class<a class="headerlink" href="#sensor-error-response-class" title="Permalink to this headline">¶</a></h4>
+<h4>7.4.12.3. Sensor Error Response Class<a class="headerlink" href="#sensor-error-response-class" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="text-align-justify table-width-fix docutils">
 <colgroup>
 <col width="12%" />
@@ -3692,10 +3967,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="simulator.html" class="btn btn-neutral float-right" title="9. 테스트용 시뮬레이터" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sdk.html" class="btn btn-neutral float-right" title="8. SDK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sdk.html" class="btn btn-neutral" title="7. SDK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral" title="6. API 규격" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -3726,7 +4001,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.0.1',
+            VERSION:'1.0.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

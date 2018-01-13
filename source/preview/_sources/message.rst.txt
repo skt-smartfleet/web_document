@@ -1235,20 +1235,7 @@ Request
 
 Response
 ^^^^^^^^
-
-.. rst-class:: table-width-fix
-.. rst-class:: text-align-justify
-
-+-----------------+-----------------+-----------------+-----------------+
-| Key             | Type            | M/O             | Description     |
-+=================+=================+=================+=================+
-| result          | String          | M               | `resultCode  <# |
-|                 |                 |                 | common-response |
-|                 |                 |                 | -code-for-rpc-r |
-|                 |                 |                 | esult>`__\ 에   |
-|                 |                 |                 | 정의된 제어     |
-|                 |                 |                 | 결과 추가       |
-+-----------------+-----------------+-----------------+-----------------+
+단말의 RPC 수신 여부를 `Common Response Code <http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result>`__ 에 따라 명세 합니다.
 
 .. _vendor-specific-msg-result:
 
@@ -1272,12 +1259,12 @@ Result
 |                 |                 |                 | 추가 정보 명세  |
 +-----------------+-----------------+-----------------+-----------------+
 
-Device Activation
-~~~~~~~~~~~~~~~~~
+Device Activation (OBD)
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. rst-class:: text-align-justify
 
-차량용 센서를 차량에 부착한 후 활성화하기 위해 필요한 RPC 메시지를 명세합니다.
+차량용 OBD 센서를 차량에 부착한 후 활성화하기 위해 필요한 RPC 메시지를 명세합니다.
 
 .. _device-activation-request:
 
@@ -1334,30 +1321,10 @@ Request
 
 Response
 ^^^^^^^^
-
-.. rst-class:: table-width-fix
-.. rst-class:: text-align-justify
-
-+-----------------+-----------------+-----------------+-----------------+
-| Key             | Type            | M/O             | Description     |
-+=================+=================+=================+=================+
-| result          | String          | M               | `resultCode <#c |
-|                 |                 |                 | ommon-response- |
-|                 |                 |                 | code-for-rpc-re |
-|                 |                 |                 | sult>`__ 에     |
-|                 |                 |                 | 정의된 제어     |
-|                 |                 |                 | 결과 추가       |
-+-----------------+-----------------+-----------------+-----------------+
-
-:underline:`Example Code` :
-
-.. code-block:: json
-
-    {
-        "result" : 2000
-    }
+단말의 RPC 수신 여부를 `Common Response Code <http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result>`__ 에 따라 명세 합니다.
 
 .. _device-activation-result:
+
 
 Result
 ^^^^^^
@@ -1424,34 +1391,14 @@ Request
         "method" : "fwupdate",
         "params" : {
             "pkv" : "1.0.1",
-            "url" : "ftp://smartfleet.sktelecom.com:10011"
+            "url" : "ftps://smartfleet.sktelecom.com:10011/dev0001/fw_1_1_3.dat"
         }
     }
 
 Response
 ^^^^^^^^
+단말의 RPC 수신 여부를 `Common Response Code <http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result>`__ 에 따라 명세 합니다.
 
-.. rst-class:: table-width-fix
-.. rst-class:: text-align-justify
-
-+-----------------+-----------------+-----------------+-----------------+
-| Key             | Type            | M/O             | Description     |
-+=================+=================+=================+=================+
-| result          | String          | M               | `resultCode  <# |
-|                 |                 |                 | common-response |
-|                 |                 |                 | -code-for-rpc-r |
-|                 |                 |                 | esult>`__\ 에   |
-|                 |                 |                 | 정의된 제어     |
-|                 |                 |                 | 결과 추가       |
-+-----------------+-----------------+-----------------+-----------------+
-
-:underline:`Example Code` :
-
-.. code-block:: json
-
-    {
-        "result" : 2000
-    }
 
 OBD Reset
 ~~~~~~~~~~
@@ -1485,28 +1432,8 @@ Request
 
 Response
 ^^^^^^^^
+단말의 RPC 수신 여부를 `Common Response Code <http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result>`__ 에 따라 명세 합니다.
 
-.. rst-class:: text-align-justify
-.. rst-class:: table-width-fix
-
-+-----------------+-----------------+-----------------+-----------------+
-| Key             | Type            | M/O             | Description     |
-+=================+=================+=================+=================+
-| result          | String          | M               | `resultCode  <# |
-|                 |                 |                 | common-response |
-|                 |                 |                 | -code-for-rpc-r |
-|                 |                 |                 | esult>`__\ 에   |
-|                 |                 |                 | 정의된 제어     |
-|                 |                 |                 | 결과 추가       |
-+-----------------+-----------------+-----------------+-----------------+
-
-:underline:`Example Code` :
-
-.. code-block:: json
-
-    {
-        "result" : 2000
-    }
 
 Result
 ^^^^^^
@@ -1568,28 +1495,8 @@ Request
 
 Response
 ^^^^^^^^
+단말의 RPC 수신 여부를 `Common Response Code <http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result>`__ 에 따라 명세 합니다.
 
-.. rst-class:: text-align-justify
-.. rst-class:: table-width-fix
-
-+-----------------+-----------------+-----------------+-----------------+
-| Key             | Type            | M/O             | Description     |
-+=================+=================+=================+=================+
-| result          | String          | M               | `resultCode  <# |
-|                 |                 |                 | common-response |
-|                 |                 |                 | -code-for-rpc-r |
-|                 |                 |                 | esult>`__\ 에   |
-|                 |                 |                 | 정의된 제어     |
-|                 |                 |                 | 결과 추가       |
-+-----------------+-----------------+-----------------+-----------------+
-
-:underline:`Example Code` :
-
-.. code-block:: json
-
-    {
-        "result" : 2000
-    }
 
 Result
 ^^^^^^
@@ -1651,30 +1558,10 @@ Request
         "params" : ""
     }
 
+
 Response
 ^^^^^^^^
-
-.. rst-class:: text-align-justify
-.. rst-class:: table-width-fix
-
-+-----------------+-----------------+-----------------+-----------------+
-| Key             | Type            | M/O             | Description     |
-+=================+=================+=================+=================+
-| result          | String          | M               | `resultCode  <# |
-|                 |                 |                 | common-response |
-|                 |                 |                 | -code-for-rpc-r |
-|                 |                 |                 | esult>`__\ 에   |
-|                 |                 |                 | 정의된 제어     |
-|                 |                 |                 | 결과 추가       |
-+-----------------+-----------------+-----------------+-----------------+
-
-:underline:`Example Code` :
-
-.. code-block:: json
-
-    {
-        "result" : 2000
-    }
+단말의 RPC 수신 여부를 `Common Response Code <http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result>`__ 에 따라 명세 합니다.
 
 Result
 ^^^^^^
@@ -1749,28 +1636,8 @@ Request
 
 Response
 ^^^^^^^^
+단말의 RPC 수신 여부를 `Common Response Code <http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result>`__ 에 따라 명세 합니다.
 
-.. rst-class:: text-align-justify
-.. rst-class:: table-width-fix
-
-+-----------------+-----------------+-----------------+-----------------+
-| Key             | Type            | M/O             | Description     |
-+=================+=================+=================+=================+
-| result          | String          | M               | `resultCode  <# |
-|                 |                 |                 | common-response |
-|                 |                 |                 | -code-for-rpc-r |
-|                 |                 |                 | esult>`__\ 에   |
-|                 |                 |                 | 정의된 제어     |
-|                 |                 |                 | 결과 추가       |
-+-----------------+-----------------+-----------------+-----------------+
-
-:underline:`Example Code` :
-
-.. code-block:: json
-
-    {
-        "result" : 2000
-    }
 
 Result
 ^^^^^^
@@ -1799,8 +1666,218 @@ Result
         "result" : 2000
     }
 
+
+
+Blackbox Authentication RPC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: text-align-justify
+
+블랙박스 인증을 위한 RPC 메시지입니다.
+
+Request
+^^^^^^^
+
+========  =======  ========  ========================================================
+Key       Type     M/O       Description
+========  =======  ========  ========================================================
+method    String   M         ``bbxauthReq``
+params    String   M         N/A
+========  =======  ========  ========================================================
+
+Response
+^^^^^^^^
+단말의 RPC 수신 여부를 `Common Response Code <http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result>`__ 에 따라 명세 합니다.
+
+
+Result
+^^^^^^
+
+.. rst-class:: text-align-justify
+.. rst-class:: table-width-fix
+
++-----------------+-----------------+-----------------+-----------------+
+| Key             | Type            | M/O             | Description     |
++=================+=================+=================+=================+
+| result          | String          | M               | `resultCode <#c |
+|                 |                 |                 | ommon-response- |
+|                 |                 |                 | code-for-rpc-re |
+|                 |                 |                 | sult>`__ 에     |
+|                 |                 |                 | 정의된 제어     |
+|                 |                 |                 | 결과 추가       |
++-----------------+-----------------+-----------------+-----------------+
+| addInfo         | String          | O               | N/A             |
++-----------------+-----------------+-----------------+-----------------+
+
+
+Blackbox Power Off RPC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: text-align-justify
+
+원격으로 블랙박스를 종료하기 위한 메시지입니다.
+
+Request
+^^^^^^^
+
+========  =======  ========  ========================================================
+Key       Type     M/O       Description
+========  =======  ========  ========================================================
+method    String   M         ``bbxpwroffReq``
+params    String   M         N/A
+========  =======  ========  ========================================================
+
+Response
+^^^^^^^^
+단말의 RPC 수신 여부를 `Common Response Code <http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result>`__ 에 따라 명세 합니다.
+
+
+Result
+^^^^^^
+
+.. rst-class:: text-align-justify
+.. rst-class:: table-width-fix
+
++-----------------+-----------------+-----------------+-----------------+
+| Key             | Type            | M/O             | Description     |
++=================+=================+=================+=================+
+| result          | String          | M               | `resultCode <#c |
+|                 |                 |                 | ommon-response- |
+|                 |                 |                 | code-for-rpc-re |
+|                 |                 |                 | sult>`__ 에     |
+|                 |                 |                 | 정의된 제어     |
+|                 |                 |                 | 결과 추가       |
++-----------------+-----------------+-----------------+-----------------+
+| addInfo         | String          | O               | N/A             |
++-----------------+-----------------+-----------------+-----------------+
+
+
+Blackbox Remote Setting RPC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: text-align-justify
+
+원격으로 블랙박스를 설정하기 위한 메시지입니다.
+
+Request
+^^^^^^^
+
+========  =======  ========  ========================================================
+Key       Type     M/O       Description
+========  =======  ========  ========================================================
+method    String   M         ``bbxsettingReq``
+params    object   M         ========  =======  ========  ==========================
+                             Key       Type     M/O       Description
+                             ========  =======  ========  ==========================
+                             fqual     Int      O         전방카메라 영상품질 설정
+                             fsharp    Int      O         전방카메라 선명도 설정
+                             fntbr     Int      O         전방카메라 야간영상밝기 설정
+                             fnv       Int      O         전방카메라 Nightvision 설정
+                             fmode     Int      O         전방카메라 영상모드 설정 
+                             rqual     Int      O         후방카메라 영상품질 설정
+                             rntbr     Int      O         후방카메라 야간영상밝기 설정
+                             rprec     Int      O         후방카메라 주차녹화 설정
+                             dcs       Int      O         주행 충돌 민감도 설정
+                             pcs       Int      O         주차 충돌 민감도 설정
+                             fms       Int      O         전방 모션 민감도 설정
+                             rms       Int      O         후방 모션 민감도 설정
+                             spk       Int      O         스피커 볼륨 설정
+                             mic       Int      O         마이크 볼륨 설정
+                             cutps     Int      O         주차시 시스템 차단 온도 설정
+                             cutpl     Int      O         주차시 LCD 차단 온도 설정
+                             parke     Int      O         주차 모드 활성화 여부 설정
+                             cuv       Int      O         주차시 전원 차단 전압 설정
+                             cutm      Int      O         주차시 전원 차단 온도 설정
+                             loff      Int      O         라이브뷰 화면 설정
+                             lbr       Int      O         LCD 화면 밝기 설정
+                             boot      Int      O         부팅시 PIP 화면 설정
+                             menu      Int      O         메뉴 상시 보임 설정
+                             led       Int      O         시큐리티 LED 설정
+                             pet       Int      O         주차 충격 감지 타이머 설정
+                             ========  =======  ========  ==========================
+========  =======  ========  ========================================================
+
+Response
+^^^^^^^^
+단말의 RPC 수신 여부를 `Common Response Code <http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result>`__ 에 따라 명세 합니다.
+
+
+Result
+^^^^^^
+
+.. rst-class:: text-align-justify
+.. rst-class:: table-width-fix
+
++-----------------+-----------------+-----------------+-----------------+
+| Key             | Type            | M/O             | Description     |
++=================+=================+=================+=================+
+| result          | String          | M               | `resultCode <#c |
+|                 |                 |                 | ommon-response- |
+|                 |                 |                 | code-for-rpc-re |
+|                 |                 |                 | sult>`__ 에     |
+|                 |                 |                 | 정의된 제어     |
+|                 |                 |                 | 결과 추가       |
++-----------------+-----------------+-----------------+-----------------+
+| addInfo         | String          | O               | N/A             |
++-----------------+-----------------+-----------------+-----------------+
+
+
+Blackbox Image Capture RPC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: text-align-justify
+
+원격으로 블랙박스 이미지 캡쳐를 요청하는 메시지입니다.
+
+Request
+^^^^^^^
+
+========  =======  ========  ========================================================
+Key       Type     M/O       Description
+========  =======  ========  ========================================================
+method    String   M         ``bbxcapimgReq``
+params    String   M         ========  =======  ========  ==========================
+                             Key       Type     M/O       Description
+                             ========  =======  ========  ==========================
+                             url       String   O         이미지가 업로드 될 URL 
+                                                          명시되지 않는 경우 Default 경로
+                             ========  =======  ========  ==========================
+========  =======  ========  ========================================================
+
+Response
+^^^^^^^^
+단말의 RPC 수신 여부를 `Common Response Code <http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result>`__ 에 따라 명세 합니다.
+
+
+Result
+^^^^^^
+
+.. rst-class:: text-align-justify
+.. rst-class:: table-width-fix
+
++-----------------+-----------------+-----------------+-----------------+
+| Key             | Type            | M/O             | Description     |
++=================+=================+=================+=================+
+| result          | String          | M               | `resultCode <#c |
+|                 |                 |                 | ommon-response- |
+|                 |                 |                 | code-for-rpc-re |
+|                 |                 |                 | sult>`__ 에     |
+|                 |                 |                 | 정의된 제어     |
+|                 |                 |                 | 결과 추가       |
++-----------------+-----------------+-----------------+-----------------+
+| addInfo         | String          | O               | N/A             |
++-----------------+-----------------+-----------------+-----------------+
+
+
+
+|br|
+
 Common Response Code for RPC Result
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+본 코드는 RPC를 수신한 단말이 수신 정상 여부 또는 제어에 대한 결과를 플랫폼 및 Application 에 전달하기 위한 값을 정의합니다.
+
+정의되지 않은 코드 이외에 Application을 위해 필요한 코드는 Application 시나리오에 따라 추가 가능하나 아래 ``Code Class`` 의 범위를 따라야 합니다.
 
 Code Class
 ^^^^^^^^^^^

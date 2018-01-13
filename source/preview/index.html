@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Smart[Fleet] 파트너 구축 가이드 &mdash; Smart[Fleet] Platform 1.0.1 documentation</title>
+  <title>Smart[Fleet] 파트너 구축 가이드 &mdash; Smart[Fleet] Platform 1.0.2 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Smart[Fleet] Platform 1.0.1 documentation" href="#"/>
+    <link rel="top" title="Smart[Fleet] Platform 1.0.2 documentation" href="#"/>
         <link rel="next" title="1. Smart[Fleet] 플랫폼 소개" href="introduction.html"/> 
 
   
@@ -98,8 +98,8 @@
 <li class="toctree-l1"><a class="reference internal" href="entity.html">4. 구성요소(Entity) 등록</a></li>
 <li class="toctree-l1"><a class="reference internal" href="device.html">5. Device 연동 절차</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">6. API 규격</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sdk.html">7. SDK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="message.html">8. 메시지 포맷</a></li>
+<li class="toctree-l1"><a class="reference internal" href="message.html">7. 메시지 포맷</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk.html">8. SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="simulator.html">9. 테스트용 시뮬레이터</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bestpractice.html">10. Best Practices</a></li>
 </ul>
@@ -169,9 +169,9 @@
 <h1>Smart[Fleet] 파트너 구축 가이드<a class="headerlink" href="#smart-fleet" title="Permalink to this headline">¶</a></h1>
 <table border="1" class="table-width-fix docutils">
 <colgroup>
-<col width="16%" />
-<col width="36%" />
-<col width="48%" />
+<col width="13%" />
+<col width="30%" />
+<col width="57%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Version</th>
@@ -186,7 +186,12 @@
 </tr>
 <tr class="row-odd"><td>1.0.1</td>
 <td>2018/01/06</td>
-<td>add Best Practice case</td>
+<td>Add Best Practice case</td>
+</tr>
+<tr class="row-even"><td>1.0.2</td>
+<td>2018/01/13</td>
+<td>Add Blackbox Dev. Message
+<br /> Modify Message Type Definition</td>
 </tr>
 </tbody>
 </table>
@@ -286,56 +291,60 @@
 <li class="toctree-l2"><a class="reference internal" href="api.html#entity-model">6.2. Entity Model</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="sdk.html">7. SDK</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sdk.html#embedded-c">7.1. Embedded C</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="sdk.html#source">7.1.1. 소스 (Source) &amp; 도구</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sdk.html#id1">7.1.2. 사용 방법 및 제공 라이브러리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="message.html">7. 메시지 포맷</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="message.html#id2">7.1. 메시지 기본 구조</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="message.html#message-format-for-sensor">7.1.1. 메시지 타입</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html#aggregated-microtrip">7.1.2. Aggregated Microtrip</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="sdk.html#android">7.2. Android</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="sdk.html#id2">7.2.1. 소스 (Source) &amp; 도구</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sdk.html#id3">7.2.2. 사용 방법 및 제공 라이브러리</a></li>
+<li class="toctree-l2"><a class="reference internal" href="message.html#id6">7.2. 센서 타입별 주기보고 메시지 포맷</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="message.html#gps">7.2.1. GPS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html#obd">7.2.2. OBD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html#adas">7.2.3. ADAS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html#blackbox">7.2.4. BlackBox</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="sdk.html#ios">7.3. iOS</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="sdk.html#id4">7.3.1. 소스 (Source) &amp; 도구</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sdk.html#id5">7.3.2. 사용 방법 및 제공 라이브러리</a></li>
+<li class="toctree-l2"><a class="reference internal" href="message.html#event-message-format">7.3. 이벤트 데이터 포맷</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="message.html#id13">7.3.1. Message Header</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html#event-message-format-payload-type">7.3.2. Payload Type</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="sdk.html#java">7.4. JAVA</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="sdk.html#id6">7.4.1. 소스 (Source) &amp; 도구</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sdk.html#id7">7.4.2. 사용 방법 및 제공 라이브러리</a></li>
+<li class="toctree-l2"><a class="reference internal" href="message.html#rpc">7.4. RPC 메시지 포맷</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="message.html#vendor-specific-message">7.4.1. Vendor Specific Message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html#device-activation-obd">7.4.2. Device Activation (OBD)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html#firmware-update">7.4.3. Firmware Update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html#obd-reset">7.4.4. OBD Reset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html#device-serial-number-check">7.4.5. Device Serial Number Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html#clear-device-data">7.4.6. Clear Device Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html#firmware-update-chunk-based">7.4.7. Firmware Update (Chunk-based)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html#blackbox-authentication-rpc">7.4.8. Blackbox Authentication RPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html#blackbox-power-off-rpc">7.4.9. Blackbox Power Off RPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html#blackbox-remote-setting-rpc">7.4.10. Blackbox Remote Setting RPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html#blackbox-image-capture-rpc">7.4.11. Blackbox Image Capture RPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html#common-response-code-for-rpc-result">7.4.12. Common Response Code for RPC Result</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="message.html">8. 메시지 포맷</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="message.html#id2">8.1. 메시지 기본 구조</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="message.html#message-format-for-sensor">8.1.1. 메시지 타입</a></li>
-<li class="toctree-l3"><a class="reference internal" href="message.html#aggregated-microtrip">8.1.2. Aggregated Microtrip</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk.html">8. SDK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sdk.html#embedded-c">8.1. Embedded C</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sdk.html#source">8.1.1. 소스 (Source) &amp; 도구</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdk.html#id1">8.1.2. 사용 방법 및 제공 라이브러리</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="message.html#id6">8.2. 센서 타입별 주기보고 메시지 포맷</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="message.html#gps">8.2.1. GPS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="message.html#obd">8.2.2. OBD</a></li>
-<li class="toctree-l3"><a class="reference internal" href="message.html#adas">8.2.3. ADAS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="message.html#blackbox">8.2.4. BlackBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk.html#android">8.2. Android</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sdk.html#id2">8.2.1. 소스 (Source) &amp; 도구</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdk.html#id3">8.2.2. 사용 방법 및 제공 라이브러리</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="message.html#event-message-format">8.3. 이벤트 데이터 포맷</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="message.html#id13">8.3.1. Message Header</a></li>
-<li class="toctree-l3"><a class="reference internal" href="message.html#event-message-format-payload-type">8.3.2. Payload Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk.html#ios">8.3. iOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sdk.html#id4">8.3.1. 소스 (Source) &amp; 도구</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdk.html#id5">8.3.2. 사용 방법 및 제공 라이브러리</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="message.html#rpc">8.4. RPC 메시지 포맷</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="message.html#vendor-specific-message">8.4.1. Vendor Specific Message</a></li>
-<li class="toctree-l3"><a class="reference internal" href="message.html#device-activation">8.4.2. Device Activation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="message.html#firmware-update">8.4.3. Firmware Update</a></li>
-<li class="toctree-l3"><a class="reference internal" href="message.html#obd-reset">8.4.4. OBD Reset</a></li>
-<li class="toctree-l3"><a class="reference internal" href="message.html#device-serial-number-check">8.4.5. Device Serial Number Check</a></li>
-<li class="toctree-l3"><a class="reference internal" href="message.html#clear-device-data">8.4.6. Clear Device Data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="message.html#firmware-update-chunk-based">8.4.7. Firmware Update (Chunk-based)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="message.html#common-response-code-for-rpc-result">8.4.8. Common Response Code for RPC Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk.html#java">8.4. JAVA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sdk.html#id6">8.4.1. 소스 (Source) &amp; 도구</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdk.html#id7">8.4.2. 사용 방법 및 제공 라이브러리</a></li>
 </ul>
 </li>
 </ul>
@@ -399,7 +408,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.0.1',
+            VERSION:'1.0.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
