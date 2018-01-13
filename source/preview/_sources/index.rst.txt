@@ -7,7 +7,7 @@
 
   <br />
 
-Smart[Fleet] 파트너 구축 가이드
+Smart[Fleet] Platform Web Document
 =======================================
 
 .. rst-class:: table-width-fix
