@@ -14,7 +14,7 @@ Smart[Fleet] Platform Web Document
 
 SK Telecom의 Connected Car 플랫폼인 Smart[Fleet] 플랫폼의 개발자를 위한 Web Document 입니다.
 
-기술적인 질문은 openhouse@wiznet.io 으로 부탁 드립니다.
+기술적인 질문은 admin@smartfleet.sktelecom.com 으로 부탁 드립니다.
 
 
 |br|
@@ -35,6 +35,7 @@ Contents:
    sdk
    simulator
    bestpractice
+   miscellaneous
 
 
 Change Logs:

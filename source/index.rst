@@ -35,6 +35,7 @@ Contents:
    sdk
    simulator
    bestpractice
+   miscellaneous
 
 
 Change Logs:
@@ -49,4 +50,6 @@ Change Logs:
 | 1.0.2   | 2018/01/13         | Add Blackbox Dev. Message              |
 |         |                    | |br| Modify Message Type Definition    |
 |         |                    | |br| Modify Director Entity Property   |
++---------+--------------------+----------------------------------------+
+| 1.0.3   | 2018/02/06         | Add Swing Interworking                 |
 +---------+--------------------+----------------------------------------+
