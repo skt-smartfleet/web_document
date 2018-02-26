@@ -231,6 +231,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sdk.html">8. SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="simulator.html">9. 테스트용 시뮬레이터</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bestpractice.html">10. Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="miscellaneous.html">11. Miscellaneous</a></li>
 </ul>
 
             
@@ -2679,12 +2680,15 @@
 <li>블랙박스 알람 종류</li>
 </ul>
 <ol class="last arabic simple" start="0">
-<li>주차 충격ㄱ</li>
+<li>주차 충격</li>
 <li>주행 중 큰 충격</li>
 <li>주행 중 위험 운전</li>
 <li>주차 중 배터리 저전압</li>
 <li>주차 중 고온</li>
 <li>긴급 녹화</li>
+<li>LDW (Left)</li>
+<li>LDW (Right)</li>
+<li>FCW</li>
 </ol>
 </td>
 </tr>
@@ -2703,8 +2707,21 @@
 <td>O</td>
 <td>블랙박스 알람 시간</td>
 </tr>
+<tr class="row-even"><td>ldws</td>
+<td>Int</td>
+<td>O</td>
+<td>인지 알람이 LDW(Left/Right) 인 경우,
+차량이 차선을 벗어난 정도 (단위 : Centimeter)</td>
+</tr>
+<tr class="row-odd"><td>fcws</td>
+<td>Int</td>
+<td>0</td>
+<td>인지 알림이 FCW 인 경우,
+차량의 선행 차량과의 간격 (단위 : Centimeter)</td>
+</tr>
 </tbody>
 </table>
+<p><br /></p>
 </div>
 </div>
 </div>
