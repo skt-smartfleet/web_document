@@ -80,6 +80,8 @@ ty         설명
 6          ADAS 단말의 MicroTrip 메시지
 7          BlackBox 단말의 Trip 메시지
 8          BlackBox 단말의 MicroTrip 메시지 
+9          DTG 단말의 Trip 메세지
+10         DTG 단말의 MicroTrip 메시지
 =========  ==================================
 
 이벤트 메세지 타입
@@ -98,10 +100,11 @@ ty         설명
 106        차량 센서 종료 이벤트 메시지
 107        ADAS 센서가 감지한 이벤트 메시지
 108        BlackBox 부팅 이벤트 메시지 
-109        BlackBox 모드 변경 이벤트 메시지
+109        BlackBox 모드 변경 이벤트 메시지ㄱ
 110        BlackBox 세팅 이벤트 메시지
 111        BlackBox 이미지 업로드 리포트 메시지
 112        BlackBox 센서 인식 이벤트 메시지
+113        차량 내 온도 센서의 이벤트 메시지
 =========  ==================================
 
 
@@ -689,7 +692,7 @@ Payload Type
 BlackBox Trip
 #############
 
-BlackBox Trip 메세지는 BlackBox 단말이 주행 또는 주차 상태를 완료한 경우에 사용하는 메시지 포맷입니다. 단 BlackBox의 Trip은 주행과 주차로 설정합니다.
+BlackBox Trip 메세지는 BlackBox 장착한 차량이 주행 또는 주차 상태를 완료한 경우에 사용하는 메시지 포맷입니다. 단 BlackBox의 Trip은 주행과 주차로 설정합니다.
 
 .. rst-class:: table-width-fix
 .. rst-class:: text-align-justify
@@ -739,6 +742,7 @@ BlackBox Microtrip 메세지는 Blackbox 단말에서 인지한 정보를 주기
 Key       Type     M/O       Description
 ========  =======  ========  ======================================================================
 tid       Int      M         Trip 고유 번호
+clt       Int      M         단말기 기준 수집 시간
 try       Int      M         - Trip 타입
 
                              1. Driving
@@ -766,6 +770,129 @@ tim       Int      O         주차 시간 (or 주차 남은 시간) ``Mandatory
             "sp" : 113,
         }
     }
+
+
+DTG
+~~~
+
+DTG 단말에서 발생한 데이터를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다.
+
+Message Header
+^^^^^^^^^^^^^^
+
+.. rst-class:: table-width-fix
+.. rst-class:: text-align-justify
+
+========  =======  ========  ========================================
+Key       Type     M/O       Description
+========  =======  ========  ========================================
+ty        Int      M         - 전달하고자 하는 페이로드 타입
+
+                             9. Trip_DTG_
+                             10. Microtrip_DTG_
+
+ts        Int      O         정보 수집 시간
+pld                M         아래 각 페이로드 메시지를 참고
+========  =======  ========  ========================================
+
+
+Payload Type
+^^^^^^^^^^^^^^
+
+.. _Trip_DTG:
+
+DTG Trip
+#############
+
+DTG Trip 메세지는 DTG 단말을 장착한 차량이 주행을 완료한 경우에 사용하는 메시지 포맷입니다. 
+
+.. rst-class:: table-width-fix
+.. rst-class:: text-align-justify
+
+========  =======  ========  ========================================================
+Key       Type     M/O       Description
+========  =======  ========  ========================================================
+tid       Int      M         Trip 고유 번호
+lat       Int      M         운행 종료 시 위도 (WGS84)
+lon       Int      M         운행 종료 시 경도 (WGS84)
+dmid      String   O         DTG 모델명
+vin       String   O         차대 번호
+vcat      Int      O         차량 유형 정보
+vrid      String   O         자동차 등록 번호
+vbid      String   O         운송 사업 번호
+did       String   O         운전자 코드
+========  =======  ========  ========================================================
+
+:underline:`Example Code` :
+
+.. code-block:: json
+
+    {
+        "ts" : 1505434907995,
+        "ty" : 9,
+        "pld" : {
+            "tid" : 11123,
+            "lon" : 127.114513,
+            "lat" : 37.380241,
+            "dmid" : "923adf023123",
+            "did" : "4c3e65f0-265a-11e8-a3f8-d3c31ebad2b2"
+        }
+    }
+
+.. _Microtrip_DTG:
+
+DTG Microtrip
+##################
+
+.. rst-class:: text-align-justify
+
+DTG Microtrip 메세지는 DTG 단말에서 인지한 정보를 주기적으로 플랫폼에 전달하는  메시지 포맷입니다. 일반적으로는 ADAS와 GPS가 함께 있는 경우에 활용하며, 메시지는 ADAS 부착 차량의 운행 시작부터 운행 종료까지 주기적으로 전송합니다.
+
+.. rst-class:: table-width-fix
+.. rst-class:: text-align-justify
+
+========  =======  ========  ======================================================================
+Key       Type     M/O       Description
+========  =======  ========  ======================================================================
+tid       Int      M         Trip 고유 번호
+clt       Int      M         단말기 기준 수집 시간
+dtr       Int      M         일일 주행 거리
+dctr      Int      M         누적 주행 거리
+sp        Int      M         차량 속도 (km/h)
+rpm       Int      M         RPM
+bsg       Int      M         0 (brake off), 1 (brake on)
+lat       Int      M         위도 (WGS84) 
+lon       Int      M         경도 (WGS84) 
+gan       Int      M         GPS 방위각 (0 ~ 359, 진북 기준)
+acx       String   M         가속도 x-axis (Vx, -1000 ~ +1000)
+acy       String   M         가속도 y-axis (Vy, -1000 ~ +1000)
+========  =======  ========  ======================================================================
+
+:underline:`Example Code` :
+
+.. code-block:: json
+
+    {
+        "ts" : 1505434907995,
+        "ty" : 6,
+        "pld" : {
+            "tid" : 11123,
+            "lon" : 127.114513,
+            "lat" : 37.380241,
+            "sp" : 113,
+            "dtr" : 1,
+            "dctr" : 9800,
+            "rpm" : 2100,
+            "bsg" : 0,
+            "gag" : 90, 
+            "acx" : "150",
+            "acy" : "-150"
+        }
+    }
+
+
+
+|br|
 
 .. _event-message-format:
 
