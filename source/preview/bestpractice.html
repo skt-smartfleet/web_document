@@ -38,6 +38,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Smart[Fleet] Platform 1.0.2 documentation" href="index.html"/>
+        <link rel="next" title="11. Miscellaneous" href="miscellaneous.html"/>
         <link rel="prev" title="9. 테스트용 시뮬레이터" href="simulator.html"/> 
 
   
@@ -107,8 +108,17 @@
 <li class="toctree-l3"><a class="reference internal" href="#id1">10.1.2. Push 메시지 수신을 위한 서버 기동</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#fota">10.2. FOTA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-information">10.2.1. General Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#architecture">10.2.2. Architecture</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fota-by-portal">10.2.2.1. FOTA by Portal</a></li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="miscellaneous.html">11. Miscellaneous</a></li>
 </ul>
 
             
@@ -227,7 +237,7 @@ API를 통해 아래 2가지 Key 정보를 상황에 맞추어 수정하면 됩�
 메시지를 수신하기 위해서는 HTTP 서버 운용하여야 합니다.</p>
 <p>간단한 테스트를 위해 node.js 기반의 HTTP 서버를 AWS 인스턴스에 기동하여 정상적으로 메시지를 수신하는 테스트를 진행합니다.</p>
 <p>아래는 node.js의 express 모듈을 통해 구현된 HTTP POST 요청을 수신하고 응답하는 코드입니다. node.js 및 express 모듈에 대한 설명은 생략 합니다.</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span><span class="nx">ㄱ</span>
 
 <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
 <span class="kd">var</span> <span class="nx">jsonData</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
@@ -243,6 +253,56 @@ API를 통해 아래 2가지 Key 정보를 상황에 맞추어 수정하면 됩�
 </div>
 <p>상기 코드를 AWS 인스턴스에 구동시키고 Smart[Fleet] 프로토콜을 준수하는 단말이 메시지를 플랫폼에 전달하면, 다음과 같이 Push 메시지가 전달 되는 것을 볼 수 있습니다.</p>
 <img alt="_images/push_log.png" src="_images/push_log.png" />
+<p><br /></p>
+</div>
+</div>
+<div class="section" id="fota">
+<h2>10.2. FOTA<a class="headerlink" href="#fota" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="general-information">
+<h3>10.2.1. General Information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h3>
+<p>본 장에서는 Smart[Fleet]을 통해서 FOTA <code class="docutils literal"><span class="pre">Firmware</span> <span class="pre">Over</span> <span class="pre">The</span> <span class="pre">Air</span></code> 를 수행하는 방법에 대해서 기술합니다.</p>
+<p>Smart[Fleet] 플랫폼에 정상적으로 등록한 단말은 다음과 같이 2가지 방법을 통해서 FOTA를 수행합니다.</p>
+<ol class="arabic simple">
+<li>By Portal - Smart[Fleet] 홈페이지를 통해서 FOTA를 요청하는 방법</li>
+<li>By RPC - Smart[Fleet]의 RPC를 통해서 FOTA를 요청하는 방법</li>
+</ol>
+</div>
+<div class="section" id="architecture">
+<h3>10.2.2. Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h3>
+<p>상기 언급된 2가지 FOTA 방식에 대한 Smart[Fleet]의 구조는 아래와 같습니다.
+FOTA는 실제적으로는 Smart[Fleet]에 있는 RPC에 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#firmware-update">Firmware Update RPC</a> 방식을 따릅니다.</p>
+<img alt="_images/FOTA_arc.png" src="_images/FOTA_arc.png" />
+<div class="section" id="fota-by-portal">
+<h4>10.2.2.1. FOTA by Portal<a class="headerlink" href="#fota-by-portal" title="Permalink to this headline">¶</a></h4>
+<p>본 방법은 FOTA를 Smart[Fleet]의 홈페이지를 이용하여 진행하는 방법을 기술합니다.</p>
+<p class="text-align-justify">1. 홈페이지에 Firmware를 저장합니다. Firmware를 저장할 때는 아래의
+홈페이지에 FOTA 메뉴 하단에 <code class="docutils literal"><span class="pre">펌웨어</span></code> 를 클릭합니다.</p>
+<img alt="_images/FOTA_menu.png" src="_images/FOTA_menu.png" />
+<p class="text-align-justify">2. 아래와 같이 펌웨어에 대한 기본 정보와 펌웨어 파일을 올립니다.
+Smart[Fleet]에서는 같은 서비스 내 등록된 단말 타입과 제조사명을 기반으로 Firmware를 구분합니다.</p>
+<p>예를 들면, 아래 그림과 같이 <code class="docutils literal"><span class="pre">SK</span> <span class="pre">Telecom</span></code> 이 제조한 <code class="docutils literal"><span class="pre">GPS</span></code> 단말이 해당 서비스에 1,000대가 있다고 가정하면,
+지금 등록하는 Firmware는 해당 1,000대 적용되는 Firmware라고 보시면 됩니다.</p>
+<img alt="_images/Firmware_Reg.png" src="_images/Firmware_Reg.png" />
+<p>3. 진행하고자 하는 FOTA를 설정합니다. 아래 그림과 같이 진행하고자 하는 센서 타입을 설정하고, 업데이트 할 펌웨어 버전을 선택하고,
+마지막으로 FOTA를 수행할 시간을 설정합니다. 설정한 시간에 맞추어 Smart[Fleet] 포털에서 상기 신청한 센서 타입의 센서에
+일괄 FOTA를 위한 RPC를 전달합니다.</p>
+<img alt="_images/FOTA_Registration.png" src="_images/FOTA_Registration.png" />
+<p>4. 3번 과정을 정상적으로 진행하면,
+아래와 같은 FOTA 진행 현황을 보실 수 있습니다. FOTA 상태 항목에는 <code class="docutils literal"><span class="pre">처리중</span></code> 이라는 상태를 파악하실 수 있습니다.</p>
+<img alt="_images/FOTA_In_Progress.png" class="text-align-justify" src="_images/FOTA_In_Progress.png" />
+<p>5. Smart[Fleet] 시스템은 고객께서 3번 과정에 신청한 시간에 맞추어 단말에 RPC 요청을 전달합니다.
+해당 RPC에 대한 Protocol은 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#firmware-update">Firmware Update RPC</a> 방식을 따르며,
+Smart[Fleet] 단말 시뮬레이터를 기반으로 동작하면, 다음과 같이 RPC 메시지를 단말이 수신하는 것을 볼 수 있습니다.</p>
+<p>좀더 상세하게는 Firmware가 저장된 위치를 제공하므로써 단말이 해당 경로를 통해서 Firmware를 수신할 수 있도록 가이드 합니다.
+해당 위치는 상기 3번 과정에 명시된 Firmware 경로 정보와 동일합니다.</p>
+<img alt="_images/FOTA-Device.png" src="_images/FOTA-Device.png" />
+<p>6. FOTA RPC를 전송한 후에 결과를 모두 수신한
+Smart[Fleet]은 다음과 같이 FOTA 상태를 <code class="docutils literal"><span class="pre">완료</span></code> 로 명시합니다.</p>
+<img alt="_images/FOTA_done.png" src="_images/FOTA_done.png" />
+<p>7. 상세한 FOTA 정보는 6번 화면의 FOTA 상태를 클릭하면 아래와 같이 화면이 나오고, 아래 예제와 같이 FOTA가 실패한 경우에는
+FOTA 재신청을 요청할 수 있습니다. 해당 재시도는 실패한 단말에 대해서 진행합니다.</p>
+<img alt="_images/FOTA_done_detail.png" src="_images/FOTA_done_detail.png" />
+</div>
 </div>
 </div>
 </div>
@@ -256,6 +316,8 @@ API를 통해 아래 2가지 Key 정보를 상황에 맞추어 수정하면 됩�
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="miscellaneous.html" class="btn btn-neutral float-right" title="11. Miscellaneous" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="simulator.html" class="btn btn-neutral" title="9. 테스트용 시뮬레이터" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
