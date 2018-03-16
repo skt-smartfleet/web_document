@@ -562,6 +562,7 @@ ADAS Microtrip 메세지는 ADAS 단말에서 인지한 ADAS 및 GPS 위치 정�
 Key       Type     M/O       Description
 ========  =======  ========  ========================================================
 tid       Int      M         Trip 고유 번호
+clt       Int      M         단말기 기준 수집 시간
 lat       Int      M         위도 (WGS84)
 lon       Int      M         경도 (WGS84)
 dop       Int      O         Dilution of Precision 값 (based on NMEA protcol)
@@ -701,6 +702,7 @@ BlackBox Trip 메세지는 BlackBox 장착한 차량이 주행 또는 주차 상
 Key       Type     M/O       Description
 ========  =======  ========  ========================================================
 tid       Int      M         Trip 고유 번호
+clt       Int      M         단말기 기준 수집 시간
 lat       Int      M         운행 종료 시 위도 (WGS84)
 lon       Int      M         운행 종료 시 경도 (WGS84)
 try       Int      M         - Trip 타입
@@ -722,7 +724,8 @@ vlt       Int      M         자동차 배터리 전압 (운행 종료 시)
             "lon" : 127.114513,
             "lat" : 37.380241,
             "try" : 1,
-            "vlt" : 12.1
+            "vlt" : 12.1,
+            "clt" : 1502391230123
         }
     }
 
