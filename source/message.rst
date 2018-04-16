@@ -100,7 +100,7 @@ ty         설명
 106        차량 센서 종료 이벤트 메시지
 107        ADAS 센서가 감지한 이벤트 메시지
 108        BlackBox 부팅 이벤트 메시지 
-109        BlackBox 모드 변경 이벤트 메시지ㄱ
+109        BlackBox 모드 변경 이벤트 메시지
 110        BlackBox 세팅 이벤트 메시지
 111        BlackBox 이미지 업로드 리포트 메시지
 112        BlackBox 센서 인식 이벤트 메시지
@@ -703,9 +703,12 @@ Key       Type     M/O       Description
 ========  =======  ========  ========================================================
 tid       Int      M         Trip 고유 번호
 clt       Int      M         단말기 기준 수집 시간
-lat       Int      M         운행 종료 시 위도 (WGS84)
-lon       Int      M         운행 종료 시 경도 (WGS84)
-try       Int      M         - Trip 타입
+stlat     Int      M         운행 시작 시 위도 (WGS84)
+stlon     Int      M         운행 시작 시 경도 (WGS84)
+edlat     Int      M         운행 종료 시 위도 (WGS84)
+edlon     Int      M         운행 종료 시 경도 (WGS84)
+dis       Int      M         총 운행거리 (meter)
+try       Int      M         - 운행한 Trip 타입
 
                              1. Driving
                              2. Parking
@@ -721,8 +724,10 @@ vlt       Int      M         자동차 배터리 전압 (운행 종료 시)
         "ty" : 7,
         "pld" : {
             "tid" : 11123,
-            "lon" : 127.114513,
-            "lat" : 37.380241,
+            "stlon" : 127.114513,
+            "stlat" : 37.380241,
+            "edlon" : 127.114513,
+            "edlat" : 37.380241,
             "try" : 1,
             "vlt" : 12.1,
             "clt" : 1502391230123
@@ -1201,6 +1206,8 @@ auth      Int      M         단말 인증 정보
 fwv       String   M         단말 Firmware 버전
 bfwv      String   M         블랙박스 Firmware 버전
 bnm       String   M         블랙박스 모델명
+mfwv      String   M         모듈 펌웨어 버전
+sfwv      String   M         안전운전도우미 펌웨어 버전
 fqual     Int      O         전방카메라 영상품질 설정
 fsharp    Int      O         전방카메라 선명도 설정
 fntbr     Int      O         전방카메라 야간영상밝기 설정
@@ -1226,6 +1233,17 @@ boot      Int      O         부팅시 PIP 화면 설정
 menu      Int      O         메뉴 상시 보임 설정
 led       Int      O         시큐리티 LED 설정
 pet       Int      O         주차 충격 감지 타이머 설정
+cutt      Int      O         주차 시 전원차단 시간 설정
+ldws      Int      O         차선이탈 설정
+ldsl      Int      O         차선이탈 민감도 설정 (좌측)
+ldsr      Int      O         차선이탈 민감도 설정 (우측)
+ldwb      Int      O         차선이탈 경고음 설정 
+fcws      Int      O         전방추돌 설정
+fcwb      Int      O         전방추돌 경고음 설정
+fvsa      Int      O         앞차출발 설정
+fvs       Int      O         앞차출발 민감도 설정
+fvwb      Int      O         앞차출발 경고음 설정
+tlds      Int      O         신호등 알림 설정
 ========  =======  ========  ========================================================
 
 
@@ -1286,6 +1304,17 @@ boot      Int      O         부팅시 PIP 화면 설정
 menu      Int      O         메뉴 상시 보임 설정
 led       Int      O         시큐리티 LED 설정
 pet       Int      O         주차 충격 감지 타이머 설정
+cutt      Int      O         주차 시 전원차단 시간 설정
+ldws      Int      O         차선이탈 설정
+ldsl      Int      O         차선이탈 민감도 설정 (좌측)
+ldsr      Int      O         차선이탈 민감도 설정 (우측)
+ldwb      Int      O         차선이탈 경고음 설정 
+fcws      Int      O         전방추돌 설정
+fcwb      Int      O         전방추돌 경고음 설정
+fvsa      Int      O         앞차출발 설정
+fvs       Int      O         앞차출발 민감도 설정
+fvwb      Int      O         앞차출발 경고음 설정
+tlds      Int      O         신호등 알림 설정
 ========  =======  ========  ========================================================
 
                         
@@ -1301,9 +1330,12 @@ BlackBox 이미지 업로드 이벤트 메시지
 Key       Type     M/O       Description
 ========  =======  ========  ========================================================
 kind      Int      M         - 이미지 종류
-                             0. 사용자 요청 이미지
-                             1. 블랙박스 충격발생 이미지 
+                             0. 주차 이미지
+                             1. 주차 중 충격 이미지
+                             2. 주행 중 큰 충격 이미지
 url       String   M         업로드된 이미지 url
+lat       Int      O         위도 (WGS84)
+lon       Int      O         경도 (WGS84)
 ========  =======  ========  ========================================================
 
               
@@ -1325,9 +1357,15 @@ wid       Int      M         - 블랙박스 알람 종류
                              3. 주차 중 배터리 저전압
                              4. 주차 중 고온 
                              5. 긴급 녹화
-                             6. LDW (Left)
-                             7. LDW (Right)
-                             8. FCW 
+                             6. 주차중 전원오프 알림 (저전압)
+                             7. 주차중 전원오프 알림 (고온)
+                             8. 주차중 전원오프 알림 (주차시간)
+                             9. 주차중 전원오프 알림 (앱)
+                             10. 전원키 전원 오프 알림
+                             11. ACC 전원 오프 알림
+                             12. LDW (Left)
+                             13. LDW (Right)
+                             14. FCW 
 lat       Int      O         위도 (WGS84)
 lon       Int      O         경도 (WGS84)
 tim       Int      O         블랙박스 알람 시간
@@ -1933,6 +1971,17 @@ params    object   M         ========  =======  ========  ======================
                              menu      Int      O         메뉴 상시 보임 설정
                              led       Int      O         시큐리티 LED 설정
                              pet       Int      O         주차 충격 감지 타이머 설정
+                             cutt      Int      O         주차 시 전원차단 시간 설정
+                             ldws      Int      O         차선이탈 설정
+                             ldsl      Int      O         차선이탈 민감도 설정 (좌측)
+                             ldsr      Int      O         차선이탈 민감도 설정 (우측)
+                             ldwb      Int      O         차선이탈 경고음 설정 
+                             fcws      Int      O         전방추돌 설정
+                             fcwb      Int      O         전방추돌 경고음 설정
+                             fvsa      Int      O         앞차출발 설정
+                             fvs       Int      O         앞차출발 민감도 설정
+                             fvwb      Int      O         앞차출발 경고음 설정
+                             tlds      Int      O         신호등 알림 설정
                              ========  =======  ========  ==========================
 ========  =======  ========  ========================================================
 

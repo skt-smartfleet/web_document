@@ -426,7 +426,7 @@
 <td>BlackBox 부팅 이벤트 메시지</td>
 </tr>
 <tr class="row-even"><td>109</td>
-<td>BlackBox 모드 변경 이벤트 메시지ㄱ</td>
+<td>BlackBox 모드 변경 이벤트 메시지</td>
 </tr>
 <tr class="row-odd"><td>110</td>
 <td>BlackBox 세팅 이벤트 메시지</td>
@@ -1661,21 +1661,36 @@
 <td>M</td>
 <td>단말기 기준 수집 시간</td>
 </tr>
-<tr class="row-even"><td>lat</td>
+<tr class="row-even"><td>stlat</td>
+<td>Int</td>
+<td>M</td>
+<td>운행 시작 시 위도 (WGS84)</td>
+</tr>
+<tr class="row-odd"><td>stlon</td>
+<td>Int</td>
+<td>M</td>
+<td>운행 시작 시 경도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>edlat</td>
 <td>Int</td>
 <td>M</td>
 <td>운행 종료 시 위도 (WGS84)</td>
 </tr>
-<tr class="row-odd"><td>lon</td>
+<tr class="row-odd"><td>edlon</td>
 <td>Int</td>
 <td>M</td>
 <td>운행 종료 시 경도 (WGS84)</td>
 </tr>
-<tr class="row-even"><td>try</td>
+<tr class="row-even"><td>dis</td>
+<td>Int</td>
+<td>M</td>
+<td>총 운행거리 (meter)</td>
+</tr>
+<tr class="row-odd"><td>try</td>
 <td>Int</td>
 <td>M</td>
 <td><ul class="first simple">
-<li>Trip 타입</li>
+<li>운행한 Trip 타입</li>
 </ul>
 <ol class="last arabic simple">
 <li>Driving</li>
@@ -1683,7 +1698,7 @@
 </ol>
 </td>
 </tr>
-<tr class="row-odd"><td>vlt</td>
+<tr class="row-even"><td>vlt</td>
 <td>Int</td>
 <td>M</td>
 <td>자동차 배터리 전압 (운행 종료 시)</td>
@@ -1696,8 +1711,10 @@
     <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;tid&quot;</span> <span class="p">:</span> <span class="mi">11123</span><span class="p">,</span>
-        <span class="nt">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">127.114513</span><span class="p">,</span>
-        <span class="nt">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">37.380241</span><span class="p">,</span>
+        <span class="nt">&quot;stlon&quot;</span> <span class="p">:</span> <span class="mf">127.114513</span><span class="p">,</span>
+        <span class="nt">&quot;stlat&quot;</span> <span class="p">:</span> <span class="mf">37.380241</span><span class="p">,</span>
+        <span class="nt">&quot;edlon&quot;</span> <span class="p">:</span> <span class="mf">127.114513</span><span class="p">,</span>
+        <span class="nt">&quot;edlat&quot;</span> <span class="p">:</span> <span class="mf">37.380241</span><span class="p">,</span>
         <span class="nt">&quot;try&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
         <span class="nt">&quot;vlt&quot;</span> <span class="p">:</span> <span class="mf">12.1</span><span class="p">,</span>
         <span class="nt">&quot;clt&quot;</span> <span class="p">:</span> <span class="mi">1502391230123</span>
@@ -2555,6 +2572,16 @@
 <td>M</td>
 <td>블랙박스 모델명</td>
 </tr>
+<tr class="row-even"><td>mfwv</td>
+<td>String</td>
+<td>M</td>
+<td>모듈 펌웨어 버전</td>
+</tr>
+<tr class="row-odd"><td>sfwv</td>
+<td>String</td>
+<td>M</td>
+<td>안전운전도우미 펌웨어 버전</td>
+</tr>
 <tr class="row-even"><td>fqual</td>
 <td>Int</td>
 <td>O</td>
@@ -2679,6 +2706,61 @@
 <td>Int</td>
 <td>O</td>
 <td>주차 충격 감지 타이머 설정</td>
+</tr>
+<tr class="row-odd"><td>cutt</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 시 전원차단 시간 설정</td>
+</tr>
+<tr class="row-even"><td>ldws</td>
+<td>Int</td>
+<td>O</td>
+<td>차선이탈 설정</td>
+</tr>
+<tr class="row-odd"><td>ldsl</td>
+<td>Int</td>
+<td>O</td>
+<td>차선이탈 민감도 설정 (좌측)</td>
+</tr>
+<tr class="row-even"><td>ldsr</td>
+<td>Int</td>
+<td>O</td>
+<td>차선이탈 민감도 설정 (우측)</td>
+</tr>
+<tr class="row-odd"><td>ldwb</td>
+<td>Int</td>
+<td>O</td>
+<td>차선이탈 경고음 설정</td>
+</tr>
+<tr class="row-even"><td>fcws</td>
+<td>Int</td>
+<td>O</td>
+<td>전방추돌 설정</td>
+</tr>
+<tr class="row-odd"><td>fcwb</td>
+<td>Int</td>
+<td>O</td>
+<td>전방추돌 경고음 설정</td>
+</tr>
+<tr class="row-even"><td>fvsa</td>
+<td>Int</td>
+<td>O</td>
+<td>앞차출발 설정</td>
+</tr>
+<tr class="row-odd"><td>fvs</td>
+<td>Int</td>
+<td>O</td>
+<td>앞차출발 민감도 설정</td>
+</tr>
+<tr class="row-even"><td>fvwb</td>
+<td>Int</td>
+<td>O</td>
+<td>앞차출발 경고음 설정</td>
+</tr>
+<tr class="row-odd"><td>tlds</td>
+<td>Int</td>
+<td>O</td>
+<td>신호등 알림 설정</td>
 </tr>
 </tbody>
 </table>
@@ -2875,6 +2957,61 @@
 <td>O</td>
 <td>주차 충격 감지 타이머 설정</td>
 </tr>
+<tr class="row-odd"><td>cutt</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 시 전원차단 시간 설정</td>
+</tr>
+<tr class="row-even"><td>ldws</td>
+<td>Int</td>
+<td>O</td>
+<td>차선이탈 설정</td>
+</tr>
+<tr class="row-odd"><td>ldsl</td>
+<td>Int</td>
+<td>O</td>
+<td>차선이탈 민감도 설정 (좌측)</td>
+</tr>
+<tr class="row-even"><td>ldsr</td>
+<td>Int</td>
+<td>O</td>
+<td>차선이탈 민감도 설정 (우측)</td>
+</tr>
+<tr class="row-odd"><td>ldwb</td>
+<td>Int</td>
+<td>O</td>
+<td>차선이탈 경고음 설정</td>
+</tr>
+<tr class="row-even"><td>fcws</td>
+<td>Int</td>
+<td>O</td>
+<td>전방추돌 설정</td>
+</tr>
+<tr class="row-odd"><td>fcwb</td>
+<td>Int</td>
+<td>O</td>
+<td>전방추돌 경고음 설정</td>
+</tr>
+<tr class="row-even"><td>fvsa</td>
+<td>Int</td>
+<td>O</td>
+<td>앞차출발 설정</td>
+</tr>
+<tr class="row-odd"><td>fvs</td>
+<td>Int</td>
+<td>O</td>
+<td>앞차출발 민감도 설정</td>
+</tr>
+<tr class="row-even"><td>fvwb</td>
+<td>Int</td>
+<td>O</td>
+<td>앞차출발 경고음 설정</td>
+</tr>
+<tr class="row-odd"><td>tlds</td>
+<td>Int</td>
+<td>O</td>
+<td>신호등 알림 설정</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2903,8 +3040,9 @@
 <li>이미지 종류</li>
 </ul>
 <ol class="last arabic simple" start="0">
-<li>사용자 요청 이미지</li>
-<li>블랙박스 충격발생 이미지</li>
+<li>주차 이미지</li>
+<li>주차 중 충격 이미지</li>
+<li>주행 중 큰 충격 이미지</li>
 </ol>
 </td>
 </tr>
@@ -2912,6 +3050,16 @@
 <td>String</td>
 <td>M</td>
 <td>업로드된 이미지 url</td>
+</tr>
+<tr class="row-even"><td>lat</td>
+<td>Int</td>
+<td>O</td>
+<td>위도 (WGS84)</td>
+</tr>
+<tr class="row-odd"><td>lon</td>
+<td>Int</td>
+<td>O</td>
+<td>경도 (WGS84)</td>
 </tr>
 </tbody>
 </table>
@@ -2947,6 +3095,12 @@
 <li>주차 중 배터리 저전압</li>
 <li>주차 중 고온</li>
 <li>긴급 녹화</li>
+<li>주차중 전원오프 알림 (저전압)</li>
+<li>주차중 전원오프 알림 (고온)</li>
+<li>주차중 전원오프 알림 (주차시간)</li>
+<li>주차중 전원오프 알림 (앱)</li>
+<li>전원키 전원 오프 알림</li>
+<li>ACC 전원 오프 알림</li>
 <li>LDW (Left)</li>
 <li>LDW (Right)</li>
 <li>FCW</li>
@@ -4008,6 +4162,61 @@
 <td>Int</td>
 <td>O</td>
 <td>주차 충격 감지 타이머 설정</td>
+</tr>
+<tr class="row-odd"><td>cutt</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 시 전원차단 시간 설정</td>
+</tr>
+<tr class="row-even"><td>ldws</td>
+<td>Int</td>
+<td>O</td>
+<td>차선이탈 설정</td>
+</tr>
+<tr class="row-odd"><td>ldsl</td>
+<td>Int</td>
+<td>O</td>
+<td>차선이탈 민감도 설정 (좌측)</td>
+</tr>
+<tr class="row-even"><td>ldsr</td>
+<td>Int</td>
+<td>O</td>
+<td>차선이탈 민감도 설정 (우측)</td>
+</tr>
+<tr class="row-odd"><td>ldwb</td>
+<td>Int</td>
+<td>O</td>
+<td>차선이탈 경고음 설정</td>
+</tr>
+<tr class="row-even"><td>fcws</td>
+<td>Int</td>
+<td>O</td>
+<td>전방추돌 설정</td>
+</tr>
+<tr class="row-odd"><td>fcwb</td>
+<td>Int</td>
+<td>O</td>
+<td>전방추돌 경고음 설정</td>
+</tr>
+<tr class="row-even"><td>fvsa</td>
+<td>Int</td>
+<td>O</td>
+<td>앞차출발 설정</td>
+</tr>
+<tr class="row-odd"><td>fvs</td>
+<td>Int</td>
+<td>O</td>
+<td>앞차출발 민감도 설정</td>
+</tr>
+<tr class="row-even"><td>fvwb</td>
+<td>Int</td>
+<td>O</td>
+<td>앞차출발 경고음 설정</td>
+</tr>
+<tr class="row-odd"><td>tlds</td>
+<td>Int</td>
+<td>O</td>
+<td>신호등 알림 설정</td>
 </tr>
 </tbody>
 </table>
