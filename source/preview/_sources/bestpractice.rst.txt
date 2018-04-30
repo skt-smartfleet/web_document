@@ -161,3 +161,113 @@ Smart[Fleet]은 다음과 같이 FOTA 상태를 ``완료`` 로 명시합니다.
 FOTA 재신청을 요청할 수 있습니다. 해당 재시도는 실패한 단말에 대해서 진행합니다.
 
 .. image:: ../images/fota/FOTA_done_detail.png
+
+
+Message Compression
+-------------------
+
+General Information
+~~~~~~~~~~~~~~~~~~~~~
+Smart[Fleet]에서는 데이터 전송 효율성을 위해 단말과 플랫폼 인터페이스 상에서
+JSON 메시지를 압축하는 방식을 지원합니다. 메시지 압축 기술은 JSON을 Byte String
+으로 변환할 때 많이 사용하는 `MessagePack <https://msgpack.org/>`__ 
+이라는 기술을 사용합니다.
+
+Introduction to MessagePack
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Smart[Fleet]에서 사용하는 Microtrip을 하나로 예를 들어보겠습니다.
+
+아래는 ``GPS`` 단말이 보내는 727 Bytes ``Aggregated Microtrip`` JSON 메시지는 아래와 같습니다.
+
+.. code-block:: javascript
+
+
+    {
+        "ty":2,
+        "ts":1508215121898,
+        "pld":
+        [
+            {
+                "tid":301,
+                "lon":127.062512,
+                "lat":37.510296,
+                "alt":102,
+                "sp":90,
+                "dop":13,
+                "nos":5,
+                "clt":1508215121888
+            },
+            {
+                "tid":301,
+                "lon":127.062512,
+                "lat":37.510296,
+                "alt":113,
+                "sp":74,
+                "dop":11,
+                "nos":4,
+                "clt":1508215121893
+            },
+            {
+                "tid":301,
+                "lon":127.062512,
+                "lat":37.510296,
+                "alt":115,
+                "sp":71,
+                "dop":14,
+                "nos":5,
+                "clt":1508215121898
+            }
+        ]
+    }
+
+
+해당 메시지를 MessagePack 라이브러리를 통해 변환하면 220 Bytes의 ``Hexa String`` 으로 변환됩니다.
+
+
++-------------------------------------------------------------------------+
+| 83 a2 74 79 02 a2 74 73 cf 00 00 01 5f 28 a0 67 ea a3 70 6c 64 93 88 a3 |
+| 74 69 64 cd 01 2d a3 6c 6f 6e cb 40 5f c4 00 32 54 e6 e2 a3 6c 61 74 cb |      
+| 40 42 c1 51 61 1b a3 ca a3 61 6c 74 66 a2 73 70 5a a3 64 6f 70 0d a3 6e |
+| 6f 73 05 a3 63 6c 74 cf 00 00 01 5f 28 a0 67 e0 88 a3 74 69 64 cd 01 2d |
+| a3 6c 6f 6e cb 40 5f c4 00 32 54 e6 e2 a3 6c 61 74 cb 40 42 c1 51 61 1b |
+| a3 ca a3 61 6c 74 71 a2 73 70 4a a3 64 6f 70 0b a3 6e 6f 73 04 a3 63 6c |
+| 74 cf 00 00 01 5f 28 a0 67 e5 88 a3 74 69 64 cd 01 2d a3 6c 6f 6e cb 40 |
+| 5f c4 00 32 54 e6 e2 a3 6c 61 74 cb 40 42 c1 51 61 1b a3 ca a3 61 6c 74 |
+| 73 a2 73 70 47 a3 64 6f 70 0e a3 6e 6f 73 05 a3 63 6c 74 cf 00 00 01 5f |
+| 28 a0 67 ea                                                             |
++-------------------------------------------------------------------------+
+  
+대략 70% 정도의 압축효과가 있다는 것을 알 수 있습니다.
+
+
+Message Compression Architecture
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: ../images/messagePack_arc1.png
+
+위의 그림은 Smart[Fleet]에서 제공하는 Message Compression 구조입니다. 간단하게 설명하자면, 원래 단말에서 JSON 형태로 전송하던 형태에
+단말에 MessagePack에서 제공하는 SDK를 활용하여 JSON 메시지를 위에 명시된 압축된 ``Hexa String`` 으로 변환하신 후, 
+Smart[Fleet]에는 별도의 압축 메시지를 보내는 MQTT Topic에 메시지를 보내시면 Smart[Fleet] 서버 내에서 해당 메시지를 JSON으로 ``Decapsulation`` 한 후에 데이터베이스에 저장합니다.
+
+결론적으로 보자면, 단말과 플랫폼의 인터페이스 간에서는 회선료 절감 등의 목적으로 MessagePack 기술을 사용하는 것이며, 플랫폼과 Application 간의 인터페이스 상에서는 별도의 메시지 압축은 하지 않습니다.
+
+기존 JSON 형태의 메시지를 보내는 Topic은 `Device Procedure <http://smart-fleet-docs.readthedocs.io/ko/latest/device/#device-procedure>`__ 에
+명시된 바와 같이 아래의 표와 같이 사용합니다.
+
++--------------------------+-----------------------------------------------------------------------------------+
+| **Topic for JSON**       | v1/sensors/me/tre                                                                 |
++--------------------------+-----------------------------------------------------------------------------------+
+
+그렇지만, 단말에서 MessagePack SDK를 이용하여 압축하여 전송하는 경우에는 아래 Topic을 사용하시어야 합니다. 중간에 ``mp`` 항목이 추가됩니다.
+
++---------------------------------+-----------------------------------------------------------------------------------+
+| **Topic for MessagePack**       | v1/sensors/me/mp/tre                                                              |
++---------------------------------+-----------------------------------------------------------------------------------+
+
+.. note::
+	MessagePack 활용에 대한 예는 Smart[Fleet] Device Simulator에 적용되어 있습니다.
+
+      .. rst-class:: text-align-justify
+
+    * https://github.com/skt-smartfleet/device-simulator-nodejs
+

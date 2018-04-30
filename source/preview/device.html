@@ -25,28 +25,20 @@
   
 
   
-  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Smart[Fleet] Platform 1.0.2 documentation" href="index.html"/>
-        <link rel="next" title="6. API 규격" href="api.html"/>
-        <link rel="prev" title="4. 구성요소(Entity) 등록" href="entity.html"/> 
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="6. API 규격" href="api.html" />
+    <link rel="prev" title="4. 구성요소(Entity) 등록" href="entity.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -149,7 +141,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Smart[Fleet] Platform</a>
@@ -157,9 +149,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -244,7 +237,7 @@
 </table>
 <p class="text-align-justify">Username 필드에는 해당 단말의 Credentials ID 값을 입력합니다. 단말의 Credentials ID 값은 <a class="reference external" href="https://app.swaggerhub.com/apis/tremoteye/tremoteyeapi/1.0.0#/Sensor/get_api_tre_v1_sensor">Smart[Fleet] REST API</a> 를 통해서 얻을 수 있습니다. cleanSession 필드가 true면 이전 세션 정보가 아직 존재할 경우 클라이언트와 서버에서 이전 세션 정보를 삭제합니다. MQTT 버전은 3.1.1을 사용합니다.</p>
 <p><span class="underline">Example Code</span></p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">mqtt</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mqtt&#39;</span><span class="p">);</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">mqtt</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mqtt&#39;</span><span class="p">);</span>
 
 <span class="kr">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">mqtt</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s1">&#39;mqtts://smartfleet.sktelecom.com:8883&#39;</span><span class="p">,{</span>
     <span class="nx">username</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -293,7 +286,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span></p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">client</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;v1/sensors/me/rpc/request/+&quot;</span><span class="p">);</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">client</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;v1/sensors/me/rpc/request/+&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <ol class="text-align-justify arabic simple" start="5">
@@ -398,7 +391,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span></p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">client</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;v1/sensors/me/rpc/request/+&quot;</span><span class="p">);</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">client</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;v1/sensors/me/rpc/request/+&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <ol class="table-width-fix text-align-justify arabic simple" start="5">
@@ -447,7 +440,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span></p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">client</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;v1/sensors/me/rpc/request/+&quot;</span><span class="p">);</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">client</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;v1/sensors/me/rpc/request/+&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p class="text-align-justify">Device RPC 절차 이전에 <a class="reference external" href="#_Device_Activation">5.3. Device Activation</a> 절차를 거칩니다. 서비스 등록 단계에서 RPC 결과 및 단말 Attribute 변경 정보를 수신하기 위한 HTTP Server 주소를 기입 받습니다.</p>
@@ -621,9 +614,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -645,7 +636,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -664,6 +655,7 @@
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'1.0.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -682,14 +674,13 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

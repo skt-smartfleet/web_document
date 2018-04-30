@@ -25,27 +25,19 @@
   
 
   
-  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Smart[Fleet] Platform 1.0.2 documentation" href="index.html"/>
-        <link rel="prev" title="10. Best Practices" href="bestpractice.html"/> 
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="10. Best Practices" href="bestpractice.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -126,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Smart[Fleet] Platform</a>
@@ -134,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -190,10 +183,10 @@
 <li>단말의 현재 망 연동 현황 (망 연동 정상, 이용정지, 휴지정지, 해지정지, 직권해지, 일반해지 등)</li>
 <li>단말이 현재 가입된 요금제 정보</li>
 </ul>
-<p>아래 예제는 차량 <code class="docutils literal"><span class="pre">vehicle</span></code> 및 소유자 <code class="docutils literal"><span class="pre">director</span></code> 가 단말에 정상적으로 매핑 된 후 SKT의 가입망으로 통해서
-정상적으로 등록된 단말의 조회 정보입니다. 단말의 요금제 <code class="docutils literal"><span class="pre">subscription</span></code>, IMSI <code class="docutils literal"><span class="pre">imsi</span></code>,
-IMEI <code class="docutils literal"><span class="pre">serialNo</span></code>, MDN <code class="docutils literal"><span class="pre">mdn</span></code> 이 정상적으로 등록된 것을 확인하실 수 있습니다.</p>
-<p>추가로 단말의 현재 망 연동 상태를 알려주는 <code class="docutils literal"><span class="pre">nwStatus</span></code> 의 의미는 다음 표와 같습니다.</p>
+<p>아래 예제는 차량 <code class="docutils literal notranslate"><span class="pre">vehicle</span></code> 및 소유자 <code class="docutils literal notranslate"><span class="pre">director</span></code> 가 단말에 정상적으로 매핑 된 후 SKT의 가입망으로 통해서
+정상적으로 등록된 단말의 조회 정보입니다. 단말의 요금제 <code class="docutils literal notranslate"><span class="pre">subscription</span></code>, IMSI <code class="docutils literal notranslate"><span class="pre">imsi</span></code>,
+IMEI <code class="docutils literal notranslate"><span class="pre">serialNo</span></code>, MDN <code class="docutils literal notranslate"><span class="pre">mdn</span></code> 이 정상적으로 등록된 것을 확인하실 수 있습니다.</p>
+<p>추가로 단말의 현재 망 연동 상태를 알려주는 <code class="docutils literal notranslate"><span class="pre">nwStatus</span></code> 의 의미는 다음 표와 같습니다.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -231,7 +224,7 @@ IMEI <code class="docutils literal"><span class="pre">serialNo</span></code>, MD
 </tr>
 </tbody>
 </table>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;6802f7b0-0b34-11e8-9f2b-d3c31ebad2b2&quot;</span>
     <span class="p">},</span>
@@ -327,7 +320,7 @@ IMEI <code class="docutils literal"><span class="pre">serialNo</span></code>, MD
 <td><blockquote class="first">
 <div>정상 상태에서 일시, 이용, 휴지, 해지 정지로 전환되는 상태에는,</div></blockquote>
 <ul class="last simple">
-<li>정지 상태의 상태를 단말의 <code class="docutils literal"><span class="pre">nwStatus</span></code> key에 업데이트 합니다.</li>
+<li>정지 상태의 상태를 단말의 <code class="docutils literal notranslate"><span class="pre">nwStatus</span></code> key에 업데이트 합니다.</li>
 </ul>
 </td>
 </tr>
@@ -347,7 +340,7 @@ IMEI <code class="docutils literal"><span class="pre">serialNo</span></code>, MD
 <h2>11.2. FOTA<a class="headerlink" href="#fota" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id1">
 <h3>11.2.1. General Information<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>본 장에서는 Smart[Fleet]을 통해서 FOTA <code class="docutils literal"><span class="pre">Firmware</span> <span class="pre">Over</span> <span class="pre">The</span> <span class="pre">Air</span></code> 를 수행하는 방법에 대해서 기술합니다.</p>
+<p>본 장에서는 Smart[Fleet]을 통해서 FOTA <code class="docutils literal notranslate"><span class="pre">Firmware</span> <span class="pre">Over</span> <span class="pre">The</span> <span class="pre">Air</span></code> 를 수행하는 방법에 대해서 기술합니다.</p>
 <p>Smart[Fleet] 플랫폼에 정상적으로 등록한 단말은 다음과 같이 2가지 방법을 통해서 FOTA를 수행합니다.</p>
 <ol class="arabic simple">
 <li>By Portal - Smart[Fleet] 홈페이지를 통해서 FOTA를 요청하는 방법</li>
@@ -362,9 +355,7 @@ IMEI <code class="docutils literal"><span class="pre">serialNo</span></code>, MD
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -384,7 +375,7 @@ IMEI <code class="docutils literal"><span class="pre">serialNo</span></code>, MD
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -403,6 +394,7 @@ IMEI <code class="docutils literal"><span class="pre">serialNo</span></code>, MD
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'1.0.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -421,14 +413,13 @@ IMEI <code class="docutils literal"><span class="pre">serialNo</span></code>, MD
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

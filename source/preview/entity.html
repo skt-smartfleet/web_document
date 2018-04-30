@@ -25,28 +25,20 @@
   
 
   
-  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Smart[Fleet] Platform 1.0.2 documentation" href="index.html"/>
-        <link rel="next" title="5. Device 연동 절차" href="device.html"/>
-        <link rel="prev" title="3. 서비스 세부 절차" href="procedure.html"/> 
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Device 연동 절차" href="device.html" />
+    <link rel="prev" title="3. 서비스 세부 절차" href="procedure.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -180,6 +172,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sdk.html">8. SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="simulator.html">9. 테스트용 시뮬레이터</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bestpractice.html">10. Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="miscellaneous.html">11. Miscellaneous</a></li>
 </ul>
 
             
@@ -191,7 +184,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Smart[Fleet] Platform</a>
@@ -199,9 +192,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -340,7 +334,7 @@
 <li>Example Code</li>
 </ul>
 <p><span class="underline">Request</span></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
 
 {
     &quot;username&quot;:&quot;example@example.com&quot;,
@@ -349,7 +343,7 @@
 </pre></div>
 </div>
 <p><span class="underline">Response (code: 200)</span></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;</span><span class="p">,</span>
     <span class="nt">&quot;refreshToken&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1…&quot;</span>
 <span class="p">}</span>
@@ -482,7 +476,7 @@
 <li>Example Code</li>
 </ul>
 <p><span class="underline">Request</span></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
 X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
 
 {
@@ -504,7 +498,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 </pre></div>
 </div>
 <p><span class="underline">Response (code: 200)</span></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c7fc12a0-beea-11e7-8bdf-af923035d741&quot;</span>
     <span class="p">},</span>
@@ -623,7 +617,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 <li>Example Code</li>
 </ul>
 <p><span class="underline">Request</span></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>    content-type:&quot;application/json&quot;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    content-type:&quot;application/json&quot;
 
 {
     &quot;username&quot;:&quot;companya@example.com&quot;,
@@ -632,7 +626,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 </pre></div>
 </div>
 <p><span class="underline">Response (code: 200)</span></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;</span><span class="p">,</span>
     <span class="nt">&quot;refreshToken&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1…&quot;</span>
 <span class="p">}</span>
@@ -765,7 +759,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 <li>Example Code</li>
 </ul>
 <p><span class="underline">Request</span></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
 X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
 
 {
@@ -788,7 +782,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 </pre></div>
 </div>
 <p><span class="underline">Response (code: 200)</span></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;3820ea50-beec-11e7-8bdf-af923035d741&quot;</span>
     <span class="p">},</span>
@@ -978,7 +972,7 @@ PERSONAL ETC</td>
 <li>Example Code</li>
 </ul>
 <p><span class="underline">Request</span></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
 X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
 
 {
@@ -998,7 +992,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 </pre></div>
 </div>
 <p><span class="underline">Response (code: 200)</span></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;45f8a100-bef0-11e7-8bdf-af923035d741&quot;</span>
     <span class="p">},</span>
@@ -1166,7 +1160,7 @@ ADAS</td>
 <li>Example Code</li>
 </ul>
 <p><span class="underline">Request</span></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
 X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
 
 {
@@ -1180,7 +1174,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 </pre></div>
 </div>
 <p><span class="underline">Response (code: 200)</span></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;05a55bc0-bf63-11e7-8bdf-af923035d741&quot;</span>
     <span class="p">},</span>
@@ -1317,7 +1311,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 <li>Example Code</li>
 </ul>
 <p><span class="underline">Request</span></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
 X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
 
 {
@@ -1329,7 +1323,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 </pre></div>
 </div>
 <p><span class="underline">Response (code: 200)</span></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;8e904530-c06c-11e7-8bdf-af923035d741&quot;</span>
     <span class="p">},</span>
@@ -1456,7 +1450,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 <li>Example Code</li>
 </ul>
 <p><span class="underline">Request</span></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
 X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
 
 {
@@ -1468,7 +1462,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 </pre></div>
 </div>
 <p><span class="underline">Response (code: 200)</span></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;69b5f470-c06d-11e7-8bdf-af923035d741&quot;</span>
     <span class="p">},</span>
@@ -1619,7 +1613,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 <li>Example Code</li>
 </ul>
 <p><span class="underline">Request</span></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
 X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
 
 {
@@ -1630,7 +1624,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 </pre></div>
 </div>
 <p><span class="underline">Response (code: 200)</span></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;50117bd0-c071-11e7-8bdf-af923035d741&quot;</span>
     <span class="p">},</span>
@@ -1742,7 +1736,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 <li>Example Code</li>
 </ul>
 <p><span class="underline">Request</span></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
 X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
 
 {
@@ -1753,7 +1747,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 </pre></div>
 </div>
 <p><span class="underline">Response (code: 200)</span></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1a598a90-c072-11e7-8bdf-af923035d741&quot;</span>
     <span class="p">},</span>
@@ -1893,7 +1887,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 <li>Example Code</li>
 </ul>
 <p><span class="underline">Request</span></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
 X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
 
 {
@@ -1904,7 +1898,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 </pre></div>
 </div>
 <p><span class="underline">Response (code: 200)</span></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;74d18670-c073-11e7-8bdf-af923035d741&quot;</span>
     <span class="p">},</span>
@@ -2042,7 +2036,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 <li>Example Code</li>
 </ul>
 <p><span class="underline">Request</span></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
 X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
 
 {
@@ -2053,7 +2047,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 </pre></div>
 </div>
 <p><span class="underline">Response (code: 200)</span></p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;9b631230-c074-11e7-8bdf-af923035d741&quot;</span>
     <span class="p">},</span>
@@ -2081,9 +2075,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -2105,7 +2097,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -2124,6 +2116,7 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'1.0.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -2142,14 +2135,13 @@ X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
