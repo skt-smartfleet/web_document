@@ -82,6 +82,8 @@ ty         설명
 8          BlackBox 단말의 MicroTrip 메시지 
 9          DTG 단말의 Trip 메세지
 10         DTG 단말의 MicroTrip 메시지
+11         AVN 단말의 Trip 메세지  
+12         AVN 단말의 MicroTrip 메시지
 =========  ==================================
 
 이벤트 메세지 타입
@@ -898,6 +900,123 @@ acy       String   M         가속도 y-axis (Vy, -1000 ~ +1000)
         }
     }
 
+
+AVN
+~~~~~~~~~~~~
+
+AVN 단말에서 발생한 데이터(차량에서 발생하는 CAN 데이터)를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다.
+
+Message Header
+^^^^^^^^^^^^^^
+
+.. rst-class:: table-width-fix
+.. rst-class:: text-align-justify
+
+========  =======  ========  ========================================
+Key       Type     M/O       Description
+========  =======  ========  ========================================
+ty        Int      M         - 전달하고자 하는 페이로드 타입
+
+                             11. Trip_AVN_
+                             12. Microtrip_AVN_
+ts        Int      O         정보 수집 시간
+pld                M         아래 각 페이로드 메시지를 참고
+========  =======  ========  ========================================
+
+
+Payload Type
+^^^^^^^^^^^^^^
+
+.. _Trip_AVN:
+
+
+
+AVN Trip
+#############
+
+AVN Trip 메시지는 AVN 단말을 장착한 차량이 주행을 완료한 경우에 사용하는 메시지 포맷입니다.
+
+.. rst-class:: table-width-fix
+.. rst-class:: text-align-justify
+
+========  =======  ========  ========================================================
+Key       Type     M/O       Description
+========  =======  ========  ========================================================
+tid       Int      M         Trip 고유 번호
+clt       Int      M         단말기 기준 수집 시간
+stlat     Int      M         운행 시작 시 위도 (WGS84)
+stlon     Int      M         운행 시작 시 경도 (WGS84)
+edlat     Int      M         운행 종료 시 위도 (WGS84)
+edlon     Int      M         운행 종료 시 경도 (WGS84)
+odo       Int      M         주행 완료 후 ODO
+========  =======  ========  ========================================================
+
+:underline:`Example Code` :
+
+.. code-block:: json
+
+    {
+        "ts" : 1505434907995,
+        "ty" : 11,
+        "pld" : {
+            "tid" : 11123,
+            "clt" : 1505434908001,
+            "stlat" : 37.380241,
+            "stlon" : 127.114513,
+            "edlat" : 37.390123,
+            "edlon" : 127.124654,
+            "odo" : 23401
+        }
+    }
+
+.. _Microtrip_AVN:
+
+AVN Microtrip
+##################
+
+.. rst-class:: text-align-justify
+
+AVN Microtrip 메시지는 AVN 단말에서 인지한 정보를 주기적으로 플랫폼에 전달하는 메시지 포맷입니다. 일반적으로는 GPS가 함께 있는 경우에 활용하며, 메시지는 단말기 부착 차량의 운행 시작부터 운행 종료까지 주기적으로 전송합니다.
+
+.. rst-class:: table-width-fix
+.. rst-class:: text-align-justify
+
+========  =======  ========  ======================================================================
+Key       Type     M/O       Description
+========  =======  ========  ======================================================================
+tid       Int      M         Trip 고유 번호
+clt       Int      M         단말기 기준 수집 시간
+lat       Int      M         위도 (WGS84)
+lon       Int      M         경도 (WGS84)
+sp        Int      O         차량속도 (km/h)
+bsg       Int      O         0 : brake off, 1 : brake on
+sas       Int      O         핸들각도 (0~360)
+gr        Int      O         기어 ( 0 : Neutral, 1, 2, 3, 4, ...)
+rgr       Int      O         후진 ( 0 : Rear Gear off, 1 : Rear Gear on )
+tmp       Int      O         외기 온도
+========  =======  ========  ======================================================================
+
+:underline:`Example Code` :
+
+.. code-block:: json
+
+    {
+        "ts" : 1505434907995,
+        "ty" : 12,
+        "pld" : {
+            "tid" : 11123,
+            "clt" : 1505434908001,
+            "lon" : 127.114513,
+            "lat" : 37.380241,
+            "odo" : 23242,
+            "sp" : 63,
+            "bsg" : 0,
+            "sas" : 30,
+            "gr" : 4,
+            "rgr" : 0,
+            "tmp" : 27
+        }
+    }
 
 
 |br|
