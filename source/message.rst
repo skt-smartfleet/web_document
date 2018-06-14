@@ -107,6 +107,7 @@ ty         설명
 111        BlackBox 이미지 업로드 리포트 메시지
 112        BlackBox 센서 인식 이벤트 메시지
 113        차량 내 온도 센서의 이벤트 메시지
+114        AVN 전송 이벤트
 =========  ==================================
 
 
@@ -989,10 +990,15 @@ clt       Int      M         단말기 기준 수집 시간
 lat       Int      M         위도 (WGS84)
 lon       Int      M         경도 (WGS84)
 sp        Int      O         차량속도 (km/h)
-bsg       Int      O         0 : brake off, 1 : brake on
+bsg       Int      O         - 브레이크 상태
+                             0 : brake off
+                             1 : brake on
 sas       Int      O         핸들각도 (0~360)
-gr        Int      O         기어 ( 0 : Neutral, 1, 2, 3, 4, ...)
-rgr       Int      O         후진 ( 0 : Rear Gear off, 1 : Rear Gear on )
+gr        Int      O         - 기어
+                             0 : Neutral, 1, 2, 3, 4, ...
+rgr       Int      O         - 후진
+                             0 : Rear Gear off
+                             1 : Rear Gear on
 tmp       Int      O         외기 온도
 ========  =======  ========  ======================================================================
 
@@ -1495,6 +1501,43 @@ fcws      Int      0         인지 알림이 FCW 인 경우,
 ========  =======  ========  ========================================================
 
 
+AVN 전송 이벤트
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+AVN에서 인지한 차량 관련 이벤트 정보를 전달하기 위한 메시지입니다.
+
+.. rst-class:: table-width-fix
+.. rst-class:: text-align-justify
+
+========  =======  ========  ========================================================
+Key       Type     M/O       Description
+========  =======  ========  ========================================================
+wid       Int      M         - 알람 종류
+                             0. AirBag 전개
+                             1. Low Battery Warning
+                             2. 와이퍼 동작
+lat       Int      O         위도 (WGS84)
+lon       Int      O         경도 (WGS84)
+wip       Int      O         - 알람이 와이퍼인 경우
+                             0. Front
+                             1. Rear
+========  =======  ========  ========================================================
+
+:underline:`Example Code` :
+
+.. code-block:: json
+
+    {
+        "ts" : 1505434907995,
+        "ty" : 114,
+        "pld" : {
+            "wid" : 1,
+            "tim" : 1505434908001,
+            "lon" : 127.114513,
+            "lat" : 37.380241
+       }
+    }
+    
 |br|
 
 .. _rpc-message-format:
