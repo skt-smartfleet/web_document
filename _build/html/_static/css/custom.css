@@ -1,0 +1,34 @@
+.underline {
+	text-decoration: underline;
+}
+
+.list-none {
+	list-style-type:none;
+}
+
+.pre {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.example-code {
+	background-color: #BDBDBD;
+}
+
+@media screen and (min-width: 700px) {
+	.table-width-fix tbody td:last-child {
+		white-space: normal !important;
+	}
+
+	.table-width-fix-first tbody td:first-child {
+		white-space: normal !important;
+	}
+}
+
+.table-width-full {
+  width : 100%;
+}
+
+.text-align-justify {
+	text-align: justify;
+}

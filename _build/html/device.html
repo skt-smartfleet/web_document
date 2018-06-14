@@ -1,0 +1,687 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5. Device 연동 절차 &mdash; Smart[Fleet] Platform 1.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="6. API 규격" href="api.html" />
+    <link rel="prev" title="4. 구성요소(Entity) 등록" href="entity.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Smart[Fleet] Platform
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Smart[Fleet] 플랫폼 소개</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">2. 주요 구성요소 (Entity Architecture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="procedure.html">3. 서비스 세부 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity.html">4. 구성요소(Entity) 등록</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Device 연동 절차</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#device-connection">5.1. Device Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#device-activation">5.2. Device Activation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#activation">5.2.1. Activation이 필요한 단말의 등록 절차</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prestep">5.2.1.1. Prestep</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#procedure">5.2.1.2. Procedure</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#activation-free-device-registration">5.2.2. Activation이 필요하지 않는 단말의 등록 절차</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">5.2.2.1. Prestep</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">5.2.2.2. Procedure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#device-rpc">5.3. Device RPC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pre-step">5.3.1. Pre-Step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">5.3.2. Procedure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#device-procedure">5.4. Device Procedure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#trip-data">5.4.1. Trip Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">5.4.1.1. Prestep</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">5.4.1.2. Procedure</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#event-data">5.4.2. Event Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">5.4.2.1. Prestep</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">5.4.2.2. Procedure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">6. API 규격</a></li>
+<li class="toctree-l1"><a class="reference internal" href="message.html">7. 메시지 포맷</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataanalytics.html">8. Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk.html">9. SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulator.html">10. 테스트용 시뮬레이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bestpractice.html">11. Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="miscellaneous.html">12. Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Smart[Fleet] Platform</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>5. Device 연동 절차</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/device.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="device">
+<span id="device-interface"></span><h1>5. Device 연동 절차<a class="headerlink" href="#device" title="Permalink to this headline">¶</a></h1>
+<p>이 매뉴얼은 Smart[Fleet] 플랫폼에 연결되는 단말장치를 개발하는 파트너들을 위한 것입니다. 장치가 어떻게 플랫폼과 통신하는지 설명합니다.</p>
+<p>Smart[Fleet] 플랫폼을 사용하여 커넥티드 카 사업을 하고자 하는 파트너는 <a class="reference internal" href="entity.html#entity-registration"><span class="std std-ref">4. 구성요소(Entity) 등록</span></a> 를 참고하십시오. App 개발자는 <a class="reference internal" href="api.html#api-specification"><span class="std std-ref">6. API 규격</span></a> 과 <a class="reference internal" href="sdk.html#platform-sdk"><span class="std std-ref">7. SDK</span></a> 를 참고하십시오.</p>
+<p>이 매뉴얼에서는 단말이 Smart[Fleet] 플랫폼과 어떻게 연결되는지 설명합니다. 실제 단말과 Smart[Fleet]이 주고받는 메시지에 대한 상세한 내용은 <a class="reference internal" href="message.html#message-format"><span class="std std-ref">8. 메시지 포맷</span></a> 을 참고하십시오.</p>
+<div class="section" id="device-connection">
+<h2>5.1. Device Connection<a class="headerlink" href="#device-connection" title="Permalink to this headline">¶</a></h2>
+<p class="text-align-justify">Smart[Fleet] 플랫폼은 단말과 연동을 위해 MQTTS 프로토콜을 사용합니다. MQTTS 프로토콜은 무선 및 낮은 대역폭 네트워크에서 저전력 기기에서 사용되는 것을 목표로 만들어진 메시징 프로토콜입니다. 자세한 내용은 <a class="reference external" href="http://mqtt.org/">MQTT.org</a> 를 참고하시기 바랍니다.</p>
+<p>단말이 MQTTS 프로토콜을 통해 Smart[Fleet] 플랫폼과 연동할 때 다음의 설정 값이 필요합니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">구분</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>URL</td>
+<td><a class="reference external" href="http://smartfleet.sktelecom.com">smartfleet.sktelecom.com</a></td>
+</tr>
+<tr class="row-odd"><td>Port</td>
+<td>9900 (Staging)</td>
+</tr>
+<tr class="row-even"><td>username</td>
+<td>할당 받은 Access Token (20자리)
+값</td>
+</tr>
+<tr class="row-odd"><td>password</td>
+<td>N/A</td>
+</tr>
+<tr class="row-even"><td>cleanSession</td>
+<td>True</td>
+</tr>
+<tr class="row-odd"><td>version</td>
+<td>3.1.1</td>
+</tr>
+</tbody>
+</table>
+<p class="text-align-justify">Username 필드에는 해당 단말의 Credentials ID 값을 입력합니다. 단말의 Credentials ID 값은 <a class="reference external" href="https://app.swaggerhub.com/apis/tremoteye/tremoteyeapi/1.0.0#/Sensor/get_api_tre_v1_sensor">Smart[Fleet] REST API</a> 를 통해서 얻을 수 있습니다. cleanSession 필드가 true면 이전 세션 정보가 아직 존재할 경우 클라이언트와 서버에서 이전 세션 정보를 삭제합니다. MQTT 버전은 3.1.1을 사용합니다.</p>
+<p><span class="underline">Example Code</span></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">mqtt</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mqtt&#39;</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">mqtt</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s1">&#39;mqtts://smartfleet.sktelecom.com:8883&#39;</span><span class="p">,{</span>
+    <span class="nx">username</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nx">clean</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">rejectUnauthorized</span> <span class="o">:</span> <span class="kc">false</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="device-activation">
+<h2>5.2. Device Activation<a class="headerlink" href="#device-activation" title="Permalink to this headline">¶</a></h2>
+<p class="text-align-justify">단말과 Smart[Fleet] 플래폼이 연동되기 위해서는 단말이 Smart[Fleet]에 등록되어 있어야 합니다. 이후 단말의 종류에 따라 단말 활성화(Device Activation) 과정이 필요할 수도 있습니다.</p>
+<p>일부 OBD 단말은 정보를 올리기 위해서는 차량과 매핑을 통해 가져올 수 있는 센서 데이터들을 설정해야 합니다. 차량의 모델, 배기량, 연료 타입 등에 따라 측정 가능한 센서 데이터의 개수와 종류가 달라질 수 있기 때문입니다. OBD가 측정 할 수 있는 센서 데이터의 종류가 100가지 있다고 가정하면 차량 A는 50가지, 차량 B는 40가지 이렇게 차량마다 측정 데이터가 다를 수 있습니다. 이를 위해 차량에 맞는 데이터만 가져오도록 설정하는 작업이 단말 활성화 절차(Device Activation)입니다.</p>
+<p><a class="reference internal" href="#activation-required-device-registration"><span class="std std-ref">Activation이 필요한 단말의 등록 절차</span></a>, <a class="reference internal" href="#activation-free-device-registration"><span class="std std-ref">Activation이 필요하지 않는 단말의 등록 절차</span></a> 를 차례대로 알아보겠습니다.</p>
+<div class="section" id="activation">
+<span id="activation-required-device-registration"></span><h3>5.2.1. Activation이 필요한 단말의 등록 절차<a class="headerlink" href="#activation" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">센서 동작 전 센서의 활성화(Activation)가 요구되는 단말에 적용되는 등록 절차를 기술합니다.</p>
+<img alt="_images/4-3-1.png" src="_images/4-3-1.png" />
+<div class="section" id="prestep">
+<h4>5.2.1.1. Prestep<a class="headerlink" href="#prestep" title="Permalink to this headline">¶</a></h4>
+<p class="text-align-justify">사전에 각 단말은 SKT에서 제공한 Access Token (Sensor API의 credentialsId 필드)을 보유하고 있어야 하며, Application (고객사)에서도 동일한 Access Token을 보유하고 있어야 합니다.</p>
+</div>
+<div class="section" id="procedure">
+<h4>5.2.1.2. Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h4>
+<ol class="text-align-justify arabic simple">
+<li>Application Owner가 포털이나 HTTPS API를 통하여 플랫폼에 단말의 정보를 등록합니다. 센서 등록 설명은 <a class="reference internal" href="entity.html#sensor-registration"><span class="std std-ref">4.4. 센서 등록 (Sensor Registration)</span></a> 절차를 참고합니다.</li>
+</ol>
+<ol class="text-align-justify arabic simple" start="2">
+<li>플랫폼은 1번 과정에서 요청받은 정보를 기반으로 단말을 등록합니다. 상기 등록 과정에서 오류가 발생한 경우에는 수신 받은 인터페이스에 따라 회신합니다.</li>
+</ol>
+<ol class="text-align-justifys arabic simple" start="3">
+<li>단말을 플랫폼에 연결을 시도합니다. 세부 절차는 <a class="reference external" href="#device-connection">5.1. Device Connection</a> 절차를 참고합니다.</li>
+</ol>
+<ol class="text-align-justify arabic simple" start="4">
+<li>단말이 연결되면 세션이 생성됩니다. 세션이 생성된 후 RPC 요청을 수신하기 위해 토픽을 구독합니다. MQTTS에서 토픽을 구독하면 필터에 일치하는 토픽에 대한 발행물이 클라이언트로 송신됩니다. 여기서 필터에 일치하는 발행물은 해당 단말에 대한 RPC 요청이 됩니다. <br /> RPC 요청을 수신하는 토픽은 아래와 같습니다.</li>
+</ol>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="28%" />
+<col width="73%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Topic</strong></td>
+<td>v1/sensors/me/rpc/request/+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">client</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;v1/sensors/me/rpc/request/+&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="text-align-justify arabic simple" start="5">
+<li>차량과 등록된 센서 간 매핑을 요청합니다. 매핑 API는 아래와 같습니다.</li>
+</ol>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>POST</strong></td>
+<td><a class="reference external" href="https://app.swaggerhub .com/apis/tremoteye/tremoteyeapi/ 1.0.0#/Sensor/post_api_tre_v1_sen sor__sensorId__vehicle__vehicleId_">/api/tre/v1/sensor/{sensorId}/vehicle/{vehicleId}</a></td>
+</tr>
+</tbody>
+</table>
+<ol class="text-align-justify arabic simple" start="6">
+<li>플랫폼에서 요청 받은 단말이 Activation이 필요한지 여부를 판단합니다. 단말의 Activation 필요 여부는 플랫폼에 단말을 등록할 때 입력한 activationRequired 필드 값에 따라 구분합니다.&nbsp;activationRequired&nbsp;값이 true이면 Activation이 필요하다고 간주합니다.</li>
+</ol>
+<ol class="text-align-justify arabic simple" start="7">
+<li>상기 6번 과정에서 단말이 Activation이 필요하다고 명시된 경우 플랫폼은 해당 단말에 Activation 정보를 내려주기 위한 RPC를 제공합니다. <br /> 메시지 포맷은 <a class="reference internal" href="message.html#device-activation-request"><span class="std std-ref">8.4.2. Device Activation의 Request</span></a> 항목을 참고합니다.</li>
+</ol>
+<ol class="text-align-justify arabic simple" start="8">
+<li>단말이 7번 단계의 Activation 요청을 수신합니다.</li>
+</ol>
+<ol class="text-align-justify arabic simple" start="9">
+<li>단말은 이에 따라 Activation 수행 예정이라는 메세지를 플랫폼에 전달합니다. <br /> 메시지 포맷은 <a class="reference internal" href="message.html#device-activation-response"><span class="std std-ref">8.4.2. Device Activation의 Response</span></a> 항목을 참고합니다. <br /> 해당 메세지를 발송하는 토픽은 아래와 같습니다.</li>
+</ol>
+<table border="1" class="text-align-justify docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Topic</strong></td>
+<td>v1/sensors/me/rpc/response/{Request-ID}</td>
+</tr>
+<tr class="row-even"><td><strong>메시지 포맷</strong></td>
+<td><a class="reference external" href="device-activation-response">Response</a></td>
+</tr>
+</tbody>
+</table>
+<ol class="text-align-justify arabic simple" start="10">
+<li>플랫폼이 고객사(포털 또는 HTTP Response)에게 9번 과정의 단말 RPC 메시지 수신 상태를 전달합니다. 이는 매핑과 Activation은 추후에 진행되는 것을 명시합니다.</li>
+</ol>
+<ol class="text-align-justify arabic simple" start="11">
+<li>단말이 Activation을 수행한 후에 Activation 결과를 단말이 플랫폼에 전달합니다. Activation 작업은 일반적으로 일정 시간이 걸릴 수 있습니다. <br /> Activation 결과를 발송하는 토픽은 아래와 같습니다.</li>
+</ol>
+<table border="1" class="text-align-justify docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Topic</strong></td>
+<td>v1/sensors/me/rpc/result/{Request-ID}</td>
+</tr>
+<tr class="row-even"><td><strong>메시지 포맷</strong></td>
+<td><a class="reference external" href="device-activation-result">Result</a></td>
+</tr>
+</tbody>
+</table>
+<ol class="text-align-justify arabic simple" start="12">
+<li>플랫폼은 수신한 Activation 결과를 저장하고 정상적으로 Activation이 된 경우 단말과 차량을 매핑합니다.</li>
+</ol>
+<ol class="text-align-justify arabic simple" start="13">
+<li>플랫폼은 12번의 결과를 고객사에 전달합니다.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="activation-free-device-registration">
+<span id="id1"></span><h3>5.2.2. Activation이 필요하지 않는 단말의 등록 절차<a class="headerlink" href="#activation-free-device-registration" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">단말 동작 전 단말의 활성화(Activation)가 요구되지 않는 단말에 적용되는 등록 절차를 기술합니다.</p>
+<img alt="_images/4-3-2.png" src="_images/4-3-2.png" />
+<div class="section" id="id2">
+<h4>5.2.2.1. Prestep<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p class="text-align-justify">사전에 각 단말은 SKT에서 제공한 Access Token (Sensor API의 credentialsId 필드)을 보유하고 있어야 하며, Application (고객사)에서도 동일한 Access Token을 보유하고 있어야 합니다.</p>
+</div>
+<div class="section" id="id3">
+<h4>5.2.2.2. Procedure<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<ol class="text-align-justify arabic simple">
+<li>Application Owner가 포털이나 HTTPS API를 통하여 플랫폼에 단말의 정보를 등록합니다. 센서 등록 설명은 <a class="reference internal" href="entity.html#sensor-registration"><span class="std std-ref">4.4. 센서 등록 (Sensor Registration)</span></a> 절차을 참고합니다.</li>
+</ol>
+<ol class="text-align-justify arabic simple" start="2">
+<li>플랫폼은 1번 과정에서 요청받은 정보를 기반으로 단말을 등록합니다. 상기 등록 과정에서 오류가 발생한 경우에는 수신 받은 인터페이스에 따라 회신합니다.</li>
+</ol>
+<ol class="text-align-justify arabic simple" start="3">
+<li>단말과 플랫폼간 연결을 시도합니다. 세부 절차는 <a class="reference external" href="#device-connection">5.1. Device Connection</a> 내용을 참고합니다.</li>
+</ol>
+<ol class="text-align-justify arabic simple" start="4">
+<li>단말이 연결되면 세션이 생성됩니다. 세션이 생성된 후 RPC 요청을 수신하기 위해 토픽을 구독합니다. MQTTS에서 토픽을 구독하면 필터에 일치하는 토픽에 대한 발행물이 클라이언트로 송신됩니다. 여기서 필터에 일치하는 발행물은 해당 단말에 대한 RPC 요청이 됩니다. <br /> RPC 요청을 수신하는 토픽은 아래와 같습니다.</li>
+</ol>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="28%" />
+<col width="73%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Topic</strong></td>
+<td>v1/sensors/me/rpc/request/+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">client</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;v1/sensors/me/rpc/request/+&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="table-width-fix text-align-justify arabic simple" start="5">
+<li>차량과 등록된 센서 간 매핑을 요청합니다. 매핑 API는 아래와 같습니다.</li>
+</ol>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>POST</strong></td>
+<td><a class="reference external" href="https://app.swaggerhub.com/a pis/tremoteye/tremoteyeapi/1.0.0#/Sensor /post_api_tre_v1_sensor__sensorId__vehic le__vehicleId_">/api/tre/v1/sensor/{sensorId}/vehicle/{vehicleId}</a></td>
+</tr>
+</tbody>
+</table>
+<ol class="text-align-justify arabic simple" start="6">
+<li>플랫폼에서 요청 받은 단말이 Activation이 필요한지 여부를 판단합니다. 단말의 Activation 필요 여부는 플랫폼에 단말을 등록할 때 입력한 activationRequired 필드 값에 따라 구분합니다. activationRequired&nbsp;값이 false이면 Activation이 필요없다고 간주합니다.</li>
+</ol>
+<ol class="text-align-justify arabic simple" start="7">
+<li>Activation이 필요없다고 판단되면 5번 과정의 매핑 요청에 따라 센서 엔티티에 센서가 연결된 차량의 식별자를 기입하여 논리적인 링크를 구성합니다.</li>
+</ol>
+<ol class="text-align-justify arabic simple" start="8">
+<li>플랫폼이 고객사(포털 또는 HTTPS Response)에게 센서와 차량 매핑 결과를 전달합니다.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="device-rpc">
+<span id="id4"></span><h2>5.3. Device RPC<a class="headerlink" href="#device-rpc" title="Permalink to this headline">¶</a></h2>
+<p class="text-align-justify">RPC는 Remote Procedure Call의 약자로 원격에 있는 함수를 호출해주는 기능을 말합니다. Device RPC는 어플리케이션에서 원격으로 센서의 기능을 호출함으로써 제어합니다. 어플리케이션에서 요청된 단말 제어 절차는 아래와 같습니다.</p>
+<img alt="_images/4-2.png" src="_images/4-2.png" />
+<div class="section" id="pre-step">
+<h3>5.3.1. Pre-Step<a class="headerlink" href="#pre-step" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify"><a class="reference external" href="#device-connection">5.1. Device Connection</a> 절차를 거칩니다. 단말이 정상적으로 연결되면 세션이 생성됩니다. 세션이 생성된 후 RPC 요청을 수신하기 위해 토픽을 구독합니다. MQTTS에서 토픽을 구독하면 필터에 일치하는 토픽에 대한 발행물이 클라이언트로 송신됩니다. 여기서 필터에 일치하는 발행물은 해당 단말에 대한 RPC 요청이 됩니다.</p>
+<p>RPC 요청을 수신하는 토픽은 아래와 같습니다.</p>
+<table border="1" class="table-width-fix docutils">
+<colgroup>
+<col width="28%" />
+<col width="73%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Topic</strong></td>
+<td>v1/sensors/me/rpc/request/+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="underline">Example Code</span></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">client</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;v1/sensors/me/rpc/request/+&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p class="text-align-justify">Device RPC 절차 이전에 <a class="reference external" href="#_Device_Activation">5.3. Device Activation</a> 절차를 거칩니다. 서비스 등록 단계에서 RPC 결과 및 단말 Attribute 변경 정보를 수신하기 위한 HTTP Server 주소를 기입 받습니다.</p>
+</div>
+<div class="section" id="id5">
+<h3>5.3.2. Procedure<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ol class="text-align-justify arabic simple">
+<li>고객사의 Application에서 단말 제어 요청이 발생합니다.</li>
+</ol>
+<ol class="text-align-justify arabic simple" start="2">
+<li>고객사의 Application이 HTTPS POST 메시지를 통해서 RPC 요청을 수행합니다. 요청 메시지 포맷은 <a class="reference external" href="rpc-message-format">6.2. RPC 메시지 포맷</a> 을 참고합니다. <br /> RPC 요청 API는 아래와 같습니다.</li>
+</ol>
+<table border="1" class="table-width-fix docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>POST</strong></td>
+<td><a class="reference external" href="https://app.swaggerhub.com/apis/ tremoteye/tremoteyeapi/1.0.0#/Sensor/ post_api_plugins_rpc_twoway__sensorId_">/api/plugins/rpc/twoway/{sensorId}</a></td>
+</tr>
+</tbody>
+</table>
+<ol class="text-align-justify arabic simple" start="3">
+<li>플랫폼은 2번과정에서 수신한 RPC 요청 메세지를 단말에 포워딩 합니다. 이 때, 플랫폼은 RPC에 대한 요청 식별자 Request-ID를 Topic의 하나로 제공합니다.</li>
+</ol>
+<table border="1" class="text-align-justify docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Topic</strong></td>
+<td>v1/sensors/me/rpc/request/{Request-ID}</td>
+</tr>
+</tbody>
+</table>
+<ol class="text-align-justify arabic simple" start="4">
+<li>단말은 RPC 요청을 수신했다는 Ack를 플랫폼에 Return합니다. 단 해당 수신에 대한 Ack 메시지가 20초 내로 전송되지 않으면 Timeout 된 후 에러로 처리됩니다. <br /> RPC Ack를 발송하는 토픽은 아래와 같습니다.</li>
+</ol>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="51%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Topic</strong></td>
+<td colspan="2">v1/sensors/me/rpc/response/{Request-ID}</td>
+</tr>
+<tr class="row-even"><td><strong>메시지 포맷</strong></td>
+<td colspan="2"><a class="reference internal" href="message.html#vendor-specific-msg-response"><span class="std std-ref">Response</span></a> 참조</td>
+</tr>
+</tbody>
+</table>
+<ol class="text-align-justify arabic simple" start="5">
+<li>플랫폼은 RPC 요청 수신 결과 메세지를 포워딩하여 Application에 상기 4번의 Response 형태로 응답합니다.</li>
+</ol>
+<ol class="text-align-justify arabic simple" start="6">
+<li>단말은 RPC 결과를 플랫폼에 전달합니다. RPC 결과를 발송하는 토픽은 아래와 같습니다.</li>
+</ol>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="51%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Topic</strong></td>
+<td colspan="2">v1/sensors/me/rpc/result/{Request-ID}</td>
+</tr>
+<tr class="row-even"><td><strong>메시지 포맷</strong></td>
+<td colspan="2"><a class="reference internal" href="message.html#vendor-specific-msg-result"><span class="std std-ref">Result</span></a> 참조</td>
+</tr>
+</tbody>
+</table>
+<ol class="text-align-justify arabic simple" start="7">
+<li>플랫폼은 상기 6번 과정의 Attribute가 Update 된 경우에 해당 결과를 그대로 고객사의 application에 푸시 형태로 제공합니다. 이 때 주소는 Prestep에서 정의한 HTTP Server 주소를 활용합니다.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="device-procedure">
+<h2>5.4. Device Procedure<a class="headerlink" href="#device-procedure" title="Permalink to this headline">¶</a></h2>
+<p class="text-align-justify">단말 활성화 작업까지 마쳤다면 실제로 운행 데이터를 송수신할 차례입니다. 이제 단말이 데이터를 전송하는 프로시저의 명세에 대해 알아보겠습니다.</p>
+<div class="section" id="trip-data">
+<h3>5.4.1. Trip Data<a class="headerlink" href="#trip-data" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">센서에서 발생한 운행 기록을 위한 정보를 업로드 하는 절차를 기술합니다.</p>
+<img alt="_images/4-4-1.png" src="_images/4-4-1.png" />
+<div class="section" id="id6">
+<h4>5.4.1.1. Prestep<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p class="text-align-justify">본 가이드 문서 중 <a class="reference external" href="#device-activation">5.2. Device Activation</a> 절차를 정상적으로 수행되어야 합니다.</p>
+</div>
+<div class="section" id="id7">
+<h4>5.4.1.2. Procedure<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<ol class="text-align-justify arabic simple">
+<li>단말은 차량의 운행이 시작되는 순간부터 등록 시점에 명세한 주기에 따라 Microtrip 데이터를 플랫폼에 전달합니다. <br /> 플랫폼에 Microtrip 전달하는 토픽은 아래와 같습니다. QoS 값은 1로 설정합니다.</li>
+</ol>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Topic</strong></td>
+<td>v1/sensors/me/tre</td>
+</tr>
+<tr class="row-even"><td><strong>메시지 포맷</strong></td>
+<td><a class="reference internal" href="message.html#message-format-for-sensor"><span class="std std-ref">8.2. 센서 타입별 주기 메시지 포맷</span></a> 의 Microtrip 참고</td>
+</tr>
+</tbody>
+</table>
+<ol class="text-align-justify arabic simple" start="2">
+<li>단말은 차량 운행이 종료된 후 운행 종료를 알리는 Trip 데이터를 플랫폼에 전달합니다. <br /> 플랫폼에 Trip 전달하는 토픽은 아래와 같습니다. QoS 값은 1로 설정합니다.</li>
+</ol>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Topic</strong></td>
+<td>v1/sensors/me/tre</td>
+</tr>
+<tr class="row-even"><td><strong>메시지 포맷</strong></td>
+<td><a class="reference internal" href="message.html#message-format-for-sensor"><span class="std std-ref">8.2. 센서 타입별 주기 메시지 포맷</span></a> 의 Trip 참고</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="event-data">
+<span id="event-data-procedure"></span><h3>5.4.2. Event Data<a class="headerlink" href="#event-data" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">센서에서 발생한 운행 이벤트 정보를 업로드 하는 절차를 기술합니다.</p>
+<img alt="_images/4-4-2.png" src="_images/4-4-2.png" />
+<div class="section" id="id8">
+<h4>5.4.2.1. Prestep<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<p class="text-align-justify">본 가이드 문서 중 <a class="reference external" href="#device-activation">5.2. Device Activation</a> 절차를 정상적으로 수행합니다.</p>
+</div>
+<div class="section" id="id9">
+<h4>5.4.2.2. Procedure<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<ol class="text-align-justify arabic simple">
+<li>차량에서 플랫폼에 전달할 이벤트가 발생합니다.</li>
+</ol>
+<ol class="text-align-justify arabic simple" start="2">
+<li>1번 과정에서 발생한 이벤트를 아래 규격에 맞추어 플랫폼에 전달합니다. 이벤트는 Time Series와 Attributes 두 종류로 나눠지며 서로 다른 토픽을 사용합니다. <br /> 플랫폼에 이벤트 전달하는 토픽은 아래와 같습니다. QoS 값은 1로 설정합니다.</li>
+</ol>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Topic</strong></td>
+<td>v1/sensors/me/tre</td>
+</tr>
+</tbody>
+</table>
+<p class="text-align-justify">전달 가능한 이벤트는 아래와 같습니다. 메세지 포맷은 <a class="reference internal" href="message.html#event-message-format-payload-type"><span class="std std-ref">8.2.1.1 Payload Types</span></a> 를 참조합니다.</p>
+<ul class="simple">
+<li>Diagnostic Information (Time Series)</li>
+<li>Collision warning (Driving) (Time Series)</li>
+<li>Collision warning (Paramsking) (Time Series)</li>
+<li>Battery Warning (Attributes)</li>
+<li>Unplugged Warning (Attributes)</li>
+<li>Turn-off Warning (Attributes)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api.html" class="btn btn-neutral float-right" title="6. API 규격" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="entity.html" class="btn btn-neutral" title="4. 구성요소(Entity) 등록" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright SK TELECOM.LTD. ALL RIGHTS RESERVED..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

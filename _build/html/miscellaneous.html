@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>12. Miscellaneous &mdash; Smart[Fleet] Platform 1.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="11. Best Practices" href="bestpractice.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Smart[Fleet] Platform
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Smart[Fleet] 플랫폼 소개</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">2. 주요 구성요소 (Entity Architecture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="procedure.html">3. 서비스 세부 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity.html">4. 구성요소(Entity) 등록</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">5. Device 연동 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">6. API 규격</a></li>
+<li class="toctree-l1"><a class="reference internal" href="message.html">7. 메시지 포맷</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataanalytics.html">8. Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk.html">9. SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulator.html">10. 테스트용 시뮬레이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bestpractice.html">11. Best Practices</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">12. Miscellaneous</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#swing-interworking">12.1. Swing Interworking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-information">12.1.1. General Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#major-actions">12.1.2. Major Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fota">12.2. FOTA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">12.2.1. General Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#architecture">12.2.2. Architecture</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Smart[Fleet] Platform</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>12. Miscellaneous</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/miscellaneous.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="miscellaneous">
+<h1>12. Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="swing-interworking">
+<h2>12.1. Swing Interworking<a class="headerlink" href="#swing-interworking" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="general-information">
+<h3>12.1.1. General Information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h3>
+<p>Smart[Fleet]을 사용해서 SKT 단말의 개통 정보를 확인할 수 있습니다. 확인이 가능한 개통 정보는 다음과 같습니다.</p>
+<ul class="simple">
+<li>단말 개통에 따른 추가 정보 (IMEI, MDN, ICCID, IMSI 등)</li>
+<li>단말의 현재 망 연동 현황 (망 연동 정상, 이용정지, 휴지정지, 해지정지, 직권해지, 일반해지 등)</li>
+<li>단말이 현재 가입된 요금제 정보</li>
+</ul>
+<p>아래 예제는 차량 <code class="docutils literal notranslate"><span class="pre">vehicle</span></code> 및 소유자 <code class="docutils literal notranslate"><span class="pre">director</span></code> 가 단말에 정상적으로 매핑 된 후 SKT의 가입망으로 통해서
+정상적으로 등록된 단말의 조회 정보입니다. 단말의 요금제 <code class="docutils literal notranslate"><span class="pre">subscription</span></code>, IMSI <code class="docutils literal notranslate"><span class="pre">imsi</span></code>,
+IMEI <code class="docutils literal notranslate"><span class="pre">serialNo</span></code>, MDN <code class="docutils literal notranslate"><span class="pre">mdn</span></code> 이 정상적으로 등록된 것을 확인하실 수 있습니다.</p>
+<p>추가로 단말의 현재 망 연동 상태를 알려주는 <code class="docutils literal notranslate"><span class="pre">nwStatus</span></code> 의 의미는 다음 표와 같습니다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>00</td>
+<td>미개통 및 SKT망 Cat.M1 연동이 아닌 단말</td>
+</tr>
+<tr class="row-odd"><td>01</td>
+<td>정상 개통</td>
+</tr>
+<tr class="row-even"><td>02</td>
+<td>이용 정지</td>
+</tr>
+<tr class="row-odd"><td>03</td>
+<td>휴지 정지</td>
+</tr>
+<tr class="row-even"><td>04</td>
+<td>해지 정지</td>
+</tr>
+<tr class="row-odd"><td>05</td>
+<td>직권 해지</td>
+</tr>
+<tr class="row-even"><td>06</td>
+<td>일반 해지</td>
+</tr>
+<tr class="row-odd"><td>99</td>
+<td>원인 불상의 오류 (<a class="reference external" href="mailto:admin&#37;&#52;&#48;smartfleet&#46;sktelecom&#46;com">admin<span>&#64;</span>smartfleet<span>&#46;</span>sktelecom<span>&#46;</span>com</a> 연락)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;6802f7b0-0b34-11e8-9f2b-d3c31ebad2b2&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1517918034596</span><span class="p">,</span>
+    <span class="nt">&quot;vehicleId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;6678d540-0b34-11e8-9f2b-d3c31ebad2b2&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;companyId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;37bb69a0-fb64-11e7-b6fe-d3c31ebad2b2&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;directorId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;6d91d980-0b34-11e8-9f2b-d3c31ebad2b2&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;ACTIVATED&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;vendor&quot;</span><span class="p">:</span> <span class="s2">&quot;bbb&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;OBD&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;additionalInfo&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;extra&quot;</span><span class="p">:</span> <span class="s2">&quot;infoTest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;subscription&quot;</span><span class="p">:</span> <span class="s2">&quot;aaaa&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;imsi&quot;</span><span class="p">:</span> <span class="s2">&quot;450109900011234&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;iccid&quot;</span><span class="p">:</span> <span class="s2">&quot;8982050809121205771F&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;lastTripMsgType&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;activationRequired&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;vehicleNo&quot;</span><span class="p">:</span> <span class="s2">&quot;26나8999&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;serialNo&quot;</span><span class="p">:</span> <span class="s2">&quot;777888999000888&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;credentialsId&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;mdn&quot;</span><span class="p">:</span> <span class="s2">&quot;01203331234&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;nwStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;01&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="major-actions">
+<h3>12.1.2. Major Actions<a class="headerlink" href="#major-actions" title="Permalink to this headline">¶</a></h3>
+<p>아래 표는 고객이 개통, 명의 변경 등의 업무를 통해서 접수된 내용을 Smart[Fleet] 처리하는 내용을 명시합니다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Actions</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>개통</td>
+<td>정상 적인 개통 후에는 개통 시 명시된 주요 파라미터들이 상기 예제 JSON과 같이 플랫폼에 적시됩니다. <br /> MDN을 발급 받은 경우에는 MDN 번호로 단말을 조회할 수 있습니다.</td>
+</tr>
+<tr class="row-odd"><td>기기 변경</td>
+<td><blockquote class="first">
+<div>정상 또는 정지 상태에서 고객의 요청에 따른 기기 변경 시에는, <br /></div></blockquote>
+<ol class="last arabic simple">
+<li>기존 기기에 매핑된 차량 및 소유자의 정보를 변경되는 기기에 해제 합니다.</li>
+<li>변경되는 기기에 상기 차량 및 소유자의 정보를 자동으로 매칭합니다.</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td>명의 변경</td>
+<td><blockquote class="first">
+<div>정상 또는 정지 상태에서 고객의 요청에 따른 명의 변경 시에는,</div></blockquote>
+<ul class="last simple">
+<li>기존 단말의 등록 상태를 모두 삭제합니다. 명의 변경에 따른 소유자 변경 처리는 별도의 Application단에서 진행합니다.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>번호 변경</td>
+<td><blockquote class="first">
+<div>정상 또는 정지 상태에서 고객의 요청에 따른 번호 변경 시에는,</div></blockquote>
+<ul class="last simple">
+<li>MDN 번호를 신규 번호로 업데이트 합니다.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>SIM 변경</td>
+<td><blockquote class="first">
+<div>정상 또는 정지 상태에서 고객의 요청에 따른 SIM 변경 시에는,</div></blockquote>
+<ul class="last simple">
+<li>ICCID, IMSI를 교체한 정보로 업데이트 합니다.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>해지</td>
+<td><blockquote class="first">
+<div>정상 또는 정지 상태에서 고객의 요청에 따른 단말 해지 시에는,</div></blockquote>
+<ul class="last simple">
+<li>등록된 단말의 상태 정보를 모두 삭제합니다. 해지에 따른 고객 정보 Backup은 Application단에서 진행합니다.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>정지</td>
+<td><blockquote class="first">
+<div>정상 상태에서 일시, 이용, 휴지, 해지 정지로 전환되는 상태에는,</div></blockquote>
+<ul class="last simple">
+<li>정지 상태의 상태를 단말의 <code class="docutils literal notranslate"><span class="pre">nwStatus</span></code> key에 업데이트 합니다.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>요금제 변경</td>
+<td><blockquote class="first">
+<div>정상 또는 정지 상태에서의 고객의 요청에 따른 요금제 변경 시에는,</div></blockquote>
+<ul class="last simple">
+<li>변경된 요금제 코드 정보를 단말 상태에 업데이트 합니다.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="fota">
+<h2>12.2. FOTA<a class="headerlink" href="#fota" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>12.2.1. General Information<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>본 장에서는 Smart[Fleet]을 통해서 FOTA <code class="docutils literal notranslate"><span class="pre">Firmware</span> <span class="pre">Over</span> <span class="pre">The</span> <span class="pre">Air</span></code> 를 수행하는 방법에 대해서 기술합니다.</p>
+<p>Smart[Fleet] 플랫폼에 정상적으로 등록한 단말은 다음과 같이 2가지 방법을 통해서 FOTA를 수행합니다.</p>
+<ol class="arabic simple">
+<li>By Portal - Smart[Fleet] 홈페이지를 통해서 FOTA를 요청하는 방법</li>
+<li>By RPC - Smart[Fleet]의 RPC를 통해서 FOTA를 요청하는 방법</li>
+</ol>
+</div>
+<div class="section" id="architecture">
+<h3>12.2.2. Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="bestpractice.html" class="btn btn-neutral" title="11. Best Practices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright SK TELECOM.LTD. ALL RIGHTS RESERVED..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>
