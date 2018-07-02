@@ -17,28 +17,6 @@ SK Telecom의 Connected Car 플랫폼인 Smart[Fleet] 플랫폼의 개발자를 
 기술적인 질문은 admin@smartfleet.sktelecom.com 으로 부탁 드립니다.
 
 
-|br|
-
-Contents:
-
-.. toctree::
-   :numbered:
-   :maxdepth: 3
-
-   introduction
-   architecture
-   procedure
-   entity
-   device
-   api
-   message
-   dataanalytics
-   sdk
-   simulator
-   bestpractice
-   miscellaneous
-
-
 Change Logs:
 
 +---------+--------------------+----------------------------------------+
@@ -65,3 +43,26 @@ Change Logs:
 | 1.1.0   | 2018/06/14         | Add AVN Device Message Profile         |
 |         |                    | |br| Add Data Analytics Chapter        |
 +---------+--------------------+----------------------------------------+
+
+|br|
+
+Contents:
+
+.. toctree::
+   :numbered:
+   :maxdepth: 3
+
+   introduction
+   architecture
+   procedure
+   entity
+   device
+   api
+   message
+   dataanalytics
+   sdk
+   simulator
+   bestpractice
+   miscellaneous
+
+
