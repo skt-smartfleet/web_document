@@ -34,6 +34,7 @@ notifyMsgType    수신하고자 하는 Push 메시지 타입 정보
                  * 300 : All RPC Messages
                  * 400 : All Rule Alarm Messages
                  * 500 : 단말 연결 및 끊김 상태 알람
+                 * 600 : Swing 연동에 따른 단말 망 연동 현황
 ===============  ========================================================
 
 
@@ -49,6 +50,28 @@ notifyMsgType    수신하고자 하는 Push 메시지 타입 정보
     }
  
 상기 과정을 정상적으로 수행하면 Smart[Fleet] 플랫폼의 선택된 메시지들을 정의된 HTTP 서버에 전송합니다.
+
+
+Swing에 따른 망 연동 현황
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Swing에 따른 망 연동 현황은 센서에 명시된 ``nwStatus`` 값이 변경되는 경우 전달됩니다. 
+예를 들면, 비 개통 상태에서 개통 상태로 변경되면 푸시가 가게 되며, 아래와 같이 메시지가 전달됩니다.
+참고로, ``nwStatus`` 값은 `nwStatus 정의 <https://smart-fleet-docs.readthedocs.io/ko/latest/miscellaneous/#swing-interworking>`__ 를 참고하세요.
+
+.. code-block:: json
+
+    {
+        “masterCompanyId”: “be12f480-49bd-11e8-8174-d55e41d61949",
+        “companyId”: “be12f480-49bd-11e8-8174-d55e41d61949",
+        “sensorId”: “be87d660-49bd-11e8-8174-d55e41d61949",
+        “ts”: 1524794221355,
+        “ty”: “NWSTATUS”,
+        “pld”: {
+           “nwStatus”: “01"
+        }
+    }
+
 
 
 Push 메시지 수신을 위한 서버 기동
