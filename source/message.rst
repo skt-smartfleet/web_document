@@ -877,6 +877,10 @@ lon       Int      M         경도 (WGS84)
 gan       Int      M         GPS 방위각 (0 ~ 359, 진북 기준)
 acx       String   M         가속도 x-axis (Vx, -1000 ~ +1000)
 acy       String   M         가속도 y-axis (Vy, -1000 ~ +1000)
+tmp1      Int      O         DTG와 추가로 연결된 온도 정보 1
+tmp2      Int      O         DTG와 추가로 연결된 온도 정보 2
+tmp3      Int      O         DTG와 추가로 연결된 온도 정보 3
+door      Int      O         문 개폐 정보 (0: 닫힘, 1:열림)
 ========  =======  ========  ======================================================================
 
 :underline:`Example Code` :
@@ -897,7 +901,11 @@ acy       String   M         가속도 y-axis (Vy, -1000 ~ +1000)
             "bsg" : 0,
             "gag" : 90, 
             "acx" : "150",
-            "acy" : "-150"
+            "acy" : "-150",
+            "tmp1" : "35",
+            "tmp2" : "45",
+            "tmp3" : "20",
+            "door" : "1"
         }
     }
 
