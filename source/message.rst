@@ -880,14 +880,13 @@ acy       String   M         가속도 y-axis (Vy, -1000 ~ +1000)
 tmp       Int      O         DTG와 추가로 연결된 온도 정보 (Delimeter는 Comma, -999 ~ +999, 단위: °C)
 tploc     String   O         DTG와 연결된 온도 측정 위치 정보 (Delimeter는 Comma)
 door      Int      O         - 문 개폐와 관련된 Event 정보
-
                              ====  ===================
                              Bit   Description
                              ====  ===================
                              0     문닫힘 (Closed)
                              1     문열림 (Opened)
                              2     통신 불량
-                             3     Reaserved
+                             3     Reaserved  
                              ====  ===================
 ========  =======  ========  ======================================================================
 
