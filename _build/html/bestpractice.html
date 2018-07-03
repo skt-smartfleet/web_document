@@ -96,7 +96,10 @@
 <li class="toctree-l1"><a class="reference internal" href="simulator.html">10. 테스트용 시뮬레이터</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">11. Best Practices</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#web-push">11.1. Web Push</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#push">11.1.1. Push 메시지 타입 및 수신 서버 주소 정의</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#push">11.1.1. Push 메시지 타입 및 수신 서버 주소 정의</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#swing">11.1.1.1. Swing에 따른 망 연동 현황</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">11.1.2. Push 메시지 수신을 위한 서버 기동</a></li>
 </ul>
 </li>
@@ -219,6 +222,7 @@ API를 통해 아래 2가지 Key 정보를 상황에 맞추어 수정하면 됩�
 <li>300 : All RPC Messages</li>
 <li>400 : All Rule Alarm Messages</li>
 <li>500 : 단말 연결 및 끊김 상태 알람</li>
+<li>600 : Swing 연동에 따른 단말 망 연동 현황</li>
 </ul>
 </td>
 </tr>
@@ -234,6 +238,24 @@ API를 통해 아래 2가지 Key 정보를 상황에 맞추어 수정하면 됩�
 </pre></div>
 </div>
 <p>상기 과정을 정상적으로 수행하면 Smart[Fleet] 플랫폼의 선택된 메시지들을 정의된 HTTP 서버에 전송합니다.</p>
+<div class="section" id="swing">
+<h4>11.1.1.1. Swing에 따른 망 연동 현황<a class="headerlink" href="#swing" title="Permalink to this headline">¶</a></h4>
+<p>Swing에 따른 망 연동 현황은 센서에 명시된 <code class="docutils literal notranslate"><span class="pre">nwStatus</span></code> 값이 변경되는 경우 전달됩니다.
+예를 들면, 비 개통 상태에서 개통 상태로 변경되면 푸시가 가게 되며, 아래와 같이 메시지가 전달됩니다.
+참고로, <code class="docutils literal notranslate"><span class="pre">nwStatus</span></code> 값은 <a class="reference external" href="https://smart-fleet-docs.readthedocs.io/ko/latest/miscellaneous/#swing-interworking">nwStatus 정의</a> 를 참고하세요.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+    “masterCompanyId”: “be12f480-49bd-11e8-8174-d55e41d61949&quot;,
+    “companyId”: “be12f480-49bd-11e8-8174-d55e41d61949&quot;,
+    “sensorId”: “be87d660-49bd-11e8-8174-d55e41d61949&quot;,
+    “ts”: 1524794221355,
+    “ty”: “NWSTATUS”,
+    “pld”: {
+       “nwStatus”: “01&quot;
+    }
+}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="id1">
 <h3>11.1.2. Push 메시지 수신을 위한 서버 기동<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>

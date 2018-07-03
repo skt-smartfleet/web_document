@@ -877,6 +877,7 @@ lon       Int      M         경도 (WGS84)
 gan       Int      M         GPS 방위각 (0 ~ 359, 진북 기준)
 acx       String   M         가속도 x-axis (Vx, -1000 ~ +1000)
 acy       String   M         가속도 y-axis (Vy, -1000 ~ +1000)
+<<<<<<< HEAD
 tmp       Int      O         DTG와 추가로 연결된 온도 정보 (Delimeter는 Comma, -999 ~ +999, 단위: °C)
 tploc     String   O         DTG와 연결된 온도 측정 위치 정보 (Delimeter는 Comma)
 door      Int      O         - 문 개폐와 관련된 Event 정보
@@ -889,6 +890,12 @@ door      Int      O         - 문 개폐와 관련된 Event 정보
                              2     통신 불량
                              3     Reaserved
                              ====  ===================
+=======
+tmp1      Int      O         DTG와 추가로 연결된 온도 정보 1
+tmp2      Int      O         DTG와 추가로 연결된 온도 정보 2
+tmp3      Int      O         DTG와 추가로 연결된 온도 정보 3
+door      Int      O         문 개폐 정보 (0: 닫힘, 1:열림)
+>>>>>>> 962f27cc78ca89c8298d245268826dd21474c9a4
 ========  =======  ========  ======================================================================
 
 :underline:`Example Code` :
@@ -910,8 +917,14 @@ door      Int      O         - 문 개폐와 관련된 Event 정보
             "gag" : 90, 
             "acx" : "150",
             "acy" : "-150",
+<<<<<<< HEAD
             "tmp" : "-25, 45, 20", // 온도센서 3개 연결 예
             "toloc" : "freezer, fridge, room tmp", // 온도센서 위치 예: 냉동고, 냉장고, 상온고 
+=======
+            "tmp1" : "35",
+            "tmp2" : "45",
+            "tmp3" : "20",
+>>>>>>> 962f27cc78ca89c8298d245268826dd21474c9a4
             "door" : "1"
         }
     }
