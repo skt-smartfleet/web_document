@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
@@ -175,11 +174,11 @@
             
   <div class="section" id="data-analytics">
 <h1>8. Data Analytics<a class="headerlink" href="#data-analytics" title="Permalink to this headline">¶</a></h1>
-<p>Smart[Fleet] 플랫폼의 데이터 분석 기능에 대해서 소개 합니다.</p>
+<p>이 매뉴얼에서는 Smart[Fleet] 플랫폼의 다양한 데이터 분석 기능 및 API 사용법에 대해서 소개합니다.</p>
 <div class="section" id="driving-scoring">
 <h2>8.1. Driving Scoring<a class="headerlink" href="#driving-scoring" title="Permalink to this headline">¶</a></h2>
 <p>우선 먼저 소개 드리는 내용은 운전자 습관 분석에 대한 내용입니다.
-Smart[Fleet] 플랫폼에서는 고객사에서 제공하는 GPS 위치 정보 <code class="docutils literal notranslate"><span class="pre">lat</span></code> , <code class="docutils literal notranslate"><span class="pre">lon</span></code> 를 기반으로 운전자 습관 분석을 위한 다음 항목을 분석합니다.</p>
+Smart[Fleet] 플랫폼에서는 고객사에서 제공하는 GPS 위치 정보 <code class="docutils literal"><span class="pre">lat</span></code> , <code class="docutils literal"><span class="pre">lon</span></code> 를 기반으로 운전자 습관 분석을 위한 다음 항목을 분석합니다.</p>
 <ul class="simple">
 <li>GPS 맵매칭을 통한 정확한 운행 거리 계산</li>
 <li>주요 안전 운행 습관 분석 (급출발, 급정거, 급감속, 급과속)</li>
@@ -199,9 +198,9 @@ Smart[Fleet] 플랫폼에서는 고객사에서 제공하는 GPS 위치 정보 <
 <h3>8.1.1. Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
 <p>운전자 습관 분석을 위한 요구사항은 다음과 같습니다.</p>
 <ol class="arabic simple">
-<li><a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#id6">Smart[Fleet] 플랫폼 센서 메시지 포맷</a> 을 준수하는 <code class="docutils literal notranslate"><span class="pre">GPS</span></code> , <code class="docutils literal notranslate"><span class="pre">OBD</span></code> , <code class="docutils literal notranslate"><span class="pre">BLACKBOX</span></code> 센서다.</li>
-<li>각 센서는 기본적으로 <code class="docutils literal notranslate"><span class="pre">GPS</span></code> , <code class="docutils literal notranslate"><span class="pre">OBD</span></code> , <code class="docutils literal notranslate"><span class="pre">BLACKBOX</span></code> 포맷 내 <code class="docutils literal notranslate"><span class="pre">lat</span></code> , <code class="docutils literal notranslate"><span class="pre">lon</span></code> 값을 포함한다.</li>
-<li>각 센서가 제공하는 <code class="docutils literal notranslate"><span class="pre">Microtrip</span></code> 의 플랫폼 전송 주기는 5초 미만이여야 한다.</li>
+<li><a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#id6">Smart[Fleet] 플랫폼 센서 메시지 포맷</a> 을 준수하는 <code class="docutils literal"><span class="pre">GPS</span></code> , <code class="docutils literal"><span class="pre">OBD</span></code> , <code class="docutils literal"><span class="pre">BLACKBOX</span></code> 센서다.</li>
+<li>각 센서는 기본적으로 <code class="docutils literal"><span class="pre">GPS</span></code> , <code class="docutils literal"><span class="pre">OBD</span></code> , <code class="docutils literal"><span class="pre">BLACKBOX</span></code> 포맷 내 <code class="docutils literal"><span class="pre">lat</span></code> , <code class="docutils literal"><span class="pre">lon</span></code> 값을 포함한다.</li>
+<li>각 센서가 제공하는 <code class="docutils literal"><span class="pre">Microtrip</span></code> 의 플랫폼 전송 주기는 5초 미만이여야 한다.</li>
 </ol>
 </div>
 <div class="section" id="scoring-apis">
@@ -209,7 +208,7 @@ Smart[Fleet] 플랫폼에서는 고객사에서 제공하는 GPS 위치 정보 <
 <p>본 절에서는 Smart[Fleet]에서 제공하는 운전자 습관 분석 관련 API을 설명합니다.</p>
 <div class="section" id="trip">
 <h4>8.1.2.1. 운행한 Trip 별 통계 리스트 조회<a class="headerlink" href="#trip" title="Permalink to this headline">¶</a></h4>
-<p class="text-align-justify table-width-fix">본 API는 각 운행 <code class="docutils literal notranslate"><span class="pre">Trip</span></code> 별로 계산된 운전 점수와 운행 중 Scoring 기반이 되는 <code class="docutils literal notranslate"><span class="pre">급가속</span></code>, <code class="docutils literal notranslate"><span class="pre">급감속</span></code>, <code class="docutils literal notranslate"><span class="pre">운행거리</span></code>, <code class="docutils literal notranslate"><span class="pre">과속횟수</span></code> 정보를 제공합니다.</p>
+<p class="text-align-justify table-width-fix">본 API는 각 운행 <code class="docutils literal"><span class="pre">Trip</span></code> 별로 계산된 운전 점수와 운행 중 Scoring 기반이 되는 <code class="docutils literal"><span class="pre">급가속</span></code>, <code class="docutils literal"><span class="pre">급감속</span></code>, <code class="docutils literal"><span class="pre">운행거리</span></code>, <code class="docutils literal"><span class="pre">과속횟수</span></code> 정보를 제공합니다.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -222,12 +221,12 @@ Smart[Fleet] 플랫폼에서는 고객사에서 제공하는 GPS 위치 정보 <
 </tbody>
 </table>
 <p><span class="underline">Request (최신 2개의 운행별 운전자 점수)</span> :</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>curl --request GET <span class="se">\</span>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>curl --request GET <span class="se">\</span>
 --url <span class="s1">&#39;https://smartfleet.sktelecom.com:9901/api/tre/v1_3/vehicle/{{vehicleID}}/analytics/drivingScore?limit=2&#39;</span> <span class="se">\</span>
 </pre></div>
 </div>
 <p><span class="underline">Results (최신 2개의 운행별 운전자 점수)</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -283,7 +282,7 @@ Smart[Fleet] 플랫폼에서는 고객사에서 제공하는 GPS 위치 정보 <
 <div class="section" id="gps-event">
 <h4>8.1.2.2. 주요 운전 습관에 대한 GPS Event 상세 정보<a class="headerlink" href="#gps-event" title="Permalink to this headline">¶</a></h4>
 <p>본 API는 주요 운전 습관에 대한 Smart[Fleet]에서 분석한 근거를 제공합니다.
-예를 들어 운전자의 <code class="docutils literal notranslate"><span class="pre">급감속</span></code> 위치 또는 <code class="docutils literal notranslate"><span class="pre">과속</span></code> 위치 및 과속 제한 및 실제 속도 정보 등을 제공합니다.</p>
+예를 들어 운전자의 <code class="docutils literal"><span class="pre">급감속</span></code> 위치 또는 <code class="docutils literal"><span class="pre">과속</span></code> 위치 및 과속 제한 및 실제 속도 정보 등을 제공합니다.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -323,12 +322,12 @@ Smart[Fleet] 플랫폼에서는 고객사에서 제공하는 GPS 위치 정보 <
 </tbody>
 </table>
 <p><span class="underline">Request (최신 2개의 상세 이벤트)</span> :</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>curl --request GET <span class="se">\</span>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>curl --request GET <span class="se">\</span>
 --url <span class="s1">&#39;https://smartfleet.sktelecom.com:9901/api/tre/v1_3/vehicle/{vehicleId}/analytics/gpsEvent?limit=2&#39;</span> <span class="se">\</span>
 </pre></div>
 </div>
 <p><span class="underline">Results (최신 2개의 상세 이벤트)</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -404,12 +403,12 @@ Smart[Fleet] 플랫폼에서는 고객사에서 제공하는 GPS 위치 정보 <
 </tbody>
 </table>
 <p><span class="underline">Request (최신 2개의 상세 이벤트)</span> :</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>  curl --request GET <span class="se">\</span>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>  curl --request GET <span class="se">\</span>
 --url https://smartfleet.sktelecom.com:9901/api/tre/v1_3/vehicle/<span class="o">{</span>vehicleId<span class="o">}</span>/analytics/drivingScore/stat <span class="se">\</span>
 </pre></div>
 </div>
 <p><span class="underline">Results</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;244bee00-3c7b-11e8-8994-85c175e72d24&quot;</span>
     <span class="p">},</span>
@@ -485,16 +484,11 @@ Smart[Fleet] 플랫폼에서는 고객사에서 제공하는 GPS 위치 정보 <
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 

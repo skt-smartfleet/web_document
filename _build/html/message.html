@@ -24,8 +24,7 @@
 
   
 
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
@@ -306,13 +305,13 @@
 <p>이 매뉴얼은 단말이 MQTTS 프로토콜로 Smart[Fleet] 플랫폼과 연동하기 위한 메시지 포맷입니다. Entity 등록을 위한 HTTP Rest API 사용은 <a class="reference internal" href="entity.html#entity-registration"><span class="std std-ref">4. 구성요소(Entity) 등록</span></a> 문서를, App 개발자를 위한 Smart[Fleet] API 는 <a class="reference internal" href="api.html#api-specification"><span class="std std-ref">6. API 규격</span></a> 문서를 참고하십시오.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">본 장에 명세된 표 내용 중 <code class="docutils literal notranslate"><span class="pre">M</span></code> / <code class="docutils literal notranslate"><span class="pre">O</span></code> 는 <code class="docutils literal notranslate"><span class="pre">Mandatory</span></code> / <code class="docutils literal notranslate"><span class="pre">Optional</span></code> 의 약자로, Mandatory는 필수로 포함해야 하는 데이터를 Optional은 필요에 따라 기입이 여부를 개발사에서 판단하시면 됩니다.</p>
+<p class="last">본 장에 명세된 표 내용 중 <code class="docutils literal"><span class="pre">M</span></code> / <code class="docutils literal"><span class="pre">O</span></code> 는 <code class="docutils literal"><span class="pre">Mandatory</span></code> / <code class="docutils literal"><span class="pre">Optional</span></code> 의 약자로, Mandatory는 필수로 포함해야 하는 데이터를 Optional은 필요에 따라 기입이 여부를 개발사에서 판단하시면 됩니다.</p>
 </div>
 <div class="section" id="id2">
 <h2>7.1. 메시지 기본 구조<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>Smart[Fleet] 플랫폼의 기본 메시지 구조는 <code class="docutils literal notranslate"><span class="pre">Header</span></code> 와 <code class="docutils literal notranslate"><span class="pre">Payload</span></code> 형태로 구조화 되어 있습니다. 각 메시지는 해당 메시지의 타입인 <code class="docutils literal notranslate"><span class="pre">ty</span></code> 로 구분하고 <code class="docutils literal notranslate"><span class="pre">ty</span></code> 에 따라 <code class="docutils literal notranslate"><span class="pre">pld</span></code> child의 내용이 상이합니다.</p>
+<p>Smart[Fleet] 플랫폼의 기본 메시지 구조는 <code class="docutils literal"><span class="pre">Header</span></code> 와 <code class="docutils literal"><span class="pre">Payload</span></code> 형태로 구조화 되어 있습니다. 각 메시지는 해당 메시지의 타입인 <code class="docutils literal"><span class="pre">ty</span></code> 로 구분하고 <code class="docutils literal"><span class="pre">ty</span></code> 에 따라 <code class="docutils literal"><span class="pre">pld</span></code> child의 내용이 상이합니다.</p>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
     // Header
     &quot;ts&quot; : 1505434907995,
 
@@ -337,7 +336,7 @@
 <div class="section" id="message-format-for-sensor">
 <span id="id3"></span><h3>7.1.1. 메시지 타입<a class="headerlink" href="#message-format-for-sensor" title="Permalink to this headline">¶</a></h3>
 <p>Smart[Fleet] 플랫폼은 외부 인터페이스와 다양한 형태의 메시지 주고 받을 때,
-해당 메세지를 <code class="docutils literal notranslate"><span class="pre">ty</span></code> 값으로 구분하여 인식하게 됩니다.</p>
+해당 메세지를 <code class="docutils literal"><span class="pre">ty</span></code> 값으로 구분하여 인식하게 됩니다.</p>
 <div class="table-width-fix text-align-justify section" id="id4">
 <h4>7.1.1.1. 주기보고 메세지 타입<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <p>주기보고 메시지는 Smart[Fleet] 규격을 따르는 단말 또는 센서가 주기적으로 차량의 운행 정보를 전달할 때
@@ -456,7 +455,7 @@
 <div class="section" id="aggregated-microtrip">
 <h3>7.1.2. Aggregated Microtrip<a class="headerlink" href="#aggregated-microtrip" title="Permalink to this headline">¶</a></h3>
 <p>Microtrip 데이터는 여러개의 데이터를 모아서 한번에 보낼 수 있습니다. 각 수집한 Microtrip 데이터는 JSON Array 데이터를 기반으로 다음과 같이 패킷을 합쳐 보낼 수 있습니다.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ty&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
     <span class="nt">&quot;ts&quot;</span><span class="p">:</span><span class="mi">1508215121898</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span><span class="p">:</span>
@@ -649,7 +648,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -737,7 +736,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
     <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -963,7 +962,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -1159,7 +1158,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
     <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -1272,7 +1271,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
     <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -1570,7 +1569,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
     <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -1715,7 +1714,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
     <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -1775,37 +1774,37 @@
 <tr class="row-odd"><td>lat</td>
 <td>Int</td>
 <td>O</td>
-<td>위도 (WGS84) <code class="docutils literal notranslate"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Driving</span></code></td>
+<td>위도 (WGS84) <code class="docutils literal"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Driving</span></code></td>
 </tr>
 <tr class="row-even"><td>lon</td>
 <td>Int</td>
 <td>O</td>
-<td>경도 (WGS84) <code class="docutils literal notranslate"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Driving</span></code></td>
+<td>경도 (WGS84) <code class="docutils literal"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Driving</span></code></td>
 </tr>
 <tr class="row-odd"><td>sp</td>
 <td>Int</td>
 <td>O</td>
-<td>Ground Speed (based on NMEA Protocol, km/h) <code class="docutils literal notranslate"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Driving</span></code></td>
+<td>Ground Speed (based on NMEA Protocol, km/h) <code class="docutils literal"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Driving</span></code></td>
 </tr>
 <tr class="row-even"><td>vlt</td>
 <td>Int</td>
 <td>O</td>
-<td>자동차 배터리 전압 <code class="docutils literal notranslate"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Parking</span></code></td>
+<td>자동차 배터리 전압 <code class="docutils literal"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Parking</span></code></td>
 </tr>
 <tr class="row-odd"><td>tem</td>
 <td>Int</td>
 <td>O</td>
-<td>자동차 내부 온도 <code class="docutils literal notranslate"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Parking</span></code></td>
+<td>자동차 내부 온도 <code class="docutils literal"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Parking</span></code></td>
 </tr>
 <tr class="row-even"><td>tim</td>
 <td>Int</td>
 <td>O</td>
-<td>주차 시간 (or 주차 남은 시간) <code class="docutils literal notranslate"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Parking</span></code></td>
+<td>주차 시간 (or 주차 남은 시간) <code class="docutils literal"><span class="pre">Mandatory</span> <span class="pre">when</span> <span class="pre">Parking</span></code></td>
 </tr>
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
     <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -1934,7 +1933,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
     <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -1953,10 +1952,10 @@
 <p class="text-align-justify">DTG Microtrip 메세지는 DTG 단말에서 인지한 정보를 주기적으로 플랫폼에 전달하는  메시지 포맷입니다. 일반적으로는 ADAS와 GPS가 함께 있는 경우에 활용하며, 메시지는 ADAS 부착 차량의 운행 시작부터 운행 종료까지 주기적으로 전송합니다.</p>
 <table border="1" class="table-width-fix text-align-justify docutils">
 <colgroup>
-<col width="9%" />
 <col width="8%" />
-<col width="9%" />
-<col width="75%" />
+<col width="7%" />
+<col width="8%" />
+<col width="76%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Key</th>
@@ -2026,26 +2025,72 @@
 <td>M</td>
 <td>가속도 y-axis (Vy, -1000 ~ +1000)</td>
 </tr>
+<tr class="row-even"><td>tmp</td>
+<td>Int</td>
+<td>O</td>
+<td>DTG와 추가로 연결된 온도 정보 (Delimeter는 Comma, -999 ~ +999, 단위: °C)</td>
+</tr>
+<tr class="row-odd"><td>tploc</td>
+<td>String</td>
+<td>O</td>
+<td>DTG와 연결된 온도 측정 위치 정보 (Delimeter는 Comma)</td>
+</tr>
+<tr class="row-even"><td>door</td>
+<td>Int</td>
+<td>O</td>
+<td><ul class="first simple">
+<li>문 개폐와 관련된 Event 정보</li>
+</ul>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Bit</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>문닫힘 (Closed)</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>문열림 (Opened)</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>통신 불량</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>Reaserved</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
-    <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-    <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;tid&quot;</span> <span class="p">:</span> <span class="mi">11123</span><span class="p">,</span>
-        <span class="nt">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">127.114513</span><span class="p">,</span>
-        <span class="nt">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">37.380241</span><span class="p">,</span>
-        <span class="nt">&quot;sp&quot;</span> <span class="p">:</span> <span class="mi">113</span><span class="p">,</span>
-        <span class="nt">&quot;dtr&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="nt">&quot;dctr&quot;</span> <span class="p">:</span> <span class="mi">9800</span><span class="p">,</span>
-        <span class="nt">&quot;rpm&quot;</span> <span class="p">:</span> <span class="mi">2100</span><span class="p">,</span>
-        <span class="nt">&quot;bsg&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="nt">&quot;gag&quot;</span> <span class="p">:</span> <span class="mi">90</span><span class="p">,</span>
-        <span class="nt">&quot;acx&quot;</span> <span class="p">:</span> <span class="s2">&quot;150&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;acy&quot;</span> <span class="p">:</span> <span class="s2">&quot;-150&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;ts&quot; : 1505434907995,
+    &quot;ty&quot; : 10,
+    &quot;pld&quot; : {
+        &quot;tid&quot; : 11123,
+        &quot;lon&quot; : 127.114513,
+        &quot;lat&quot; : 37.380241,
+        &quot;sp&quot; : 113,
+        &quot;dtr&quot; : 1,
+        &quot;dctr&quot; : 9800,
+        &quot;rpm&quot; : 2100,
+        &quot;bsg&quot; : 0,
+        &quot;gag&quot; : 90,
+        &quot;acx&quot; : &quot;150&quot;,
+        &quot;acy&quot; : &quot;-150&quot;,
+        &quot;tmp&quot; : &quot;-25, 45, 20&quot;, // 온도센서 3개 연결 예
+        &quot;toloc&quot; : &quot;freezer, fridge, room tmp&quot;, // 온도센서 위치 예: 냉동고, 냉장고, 상온고
+        &quot;door&quot; : &quot;1&quot;
+    }
+}
 </pre></div>
 </div>
 </div>
@@ -2154,7 +2199,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
     <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -2255,7 +2300,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
     <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -2371,7 +2416,7 @@
 </ul>
 </div>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
     <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">101</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -2420,7 +2465,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
     <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">102</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -2468,7 +2513,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
   <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">103</span><span class="p">,</span>
   <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -2511,7 +2556,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
   <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">104</span><span class="p">,</span>
   <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -2557,7 +2602,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
   <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">105</span><span class="p">,</span>
   <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -2599,7 +2644,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
   <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">106</span><span class="p">,</span>
   <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -2753,7 +2798,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
     <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">107</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -3428,7 +3473,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;ts&quot;</span> <span class="p">:</span> <span class="mi">1505434907995</span><span class="p">,</span>
     <span class="nt">&quot;ty&quot;</span> <span class="p">:</span> <span class="mi">114</span><span class="p">,</span>
     <span class="nt">&quot;pld&quot;</span> <span class="p">:</span> <span class="p">{</span>
@@ -3607,7 +3652,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;method&quot;</span> <span class="p">:</span> <span class="s2">&quot;activationReq&quot;</span><span class="p">,</span>
     <span class="nt">&quot;params&quot;</span> <span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;vid&quot;</span> <span class="p">:</span> <span class="s2">&quot;25나0660&quot;</span><span class="p">,</span>
@@ -3676,7 +3721,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
     <span class="nt">&quot;addInfo&quot;</span> <span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;vid&quot;</span> <span class="p">:</span> <span class="s2">&quot;25나0660&quot;</span>
@@ -3746,7 +3791,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;method&quot;</span> <span class="p">:</span> <span class="s2">&quot;fwupdate&quot;</span><span class="p">,</span>
     <span class="nt">&quot;params&quot;</span> <span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;pkv&quot;</span> <span class="p">:</span> <span class="s2">&quot;1.0.1&quot;</span><span class="p">,</span>
@@ -3794,7 +3839,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;method&quot;</span> <span class="p">:</span> <span class="s2">&quot;reset&quot;</span><span class="p">,</span>
     <span class="nt">&quot;params&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
 <span class="p">}</span>
@@ -3838,7 +3883,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
 <span class="p">}</span>
 </pre></div>
@@ -3878,7 +3923,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;method&quot;</span> <span class="p">:</span> <span class="s2">&quot;serial&quot;</span><span class="p">,</span>
     <span class="nt">&quot;params&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
 <span class="p">}</span>
@@ -3941,7 +3986,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
     <span class="nt">&quot;addInfo&quot;</span> <span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;sn&quot;</span> <span class="p">:</span> <span class="s2">&quot;70d71b00-71c9-11e7-b3e0-e5673983c7b9&quot;</span>
@@ -3984,7 +4029,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;method&quot;</span> <span class="p">:</span> <span class="s2">&quot;cleardata&quot;</span><span class="p">,</span>
     <span class="nt">&quot;params&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
 <span class="p">}</span>
@@ -4027,7 +4072,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
 <span class="p">}</span>
 </pre></div>
@@ -4104,7 +4149,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;method&quot;</span> <span class="p">:</span> <span class="s2">&quot;fwupchunk&quot;</span><span class="p">,</span>
     <span class="nt">&quot;params&quot;</span> <span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;tsz&quot;</span> <span class="p">:</span> <span class="mi">4932321</span><span class="p">,</span>
@@ -4152,7 +4197,7 @@
 </tbody>
 </table>
 <p><span class="underline">Example Code</span> :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;result&quot;</span> <span class="p">:</span> <span class="mi">2000</span>
 <span class="p">}</span>
 </pre></div>
@@ -4182,7 +4227,7 @@
 <tr class="row-even"><td>method</td>
 <td>String</td>
 <td>M</td>
-<td><code class="docutils literal notranslate"><span class="pre">bbxauthReq</span></code></td>
+<td><code class="docutils literal"><span class="pre">bbxauthReq</span></code></td>
 </tr>
 <tr class="row-odd"><td>params</td>
 <td>String</td>
@@ -4252,7 +4297,7 @@
 <tr class="row-even"><td>method</td>
 <td>String</td>
 <td>M</td>
-<td><code class="docutils literal notranslate"><span class="pre">bbxpwroffReq</span></code></td>
+<td><code class="docutils literal"><span class="pre">bbxpwroffReq</span></code></td>
 </tr>
 <tr class="row-odd"><td>params</td>
 <td>String</td>
@@ -4322,7 +4367,7 @@
 <tr class="row-even"><td>method</td>
 <td>String</td>
 <td>M</td>
-<td><code class="docutils literal notranslate"><span class="pre">bbxsettingReq</span></code></td>
+<td><code class="docutils literal"><span class="pre">bbxsettingReq</span></code></td>
 </tr>
 <tr class="row-odd"><td>params</td>
 <td>object</td>
@@ -4589,7 +4634,7 @@
 <tr class="row-even"><td>method</td>
 <td>String</td>
 <td>M</td>
-<td><code class="docutils literal notranslate"><span class="pre">bbxcapimgReq</span></code></td>
+<td><code class="docutils literal"><span class="pre">bbxcapimgReq</span></code></td>
 </tr>
 <tr class="row-odd"><td>params</td>
 <td>String</td>
@@ -4663,7 +4708,7 @@
 <div class="section" id="common-response-code-for-rpc-result">
 <h3>7.4.12. Common Response Code for RPC Result<a class="headerlink" href="#common-response-code-for-rpc-result" title="Permalink to this headline">¶</a></h3>
 <p>본 코드는 RPC를 수신한 단말이 수신 정상 여부 또는 제어에 대한 결과를 플랫폼 및 Application 에 전달하기 위한 값을 정의합니다.</p>
-<p>정의되지 않은 코드 이외에 Application을 위해 필요한 코드는 Application 시나리오에 따라 추가 가능하나 아래 <code class="docutils literal notranslate"><span class="pre">Code</span> <span class="pre">Class</span></code> 의 범위를 따라야 합니다.</p>
+<p>정의되지 않은 코드 이외에 Application을 위해 필요한 코드는 Application 시나리오에 따라 추가 가능하나 아래 <code class="docutils literal"><span class="pre">Code</span> <span class="pre">Class</span></code> 의 범위를 따라야 합니다.</p>
 <div class="section" id="code-class">
 <h4>7.4.12.1. Code Class<a class="headerlink" href="#code-class" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="text-align-justify table-width-fix docutils">
@@ -4805,16 +4850,11 @@
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 
