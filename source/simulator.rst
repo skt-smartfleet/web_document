@@ -42,8 +42,8 @@ Smart[Fleet] Device Simulator
 +-----------------------+---------------------------------------------------------------------------+
 | Key                   | Description                                                               |
 +=======================+===========================================================================+
-| userName              | Accesstoke 값을 기입해야 합니다. 시뮬레이션을 위한 20자리의 Token 값을    |
-|                       | 발급받기 위해서는 `Repository Issue`_ 에 이슈 등록 부탁드립니다.          |
+| userName              | Accesstoken 값을 기입해야 합니다. 시뮬레이션을 위한 20자리의 Token 값을   |
+|                       | 발급받기 위해서는 아래 주석을 참고 바랍니다.                              |
 +-----------------------+---------------------------------------------------------------------------+
 | updateInterval        | 단말이 메시지를 업로드 하는 주기를 명시합니다. (msec)                     |
 +-----------------------+---------------------------------------------------------------------------+
@@ -51,6 +51,22 @@ Smart[Fleet] Device Simulator
 +-----------------------+---------------------------------------------------------------------------+
 | deviceType            | 시뮬레이션을 돌리고자 하는 디바이스 타입을 명시합니다. (GPS / OBD)        |
 +-----------------------+---------------------------------------------------------------------------+
+
+.. note::
+
+  .. rst-class:: text-align-justify
+
+    1) 아래 명령어를 이용하여 JWT Token을 발급 받습니다.
+
+    - curl --request POST --url {url}/api/auth/login --header 'Cache-Control: no-cache' --header 'Content-Type: application/json' --data '{"username":"{발급받은 ID}","password":"{발급받은 PW}"}'
+    - EX) curl --request POST --url https://smartfleet.sktelecom.com:9901/api/auth/login --header 'Cache-Control: no-cache' --header 'Content-Type: application/json' --data '{"username":"123@test.com","password":"123123"}'
+
+    2) 발급 받은 Token을 아래 명령어에 붙여 userName에 넣을 20자리 Accesstoken의 5자리 접두사를 발급받는다.
+    
+    - curl --request POST --url {url}/api/tre/v1/sensor --header 'Cache-Control: no-cache' --header 'Content-Type: application/json' --header 'X-Authorization: Bearer {발급받은 Token}' --data '{"serialNo":"{회사에서 정한 Serial Number}","vendor": "{회사명}","type": "{단말기 Type}","credentialsId":"11111111111111111111","additionalInfo":{"extra":"infoTest"}}'
+    - EX) curl --request POST --url https://smartfleet.sktelecom.com:9901/api/tre/v1/sensor --header 'Cache-Control: no-cache' --header 'Content-Type: application/json' --header 'X-Authorization: Bearer {발급받은 Token}' --data '{"serialNo":"012345678901235","vendor": "TEST","type": "GPS","credentialsId":"12345222333344445555","additionalInfo":{"extra":"infoTest"}}'
+
+    3) 위에서 발급 받은 5자리 접두사를 붙여 20자리 Accesstoken을 임의로 만들어 userName에 넣는다.
 
 .. _Repository Issue: https://github.com/skt-smartfleet/device-simulator-nodejs/issues
 
