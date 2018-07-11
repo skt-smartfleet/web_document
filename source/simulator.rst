@@ -61,10 +61,10 @@ Smart[Fleet] Device Simulator
       - curl --request POST --url {url}/api/auth/login --header 'Cache-Control: no-cache' --header 'Content-Type: application/json' --data '{"username":"{발급받은 ID}","password":"{발급받은 PW}"}'
       - EX) curl --request POST --url https://smartfleet.sktelecom.com:9901/api/auth/login --header 'Cache-Control: no-cache' --header 'Content-Type: application/json' --data '{"username":"123@test.com","password":"123123"}'
 
-    2) 발급 받은 Token을 아래 명령어에 붙여 userName에 넣을 20자리 Accesstoken의 앞 5자리 글자를 발급 받습니다.
+    2) 발급 받은 Token을 아래 명령어에 붙여 userName에 넣을 20자리 Accesstoken의 앞 5자리 글자("tokenPrefix" 값 확인)를 발급 받습니다.
     
-      - curl --request POST --url {url}/api/tre/v1/sensor --header 'Cache-Control: no-cache' --header 'Content-Type: application/json' --header 'X-Authorization: Bearer {발급받은 Token}' --data '{"serialNo":"{회사에서 정한 Serial Number}","vendor": "{회사명}","type": "{단말기 Type}","credentialsId":"11111111111111111111","additionalInfo":{"extra":"infoTest"}}'
-      - EX) curl --request POST --url https://smartfleet.sktelecom.com:9901/api/tre/v1/sensor --header 'Cache-Control: no-cache' --header 'Content-Type: application/json' --header 'X-Authorization: Bearer {발급받은 Token}' --data '{"serialNo":"012345678901235","vendor": "TEST","type": "GPS","credentialsId":"12345222333344445555","additionalInfo":{"extra":"infoTest"}}'
+      - curl --request GET --url {url}/api/tre/v1/company/me --header 'Cache-Control: no-cache' --header 'Content-Type: application/json' --header 'X-Authorization: Bearer {발급받은 Token}'
+      - EX) curl --request GET --url https://smartfleet.sktelecom.com:9901/api/tre/v1/company/me --header 'Cache-Control: no-cache' --header 'Content-Type: application/json' --header 'X-Authorization: Bearer {발급받은 Token}'
 
     3) 위에서 발급 받은 5자리 글자를 시작으로 20자리 Accesstoken을 임의로 만들어 userName에 넣습니다
 
