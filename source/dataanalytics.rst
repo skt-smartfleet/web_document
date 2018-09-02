@@ -43,6 +43,7 @@ Requirements
 1. 고객사가 등록한 센서는 `Smart[Fleet] 플랫폼 센서 메시지 포맷 <http://smart-fleet-docs.readthedocs.io/ko/latest/message/#id6>`__ 을 준수하는 ``GPS`` , ``OBD`` , ``BLACKBOX`` 센서다.
 2. 각 센서는 ``lat`` , ``lon`` 값을 포함한다.
 3. 각 센서의 ``Microtrip`` 전송 주기는 5초 미만이다. 
+4. 단말기에서 정확한 trip 별 주행 거리 전송이 가능하면 trip 메세지 전송 시 dis 항목에 trip 별 주행 거리를 전송한다. 단말기에서 정확한 trip 별 주행 거리 전송이 불가하면 trip 메세지 전송 시 dis 항목을 제외한다. 
 
 
 Driving Scoring APIs
