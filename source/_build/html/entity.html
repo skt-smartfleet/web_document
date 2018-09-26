@@ -1,0 +1,2142 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. 구성요소(Entity) 등록 &mdash; Smart[Fleet] Platform 1.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Device 연동 절차" href="device.html" />
+    <link rel="prev" title="3. 서비스 세부 절차" href="procedure.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Smart[Fleet] Platform
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Smart[Fleet] 플랫폼 소개</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">2. 주요 구성요소 (Entity Architecture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="procedure.html">3. 서비스 세부 절차</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. 구성요소(Entity) 등록</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#service-registration">4.1. 서비스 등록 (Service Registration)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#smart-fleet">4.1.1. Smart[Fleet] 포털을 통한 등록</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api">4.1.2. API를 활용한 등록</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">4.1.2.1. 로그인 요청 정보 API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#company-registration-api">4.1.2.2. 회사 정보 등록 API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#company-partner-registration">4.2. 회사(협력사) 등록 (Company (Partner) Registration)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#company-registration-portal">4.2.1. Smart[Fleet] 포털을 통한 등록</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4.2.2. API를 활용한 등록</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">4.2.2.1. 로그인 요청 정보 API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">4.2.2.2. 회사 정보 등록 API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#vehicle-registration">4.3. 차량 등록 (Vehicle Registration)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vehicle-registration-portal">4.3.1. Smart[Fleet] 포털을 통한 등록</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">4.3.2. API를 활용한 등록</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">4.3.2.1. 차량 등록 API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sensor-registration">4.4. 센서 등록 (Sensor Registration)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sensor-registration-portal">4.4.1. Smart[Fleet] 포털을 통한 등록</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">4.4.2. API를 활용한 등록</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">4.4.2.1. 센서 등록 API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#director-registration">4.5. 디렉터 등록 (Director Registration)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#director-registration-portal">4.5.1. Smart[Fleet] 포털을 통한 등록</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">4.5.2. API를 활용한 등록</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id16">4.5.2.1. 디렉터 정보 등록 API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#driver-registration">4.6. 운전자 등록 (Driver Registration)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#driver-registration-portal">4.6.1. Smart[Fleet] 포털을 통한 등록</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">4.6.2. API를 활용한 등록</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id19">4.6.2.1. 운전자 등록 API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#delegated-company-registration">4.7. 위임 회사 등록 (Delegated Company Registration)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#delegated-company-registration-portal">4.7.1. Smart[Fleet] 포털을 통한 등록</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">4.7.2. API를 활용한 등록</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id22">4.7.2.1. 위임 후보 회사 등록 API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">4.7.2.2. 위임 후보 회사에 차량 위임 API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#delegated-director-registration">4.8. 위임 디렉터 등록 (Delegated Director Registration)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id24">4.8.1. Smart[Fleet] 포털을 통한 등록</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">4.8.2. API를 활용한 등록</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id26">4.8.2.1. 디렉터 정보 등록 API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#delegated-driver-registration">4.9. 위임 운전자 등록 (Delegated Driver Registration)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id27">4.9.1. Smart[Fleet] 포털을 통한 등록</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">4.9.2. API를 활용한 등록</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#driver-api">4.9.2.1. Driver에게 이용 가능한 차량 등록 API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">5. Device 연동 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">6. API 규격</a></li>
+<li class="toctree-l1"><a class="reference internal" href="message.html">7. 메시지 포맷</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataanalytics.html">8. Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk.html">9. SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulator.html">10. 테스트용 시뮬레이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bestpractice.html">11. Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="miscellaneous.html">12. Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Smart[Fleet] Platform</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>4. 구성요소(Entity) 등록</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/entity.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="entity">
+<span id="entity-registration"></span><h1>4. 구성요소(Entity) 등록<a class="headerlink" href="#entity" title="Permalink to this headline">¶</a></h1>
+<p>이 매뉴얼은 Smart[Fleet] 플랫폼을 사용하기 원하는 파트너들에게 플랫폼 사용을 위한 절차를 설명하기 위한 것입니다.</p>
+<p>Device 와 플랫폼을 연동하는 방법은 <a class="reference internal" href="device.html#device-interface"><span class="std std-ref">5. Device 연동 절차</span></a> 와 <a class="reference internal" href="message.html#message-format"><span class="std std-ref">8. 메시지 포맷</span></a> 을 참고하십시오. App 개발자는 <a class="reference internal" href="api.html#api-specification"><span class="std std-ref">6. API 규격</span></a> 과 <a class="reference internal" href="sdk.html#platform-sdk"><span class="std std-ref">7. SDK</span></a> 를 참고하십시오.</p>
+<p>구성요소를 등록하는 방법은 2가지가 제공되고 있습니다.</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://smartfleet.sktelecom.com/">Smart[Fleet] 포털</a> : Smart[Fleet] 플랫폼에서 제공하는 웹 서비스를 이용하는 방법</li>
+<li><a class="reference external" href="https://smartfleet.sktelecom.com/apidoc">Smart[Fleet] API</a> : Smart[Fleet] 플랫폼에서 제공하는 HTTP 기반 Rest API를 이용하는 방법</li>
+</ol>
+<p>각 등록 절차마다 두 가지 방법이 설명되어 있으니 참고하시기 바랍니다.</p>
+<div class="section" id="service-registration">
+<h2>4.1. 서비스 등록 (Service Registration)<a class="headerlink" href="#service-registration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="smart-fleet">
+<h3>4.1.1. Smart[Fleet] 포털을 통한 등록<a class="headerlink" href="#smart-fleet" title="Permalink to this headline">¶</a></h3>
+<ol class="text-align-justify arabic simple" id="service-registration-portal">
+<li>Smart[Fleet] 메인의 ‘서비스 등록’ 버튼을 통해 등록 신청 페이지로 이동합니다.</li>
+</ol>
+<img alt="_images/3-1-1.png" src="_images/3-1-1.png" />
+<ol class="text-align-justify arabic simple" start="2">
+<li>필수 항목을 작성하여 서비스 등록 신청을 하면 신청한 내용이 SKT담당자에게 전달되고 검토 결과는 입력한 이메일로 발송됩니다.</li>
+</ol>
+<img alt="_images/3-1-2.png" src="_images/3-1-2.png" />
+<ol class="text-align-justify arabic simple" start="3">
+<li>서비스 등록이 완료될 경우 운영사 계정이 자동으로 생성되며 ID는 입력한 이메일 주소와 동일합니다. 비밀번호는 등록완료 안내메일의 링크를 통해 설정이 가능합니다.</li>
+</ol>
+</div>
+<div class="section" id="api">
+<h3>4.1.2. API를 활용한 등록<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">포털을 통해서 회사 계정을 받은 파트너사에게 Smart[Fleet] 플랫폼에 접근할 수 있는 JWT 토큰을 제공합니다. REST API를 통해서 정상적으로 등록한 서비스의 토큰을 확인하는 방법은 다음과 같습니다.</p>
+<div class="section" id="id1">
+<h4>4.1.2.1. 로그인 요청 정보 API<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>POST</strong></td>
+<td><a class="reference external" href="https://app.swaggerbub.com/apis/tremoteye/tremoteyeapi/1.0.0#/Auth/post_api_auth_login">/api/auth/login</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Header</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="26%" />
+<col width="15%" />
+<col width="33%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">option</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Content-Type</td>
+<td>string</td>
+<td>application/json</td>
+<td>content type</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Body</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>username</td>
+<td>string</td>
+<td>로그인할 아이디(이메일)</td>
+</tr>
+<tr class="row-odd"><td>password</td>
+<td>string</td>
+<td>패스워드</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+
+{
+    &quot;username&quot;:&quot;example@example.com&quot;,
+    &quot;password&quot;:&quot;1234&quot;
+}
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;refreshToken&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1…&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p class="text-align-justify">요청이 성공하면(code:200) Response에서 인증 토큰으로 사용할 token 필드를 얻을 수 있습니다. Token 필드는 HTTP Header에 “X-Authorization”의 값으로 사용되며 로그인할 때마다 변경됩니다. 토큰이 있으면 해당 계정에 접근할 수 있으므로 외부 유출이 안되도록 주의해야 합니다.
+<br />
+토큰을 얻었으면 회사 정보 등록 API를 통해 서비스를 등록합니다.
+<br />
+요청 파라미터를 입력할 때 ServiceType이 중복되지 않도록 해야 합니다. ServiceType은 Unique 값으로 하나의 ServiceType에 한 운영사만 등록할 수 있습니다.</p>
+</div>
+<div class="section" id="company-registration-api">
+<span id="id2"></span><h4>4.1.2.2. 회사 정보 등록 API<a class="headerlink" href="#company-registration-api" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>POST</strong></td>
+<td><a class="reference external" href="https://app.swaggerhub.com/apis/tremoteye/tremoteyeapi/1.0.0#/Company/post_api_tre_v1_company">/api/tre/v1/company</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Header</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="30%" />
+<col width="14%" />
+<col width="32%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">option</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Content-Type</td>
+<td>string</td>
+<td>application/json</td>
+<td>content type</td>
+</tr>
+<tr class="row-odd"><td>X-authorization</td>
+<td>string</td>
+<td>&#160;</td>
+<td>auth token</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Body</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="28%" />
+<col width="13%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>등록할 회사 명칭</td>
+</tr>
+<tr class="row-odd"><td>region</td>
+<td>string</td>
+<td>등록할 회사 지역</td>
+</tr>
+<tr class="row-even"><td>serviceType</td>
+<td>string</td>
+<td>운용하는 사업 명칭</td>
+</tr>
+<tr class="row-odd"><td>picName</td>
+<td>string</td>
+<td>등록할 COMPANY_ADMIN 이름</td>
+</tr>
+<tr class="row-even"><td>picPhone</td>
+<td>string</td>
+<td>등록할 COMPANY_ADMIN 연락처</td>
+</tr>
+<tr class="row-odd"><td>picEmail</td>
+<td>string</td>
+<td>등록할 COMPANY_ADMIN 이메일</td>
+</tr>
+<tr class="row-even"><td>picPasswd</td>
+<td>string</td>
+<td>등록할 COMPANY_ADMIN 패스워드</td>
+</tr>
+<tr class="row-odd"><td>picDivision</td>
+<td>string</td>
+<td>등록할 COMPANY_ADMIN 소속 부서</td>
+</tr>
+<tr class="row-even"><td>sktManagerName</td>
+<td>string</td>
+<td>SKT 담당 매니저 이름</td>
+</tr>
+<tr class="row-odd"><td>sktManagerEmail</td>
+<td>string</td>
+<td>SKT 담당 매니저 이메일</td>
+</tr>
+<tr class="row-even"><td>cooperationTask</td>
+<td>string</td>
+<td>협력사 정보, 협력사 업무에 대해 기술</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+<td>추가 정보</td>
+</tr>
+<tr class="row-even"><td>notifyHost</td>
+<td>string</td>
+<td>Push 메시지 수신 서버 경로 정보</td>
+</tr>
+<tr class="row-odd"><td>notifyMsgType</td>
+<td>string</td>
+<td>수신하고자 하는 Push 메시지 타입 정보</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
+
+{
+    &quot;name&quot;:&quot;운영사A&quot;,
+    &quot;region&quot;:&quot;대한민국&quot;,
+    &quot;serviceType&quot;:&quot;example&quot;,
+    &quot;picName&quot;:&quot;김담당자&quot;,
+    &quot;picEmail&quot;:&quot;companya@example.com&quot;,
+    &quot;picPhone&quot;:&quot;010-0000-0000&quot;,
+    &quot;picPasswd&quot;:&quot;1234&quot;,
+    &quot;picDivision&quot;:&quot;사업1팀&quot;,
+    &quot;sktManagerName&quot;:&quot;박매니저&quot;,
+    &quot;sktManagerEmail&quot;:&quot;manager@skt.com&quot;,
+    &quot;cooperationTask&quot;:&quot;수리&quot;,
+    &quot;description&quot;:&quot;additional description&quot;,
+    &quot;notifyHost&quot;:&quot;http://192.168.0.100:9090/noti&quot;,
+    &quot;notifyMsgType&quot;:&quot;0f&quot;
+}
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c7fc12a0-beea-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1509530124485</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;운영사A&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;serviceType&quot;</span><span class="p">:</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;master&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;masterId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c7fc12a0-beea-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;picPasswd&quot;</span><span class="p">:</span> <span class="s2">&quot;1234&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;picName&quot;</span><span class="p">:</span> <span class="s2">&quot;김담당자&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;picPhone&quot;</span><span class="p">:</span> <span class="s2">&quot;010-0000-0000&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;picEmail&quot;</span><span class="p">:</span> <span class="s2">&quot;companya@example.com&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;picDivision&quot;</span><span class="p">:</span> <span class="s2">&quot;사업1팀&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;sktManagerName&quot;</span><span class="p">:</span> <span class="s2">&quot;박매니저&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;sktManagerEmail&quot;</span><span class="p">:</span> <span class="s2">&quot;manager@skt.com&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cooperationTask&quot;</span><span class="p">:</span> <span class="s2">&quot;수리&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;additional description&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;notifyHost&quot;</span><span class="p">:</span> <span class="s2">&quot;http://192.168.0.100:9090/noti&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;notifyMsgType&quot;</span><span class="p">:</span> <span class="s2">&quot;0f&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p class="text-align-justify">정상적으로 등록하면(code:200) 위와 같이 생성된 회사 정보를 Response 값으로 확인할 수 있습니다.</p>
+<p>운영사는 master 필드가 true로 출력되므로 master 필드를 통해 이 회사가 운영사로 등록됐는지 구분할 수 있습니다. 생성한 회사 계정으로 처음 로그인할 때 입력한 picEmail를 아이디, picPasswd를 패스워드로 사용합니다. 예시로 보면 아이디는 “<a class="reference external" href="mailto:companya&#37;&#52;&#48;example&#46;com">companya<span>&#64;</span>example<span>&#46;</span>com</a>”, 패스워드는 “123가”입니다. 패스워드는 로그인 후에 변경할 수 있습니다.</p>
+<p>REST API를 사용할 때 입력하는 Company ID는 Response 데이터에 있는 id 필드입니다. 예시에 있는 “c7fc12a0-beea-11e7-8bdf-af923035d741”이 Company ID입니다.</p>
+</div>
+</div>
+</div>
+<div class="section" id="company-partner-registration">
+<h2>4.2. 회사(협력사) 등록 (Company (Partner) Registration)<a class="headerlink" href="#company-partner-registration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="company-registration-portal">
+<span id="id3"></span><h3>4.2.1. Smart[Fleet] 포털을 통한 등록<a class="headerlink" href="#company-registration-portal" title="Permalink to this headline">¶</a></h3>
+<ol class="text-align-justify arabic simple">
+<li>운영사 Admin 계정으로 로그인 후 ‘협력사’ 메뉴에서 등록 가능합니다.</li>
+</ol>
+<img alt="_images/3-2-1.png" src="_images/3-2-1.png" />
+<ol class="text-align-justify arabic simple" start="2">
+<li>협력사 리스트 페이지에서 등록버튼을 통해 등록 페이지 이동</li>
+</ol>
+<img alt="_images/3-2-2.png" class="text-align-justify" src="_images/3-2-2.png" />
+<ol class="text-align-justify arabic simple" start="3">
+<li>필수 항목 입력</li>
+</ol>
+<img alt="_images/3-2-3.png" src="_images/3-2-3.png" />
+</div>
+<div class="section" id="id4">
+<h3>4.2.2. API를 활용한 등록<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">운영사 계정을 통해서 협력사를 생성할 수 있습니다. 협력사를 등록하기 전에 운영사 계정으로 로그인하여 토큰 데이터를 얻습니다. <a class="reference internal" href="#company-registration-api"><span class="std std-ref">4.1.2.2. 회사 정보 등록 API</span></a> 와 비교하면 계정이 가진 권한에 차이가 있을 뿐 등록 절차는 동일합니다.</p>
+<div class="section" id="id5">
+<h4>4.2.2.1. 로그인 요청 정보 API<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>POST</strong></td>
+<td><a class="reference external" href="https://app.swaggerhub.com/apis/tremoteye/tremoteyeapi/1.0.0#/Auth/post_api_auth_login">/api/auth/login</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Header</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="26%" />
+<col width="15%" />
+<col width="33%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">option</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Content-Type</td>
+<td>string</td>
+<td>application/json</td>
+<td>content type</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Body</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>username</td>
+<td>string</td>
+<td>로그인할 아이디(이메일)</td>
+</tr>
+<tr class="row-odd"><td>password</td>
+<td>string</td>
+<td>패스워드</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    content-type:&quot;application/json&quot;
+
+{
+    &quot;username&quot;:&quot;companya@example.com&quot;,
+    &quot;password&quot;:&quot;1234&quot;
+}
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;refreshToken&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1…&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p class="text-align-justify">요청 파라미터를 입력할 때 협력사 ServiceType에는 운영사와 동일한 ServiceType을 기입합니다. 요청이 성공하면(code:200) Response에서 인증 토큰으로 사용할 token 필드를 얻을 수 있습니다. 토큰을 얻었으면 회사 정보 등록 API를 통해 서비스를 등록합니다.</p>
+</div>
+<div class="section" id="id6">
+<h4>4.2.2.2. 회사 정보 등록 API<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>POST</strong></td>
+<td><a class="reference external" href="https://app.swaggerhub.com/apis/tremoteye/tremoteyeapi/1.0.0#/Company/post_api_tre_v1_comapany">api/tre/v1/company</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Header</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="30%" />
+<col width="14%" />
+<col width="32%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">option</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Content-Type</td>
+<td>string</td>
+<td>application/json</td>
+<td>content type</td>
+</tr>
+<tr class="row-odd"><td>X-authorization</td>
+<td>string</td>
+<td>application/json</td>
+<td>auth token</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Body</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="28%" />
+<col width="13%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>등록할 회사 명칭</td>
+</tr>
+<tr class="row-odd"><td>region</td>
+<td>string</td>
+<td>등록할 회사 지역</td>
+</tr>
+<tr class="row-even"><td>serviceType</td>
+<td>string</td>
+<td>운용하는 사업 명칭</td>
+</tr>
+<tr class="row-odd"><td>picName</td>
+<td>string</td>
+<td>등록할 COMPANY_ADMIN 이름</td>
+</tr>
+<tr class="row-even"><td>picPhone</td>
+<td>string</td>
+<td>등록할 COMPANY_ADMIN 연락처</td>
+</tr>
+<tr class="row-odd"><td>picEmail</td>
+<td>string</td>
+<td>등록할 COMPANY_ADMIN 이메일</td>
+</tr>
+<tr class="row-even"><td>picPasswd</td>
+<td>string</td>
+<td>등록할 COMPANY_ADMIN 패스워드</td>
+</tr>
+<tr class="row-odd"><td>picDivision</td>
+<td>string</td>
+<td>등록할 COMPANY_ADMIN 소속 부서</td>
+</tr>
+<tr class="row-even"><td>sktManagerName</td>
+<td>string</td>
+<td>SKT 담당 매니저 이름</td>
+</tr>
+<tr class="row-odd"><td>sktManagerEmail</td>
+<td>string</td>
+<td>SKT 담당 매니저 이메일</td>
+</tr>
+<tr class="row-even"><td>cooperationTask</td>
+<td>string</td>
+<td>협력사 정보, 협력사 업무에 대해 기술</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+<td>추가 정보</td>
+</tr>
+<tr class="row-even"><td>rpcNotifyHost</td>
+<td>string</td>
+<td>RPC 결과를 전송받기 위한 서버 호스트</td>
+</tr>
+<tr class="row-odd"><td>rpcNotifyPort</td>
+<td>integer</td>
+<td>RPC 결과를 전송받기 위한 서버 포트</td>
+</tr>
+<tr class="row-even"><td>rpcNotifyBasePath</td>
+<td>string</td>
+<td>RPC 결과를 전송받기 위한 서버 기본 경로</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
+
+{
+    &quot;name&quot;:&quot;협력사B&quot;,
+    &quot;region&quot;:&quot;대한민국&quot;,
+    &quot;serviceType&quot;:&quot;example&quot;,
+    &quot;picName&quot;:&quot;김담당자&quot;,
+    &quot;picEmail&quot;:&quot;companyb@example.com&quot;,
+    &quot;picPhone&quot;:&quot;010-0000-0000&quot;,
+    &quot;picPasswd&quot;:&quot;1234&quot;,
+    &quot;picDivision&quot;:&quot;사업1팀&quot;,
+    &quot;sktManagerName&quot;:&quot;박매니저&quot;,
+    &quot;sktManagerEmail&quot;:&quot;manager@skt.com&quot;,
+    &quot;cooperationTask&quot;:&quot;수리&quot;,
+    &quot;description&quot;:&quot;additional description&quot;,
+    &quot;rpcNotifyHost&quot;:&quot;localhost&quot;,
+    &quot;rpcNotifyPort&quot;:9000,
+    &quot;rpcNotifyBasePath&quot;:&quot;/rpc_noti&quot;
+}
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;3820ea50-beec-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1509530742131</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;협력사A&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;serviceType&quot;</span><span class="p">:</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;master&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;masterId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c7fc12a0-beea-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;picPasswd&quot;</span><span class="p">:</span> <span class="s2">&quot;1234&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;picName&quot;</span><span class="p">:</span> <span class="s2">&quot;김담당자&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;picPhone&quot;</span><span class="p">:</span> <span class="s2">&quot;010-0000-1111&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;picEmail&quot;</span><span class="p">:</span> <span class="s2">&quot;companya@example.com&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;picDivision&quot;</span><span class="p">:</span> <span class="s2">&quot;사업1팀&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;sktManagerName&quot;</span><span class="p">:</span> <span class="s2">&quot;박매니저&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;sktManagerEmail&quot;</span><span class="p">:</span> <span class="s2">&quot;manager@skt.com&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cooperationTask&quot;</span><span class="p">:</span> <span class="s2">&quot;수리&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;additional description&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;rpcNotifyHost&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;rpcNotifyPort&quot;</span><span class="p">:</span> <span class="mi">9000</span><span class="p">,</span>
+    <span class="nt">&quot;rpcNotifyBasePath&quot;</span><span class="p">:</span> <span class="s2">&quot;/rpc_noti&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p class="text-align-justify">정상적으로 등록하면(code:200) 위와 같이 생성된 회사 정보를 Response 값으로 확인할 수 있습니다.</p>
+<p>협력사는 Master 필드가 False로 출력되므로 Master 필드를 통해 이 회사가 협력사로 등록됐는지 구분할 수 있습니다. 생성한 회사 계정으로 처음 로그인할 때 입력한 picEmail를 아이디로, picPasswd를 패스워드로 사용합니다. 예시로 보면 아이디는 “<a class="reference external" href="mailto:companyb&#37;&#52;&#48;example&#46;com">companyb<span>&#64;</span>example<span>&#46;</span>com</a>”, 패스워드는 “1234”입니다. 패스워드는 변경할 수 있습니다.</p>
+<p>REST API를 사용할 때 입력하는 Company ID는 Response 데이터에 있는 id입니다. 예시에 있는 “3820ea50-beec-11e7-8bdf-af923035d741”이 Company ID입니다.</p>
+</div>
+</div>
+</div>
+<div class="section" id="vehicle-registration">
+<h2>4.3. 차량 등록 (Vehicle Registration)<a class="headerlink" href="#vehicle-registration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vehicle-registration-portal">
+<span id="id7"></span><h3>4.3.1. Smart[Fleet] 포털을 통한 등록<a class="headerlink" href="#vehicle-registration-portal" title="Permalink to this headline">¶</a></h3>
+<ol class="text-align-justify arabic simple">
+<li>서비스에 사용할 차량을 등록하는 단계이며, 차량메뉴에서 등록이 가능합니다.</li>
+</ol>
+<img alt="_images/3-3-1.png" src="_images/3-3-1.png" />
+<ol class="text-align-justify arabic simple" start="2">
+<li>차량 리스트 페이지에서 등록 버튼을 통해 등록 페이지로 이동합니다.</li>
+</ol>
+<img alt="_images/3-3-2.png" src="_images/3-3-2.png" />
+<ol class="text-align-justify arabic simple" start="3">
+<li>차량 등록 시 1대씩 등록하거나 파일을 이용하여 대량으로 등록 가능합니다.</li>
+</ol>
+<img alt="_images/3-3-3.png" src="_images/3-3-3.png" />
+<ol class="arabic simple" start="4">
+<li>고객사가 관리중인 파일을 이용하여 대량으로 등록할 경우 CSV파일 형식만 처리 가능합니다. 파일의 양식은 샘플파일을 다운로드하여 참고할 수 있습니다.</li>
+</ol>
+<img alt="_images/3-3-4.png" src="_images/3-3-4.png" />
+</div>
+<div class="section" id="id8">
+<h3>4.3.2. API를 활용한 등록<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">COMPANY_ADMIN, DIRECTOR 계정은 관리하고자 하는 차량을 등록할 수 있습니다. DIRECTOR 계정으로 차량을 생성할 경우 담당 관리자로 해당 DIRECTOR가 설정됩니다. 협력사 계정으로 차량을 등록할 경우 운영사가 차량을 사용할 수 있도록 운영사를 CTOV에 추가합니다.</p>
+<p>요청 파라미터를 입력할 때 mileage는 0을 초과해야 합니다. 파라미터를 누락하거나 0을 입력하면 에러 코드31(파라미터 누락 - Paramsameter ‘mileage’ can’t be empty!) 오류가 발생합니다.</p>
+<div class="section" id="id9">
+<h4>4.3.2.1. 차량 등록 API<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>POST</strong></td>
+<td><a class="reference external" href="https://app.swaggerhub.com/apis/tremoteye/tremoteyeapi/1.0.0#/Vehicle/post_api_tre_v1_vehicle">/api/tre/v1/vehicle</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Header</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="30%" />
+<col width="14%" />
+<col width="32%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">option</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Content-Type</td>
+<td>string</td>
+<td>application/json</td>
+<td>content type</td>
+</tr>
+<tr class="row-odd"><td>X-authorization</td>
+<td>string</td>
+<td>&#160;</td>
+<td>auth token</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Body</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="29%" />
+<col width="14%" />
+<col width="25%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">Enum</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>vehicleNo</td>
+<td>string</td>
+<td>&#160;</td>
+<td>차량 번호</td>
+</tr>
+<tr class="row-odd"><td>vendor</td>
+<td>string</td>
+<td>&#160;</td>
+<td>제조사</td>
+</tr>
+<tr class="row-even"><td>modelCode</td>
+<td>string</td>
+<td>&#160;</td>
+<td>모델 코드</td>
+</tr>
+<tr class="row-odd"><td>modelName</td>
+<td>string</td>
+<td>&#160;</td>
+<td>모델 이름</td>
+</tr>
+<tr class="row-even"><td>modelYear</td>
+<td>number</td>
+<td>&#160;</td>
+<td>제조년도</td>
+</tr>
+<tr class="row-odd"><td>missionType</td>
+<td>string</td>
+<td>AUTO <br />
+MANUAL</td>
+<td>변속기 타입</td>
+</tr>
+<tr class="row-even"><td>fuelType</td>
+<td>string</td>
+<td>DIESEL <br />
+GASOLINE <br />
+LPG</td>
+<td>연료 타입</td>
+</tr>
+<tr class="row-odd"><td>mileage</td>
+<td>number</td>
+<td>&#160;</td>
+<td>차량 총 주행거리</td>
+</tr>
+<tr class="row-even"><td>category</td>
+<td>string</td>
+<td>TRUCK <br />
+BUS <br />
+TAXI <br />
+PERSONAL ETC</td>
+<td>카테고리</td>
+</tr>
+<tr class="row-odd"><td>usage</td>
+<td>string</td>
+<td>&#160;</td>
+<td>사용 용도</td>
+</tr>
+<tr class="row-even"><td>displacement</td>
+<td>number</td>
+<td>&#160;</td>
+<td>배기량</td>
+</tr>
+<tr class="row-odd"><td>additionalInfo</td>
+<td>string</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
+
+{
+    &quot;vehicleNo&quot;: &quot;00가0001&quot;,
+    &quot;vendor&quot;: &quot;현대자동차&quot;,
+    &quot;modelCode&quot;: &quot;G80&quot;,
+    &quot;modelName&quot;: &quot;제네시스&quot;,
+    &quot;modelYear&quot;: 2017,
+    &quot;missionType&quot;: &quot;AUTO&quot;,
+    &quot;fuelType&quot;: &quot;DIESEL&quot;,
+    &quot;mileage&quot;:1,
+    &quot;category&quot;: &quot;PERSONAL&quot;,
+    &quot;usage&quot;: &quot;배송용&quot;,
+    &quot;displacement&quot;: 1999,
+    &quot;additionalInfo&quot;: &quot;string&quot;
+}
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;45f8a100-bef0-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1509532483338</span><span class="p">,</span>
+    <span class="nt">&quot;companyId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c7fc12a0-beea-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;directorId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;currentDriverId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;latestTripId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;serviceType&quot;</span><span class="p">:</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;vehicleNo&quot;</span><span class="p">:</span> <span class="s2">&quot;00가0001&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;modelName&quot;</span><span class="p">:</span> <span class="s2">&quot;제네시스&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;modelCode&quot;</span><span class="p">:</span> <span class="s2">&quot;G80&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;vendor&quot;</span><span class="p">:</span> <span class="s2">&quot;현대자동차&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;sensorCount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;DEACTIVATED&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;additionalInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;modelYear&quot;</span><span class="p">:</span> <span class="mi">2017</span><span class="p">,</span>
+    <span class="nt">&quot;usage&quot;</span><span class="p">:</span> <span class="s2">&quot;배송용&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;PERSONAL&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;missionType&quot;</span><span class="p">:</span> <span class="s2">&quot;AUTO&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;fuelType&quot;</span><span class="p">:</span> <span class="s2">&quot;DIESEL&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;displacement&quot;</span><span class="p">:</span> <span class="mi">1999</span><span class="p">,</span>
+    <span class="nt">&quot;mileage&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;delegateUserCount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;lastTripMsgType&quot;</span><span class="p">:</span> <span class="kc">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p class="text-align-justify">요청이 성공하면(code:200) Response에서 차량-센서 매핑할 때 사용하는 Vehicle ID를 얻을 수 있습니다. Vehicle ID는 Response 데이터에 있는 id 필드 안 id값입니다. 예시에 있는 45f8a100-bef0-11e7-8bdf-af923035d741이 Vehicle ID입니다.</p>
+<p>처음 등록할 때 차량은 DEACTIVATED 상태로 설정됩니다.</p>
+</div>
+</div>
+</div>
+<div class="section" id="sensor-registration">
+<span id="id10"></span><h2>4.4. 센서 등록 (Sensor Registration)<a class="headerlink" href="#sensor-registration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sensor-registration-portal">
+<span id="id11"></span><h3>4.4.1. Smart[Fleet] 포털을 통한 등록<a class="headerlink" href="#sensor-registration-portal" title="Permalink to this headline">¶</a></h3>
+<ol class="text-align-justify arabic simple">
+<li>운영사 및 협력사Admin 계정으로 로그인 후 센서메뉴에서 등록 가능합니다.</li>
+</ol>
+<img alt="_images/3-4-1.png" src="_images/3-4-1.png" />
+<ol class="text-align-justify arabic simple" start="2">
+<li>센서 리스트에서 등록버튼을 눌러 등록화면으로 이동합니다.</li>
+</ol>
+<img alt="_images/3-4-2.png" src="_images/3-4-2.png" />
+<ol class="text-align-justify arabic simple" start="3">
+<li>차량 등록 시 1대씩 등록하거나 파일을 이용하여 대량으로 등록 가능합니다.</li>
+</ol>
+<img alt="_images/3-4-3.png" src="_images/3-4-3.png" />
+<p class="text-align-justify">4. 고객사가 관리중인 파일을 이용하여 대량으로 등록할 경우 CSV파일 형식만 처리 가능합니다.
+파일의 양식은 샘플파일을 다운로드하여 참고할 수 있습니다.</p>
+<img alt="_images/3-4-4.png" src="_images/3-4-4.png" />
+</div>
+<div class="section" id="id12">
+<h3>4.4.2. API를 활용한 등록<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">센서는 COMPANY_ADMIN 권한을 가진 회사 계정으로만 등록할 수 있습니다.</p>
+<div class="section" id="id13">
+<h4>4.4.2.1. 센서 등록 API<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>POST</strong></td>
+<td><a class="reference external" href="https://app.swaggerhub.com/apis/tremoteye/tremoteyeapi/1.0.0#/Sensor/post_api_tre_v1_sensor">/api/tre/v1/sensor</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Header</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="30%" />
+<col width="14%" />
+<col width="32%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">option</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Content-Type</td>
+<td>string</td>
+<td>application/json</td>
+<td>content type</td>
+</tr>
+<tr class="row-odd"><td>X-authorization</td>
+<td>string</td>
+<td>&#160;</td>
+<td>auth token</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Body</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="27%" />
+<col width="12%" />
+<col width="15%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">Enum</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>serialNo</td>
+<td>string</td>
+<td>&#160;</td>
+<td>센서 Serial No.</td>
+</tr>
+<tr class="row-odd"><td>credentialsId</td>
+<td>string</td>
+<td>&#160;</td>
+<td>Access Token</td>
+</tr>
+<tr class="row-even"><td>vendor</td>
+<td>string</td>
+<td>&#160;</td>
+<td>제조사</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>string</td>
+<td>OBD2 <br />
+ADAS</td>
+<td>센서 타입</td>
+</tr>
+<tr class="row-even"><td>activationRequired</td>
+<td>boolean</td>
+<td>&#160;</td>
+<td>RPC로 센서 활성화 필요한지 여부</td>
+</tr>
+<tr class="row-odd"><td>missionType</td>
+<td>string</td>
+<td>&#160;</td>
+<td>변속기 타입</td>
+</tr>
+<tr class="row-even"><td>additionalInfo</td>
+<td>string</td>
+<td>&#160;</td>
+<td>추가 정보</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
+
+{
+    &quot;serialNo&quot;: &quot;A1&quot;,
+    &quot;credentialsId&quot;: &quot;00000000000000000002&quot;,
+    &quot;vendor&quot;: &quot;sk&quot;,
+    &quot;type&quot;: &quot;OBD2&quot;,
+    &quot;activationRequired&quot;: true,
+    &quot;additionalInfo&quot;: &quot;string&quot;
+}
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;05a55bc0-bf63-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1509581767542</span><span class="p">,</span>
+    <span class="nt">&quot;vehicleId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;companyId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c7fc12a0-beea-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;directorId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;DEACTIVATED&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;vendor&quot;</span><span class="p">:</span> <span class="s2">&quot;sk&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;OBD2&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;additionalInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;lastTripMsgType&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;activationRequired&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;vehicleNo&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;serialNo&quot;</span><span class="p">:</span> <span class="s2">&quot;A1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;credentialsId&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000000000000002&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p class="text-align-justify">요청이 성공하면(code:200) Response에서 차량과 센서를 매핑할 때 사용하는 Sensor ID를 얻을 수 있습니다. Sensor ID는 Response 데이터에 있는 id 필드 내의 id 값입니다. 예시에 있는 45f8a100-bef0-11e7-8bdf-af923035d741이 Sensor ID입니다.
+<br />
+처음 등록할 때 센서는 DEACTIVATED 상태로 설정됩니다. 해당 센서의 activationRequired 필드가 false이면 DEACTIVATED상태일 때도 차량과 매핑이 가능합니다. 매핑하면 ACTIVATED 상태가 됩니다.</p>
+</div>
+</div>
+</div>
+<div class="section" id="director-registration">
+<h2>4.5. 디렉터 등록 (Director Registration)<a class="headerlink" href="#director-registration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="director-registration-portal">
+<span id="id14"></span><h3>4.5.1. Smart[Fleet] 포털을 통한 등록<a class="headerlink" href="#director-registration-portal" title="Permalink to this headline">¶</a></h3>
+<ol class="text-align-justify arabic simple">
+<li>운영사 및 협력사 Admin로그인 후 각 회사의 디렉터를 등록할 수 있습니다.</li>
+</ol>
+<img alt="_images/3-5-1.png" src="_images/3-5-1.png" />
+<ol class="text-align-justify arabic simple" start="2">
+<li>디렉터 리스트에서 등록 버튼을 눌러 등록 페이지로 이동합니다.</li>
+</ol>
+<img alt="_images/3-5-2.png" src="_images/3-5-2.png" />
+<ol class="text-align-justify arabic simple" start="3">
+<li>필수 정보를 입력한 후 등록버튼을 누르면 입력한 이메일로 디렉터 등록 안내메일이 발송됩니다.</li>
+</ol>
+<img alt="_images/3-5-3.png" src="_images/3-5-3.png" />
+<ol class="text-align-justify arabic simple" start="4">
+<li>수신한 협력사 등록신청 메일에서 비밀번호를 등록하면 협력사 계정 생성이 완료됩니다. ID는 입력한 이메일주소이며 비밀번호는 메일을 통해 등록한 비밀번호 입니다.</li>
+</ol>
+<img alt="_images/3-5-4.png" src="_images/3-5-4.png" />
+</div>
+<div class="section" id="id15">
+<h3>4.5.2. API를 활용한 등록<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">디렉터는 COMPANY_ADMIN 권한을 가진 회사 계정으로만 등록할 수 있습니다. 특정 차량들에 대해 관리자로 지정되어 관리하거나, 타 회사의 차량을 위임받아서 모니터링 할 수 있습니다.</p>
+<div class="section" id="id16">
+<h4>4.5.2.1. 디렉터 정보 등록 API<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>POST</strong></td>
+<td><a class="reference external" href="https://app.swaggerhub.com/apis/tremoteye/tremoteyeapi/1.0.0#/Director/post_api_tre_v1_director">/api/tre/v1/director</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Header</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="30%" />
+<col width="14%" />
+<col width="32%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">option</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Content-Type</td>
+<td>string</td>
+<td>application/json</td>
+<td>content type</td>
+</tr>
+<tr class="row-odd"><td>X-authorization</td>
+<td>string</td>
+<td>&#160;</td>
+<td>auth token</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Body</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="32%" />
+<col width="26%" />
+<col width="42%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>디렉터 이름</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>string</td>
+<td>이메일</td>
+</tr>
+<tr class="row-even"><td>phone</td>
+<td>string</td>
+<td>연락처</td>
+</tr>
+<tr class="row-odd"><td>password</td>
+<td>string</td>
+<td>패스워드</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
+
+{
+    &quot;name&quot;: &quot;디렉터C&quot;,
+    &quot;email&quot;: &quot;directorc@example.com&quot;,
+    &quot;phone&quot;: &quot;010-0000-0000&quot;,
+    &quot;password&quot;: &quot;1234&quot;,
+}
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;8e904530-c06c-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1509695813887</span><span class="p">,</span>
+    <span class="nt">&quot;companyId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c7fc12a0-beea-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;디렉터C&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;010-0000-0000&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;vehicleId&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;latestTripId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;directorc@example.com&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;authority&quot;</span><span class="p">:</span> <span class="s2">&quot;DIRECTOR&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;additionalInfo&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;passwordUpdatedTime&quot;</span><span class="p">:</span> <span class="mi">1509695813887</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p class="text-align-justify">등록할 때 입력한 email이 아이디입니다. Example Code에서 아이디는 <a class="reference external" href="mailto:directorc&#37;&#52;&#48;example&#46;com">directorc<span>&#64;</span>example<span>&#46;</span>com</a> 이고, 패스워드는 1234 입니다. Authority 필드를 통해 해당 계정이 DIRECTOR 계정인지 DRIVER 계정인지 구분할 수 있습니다.</p>
+</div>
+</div>
+</div>
+<div class="section" id="driver-registration">
+<h2>4.6. 운전자 등록 (Driver Registration)<a class="headerlink" href="#driver-registration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="driver-registration-portal">
+<span id="id17"></span><h3>4.6.1. Smart[Fleet] 포털을 통한 등록<a class="headerlink" href="#driver-registration-portal" title="Permalink to this headline">¶</a></h3>
+<ol class="text-align-justify arabic simple">
+<li>운영사 및 협력사 Admin로그인 후 각 회사의 드라이버를 등록할 수 있습니다.</li>
+</ol>
+<img alt="_images/3-6-1.png" src="_images/3-6-1.png" />
+<ol class="text-align-justify arabic simple" start="2">
+<li>드라이버 리스트에서 등록 버튼을 눌러 등록 페이지로 이동합니다.</li>
+</ol>
+<img alt="_images/3-6-2.png" src="_images/3-6-2.png" />
+<ol class="text-align-justify arabic simple" start="3">
+<li>필수 정보를 입력한 후 등록버튼을 누르면 드라이버의 등록이 완료됩니다.</li>
+</ol>
+<img alt="_images/3-6-3.png" src="_images/3-6-3.png" />
+</div>
+<div class="section" id="id18">
+<h3>4.6.2. API를 활용한 등록<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">운전자는 COMPANY_ADMIN 권한을 가진 회사 계정으로만 등록할 수 있습니다. 차량 운행 서비스를 이용할 수 있습니다.</p>
+<div class="section" id="id19">
+<h4>4.6.2.1. 운전자 등록 API<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>POST</strong></td>
+<td><a class="reference external" href="https://app.swaggerhub.com/apis/tremoteye/tremoteyeapi/1.0.0#/Driver/post_api_tre_v1_driver">/api/tre/v1/driver</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Header</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="30%" />
+<col width="14%" />
+<col width="32%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">option</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Content-Type</td>
+<td>string</td>
+<td>application/json</td>
+<td>content type</td>
+</tr>
+<tr class="row-odd"><td>X-authorization</td>
+<td>string</td>
+<td>&#160;</td>
+<td>auth token</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Body</li>
+</ul>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="32%" />
+<col width="26%" />
+<col width="42%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>운전자 이름</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>string</td>
+<td>이메일</td>
+</tr>
+<tr class="row-even"><td>phone</td>
+<td>string</td>
+<td>연락처</td>
+</tr>
+<tr class="row-odd"><td>password</td>
+<td>string</td>
+<td>패스워드</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
+
+{
+    &quot;name&quot;: &quot;드라이버B&quot;,
+    &quot;email&quot;: &quot;driverb@example.com&quot;,
+    &quot;phone&quot;: &quot;010-0000-0000&quot;,
+    &quot;password&quot;: &quot;1234&quot;
+}
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;69b5f470-c06d-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1509696181554</span><span class="p">,</span>
+    <span class="nt">&quot;companyId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c7fc12a0-beea-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;드라이버B&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;010-0000-0000&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;vehicleId&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;latestTripId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;driverb@example.com&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;authority&quot;</span><span class="p">:</span> <span class="s2">&quot;DRIVER&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;additionalInfo&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;passwordUpdatedTime&quot;</span><span class="p">:</span> <span class="mi">1509696181554</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p class="text-align-justify">등록할 때 입력한 email이 아이디가 됩니다. Example Code에서 아이디는 <a class="reference external" href="mailto:driverb&#37;&#52;&#48;example&#46;com">driverb<span>&#64;</span>example<span>&#46;</span>com</a> 이고, 패스워드는 1234 입니다. Authority 필드를 통해 해당 계정이 DIRECTOR 계정인지 DRIVER 계정인지 구분할 수 있습니다.</p>
+</div>
+</div>
+</div>
+<div class="section" id="delegated-company-registration">
+<h2>4.7. 위임 회사 등록 (Delegated Company Registration)<a class="headerlink" href="#delegated-company-registration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="delegated-company-registration-portal">
+<span id="id20"></span><h3>4.7.1. Smart[Fleet] 포털을 통한 등록<a class="headerlink" href="#delegated-company-registration-portal" title="Permalink to this headline">¶</a></h3>
+<ol class="text-align-justify arabic simple">
+<li>운영사 Admin로그인 후 협력사 메뉴에서 각 회사를 위임 회사로 설정할 수 있습니다.</li>
+</ol>
+<img alt="_images/3-7-1.png" src="_images/3-7-1.png" />
+<ol class="text-align-justify arabic simple" start="2">
+<li>협력사 리스트에서 주요협력사 스위치를 눌러 활성화 합니다.</li>
+</ol>
+<img alt="_images/3-7-2.png" src="_images/3-7-2.png" />
+<ol class="text-align-justify arabic simple" start="3">
+<li>주요 협력사로 선택한 회사에 차량을 위임할 수 있습니다. 해당 기능은 차량 메뉴에서 이용 가능합니다.</li>
+</ol>
+<img alt="_images/3-7-3.png" src="_images/3-7-3.png" />
+<ol class="text-align-justify arabic simple" start="4">
+<li>차량 리스트 화면에서 차량 위임버튼을 눌러 위임 화면으로 이동합니다.</li>
+</ol>
+<img alt="_images/3-7-4.png" src="_images/3-7-4.png" />
+<ol class="text-align-justify arabic simple" start="5">
+<li>차량 선택 후 추가버튼을 눌러 차량을 선택된 차량 영역으로 이동시킨 후 다음으로 이동합니다.</li>
+</ol>
+<img alt="_images/3-7-5.png" src="_images/3-7-5.png" />
+<ol class="text-align-justify arabic simple" start="6">
+<li>위임할 회사를 검색 및 선택한 후 위임 버튼을 눌러 위임을 완료합니다.</li>
+</ol>
+<img alt="_images/3-7-6.png" src="_images/3-7-6.png" />
+</div>
+<div class="section" id="id21">
+<h3>4.7.2. API를 활용한 등록<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">협력 관계에 있는 회사에 차량을 위임하면 그 회사는 위임 회사가 됩니다. 그 전에 위임하는 회사가 먼저 협력사를 위임 후보 회사로 등록해야 합니다. 회사 간 ServiceType이 동일해야 합니다.</p>
+<div class="section" id="id22">
+<h4>4.7.2.1. 위임 후보 회사 등록 API<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>POST</strong></td>
+<td><a class="reference external" href="https://app.swaggerhub.com/apis/t remoteye/tremoteyeapi/1.0.0#/Relation/post _api_tre_v1_company__companyId__relation_c ompany">/api/tre/v1/company/{companyId}/relation/company</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Header</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="30%" />
+<col width="14%" />
+<col width="32%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">option</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Content-Type</td>
+<td>string</td>
+<td>application/json</td>
+<td>content type</td>
+</tr>
+<tr class="row-odd"><td>X-authorization</td>
+<td>string</td>
+<td>&#160;</td>
+<td>auth token</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Path</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="20%" />
+<col width="15%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>companyId</td>
+<td>string</td>
+<td>자신의 회사 ID (위임하는 회사 ID)</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Body</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="16%" />
+<col width="8%" />
+<col width="16%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">Key</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>toCompanyId</td>
+<td>id</td>
+<td>string</td>
+<td>위임 후보로 등록할 회사 ID (위임받는 회사 ID)</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
+
+{
+    &quot;toCompanyId&quot;: {
+        &quot;id&quot;: &quot;def51a30-c06e-11e7-8bdf-af923035d741&quot;
+    }
+}
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;50117bd0-c071-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1509697451337</span><span class="p">,</span>
+    <span class="nt">&quot;fromCompanyId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c7fc12a0-beea-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;toCompanyId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;def51a30-c06e-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;serviceType&quot;</span><span class="p">:</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;fromCompanyName&quot;</span><span class="p">:</span> <span class="s2">&quot;운영사A&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;toCompanyName&quot;</span><span class="p">:</span> <span class="s2">&quot;협력사C&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p class="text-align-justify">위임 후보 회사로 등록되어 있는 회사에 특정 차량을 위임할 수 있습니다. 차량을 위임받은 회사는 위임 후보가 아닌 위임 회사가 됩니다.</p>
+</div>
+<div class="section" id="id23">
+<h4>4.7.2.2. 위임 후보 회사에 차량 위임 API<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>POST</strong></td>
+<td><a class="reference external" href="https://app.swa ggerhub.com/apis/tremoteye/tremote yeapi/1.0.0#/Relation/post_api_tre _v1_cicle">/api/tre/v1/director/{directorId}/relation/vehicle</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Header</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="28%" />
+<col width="17%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>toCompanyId</td>
+<td>string</td>
+<td>차량을 위임받을 회사 ID</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Path</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="30%" />
+<col width="14%" />
+<col width="32%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">option</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Content-Type</td>
+<td>string</td>
+<td>application/json</td>
+<td>content type</td>
+</tr>
+<tr class="row-odd"><td>X-authorization</td>
+<td>string</td>
+<td>&#160;</td>
+<td>auth token</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Body</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="24%" />
+<col width="13%" />
+<col width="28%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">Key</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>vehicleId</td>
+<td>id</td>
+<td>string</td>
+<td>위임할 차량 ID</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
+
+{
+    &quot;vehicleId&quot;: {
+        &quot;id&quot;: &quot;45f8a100-bef0-11e7-8bdf-af923035d741&quot;
+    }
+}
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1a598a90-c072-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1509698195891</span><span class="p">,</span>
+    <span class="nt">&quot;fromCompanyId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c7fc12a0-beea-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;fromCompanyName&quot;</span><span class="p">:</span> <span class="s2">&quot;운영사A&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;toCompanyId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;def51a30-c06e-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;toCompanyName&quot;</span><span class="p">:</span> <span class="s2">&quot;협력사C&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;vehicleId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;45f8a100-bef0-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;vehicleNo&quot;</span><span class="p">:</span> <span class="s2">&quot;00가0001&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="delegated-director-registration">
+<h2>4.8. 위임 디렉터 등록 (Delegated Director Registration)<a class="headerlink" href="#delegated-director-registration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id24">
+<h3>4.8.1. Smart[Fleet] 포털을 통한 등록<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<ol class="text-align-justify arabic simple">
+<li>차량을 디렉터에게 할당하는 기능으로 운영사 및 협력사 Admin계정으로 로그인 후 차량메뉴에서 위임 가능합니다.</li>
+</ol>
+<img alt="_images/8-1.png" src="_images/8-1.png" />
+<ol class="text-align-justify arabic simple" start="2">
+<li>차량 리스트 화면에서 차량 할당버튼을 눌러 할당 화면으로 이동합니다.</li>
+</ol>
+<img alt="_images/8-2.png" src="_images/8-2.png" />
+<ol class="text-align-justify arabic simple" start="3">
+<li>차량 선택 후 추가버튼을 눌러 차량을 선택된 차량 영역으로 이동시킨 후 다음으로 이동합니다.</li>
+</ol>
+<img alt="_images/8-3.png" src="_images/8-3.png" />
+<ol class="text-align-justify arabic simple" start="4">
+<li>할당할 디렉터를 검색 및 선택한 후 위임 버튼을 눌러 위임을 완료합니다.</li>
+</ol>
+<img alt="_images/8-4.png" src="_images/8-4.png" />
+</div>
+<div class="section" id="id25">
+<h3>4.8.2. API를 활용한 등록<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">Company_Admin, Director 권한 계정은 Director 에게 특정 차량의 권한을 위임할 수 있습니다. API를 통해 권한이 설정된 디렉터는 할당된 차량에 대해 Delegated_director 권한을 가집니다. Company_admin은 자신의 회사에 속한 차량 또는 위임 회사에 할당한 차량에 대해서만 본인이 속한 회사의 Director에게 권한을 설정 할 수 있습니다. Director는 본인이 관리하는 차량에 한해서 다른 Director 를 Delegated Director로 설정 할 수 있습니다. 단, Director 가 다른 회사 소속일 경우에는 위임 회사에 차량 위임 권한을 가진 Director일 경우에만 권한 위임이 가능합니다.</p>
+<div class="section" id="id26">
+<h4>4.8.2.1. 디렉터 정보 등록 API<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>POST</strong></td>
+<td><a class="reference external" href="https://app.swaggerhub .com/apis/tremoteye/tremoteyeapi/ 1.0.0#/Relation/post_api_tre_v1_d irector__directorId__relation_vehicle">/api/tre/v1/director/{directorId}/relation/vehicle</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Header</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="30%" />
+<col width="14%" />
+<col width="32%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">option</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Content-Type</td>
+<td>string</td>
+<td>application/json</td>
+<td>content type</td>
+</tr>
+<tr class="row-odd"><td>X-authorization</td>
+<td>string</td>
+<td>&#160;</td>
+<td>auth token</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Path</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="26%" />
+<col width="17%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>directorId</td>
+<td>string</td>
+<td>차량을 위임받을 디렉터 ID</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Body</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="24%" />
+<col width="13%" />
+<col width="28%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">Key</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>vehicleId</td>
+<td>id</td>
+<td>string</td>
+<td>위임할 차량 ID</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
+
+{
+    &quot;vehicleId&quot;: {
+        &quot;id&quot;: &quot;45f8a100-bef0-11e7-8bdf-af923035d741&quot;
+    }
+}
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;74d18670-c073-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1509698777167</span><span class="p">,</span>
+    <span class="nt">&quot;companyId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c7fc12a0-beea-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;companyName&quot;</span><span class="p">:</span> <span class="s2">&quot;운영사A&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;userId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;8e904530-c06c-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;userName&quot;</span><span class="p">:</span> <span class="s2">&quot;디렉터C&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;vehicleId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;45f8a100-bef0-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;vehicleNo&quot;</span><span class="p">:</span> <span class="s2">&quot;00가0001&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;userRole&quot;</span><span class="p">:</span> <span class="s2">&quot;DELEGATED_DIRECTOR&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="delegated-driver-registration">
+<h2>4.9. 위임 운전자 등록 (Delegated Driver Registration)<a class="headerlink" href="#delegated-driver-registration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id27">
+<h3>4.9.1. Smart[Fleet] 포털을 통한 등록<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<ol class="text-align-justify arabic simple">
+<li>운영사 및 협력사 어드민, 디렉터 계정으로 로그인하여 차량 메뉴에서 등록 가능합니다.</li>
+</ol>
+<img alt="_images/3-9-1.png" src="_images/3-9-1.png" />
+<ol class="text-align-justify arabic simple" start="2">
+<li>차량 정보를 눌러 상세페이지로 이동합니다.</li>
+</ol>
+<img alt="_images/3-9-2.png" src="_images/3-9-2.png" />
+<ol class="text-align-justify arabic simple" start="3">
+<li>차량 상세 정보의 드라이버 영역에 드라이버 이름을 입력하면 자동으로 검색된 리스트가 표시되며 리스트에세 드라이버를 선택 후 수정버튼을 눌러 저장합니다.</li>
+</ol>
+<img alt="_images/3-9-3.png" src="_images/3-9-3.png" />
+</div>
+<div class="section" id="id28">
+<h3>4.9.2. API를 활용한 등록<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">Company_admin, director 권한 계정은 Driver 에게 특정 차량을 운행 할 수 있는 권한을 위임할 수 있습니다. API를 통해 권한이 설정된 Driver 는 해당 차량에 대해 delegated_driver 권한을 가집니다. Company_admin은 자신의 회사에 속한 차량 또는 위임회사에 할당된 차량에 대해서만 본인이 속한 회사의 driver에게 권한을 설정 할 수 있습니다.</p>
+<p>Director는 본인이 관리하는 차량이거나 본인이 Delegated_director로 등록된 차량에 한해서 본인이 속한 회사의 driver에게 권한을 설정 할 수 있습니다.</p>
+<div class="section" id="driver-api">
+<h4>4.9.2.1. Driver에게 이용 가능한 차량 등록 API<a class="headerlink" href="#driver-api" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>POST</strong></td>
+<td><a class="reference external" href="https://app.swaggerhub .com/apis/tremoteye/tremoteyeapi/ 1.0.0#/Relation/post_api_tre_v1_d river__driverId__relation_vehicle">/api/tre/v1/driver/{driverId}/relation/vehicle</a></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Header</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="30%" />
+<col width="14%" />
+<col width="32%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">option</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Content-Type</td>
+<td>string</td>
+<td>application/json</td>
+<td>content type</td>
+</tr>
+<tr class="row-odd"><td>X-authorization</td>
+<td>string</td>
+<td>&#160;</td>
+<td>auth token</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Path</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="21%" />
+<col width="17%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>driverId</td>
+<td>string</td>
+<td>차량을 위임받을 드라이버 ID</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Body</li>
+</ul>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="24%" />
+<col width="13%" />
+<col width="28%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">Key</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>vehicleId</td>
+<td>id</td>
+<td>string</td>
+<td>위임할 차량 ID</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>content-type:&quot;application/json&quot;
+X-Authorization: &quot;Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzeXNhZG1pbkB0aG…&quot;
+
+{
+    &quot;vehicleId&quot;: {
+        &quot;id&quot;: &quot;45f8a100-bef0-11e7-8bdf-af923035d741&quot;
+    }
+}
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;9b631230-c074-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1509699271373</span><span class="p">,</span>
+    <span class="nt">&quot;companyId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c7fc12a0-beea-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;companyName&quot;</span><span class="p">:</span> <span class="s2">&quot;운영사A&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;userId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;69b5f470-c06d-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;userName&quot;</span><span class="p">:</span> <span class="s2">&quot;드라이버B&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;vehicleId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;45f8a100-bef0-11e7-8bdf-af923035d741&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;vehicleNo&quot;</span><span class="p">:</span> <span class="s2">&quot;00가0001&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;userRole&quot;</span><span class="p">:</span> <span class="s2">&quot;DRIVER&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="device.html" class="btn btn-neutral float-right" title="5. Device 연동 절차" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="procedure.html" class="btn btn-neutral" title="3. 서비스 세부 절차" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright SK TELECOM.LTD. ALL RIGHTS RESERVED..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>9. SDK &mdash; Smart[Fleet] Platform 1.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="10. 테스트용 시뮬레이터" href="simulator.html" />
+    <link rel="prev" title="8. Data Analytics" href="dataanalytics.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Smart[Fleet] Platform
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Smart[Fleet] 플랫폼 소개</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">2. 주요 구성요소 (Entity Architecture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="procedure.html">3. 서비스 세부 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity.html">4. 구성요소(Entity) 등록</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">5. Device 연동 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">6. API 규격</a></li>
+<li class="toctree-l1"><a class="reference internal" href="message.html">7. 메시지 포맷</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataanalytics.html">8. Data Analytics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. SDK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#embedded-c">9.1. Embedded C</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#source">9.1.1. 소스 (Source) &amp; 도구</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">9.1.2. 사용 방법 및 제공 라이브러리</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#android">9.2. Android</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">9.2.1. 소스 (Source) &amp; 도구</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">9.2.2. 사용 방법 및 제공 라이브러리</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ios">9.3. iOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">9.3.1. 소스 (Source) &amp; 도구</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">9.3.2. 사용 방법 및 제공 라이브러리</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#java">9.4. JAVA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">9.4.1. 소스 (Source) &amp; 도구</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">9.4.2. 사용 방법 및 제공 라이브러리</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="simulator.html">10. 테스트용 시뮬레이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bestpractice.html">11. Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="miscellaneous.html">12. Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Smart[Fleet] Platform</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>9. SDK</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/sdk.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sdk">
+<span id="platform-sdk"></span><h1>9. SDK<a class="headerlink" href="#sdk" title="Permalink to this headline">¶</a></h1>
+<p>외부 개발자가 특정 운영체제용 응용프로그램을 만들 수 있게 아래의 소스(Source) 및 도구를 제공합니다.</p>
+<p><br /></p>
+<div class="section" id="embedded-c">
+<span id="embedded-c-sdk"></span><h2>9.1. Embedded C<a class="headerlink" href="#embedded-c" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="source">
+<h3>9.1.1. 소스 (Source) &amp; 도구<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">GitHub : <a class="reference external" href="https://github.com/skt-smartfleet/device-sdk-embedded-c">https://github.com/skt-smartfleet/device-sdk-embedded-c</a></p>
+</div>
+<div class="section" id="id1">
+<h3>9.1.2. 사용 방법 및 제공 라이브러리<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">SKT의 Smart[Fleet] 플랫폼 프로토콜을 따르는 단말의 동작을 나타내는 Arduino SDK입니다.
+Smart[Fleet] 플랫폼의 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/">기술문서</a> 를 기반으로 구성되어 있습니다.
+사용 방법과 제공 라이브러리에 대한 설명은 <a class="reference external" href="https://github.com/skt-smartfleet/device-sdk-embedded-c/blob/master/README.md">README.md</a> 를 참조하시기 바랍니다.</p>
+<p><br />
+<br /></p>
+</div>
+</div>
+<div class="section" id="android">
+<span id="android-sdk"></span><h2>9.2. Android<a class="headerlink" href="#android" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>9.2.1. 소스 (Source) &amp; 도구<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">GitHub : <a class="reference external" href="https://github.com/skt-smartfleet/device-sdk-android">https://github.com/skt-smartfleet/device-sdk-android</a></p>
+</div>
+<div class="section" id="id3">
+<h3>9.2.2. 사용 방법 및 제공 라이브러리<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">SKT의 Smart[Fleet] 플랫폼 프로토콜을 따르는 단말의 동작을 나타내는 Android SDK입니다.
+Smart[Fleet] 플랫폼의 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/">기술문서</a> 를 기반으로 구성되어 있습니다.
+사용 방법과 제공 라이브러리에 대한 설명은 <a class="reference external" href="https://github.com/skt-smartfleet/device-sdk-android/blob/master/README.md">README.md</a> 를 참조하시기 바랍니다.</p>
+<p><br />
+<br /></p>
+</div>
+</div>
+<div class="section" id="ios">
+<span id="object-c-sdk"></span><h2>9.3. iOS<a class="headerlink" href="#ios" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>9.3.1. 소스 (Source) &amp; 도구<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">GitHub : <a class="reference external" href="https://github.com/skt-smartfleet/device-sdk-ios">https://github.com/skt-smartfleet/device-sdk-ios</a></p>
+</div>
+<div class="section" id="id5">
+<h3>9.3.2. 사용 방법 및 제공 라이브러리<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">SKT의 Smart[Fleet] 플랫폼 프로토콜을 따르는 단말의 동작을 나타내는 iOS SDK입니다.
+Smart[Fleet] 플랫폼의 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/">기술문서</a> 를 기반으로 구성되어 있습니다.
+사용 방법과 제공 라이브러리에 대한 설명은 <a class="reference external" href="https://github.com/skt-smartfleet/device-sdk-ios/blob/master/README.md">README.md</a> 를 참조하시기 바랍니다.</p>
+<p><br />
+<br /></p>
+</div>
+</div>
+<div class="section" id="java">
+<h2>9.4. JAVA<a class="headerlink" href="#java" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>9.4.1. 소스 (Source) &amp; 도구<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">GitHub : <a class="reference external" href="https://github.com/skt-smartfleet/device-sdk-java">https://github.com/skt-smartfleet/device-sdk-java</a></p>
+</div>
+<div class="section" id="id7">
+<h3>9.4.2. 사용 방법 및 제공 라이브러리<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p class="text-align-justify">SKT의 Smart[Fleet] 플랫폼 프로토콜을 따르는 단말의 동작을 나타내는 JAVA SDK입니다.
+Smart[Fleet] 플랫폼의 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/">기술문서</a> 를 기반으로 구성되어 있습니다.
+사용 방법과 제공 라이브러리에 대한 설명은 <a class="reference external" href="https://github.com/skt-smartfleet/device-sdk-java/blob/master/README.md">README.md</a> 를 참조하시기 바랍니다.</p>
+<p class="text-align-justify"><br /></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="simulator.html" class="btn btn-neutral float-right" title="10. 테스트용 시뮬레이터" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dataanalytics.html" class="btn btn-neutral" title="8. Data Analytics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright SK TELECOM.LTD. ALL RIGHTS RESERVED..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

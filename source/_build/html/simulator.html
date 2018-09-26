@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>10. 테스트용 시뮬레이터 &mdash; Smart[Fleet] Platform 1.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="11. Best Practices" href="bestpractice.html" />
+    <link rel="prev" title="9. SDK" href="sdk.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Smart[Fleet] Platform
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Smart[Fleet] 플랫폼 소개</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">2. 주요 구성요소 (Entity Architecture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="procedure.html">3. 서비스 세부 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity.html">4. 구성요소(Entity) 등록</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">5. Device 연동 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">6. API 규격</a></li>
+<li class="toctree-l1"><a class="reference internal" href="message.html">7. 메시지 포맷</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataanalytics.html">8. Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk.html">9. SDK</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. 테스트용 시뮬레이터</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#smart-fleet-device-simulator">10.1. Smart[Fleet] Device Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smart-fleet-web-application-simulator">10.2. Smart[Fleet] Web Application Simulator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bestpractice.html">11. Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="miscellaneous.html">12. Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Smart[Fleet] Platform</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>10. 테스트용 시뮬레이터</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/simulator.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>10. 테스트용 시뮬레이터<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p class="text-align-justify">본 가이드 문서 중 <a class="reference internal" href="device.html#device-interface"><span class="std std-ref">3.4. Device 연동 절차</span></a> 또는 아래 그림의 서비스 연동 기본 절차에서 볼 수 있듯이 서비스를 이용하려면 어플리케이션과 디바이스(센서) 둘다 필요합니다.</p>
+<img alt="_images/7.png" src="_images/7.png" />
+<p>SKT에서는 개발 파트너분들 중 센서/디바이스 혹은 어플리케이션 하나만 테스트를 원할 경우를 대비하여 디바이스/센서 및 애플리케이션 대행 역할을 담당하는 테스트용 시뮬레이터를 제공합니다.</p>
+<p><br /></p>
+<div class="section" id="smart-fleet-device-simulator">
+<h2>10.1. Smart[Fleet] Device Simulator<a class="headerlink" href="#smart-fleet-device-simulator" title="Permalink to this headline">¶</a></h2>
+<p class="text-align-justify">본 시뮬레이터는 SKT의 Smart[Fleet] 플랫폼 프로토콜을 따르는 GPS, OBD 단말의 동작을 나타내는 시뮬레이터입니다. 해당 시뮬레이터에 대한 추가 사용 설명과 프로그램 다운로드는 아래 사이트를 방문하시기 바랍니다.</p>
+<ul class="text-align-justify simple">
+<li>Smart[Fleet] Device Simulator : <a class="reference external" href="https://github.com/skt-smartfleet/device-simulator-nodejs">https://github.com/skt-smartfleet/device-simulator-nodejs</a></li>
+</ul>
+<img alt="_images/7_1.png" src="_images/7_1.png" />
+<p class="text-align-justify">해당 시뮬레이터는 node.js 기반으로 구현되어 있습니다.  본 시뮬레이터가 정상적으로 동작하기 위해서는 node.js가 설치되어 있어야 합니다.
+<br />
+동작을 위한 설정은 본 Repository의 config.js 파일에 기술되어 있습니다. 해당 설정을 수정하여 각자에 상황에 맞추어 시뮬레이션을 수행할 수 있습니다.
+<br />
+수정이 필요한 사항은 다음과 같습니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>userName</td>
+<td>Accesstoken 값을 기입해야 합니다. 시뮬레이션을 위한 20자리의 Token 값을
+발급받기 위해서는 아래 주석을 참고 바랍니다.</td>
+</tr>
+<tr class="row-odd"><td>updateInterval</td>
+<td>단말이 메시지를 업로드 하는 주기를 명시합니다. (msec)</td>
+</tr>
+<tr class="row-even"><td>microtripcnt</td>
+<td>단말이 주기 정보를 보내는 총 개수를 명시합니다.</td>
+</tr>
+<tr class="row-odd"><td>deviceType</td>
+<td>시뮬레이션을 돌리고자 하는 디바이스 타입을 명시합니다. (GPS / OBD)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ol class="text-align-justify arabic simple">
+<li>아래 명령어를 이용하여 JWT Token을 발급 받습니다.</li>
+</ol>
+<blockquote class="text-align-justify">
+<div><ul class="simple">
+<li>curl –request POST –url {url}/api/auth/login –header ‘Cache-Control: no-cache’ –header ‘Content-Type: application/json’ –data ‘{“username”:”{발급받은 ID}”,”password”:”{발급받은 PW}”}’</li>
+<li>EX) curl –request POST –url <a class="reference external" href="https://smartfleet.sktelecom.com:9901/api/auth/login">https://smartfleet.sktelecom.com:9901/api/auth/login</a> –header ‘Cache-Control: no-cache’ –header ‘Content-Type: application/json’ –data ‘{“username”:”<a class="reference external" href="mailto:123&#37;&#52;&#48;test&#46;com">123<span>&#64;</span>test<span>&#46;</span>com</a>”,”password”:”123123”}’</li>
+</ul>
+</div></blockquote>
+<ol class="text-align-justify arabic simple" start="2">
+<li>발급 받은 Token을 아래 명령어에 붙여 userName에 넣을 20자리 Accesstoken의 앞 5자리 글자(“tokenPrefix” 값 확인)를 발급 받습니다.</li>
+</ol>
+<blockquote class="text-align-justify">
+<div><ul class="simple">
+<li>curl –request GET –url {url}/api/tre/v1/company/me –header ‘Cache-Control: no-cache’ –header ‘Content-Type: application/json’ –header ‘X-Authorization: Bearer {발급받은 Token}’</li>
+<li>EX) curl –request GET –url <a class="reference external" href="https://smartfleet.sktelecom.com:9901/api/tre/v1/company/me">https://smartfleet.sktelecom.com:9901/api/tre/v1/company/me</a> –header ‘Cache-Control: no-cache’ –header ‘Content-Type: application/json’ –header ‘X-Authorization: Bearer {발급받은 Token}’</li>
+</ul>
+</div></blockquote>
+<ol class="text-align-justify last arabic simple" start="3">
+<li>위에서 발급 받은 5자리 글자를 시작으로 20자리 Accesstoken을 임의로 만들어 userName에 넣습니다</li>
+</ol>
+</div>
+<p><br />
+<br /></p>
+</div>
+<div class="section" id="smart-fleet-web-application-simulator">
+<span id="web-application-simulator"></span><h2>10.2. Smart[Fleet] Web Application Simulator<a class="headerlink" href="#smart-fleet-web-application-simulator" title="Permalink to this headline">¶</a></h2>
+<p class="text-align-justify">Smart[Fleet]  Web Application Simulator는 OBD 운행 데이터 확인 및 RPC 요청 기능을 구현한 웹 애플리케이션입니다. 추가 사용 설명과 프로그램 다운로드는 아래 사이트를 방문하시기 바랍니다.</p>
+<ul class="text-align-justify simple">
+<li>Smart[Fleet] Web Application Simulator : <a class="reference external" href="https://github.com/skt-smartfleet/simpleweb">https://github.com/skt-smartfleet/simpleweb</a></li>
+</ul>
+<img alt="_images/7_2.png" src="_images/7_2.png" />
+<p class="text-align-justify">해당 애플리케이션은 node.js 기반으로 구현되어 있습니다. 본 시뮬레이터가 정상적으로 동작하기 위해서는 node.js가 설치되어 있어야 합니다.
+<br />
+애플리케이션을 이용하기 위해 차량, 센서 정보가 있는 <a class="reference external" href="https://smartfleet.sktelecom.com/">Smart [Fleet]</a> 계정과 <a class="reference external" href="https://developers.skplanetx.com/">SK플래닛 개발자센터</a> 에서 제공하는 API 인증키가 필요합니다.
+계정이 없는 경우 본 가이드 문서 <a class="reference internal" href="entity.html#entity-registration"><span class="std std-ref">4. 구성요소 등록 절차</span></a> 를 참조하여 계정을 생성하시기 바랍니다.
+인증키가 없는 경우 <a class="reference external" href="https://developers.skplanetx.com/develop/getting-start/">SK플래닛 개발자센터 API 이용방법</a> 을 참조하여 인증키를 발급받으실 수 있습니다.</p>
+<p><br /></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bestpractice.html" class="btn btn-neutral float-right" title="11. Best Practices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sdk.html" class="btn btn-neutral" title="9. SDK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright SK TELECOM.LTD. ALL RIGHTS RESERVED..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

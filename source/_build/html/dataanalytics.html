@@ -1,0 +1,1061 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>8. Data Analytics &mdash; Smart[Fleet] Platform 1.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="9. SDK" href="sdk.html" />
+    <link rel="prev" title="7. 메시지 포맷" href="message.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Smart[Fleet] Platform
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Smart[Fleet] 플랫폼 소개</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">2. 주요 구성요소 (Entity Architecture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="procedure.html">3. 서비스 세부 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity.html">4. 구성요소(Entity) 등록</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">5. Device 연동 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">6. API 규격</a></li>
+<li class="toctree-l1"><a class="reference internal" href="message.html">7. 메시지 포맷</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Data Analytics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#driving-scoring">8.1. Driving Scoring</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">8.1.1. Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#driving-scoring-apis">8.1.2. Driving Scoring APIs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#trip">8.1.2.1. 차량의 Trip 별 운전자 습관 정보 조회</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">8.1.2.2. 운전자의 Trip 별 운전자 습관 정보 조회</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">8.1.2.3. 차량의 주요 위험 운행 습관 발생 위치와 세부 정보</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">8.1.2.4. 운전자의 주요 위험 운행 습관 발생 위치와 세부 정보</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">8.1.2.5. 차량의 현재까지 집계된 안전 운전 점수</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trip-id">8.1.2.6. Trip ID로 안전 운전 점수 조회</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sdk.html">9. SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulator.html">10. 테스트용 시뮬레이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bestpractice.html">11. Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="miscellaneous.html">12. Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Smart[Fleet] Platform</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>8. Data Analytics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/dataanalytics.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-analytics">
+<h1>8. Data Analytics<a class="headerlink" href="#data-analytics" title="Permalink to this headline">¶</a></h1>
+<p>이 매뉴얼에서는 Smart[Fleet] 플랫폼의 데이터 분석 기능과 API 사용법을 소개합니다.</p>
+<div class="section" id="driving-scoring">
+<h2>8.1. Driving Scoring<a class="headerlink" href="#driving-scoring" title="Permalink to this headline">¶</a></h2>
+<p>운전자 습관 분석 기능을 소개합니다. 고객사에서 제공하는 GPS 위치 정보 <code class="docutils literal notranslate"><span class="pre">lat</span></code> , <code class="docutils literal notranslate"><span class="pre">lon</span></code> 를 기반으로 운전자 습관 분석을 합니다. 세부적으로 다음 항목을 분석합니다.</p>
+<ul class="simple">
+<li>운행거리 : GPS 맵매칭을 통한 정확한 운행 거리</li>
+<li>주요 위험 운행 습관 지수 : 급가속, 급감속, 과속</li>
+<li>맵 데이터를 통한 정교한 과속 : 맵매칭을 통한 도로 제한 속도 기반 과속 여부 판단</li>
+<li>안전 운전 점수(100점 만점) : 안전 운전 점수 평가 알고리즘 활용</li>
+</ul>
+<p>분석결과를 고객사에서 활용할 수 있도록 다음과 같은 API를 제공합니다.</p>
+<ul class="simple">
+<li>주행 별 안전 운전 점수 리스트</li>
+<li>위험 운행 습관 발생 위치 리스트</li>
+<li>누적 안전 운전 점수</li>
+</ul>
+<p>고객사에서는 위 API를 통해 다음과 같은 UI를 손쉽게 구현할 수 있습니다.</p>
+<ol class="arabic simple">
+<li>운전자 점수 및 주요 안전 운행 습관 현황</li>
+</ol>
+<a class="reference internal image-reference" href="_images/score.png"><img alt="_images/score.png" src="_images/score.png" style="width: 30%;" /></a>
+<ol class="arabic simple" start="2">
+<li>주요 이벤트 위치 정보 및 주행별 점수 현황</li>
+</ol>
+<a class="reference internal image-reference" href="_images/map_marks.png"><img alt="_images/map_marks.png" src="_images/map_marks.png" style="width: 30%;" /></a>
+<div class="section" id="requirements">
+<h3>8.1.1. Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
+<p>본 기능을 사용하기 위해서는 다음 조건을 만족해야 합니다.</p>
+<ol class="arabic simple">
+<li>고객사가 등록한 센서는 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#id6">Smart[Fleet] 플랫폼 센서 메시지 포맷</a> 을 준수하는 <code class="docutils literal notranslate"><span class="pre">GPS</span></code> , <code class="docutils literal notranslate"><span class="pre">OBD</span></code> , <code class="docutils literal notranslate"><span class="pre">BLACKBOX</span></code> 센서다.</li>
+<li>각 센서는 <code class="docutils literal notranslate"><span class="pre">lat</span></code> , <code class="docutils literal notranslate"><span class="pre">lon</span></code> 값을 포함한다.</li>
+<li>각 센서의 <code class="docutils literal notranslate"><span class="pre">Microtrip</span></code> 전송 주기는 5초 미만이다.</li>
+<li>단말기에서 정확한 trip 별 주행 거리 전송이 가능하면 trip 메세지 전송 시 dis 항목에 trip 별 주행 거리를 전송한다. 단말기에서 정확한 trip 별 주행 거리 전송이 불가하면 trip 메세지 전송 시 dis 항목을 제외한다.</li>
+</ol>
+</div>
+<div class="section" id="driving-scoring-apis">
+<h3>8.1.2. Driving Scoring APIs<a class="headerlink" href="#driving-scoring-apis" title="Permalink to this headline">¶</a></h3>
+<p>본 절에서는 Smart[Fleet]에서 제공하는 운전자 습관 분석 관련 API을 설명합니다.</p>
+<ul class="simple">
+<li>APIs 요약</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="7%" />
+<col width="49%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Method</th>
+<th class="head">URL</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>GET</td>
+<td>/api/tre/v1_3/vehicle/{vehicleId}/analytics/drivingScore</td>
+<td>차량의 Trip 별 운전자 습관 정보 조회</td>
+</tr>
+<tr class="row-odd"><td>GET</td>
+<td>/api/tre/v1_2/driver/{driverId}/analytics/drivingScore</td>
+<td>운전자의 Trip 별 운전자 습관 정보 조회</td>
+</tr>
+<tr class="row-even"><td>GET</td>
+<td>/api/tre/v1_3/vehicle/{vehicleId}/analytics/gpsEvent</td>
+<td>차량의 주요 위험 운행 습관 발생 위치와 세부 정보</td>
+</tr>
+<tr class="row-odd"><td>GET</td>
+<td>/api/tre/v1_2/driver/{driverId}/analytics/gpsEvent</td>
+<td>운전자의 주요 위험 운행 습관 발생 위치와 세부 정보</td>
+</tr>
+<tr class="row-even"><td>GET</td>
+<td>/api/tre/v1_3/vehicle/{vehicleId}/analytics/drivingScore/stat</td>
+<td>차량의 현재까지 집계된 안전 운전 점수</td>
+</tr>
+<tr class="row-odd"><td>GET</td>
+<td>/api/tre/v1_3/trip/{tripId}/analytics/drivingScore</td>
+<td>Trip ID로 안전 운전 점수 조회</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="trip">
+<h4>8.1.2.1. 차량의 Trip 별 운전자 습관 정보 조회<a class="headerlink" href="#trip" title="Permalink to this headline">¶</a></h4>
+<p class="text-align-justify table-width-fix">본 API는 각 운행 <code class="docutils literal notranslate"><span class="pre">Trip</span></code> 별 안전 운전 점수와 점수 계산의 기반이 되는 <code class="docutils literal notranslate"><span class="pre">운행거리</span></code>, <code class="docutils literal notranslate"><span class="pre">급가속횟수</span></code>, <code class="docutils literal notranslate"><span class="pre">급감속횟수</span></code>, <code class="docutils literal notranslate"><span class="pre">과속횟수</span></code> 정보를 제공합니다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>GET</strong></td>
+<td>/api/tre/v1_3/vehicle/{vehicleId}/analytics/drivingScore</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Parameters</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="19%" />
+<col width="10%" />
+<col width="11%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>X-Authorization</td>
+<td>string</td>
+<td>O</td>
+<td>Auth token</td>
+</tr>
+<tr class="row-odd"><td>vehicleId</td>
+<td>string</td>
+<td>O</td>
+<td>Vehicle ID</td>
+</tr>
+<tr class="row-even"><td>limit</td>
+<td>integer</td>
+<td>O</td>
+<td>한번에 가져올 리스트 개수</td>
+</tr>
+<tr class="row-odd"><td>idOffset</td>
+<td>string</td>
+<td>&#160;</td>
+<td>페이징을 시작할 아이템의 id</td>
+</tr>
+<tr class="row-even"><td>startTime</td>
+<td>number</td>
+<td>&#160;</td>
+<td>from time (unix timestamp)</td>
+</tr>
+<tr class="row-odd"><td>endTime</td>
+<td>number</td>
+<td>&#160;</td>
+<td>to time (unix timestamp)</td>
+</tr>
+<tr class="row-even"><td>ascOrder</td>
+<td>boolean</td>
+<td>&#160;</td>
+<td>false(defalut) : time descending, true : time ascending</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request (최신 2개의 운행별 운전자 점수)</span> :</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>curl --request GET \
+--url &#39;https://smartfleet.sktelecom.com:9901/api/tre/v1_3/vehicle/{{vehicleID}}/analytics/drivingScore?limit=2&#39; \
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;978926b0-6f68-11e8-8dc3-833dc5b9c077&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1528940243972</span><span class="p">,</span>
+            <span class="nt">&quot;vehicleId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;244bee00-3c7b-11e8-8994-85c175e72d24&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;userId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">70.96813194953879</span><span class="p">,</span>
+            <span class="nt">&quot;accel&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+            <span class="nt">&quot;deAccel&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+            <span class="nt">&quot;dist&quot;</span><span class="p">:</span> <span class="mi">49162</span><span class="p">,</span>
+            <span class="nt">&quot;overSpeed&quot;</span><span class="p">:</span> <span class="mi">152</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;9dda8280-6ed6-11e8-8dc3-833dc5b9c077&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1528873283657</span><span class="p">,</span>
+            <span class="nt">&quot;vehicleId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;244bee00-3c7b-11e8-8994-85c175e72d24&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;userId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">59.972895863052784</span><span class="p">,</span>
+            <span class="nt">&quot;accel&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;deAccel&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;dist&quot;</span><span class="p">:</span> <span class="mi">3505</span><span class="p">,</span>
+            <span class="nt">&quot;overSpeed&quot;</span><span class="p">:</span> <span class="mi">33</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;nextPageLink&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;ascOrder&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;idOffset&quot;</span><span class="p">:</span> <span class="s2">&quot;9dda8280-6ed6-11e8-8dc3-833dc5b9c077&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;hasNext&quot;</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h4>8.1.2.2. 운전자의 Trip 별 운전자 습관 정보 조회<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p class="text-align-justify table-width-fix">본 API는 각 운행 <code class="docutils literal notranslate"><span class="pre">Trip</span></code> 별 안전 운전 점수와 점수 계산의 기반이 되는 <code class="docutils literal notranslate"><span class="pre">운행거리</span></code>, <code class="docutils literal notranslate"><span class="pre">급가속횟수</span></code>, <code class="docutils literal notranslate"><span class="pre">급감속횟수</span></code>, <code class="docutils literal notranslate"><span class="pre">과속횟수</span></code> 정보를 제공합니다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>GET</strong></td>
+<td>/api/tre/v1_2/driver/{driverId}/analytics/drivingScore</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Parameters</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="19%" />
+<col width="10%" />
+<col width="11%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>X-Authorization</td>
+<td>string</td>
+<td>O</td>
+<td>Auth token</td>
+</tr>
+<tr class="row-odd"><td>driverId</td>
+<td>string</td>
+<td>O</td>
+<td>Driver ID</td>
+</tr>
+<tr class="row-even"><td>limit</td>
+<td>integer</td>
+<td>O</td>
+<td>한번에 가져올 리스트 개수</td>
+</tr>
+<tr class="row-odd"><td>idOffset</td>
+<td>string</td>
+<td>&#160;</td>
+<td>페이징을 시작할 아이템의 id</td>
+</tr>
+<tr class="row-even"><td>startTime</td>
+<td>number</td>
+<td>&#160;</td>
+<td>from time (unix timestamp)</td>
+</tr>
+<tr class="row-odd"><td>endTime</td>
+<td>number</td>
+<td>&#160;</td>
+<td>to time (unix timestamp)</td>
+</tr>
+<tr class="row-even"><td>ascOrder</td>
+<td>boolean</td>
+<td>&#160;</td>
+<td>false(defalut) : time descending, true : time ascending</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request (최신 2개의 운행별 운전자 점수)</span> :</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>curl --request GET \
+--url &#39;https://smartfleet.sktelecom.com:9901/api/tre/v1_2/driver/{{driverID}}/analytics/drivingScore?limit=2&#39; \
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;978926b0-6f68-11e8-8dc3-833dc5b9c077&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1528940243972</span><span class="p">,</span>
+            <span class="nt">&quot;vehicleId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;244bee00-3c7b-11e8-8994-85c175e72d24&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;userId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">70.96813194953879</span><span class="p">,</span>
+            <span class="nt">&quot;accel&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+            <span class="nt">&quot;deAccel&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+            <span class="nt">&quot;dist&quot;</span><span class="p">:</span> <span class="mi">49162</span><span class="p">,</span>
+            <span class="nt">&quot;overSpeed&quot;</span><span class="p">:</span> <span class="mi">152</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;9dda8280-6ed6-11e8-8dc3-833dc5b9c077&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1528873283657</span><span class="p">,</span>
+            <span class="nt">&quot;vehicleId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;244bee00-3c7b-11e8-8994-85c175e72d24&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;userId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">59.972895863052784</span><span class="p">,</span>
+            <span class="nt">&quot;accel&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;deAccel&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;dist&quot;</span><span class="p">:</span> <span class="mi">3505</span><span class="p">,</span>
+            <span class="nt">&quot;overSpeed&quot;</span><span class="p">:</span> <span class="mi">33</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;nextPageLink&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;ascOrder&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;idOffset&quot;</span><span class="p">:</span> <span class="s2">&quot;9dda8280-6ed6-11e8-8dc3-833dc5b9c077&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;hasNext&quot;</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h4>8.1.2.3. 차량의 주요 위험 운행 습관 발생 위치와 세부 정보<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>본 API는 주요 위험 운행 습관 발생 위치와 세부 정보를 제공합니다. 예를 들어 <code class="docutils literal notranslate"><span class="pre">급감속</span></code> 위치, <code class="docutils literal notranslate"><span class="pre">과속</span></code> 위치, 제한속도, 실제속도 등을 제공합니다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>GET</strong></td>
+<td>/api/tre/v1_3/vehicle/{vehicleId}/analytics/gpsEvent</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Parameters</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="19%" />
+<col width="10%" />
+<col width="11%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>X-Authorization</td>
+<td>string</td>
+<td>O</td>
+<td>Auth token</td>
+</tr>
+<tr class="row-odd"><td>vehicleId</td>
+<td>string</td>
+<td>O</td>
+<td>Vehicle ID</td>
+</tr>
+<tr class="row-even"><td>limit</td>
+<td>integer</td>
+<td>O</td>
+<td>한번에 가져올 리스트 개수</td>
+</tr>
+<tr class="row-odd"><td>idOffset</td>
+<td>string</td>
+<td>&#160;</td>
+<td>페이징을 시작할 아이템의 id</td>
+</tr>
+<tr class="row-even"><td>startTime</td>
+<td>number</td>
+<td>&#160;</td>
+<td>from time (unix timestamp)</td>
+</tr>
+<tr class="row-odd"><td>endTime</td>
+<td>number</td>
+<td>&#160;</td>
+<td>to time (unix timestamp)</td>
+</tr>
+<tr class="row-even"><td>ascOrder</td>
+<td>boolean</td>
+<td>&#160;</td>
+<td>false(defalut) : time descending, true : time ascending</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Attritube Description</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>eventTy</td>
+<td><ul class="first simple">
+<li>주요 위험 운행 습관 항목</li>
+</ul>
+<ol class="last arabic simple">
+<li>급출발</li>
+<li>급가속</li>
+<li>급감속</li>
+<li>급정지</li>
+<li>과속</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request (최신 2개의 상세 이벤트)</span> :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>curl --request GET <span class="se">\</span>
+--url <span class="s1">&#39;https://smartfleet.sktelecom.com:9901/api/tre/v1_3/vehicle/{vehicleId}/analytics/gpsEvent?limit=2&#39;</span> <span class="se">\</span>
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span> :</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;7ca5e8e7-6f73-11e8-89a5-9de9665a30fc&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1528940243797</span><span class="p">,</span>
+            <span class="nt">&quot;vehicleId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;244bee00-3c7b-11e8-8994-85c175e72d24&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;tripId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;978926b0-6f68-11e8-8dc3-833dc5b9c077&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;eventTs&quot;</span><span class="p">:</span> <span class="mi">1528939593000</span><span class="p">,</span>
+            <span class="nt">&quot;eventTy&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="nt">&quot;info&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;id\&quot;:\&quot;ID_0169595\&quot;,\&quot;maxSpd\&quot;:40000,\&quot;rank\&quot;:107}&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;deviceType&quot;</span><span class="p">:</span> <span class="s2">&quot;BLACKBOX&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;serviceType&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nt">&quot;speedMh&quot;</span><span class="p">:</span> <span class="mi">67680</span><span class="p">,</span>
+            <span class="nt">&quot;userId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;posLat&quot;</span><span class="p">:</span> <span class="mf">37.3928</span><span class="p">,</span>
+            <span class="nt">&quot;posLon&quot;</span><span class="p">:</span> <span class="mf">127.108052</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;7ca5e8e6-6f73-11e8-89a5-9de9665a30fc&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1528940243797</span><span class="p">,</span>
+            <span class="nt">&quot;vehicleId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;244bee00-3c7b-11e8-8994-85c175e72d24&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;tripId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;978926b0-6f68-11e8-8dc3-833dc5b9c077&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;eventTs&quot;</span><span class="p">:</span> <span class="mi">1528939591000</span><span class="p">,</span>
+            <span class="nt">&quot;eventTy&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="nt">&quot;info&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;id\&quot;:\&quot;ID_0169595\&quot;,\&quot;maxSpd\&quot;:40000,\&quot;rank\&quot;:107}&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;deviceType&quot;</span><span class="p">:</span> <span class="s2">&quot;BLACKBOX&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;serviceType&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nt">&quot;speedMh&quot;</span><span class="p">:</span> <span class="mi">74160</span><span class="p">,</span>
+            <span class="nt">&quot;userId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;posLat&quot;</span><span class="p">:</span> <span class="mf">37.39295</span><span class="p">,</span>
+            <span class="nt">&quot;posLon&quot;</span><span class="p">:</span> <span class="mf">127.107777</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;nextPageLink&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;ascOrder&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;idOffset&quot;</span><span class="p">:</span> <span class="s2">&quot;7ca5e8e6-6f73-11e8-89a5-9de9665a30fc&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;hasNext&quot;</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h4>8.1.2.4. 운전자의 주요 위험 운행 습관 발생 위치와 세부 정보<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>본 API는 주요 위험 운행 습관 발생 위치와 세부 정보를 제공합니다. 예를 들어 <code class="docutils literal notranslate"><span class="pre">급감속</span></code> 위치, <code class="docutils literal notranslate"><span class="pre">과속</span></code> 위치, 제한속도, 실제속도 등을 제공합니다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>GET</strong></td>
+<td>/api/tre/v1_2/driver/{driverId}/analytics/gpsEvent</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Parameters</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="19%" />
+<col width="10%" />
+<col width="11%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>X-Authorization</td>
+<td>string</td>
+<td>O</td>
+<td>Auth token</td>
+</tr>
+<tr class="row-odd"><td>driverId</td>
+<td>string</td>
+<td>O</td>
+<td>Driver ID</td>
+</tr>
+<tr class="row-even"><td>limit</td>
+<td>integer</td>
+<td>O</td>
+<td>한번에 가져올 리스트 개수</td>
+</tr>
+<tr class="row-odd"><td>idOffset</td>
+<td>string</td>
+<td>&#160;</td>
+<td>페이징을 시작할 아이템의 id</td>
+</tr>
+<tr class="row-even"><td>startTime</td>
+<td>number</td>
+<td>&#160;</td>
+<td>from time (unix timestamp)</td>
+</tr>
+<tr class="row-odd"><td>endTime</td>
+<td>number</td>
+<td>&#160;</td>
+<td>to time (unix timestamp)</td>
+</tr>
+<tr class="row-even"><td>ascOrder</td>
+<td>boolean</td>
+<td>&#160;</td>
+<td>false(defalut) : time descending, true : time ascending</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Attritube Description</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>eventTy</td>
+<td><ul class="first simple">
+<li>주요 위험 운행 습관 항목</li>
+</ul>
+<ol class="last arabic simple">
+<li>급출발</li>
+<li>급가속</li>
+<li>급감속</li>
+<li>급정지</li>
+<li>과속</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request (최신 2개의 상세 이벤트)</span> :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>curl --request GET <span class="se">\</span>
+--url <span class="s1">&#39;https://smartfleet.sktelecom.com:9901/api/tre/v1_2/driver/{driverId}/analytics/gpsEvent?limit=2&#39;</span> <span class="se">\</span>
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span> :</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;7ca5e8e7-6f73-11e8-89a5-9de9665a30fc&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1528940243797</span><span class="p">,</span>
+            <span class="nt">&quot;vehicleId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;244bee00-3c7b-11e8-8994-85c175e72d24&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;tripId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;978926b0-6f68-11e8-8dc3-833dc5b9c077&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;eventTs&quot;</span><span class="p">:</span> <span class="mi">1528939593000</span><span class="p">,</span>
+            <span class="nt">&quot;eventTy&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="nt">&quot;info&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;id\&quot;:\&quot;ID_0169595\&quot;,\&quot;maxSpd\&quot;:40000,\&quot;rank\&quot;:107}&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;deviceType&quot;</span><span class="p">:</span> <span class="s2">&quot;BLACKBOX&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;serviceType&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nt">&quot;speedMh&quot;</span><span class="p">:</span> <span class="mi">67680</span><span class="p">,</span>
+            <span class="nt">&quot;userId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;posLat&quot;</span><span class="p">:</span> <span class="mf">37.3928</span><span class="p">,</span>
+            <span class="nt">&quot;posLon&quot;</span><span class="p">:</span> <span class="mf">127.108052</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;7ca5e8e6-6f73-11e8-89a5-9de9665a30fc&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1528940243797</span><span class="p">,</span>
+            <span class="nt">&quot;vehicleId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;244bee00-3c7b-11e8-8994-85c175e72d24&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;tripId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;978926b0-6f68-11e8-8dc3-833dc5b9c077&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;eventTs&quot;</span><span class="p">:</span> <span class="mi">1528939591000</span><span class="p">,</span>
+            <span class="nt">&quot;eventTy&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="nt">&quot;info&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;id\&quot;:\&quot;ID_0169595\&quot;,\&quot;maxSpd\&quot;:40000,\&quot;rank\&quot;:107}&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;deviceType&quot;</span><span class="p">:</span> <span class="s2">&quot;BLACKBOX&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;serviceType&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nt">&quot;speedMh&quot;</span><span class="p">:</span> <span class="mi">74160</span><span class="p">,</span>
+            <span class="nt">&quot;userId&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;posLat&quot;</span><span class="p">:</span> <span class="mf">37.39295</span><span class="p">,</span>
+            <span class="nt">&quot;posLon&quot;</span><span class="p">:</span> <span class="mf">127.107777</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;nextPageLink&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;startTime&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;endTime&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;ascOrder&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;idOffset&quot;</span><span class="p">:</span> <span class="s2">&quot;7ca5e8e6-6f73-11e8-89a5-9de9665a30fc&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;hasNext&quot;</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h4>8.1.2.5. 차량의 현재까지 집계된 안전 운전 점수<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>본 API는 현재까지 집계된 운전자의 운전 습관 점수를 제공합니다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>GET</strong></td>
+<td>/api/tre/v1_3/vehicle/{vehicleId}/analytics/drivingScore/stat</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Parameters</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="19%" />
+<col width="10%" />
+<col width="11%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>X-Authorization</td>
+<td>string</td>
+<td>O</td>
+<td>Auth token</td>
+</tr>
+<tr class="row-odd"><td>vehicleId</td>
+<td>string</td>
+<td>O</td>
+<td>Vehicle ID</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request</span> :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>  curl --request GET <span class="se">\</span>
+--url https://smartfleet.sktelecom.com:9901/api/tre/v1_3/vehicle/<span class="o">{</span>vehicleId<span class="o">}</span>/analytics/drivingScore/stat <span class="se">\</span>
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span> :</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;244bee00-3c7b-11e8-8994-85c175e72d24&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1528940244041</span><span class="p">,</span>
+    <span class="nt">&quot;userId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;count&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+    <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">73.72696393191347</span><span class="p">,</span>
+    <span class="nt">&quot;distance&quot;</span><span class="p">:</span> <span class="mi">450311</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="trip-id">
+<h4>8.1.2.6. Trip ID로 안전 운전 점수 조회<a class="headerlink" href="#trip-id" title="Permalink to this headline">¶</a></h4>
+<p>본 API는 Trip ID 로 안전 운전 점수를 조회합니다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>GET</strong></td>
+<td>/api/tre/v1_3/trip/{tripId}/analytics/drivingScore</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Parameters</li>
+</ul>
+<table border="1" class="table-width-fix table-width-full text-align-justify docutils">
+<colgroup>
+<col width="19%" />
+<col width="10%" />
+<col width="11%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>X-Authorization</td>
+<td>string</td>
+<td>O</td>
+<td>Auth token</td>
+</tr>
+<tr class="row-odd"><td>tripId</td>
+<td>string</td>
+<td>O</td>
+<td>Trip ID</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Example Code</li>
+</ul>
+<p><span class="underline">Request</span> :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>  curl --request GET <span class="se">\</span>
+--url https://smartfleet.sktelecom.com:9901/api/tre/v1_3/trip/<span class="o">{</span>tripId<span class="o">}</span>/analytics/drivingScore <span class="se">\</span>
+</pre></div>
+</div>
+<p><span class="underline">Response (code: 200)</span> :</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+           <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;978926b0-6f68-11e8-8dc3-833dc5b9c077&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;createdTime&quot;</span><span class="p">:</span> <span class="mi">1528940243972</span><span class="p">,</span>
+    <span class="nt">&quot;vehicleId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;244bee00-3c7b-11e8-8994-85c175e72d24&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;userId&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;13814000-1dd2-11b2-8080-808080808080&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;score&quot;</span><span class="p">:</span> <span class="mf">70.96813194953879</span><span class="p">,</span>
+    <span class="nt">&quot;accel&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="nt">&quot;deAccel&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="nt">&quot;dist&quot;</span><span class="p">:</span> <span class="mi">49162</span><span class="p">,</span>
+    <span class="nt">&quot;overSpeed&quot;</span><span class="p">:</span> <span class="mi">152</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sdk.html" class="btn btn-neutral float-right" title="9. SDK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="message.html" class="btn btn-neutral" title="7. 메시지 포맷" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright SK TELECOM.LTD. ALL RIGHTS RESERVED..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

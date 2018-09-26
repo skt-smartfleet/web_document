@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. Smart[Fleet] 플랫폼 소개 &mdash; Smart[Fleet] Platform 1.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. 주요 구성요소 (Entity Architecture)" href="architecture.html" />
+    <link rel="prev" title="Smart[Fleet] Platform Web Document" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Smart[Fleet] Platform
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Smart[Fleet] 플랫폼 소개</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">1.1. 주요 특징</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1.2. 제공 주요 기능</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">2. 주요 구성요소 (Entity Architecture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="procedure.html">3. 서비스 세부 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity.html">4. 구성요소(Entity) 등록</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">5. Device 연동 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">6. API 규격</a></li>
+<li class="toctree-l1"><a class="reference internal" href="message.html">7. 메시지 포맷</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataanalytics.html">8. Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk.html">9. SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulator.html">10. 테스트용 시뮬레이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bestpractice.html">11. Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="miscellaneous.html">12. Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Smart[Fleet] Platform</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>1. Smart[Fleet] 플랫폼 소개</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/introduction.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="smart-fleet">
+<h1>1. Smart[Fleet] 플랫폼 소개<a class="headerlink" href="#smart-fleet" title="Permalink to this headline">¶</a></h1>
+<p class="text-align-justify">Smart[Fleet] 플랫폼은 SK텔레콤(이하 SKT)에서 제공하는 커넥티드카 플랫폼으로 커넥티드카 솔루션을 개발하고자 파트너사들에게 보다 쉽고, 빠르고, 다양한 서비스를 안전하게 개발할 수 있는 다양한 기능들을 제공합니다.</p>
+<p>Smart[Fleet] 플랫폼은 아래 그림과 같이 코어 엔진 부분에 차량 모니터링(Monitor), 경로 최적화(Route), 차량과 통신(V2X), 데이터 분석(Data), 교통정보 분석(Traffic) 등의 5개 차량 관제 핵심 기능을 제공합니다.</p>
+<p>본 문서는 5개 핵심 기능들과 파트너사들의 장치들이 연동하기 기능개발 절차와 기술 규격에 대해서 정의하고 있습니다.</p>
+<img alt="_images/11.png" src="_images/11.png" />
+<p><br /></p>
+<div class="section" id="id1">
+<h2>1.1. 주요 특징<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>간편한 API 지원</strong></li>
+</ul>
+<p class="text-align-justify">Smart[Fleet] 플랫폼과 차량 내 센서들간 연동을 쉽게 개발할 수 있도록 간결하고, 다양한 API들을 제공하고 있습니다.</p>
+<table border="1" class="text-align-justify table-width-fix docutils">
+<colgroup>
+<col width="8%" />
+<col width="92%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">구분</th>
+<th class="head">설명</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Simple API</td>
+<td>차량 내 설치되는 센서들(예 : OBD-2, ADAS, GPT 센터 등)에게는 최소한의 API만을 제공하여 개발의 복잡도를 낮춰 드립니다.
+이를 위해서 기존에 많이 사용되는 HTTP 프로토콜과 비교하여 저전력, 보다 빠른 데이터 처리, 가벼운 통신 규격을 지원하는 MQTT 프로토콜을 지원하고 있습니다.</td>
+</tr>
+<tr class="row-odd"><td>Useful API</td>
+<td>차량 운행기록, 차량배차 관리, 운전자 운행습관 분석 등과 같은 다양한 서비스를 간편하게 구현할 수 있습니다.
+센서 연동 API를 통해서 차량 내 정보를 올려주면 Smart[Fleet] 플랫폼에서 복잡한 분석 절차를 처리하고 RESTful API를 통해 고객들에게 원하는 정보를 제공해드립니다.</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><strong>유연한 커넥티드카 센서 연동 인터페이스 및 SDK 제공</strong></li>
+</ul>
+<p class="text-align-justify">커네티드 카 솔루션에서 차량 정보 수집 및 제어를 위해서 많이 사용되는 다양한 차량 내 센서들과 연동을 하기 위한 연동 규격을 제공합니다. 그리고 센서들의 품질관리와 보안을 보장하기 위하여 SKT에서는 Certification Program(링크 필요)을 운영합니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">구분</th>
+<th class="head">설명</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>다양한 센서 연동 규격</td>
+<td>OBD-2, ADAS, DTG 센서 또는 스마트폰을 통해서 차량을 관제할 수 있는 유연한 인터페이스를 제공합니다.
+Smart[Fleet] 프랫폼의 데이터 분석 기능을 활용하기 위해서는 SKT에서 제공하는 메시지 포맷 규약을 따라야 합니다.</td>
+</tr>
+<tr class="row-odd"><td>SDK 제공</td>
+<td>Smart[Fleet] 플랫폼과 센서간의 연동 기능 개발을 보다 쉽게 하실 수 있도록 다양한 언어의 SDK를 제공합니다.
+또한 Starter Kit(링크) 솔루션을 활용하여 쉽게 단말 연동 기능 시험 및 프로토타입 솔루션을 기획하실 수 있습니다.</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><strong>저전력 IoT 전용 네트워크 연결 지원</strong></li>
+</ul>
+<p class="text-align-justify">국내 1위 이동통신망 사업자인 SKT는 IoT 서비스에 최적화된 저전력 기반의 LPWAN(Low Power Wide Area Network) 통신 서비스를 제공하고 있습니다.
+특히 커넥티드카 서비스의 핵심 중 하나는 끊김이 없고 안정적인 연결성 보장, 실시간 양방향 데이터 통신, 차량 내 센서 전원 특성을 고려한 저전력 소비 등을 보장하는 무선통신기술이 요구됩니다.
+또한 합리적인 가격대의 다양한 무선통신 칩셋과 커넥티드카 전용통신요금도 필요합니다.
+이런 특징들을 모두 보장할 수 있는 무선통신망 기술이 LPWAN이며, SKT는 LoRa, LTE-M, LTE-M1 등 국내에서 가장 많은 종류의 LPWAN 통신 서비스를 지원하고 있습니다.</p>
+<ul class="simple">
+<li><strong>SKT IoT 솔루션과 연동 지원</strong></li>
+</ul>
+<p class="text-align-justify">Smart[Fleet] 플랫폼의 또 하나의 장점은 시장에서 검증되고 범용화된 SKT의 다양한 IoT 솔루션들과 연동하여 보다 풍부한 커넥티드카 서비스를 구현할 수 있습니다.
+Smart[Fleet] 플랫폼은 SKT IoT 솔루션인 T map(네비게이션), ThingPlug(개방형 IoT 플랫폼), Smart[Home](스마트홈), 누구(AI 기반의 음성인식) 등과 연동 기능을 제공하고 있으므로 차량뿐만 아니라 보다 다양한 영역에서 활용이 가능한 서비스 시나리오들을 구성할 수 있습니다.</p>
+<ul class="simple">
+<li><strong>원스톱 서비스 지원</strong></li>
+</ul>
+<p class="text-align-justify">SKT는 커넥티드카 솔루션 및 서비스를 기획하는 파트너들의 사업 성공을 위해서 기획부터 기술개발, 서비스 런칭까지 원스톱 서비스를 지원합니다.
+또한 사업 런칭 후에도 파트너들의 다양한 요구사항에 대한 전문적인 대응을 통하여 안정적으로 사업이 유지되도록 지원합니다.</p>
+<p><br /></p>
+<img alt="_images/2.png" src="_images/2.png" />
+<p><br /></p>
+</div>
+<div class="section" id="id2">
+<h2>1.2. 제공 주요 기능<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p class="text-align-justify">Smart[Fleet] 플랫폼은 파트너업체들이 커넥티드카 단말의 성능 시험이나 시장에서 경쟁력있는 커넥티드카 서비스 개발을 쉽게 할 수 있도록 Smart[Fleet] 포털 및 REST API 등을 통하여 다양한 기능을 제공합니다.</p>
+<img alt="_images/3.png" src="_images/3.png" />
+<p><br /></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="architecture.html" class="btn btn-neutral float-right" title="2. 주요 구성요소 (Entity Architecture)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Smart[Fleet] Platform Web Document" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright SK TELECOM.LTD. ALL RIGHTS RESERVED..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

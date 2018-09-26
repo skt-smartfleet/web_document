@@ -1,0 +1,519 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>11. Best Practices &mdash; Smart[Fleet] Platform 1.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="12. Miscellaneous" href="miscellaneous.html" />
+    <link rel="prev" title="10. 테스트용 시뮬레이터" href="simulator.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Smart[Fleet] Platform
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Smart[Fleet] 플랫폼 소개</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">2. 주요 구성요소 (Entity Architecture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="procedure.html">3. 서비스 세부 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity.html">4. 구성요소(Entity) 등록</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">5. Device 연동 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">6. API 규격</a></li>
+<li class="toctree-l1"><a class="reference internal" href="message.html">7. 메시지 포맷</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataanalytics.html">8. Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk.html">9. SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulator.html">10. 테스트용 시뮬레이터</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">11. Best Practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#web-push">11.1. Web Push</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#push">11.1.1. Push 메시지 타입 및 수신 서버 주소 정의</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#swing">11.1.1.1. Swing에 따른 망 연동 현황</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">11.1.2. Push 메시지 수신을 위한 서버 기동</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fota">11.2. FOTA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-information">11.2.1. General Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#architecture">11.2.2. Architecture</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fota-by-portal">11.2.2.1. FOTA by Portal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#message-compression">11.3. Message Compression</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">11.3.1. General Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introduction-to-messagepack">11.3.2. Introduction to MessagePack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#message-compression-architecture">11.3.3. Message Compression Architecture</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="miscellaneous.html">12. Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Smart[Fleet] Platform</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>11. Best Practices</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/bestpractice.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="best-practices">
+<h1>11. Best Practices<a class="headerlink" href="#best-practices" title="Permalink to this headline">¶</a></h1>
+<p>Smart[Fleet] 플랫폼을 기반으로 Connected Car 솔루션 개발 시 필요한 주요한 Tip을 제공합니다.</p>
+<div class="section" id="web-push">
+<h2>11.1. Web Push<a class="headerlink" href="#web-push" title="Permalink to this headline">¶</a></h2>
+<p>Smart[Fleet] 플랫폼은 차량 디바이스로 부터 전달 받은 데이터 및 제어 정보를 실시간으로 Push 받을 수 있습니다.
+Push 메시지를 수신하기 위해서는 아래 2가지 준비가 필요합니다.</p>
+<ol class="arabic simple">
+<li>Push 메시지를 수신하기 위한 서버 정보 멏 수신하고자 하는 메시지 타입 정의</li>
+<li>Push 메시지 수신을 위한 서버 기동</li>
+</ol>
+<div class="section" id="push">
+<h3>11.1.1. Push 메시지 타입 및 수신 서버 주소 정의<a class="headerlink" href="#push" title="Permalink to this headline">¶</a></h3>
+<p>수신받고자 하는 Push 메시지 타입이나 수신 서버는 Smart[Fleet] 내 서비스 정보를
+저장하는 <code class="docutils literal notranslate"><span class="pre">Company</span></code> 엔티티에 명시합니다.
+<a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/entity/#company-registration-api">Company Entity</a>
+API를 통해 아래 2가지 Key 정보를 상황에 맞추어 수정하면 됩니다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>notifyHost</td>
+<td>Push 메시지 수신 서버 경로 정보</td>
+</tr>
+<tr class="row-odd"><td>notifyMsgType</td>
+<td><p class="first">수신하고자 하는 Push 메시지 타입 정보</p>
+<ul class="last simple">
+<li>ty 번호를 Comma로 구분하여 명세</li>
+<li>300 : All RPC Messages</li>
+<li>400 : All Rule Alarm Messages</li>
+<li>500 : 단말 연결 및 끊김 상태 알람</li>
+<li>600 : Swing 연동에 따른 단말 망 연동 현황</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>예를 들어, HTTP 서버 주소가 <a class="reference external" href="http://192.168.0.100:9090/noti">http://192.168.0.100:9090/noti</a> 이고
+수신하고자 하는 메시지의 ty 값이 7, 8, 101, 102 이고,
+추가로 RPC 제어 결과를 Push 받고자 하면 PUT Method를 통해 기존에 저장된 Company Entity를 수정한다.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;notifyHost&quot;</span><span class="p">:</span><span class="s2">&quot;http://192.168.0.100:9090/noti&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;notifyMsgType&quot;</span><span class="p">:</span> <span class="s2">&quot;7, 8, 101, 102, 300&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>상기 과정을 정상적으로 수행하면 Smart[Fleet] 플랫폼의 선택된 메시지들을 정의된 HTTP 서버에 전송합니다.</p>
+<div class="section" id="swing">
+<h4>11.1.1.1. Swing에 따른 망 연동 현황<a class="headerlink" href="#swing" title="Permalink to this headline">¶</a></h4>
+<p>Swing에 따른 망 연동 현황은 센서에 명시된 <code class="docutils literal notranslate"><span class="pre">nwStatus</span></code> 값이 변경되는 경우 전달됩니다.
+예를 들면, 비 개통 상태에서 개통 상태로 변경되면 푸시가 가게 되며, 아래와 같이 메시지가 전달됩니다.
+참고로, <code class="docutils literal notranslate"><span class="pre">nwStatus</span></code> 값은 <a class="reference external" href="https://smart-fleet-docs.readthedocs.io/ko/latest/miscellaneous/#swing-interworking">nwStatus 정의</a> 를 참고하세요.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+    “masterCompanyId”: “be12f480-49bd-11e8-8174-d55e41d61949&quot;,
+    “companyId”: “be12f480-49bd-11e8-8174-d55e41d61949&quot;,
+    “sensorId”: “be87d660-49bd-11e8-8174-d55e41d61949&quot;,
+    “ts”: 1524794221355,
+    “ty”: “NWSTATUS”,
+    “pld”: {
+       “nwStatus”: “01&quot;
+    }
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>11.1.2. Push 메시지 수신을 위한 서버 기동<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Smart[Fleet]에서 제공하는 Push 메시지는 HTTP 프로토콜을 준수하며,
+메시지를 수신하기 위해서는 HTTP 서버 운용하여야 합니다.</p>
+<p>간단한 테스트를 위해 node.js 기반의 HTTP 서버를 AWS 인스턴스에 기동하여 정상적으로 메시지를 수신하는 테스트를 진행합니다.</p>
+<p>아래는 node.js의 express 모듈을 통해 구현된 HTTP POST 요청을 수신하고 응답하는 코드입니다. node.js 및 express 모듈에 대한 설명은 생략 합니다.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span><span class="nx">ㄱ</span>
+
+<span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nx">jsonData</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">chunk</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">jsonData</span> <span class="o">+=</span> <span class="nx">chunk</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8888</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>상기 코드를 AWS 인스턴스에 구동시키고 Smart[Fleet] 프로토콜을 준수하는 단말이 메시지를 플랫폼에 전달하면, 다음과 같이 Push 메시지가 전달 되는 것을 볼 수 있습니다.</p>
+<img alt="_images/push_log.png" src="_images/push_log.png" />
+<p><a href="#id3"><span class="problematic" id="id4">|br|</span></a></p>
+</div>
+</div>
+<div class="section" id="fota">
+<h2>11.2. FOTA<a class="headerlink" href="#fota" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="general-information">
+<h3>11.2.1. General Information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h3>
+<p>본 장에서는 Smart[Fleet]을 통해서 FOTA <code class="docutils literal notranslate"><span class="pre">Firmware</span> <span class="pre">Over</span> <span class="pre">The</span> <span class="pre">Air</span></code> 를 수행하는 방법에 대해서 기술합니다.</p>
+<p>Smart[Fleet] 플랫폼에 정상적으로 등록한 단말은 다음과 같이 2가지 방법을 통해서 FOTA를 수행합니다.</p>
+<ol class="arabic simple">
+<li>By Portal - Smart[Fleet] 홈페이지를 통해서 FOTA를 요청하는 방법</li>
+<li>By RPC - Smart[Fleet]의 RPC를 통해서 FOTA를 요청하는 방법</li>
+</ol>
+</div>
+<div class="section" id="architecture">
+<h3>11.2.2. Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h3>
+<p>상기 언급된 2가지 FOTA 방식에 대한 Smart[Fleet]의 구조는 아래와 같습니다.
+FOTA는 실제적으로는 Smart[Fleet]에 있는 RPC에 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#firmware-update">Firmware Update RPC</a> 방식을 따릅니다.</p>
+<img alt="_images/FOTA_arc.png" src="_images/FOTA_arc.png" />
+<div class="section" id="fota-by-portal">
+<h4>11.2.2.1. FOTA by Portal<a class="headerlink" href="#fota-by-portal" title="Permalink to this headline">¶</a></h4>
+<p>본 방법은 FOTA를 Smart[Fleet]의 홈페이지를 이용하여 진행하는 방법을 기술합니다.</p>
+<p class="text-align-justify">1. 홈페이지에 Firmware를 저장합니다. Firmware를 저장할 때는 아래의
+홈페이지에 FOTA 메뉴 하단에 <code class="docutils literal notranslate"><span class="pre">펌웨어</span></code> 를 클릭합니다.</p>
+<img alt="_images/FOTA_menu.png" src="_images/FOTA_menu.png" />
+<p class="text-align-justify">2. 아래와 같이 펌웨어에 대한 기본 정보와 펌웨어 파일을 올립니다.
+Smart[Fleet]에서는 같은 서비스 내 등록된 단말 타입과 제조사명을 기반으로 Firmware를 구분합니다.</p>
+<p>예를 들면, 아래 그림과 같이 <code class="docutils literal notranslate"><span class="pre">SK</span> <span class="pre">Telecom</span></code> 이 제조한 <code class="docutils literal notranslate"><span class="pre">GPS</span></code> 단말이 해당 서비스에 1,000대가 있다고 가정하면,
+지금 등록하는 Firmware는 해당 1,000대 적용되는 Firmware라고 보시면 됩니다.</p>
+<img alt="_images/Firmware_Reg.png" src="_images/Firmware_Reg.png" />
+<p>3. 진행하고자 하는 FOTA를 설정합니다. 아래 그림과 같이 진행하고자 하는 센서 타입을 설정하고, 업데이트 할 펌웨어 버전을 선택하고,
+마지막으로 FOTA를 수행할 시간을 설정합니다. 설정한 시간에 맞추어 Smart[Fleet] 포털에서 상기 신청한 센서 타입의 센서에
+일괄 FOTA를 위한 RPC를 전달합니다.</p>
+<img alt="_images/FOTA_Registration.png" src="_images/FOTA_Registration.png" />
+<p>4. 3번 과정을 정상적으로 진행하면,
+아래와 같은 FOTA 진행 현황을 보실 수 있습니다. FOTA 상태 항목에는 <code class="docutils literal notranslate"><span class="pre">처리중</span></code> 이라는 상태를 파악하실 수 있습니다.</p>
+<img alt="_images/FOTA_In_Progress.png" class="text-align-justify" src="_images/FOTA_In_Progress.png" />
+<p>5. Smart[Fleet] 시스템은 고객께서 3번 과정에 신청한 시간에 맞추어 단말에 RPC 요청을 전달합니다.
+해당 RPC에 대한 Protocol은 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/message/#firmware-update">Firmware Update RPC</a> 방식을 따르며,
+Smart[Fleet] 단말 시뮬레이터를 기반으로 동작하면, 다음과 같이 RPC 메시지를 단말이 수신하는 것을 볼 수 있습니다.</p>
+<p>좀더 상세하게는 Firmware가 저장된 위치를 제공하므로써 단말이 해당 경로를 통해서 Firmware를 수신할 수 있도록 가이드 합니다.
+해당 위치는 상기 3번 과정에 명시된 Firmware 경로 정보와 동일합니다.</p>
+<img alt="_images/FOTA-Device.png" src="_images/FOTA-Device.png" />
+<p>6. FOTA RPC를 전송한 후에 결과를 모두 수신한
+Smart[Fleet]은 다음과 같이 FOTA 상태를 <code class="docutils literal notranslate"><span class="pre">완료</span></code> 로 명시합니다.</p>
+<img alt="_images/FOTA_done.png" src="_images/FOTA_done.png" />
+<p>7. 상세한 FOTA 정보는 6번 화면의 FOTA 상태를 클릭하면 아래와 같이 화면이 나오고, 아래 예제와 같이 FOTA가 실패한 경우에는
+FOTA 재신청을 요청할 수 있습니다. 해당 재시도는 실패한 단말에 대해서 진행합니다.</p>
+<img alt="_images/FOTA_done_detail.png" src="_images/FOTA_done_detail.png" />
+</div>
+</div>
+</div>
+<div class="section" id="message-compression">
+<h2>11.3. Message Compression<a class="headerlink" href="#message-compression" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>11.3.1. General Information<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Smart[Fleet]에서는 데이터 전송 효율성을 위해 단말과 플랫폼 인터페이스 상에서
+JSON 메시지를 압축하는 방식을 지원합니다. 메시지 압축 기술은 JSON을 Byte String
+으로 변환할 때 많이 사용하는 <a class="reference external" href="https://msgpack.org/">MessagePack</a>
+이라는 기술을 사용합니다.</p>
+</div>
+<div class="section" id="introduction-to-messagepack">
+<h3>11.3.2. Introduction to MessagePack<a class="headerlink" href="#introduction-to-messagepack" title="Permalink to this headline">¶</a></h3>
+<p>Smart[Fleet]에서 사용하는 Microtrip을 하나로 예를 들어보겠습니다.</p>
+<p>아래는 <code class="docutils literal notranslate"><span class="pre">GPS</span></code> 단말이 보내는 727 Bytes <code class="docutils literal notranslate"><span class="pre">Aggregated</span> <span class="pre">Microtrip</span></code> JSON 메시지는 아래와 같습니다.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;ty&quot;</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;ts&quot;</span><span class="o">:</span><span class="mi">1508215121898</span><span class="p">,</span>
+    <span class="s2">&quot;pld&quot;</span><span class="o">:</span>
+    <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;tid&quot;</span><span class="o">:</span><span class="mi">301</span><span class="p">,</span>
+            <span class="s2">&quot;lon&quot;</span><span class="o">:</span><span class="mf">127.062512</span><span class="p">,</span>
+            <span class="s2">&quot;lat&quot;</span><span class="o">:</span><span class="mf">37.510296</span><span class="p">,</span>
+            <span class="s2">&quot;alt&quot;</span><span class="o">:</span><span class="mi">102</span><span class="p">,</span>
+            <span class="s2">&quot;sp&quot;</span><span class="o">:</span><span class="mi">90</span><span class="p">,</span>
+            <span class="s2">&quot;dop&quot;</span><span class="o">:</span><span class="mi">13</span><span class="p">,</span>
+            <span class="s2">&quot;nos&quot;</span><span class="o">:</span><span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;clt&quot;</span><span class="o">:</span><span class="mi">1508215121888</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;tid&quot;</span><span class="o">:</span><span class="mi">301</span><span class="p">,</span>
+            <span class="s2">&quot;lon&quot;</span><span class="o">:</span><span class="mf">127.062512</span><span class="p">,</span>
+            <span class="s2">&quot;lat&quot;</span><span class="o">:</span><span class="mf">37.510296</span><span class="p">,</span>
+            <span class="s2">&quot;alt&quot;</span><span class="o">:</span><span class="mi">113</span><span class="p">,</span>
+            <span class="s2">&quot;sp&quot;</span><span class="o">:</span><span class="mi">74</span><span class="p">,</span>
+            <span class="s2">&quot;dop&quot;</span><span class="o">:</span><span class="mi">11</span><span class="p">,</span>
+            <span class="s2">&quot;nos&quot;</span><span class="o">:</span><span class="mi">4</span><span class="p">,</span>
+            <span class="s2">&quot;clt&quot;</span><span class="o">:</span><span class="mi">1508215121893</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;tid&quot;</span><span class="o">:</span><span class="mi">301</span><span class="p">,</span>
+            <span class="s2">&quot;lon&quot;</span><span class="o">:</span><span class="mf">127.062512</span><span class="p">,</span>
+            <span class="s2">&quot;lat&quot;</span><span class="o">:</span><span class="mf">37.510296</span><span class="p">,</span>
+            <span class="s2">&quot;alt&quot;</span><span class="o">:</span><span class="mi">115</span><span class="p">,</span>
+            <span class="s2">&quot;sp&quot;</span><span class="o">:</span><span class="mi">71</span><span class="p">,</span>
+            <span class="s2">&quot;dop&quot;</span><span class="o">:</span><span class="mi">14</span><span class="p">,</span>
+            <span class="s2">&quot;nos&quot;</span><span class="o">:</span><span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;clt&quot;</span><span class="o">:</span><span class="mi">1508215121898</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>해당 메시지를 MessagePack 라이브러리를 통해 변환하면 220 Bytes의 <code class="docutils literal notranslate"><span class="pre">Hexa</span> <span class="pre">String</span></code> 으로 변환됩니다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>83 a2 74 79 02 a2 74 73 cf 00 00 01 5f 28 a0 67 ea a3 70 6c 64 93 88 a3
+74 69 64 cd 01 2d a3 6c 6f 6e cb 40 5f c4 00 32 54 e6 e2 a3 6c 61 74 cb
+40 42 c1 51 61 1b a3 ca a3 61 6c 74 66 a2 73 70 5a a3 64 6f 70 0d a3 6e
+6f 73 05 a3 63 6c 74 cf 00 00 01 5f 28 a0 67 e0 88 a3 74 69 64 cd 01 2d
+a3 6c 6f 6e cb 40 5f c4 00 32 54 e6 e2 a3 6c 61 74 cb 40 42 c1 51 61 1b
+a3 ca a3 61 6c 74 71 a2 73 70 4a a3 64 6f 70 0b a3 6e 6f 73 04 a3 63 6c
+74 cf 00 00 01 5f 28 a0 67 e5 88 a3 74 69 64 cd 01 2d a3 6c 6f 6e cb 40
+5f c4 00 32 54 e6 e2 a3 6c 61 74 cb 40 42 c1 51 61 1b a3 ca a3 61 6c 74
+73 a2 73 70 47 a3 64 6f 70 0e a3 6e 6f 73 05 a3 63 6c 74 cf 00 00 01 5f
+28 a0 67 ea</td>
+</tr>
+</tbody>
+</table>
+<p>대략 70% 정도의 압축효과가 있다는 것을 알 수 있습니다.</p>
+</div>
+<div class="section" id="message-compression-architecture">
+<h3>11.3.3. Message Compression Architecture<a class="headerlink" href="#message-compression-architecture" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/messagePack_arc1.png" src="_images/messagePack_arc1.png" />
+<p>위의 그림은 Smart[Fleet]에서 제공하는 Message Compression 구조입니다. 간단하게 설명하자면, 원래 단말에서 JSON 형태로 전송하던 형태에
+단말에 MessagePack에서 제공하는 SDK를 활용하여 JSON 메시지를 위에 명시된 압축된 <code class="docutils literal notranslate"><span class="pre">Hexa</span> <span class="pre">String</span></code> 으로 변환하신 후,
+Smart[Fleet]에는 별도의 압축 메시지를 보내는 MQTT Topic에 메시지를 보내시면 Smart[Fleet] 서버 내에서 해당 메시지를 JSON으로 <code class="docutils literal notranslate"><span class="pre">Decapsulation</span></code> 한 후에 데이터베이스에 저장합니다.</p>
+<p>결론적으로 보자면, 단말과 플랫폼의 인터페이스 간에서는 회선료 절감 등의 목적으로 MessagePack 기술을 사용하는 것이며, 플랫폼과 Application 간의 인터페이스 상에서는 별도의 메시지 압축은 하지 않습니다.</p>
+<p>기존 JSON 형태의 메시지를 보내는 Topic은 <a class="reference external" href="http://smart-fleet-docs.readthedocs.io/ko/latest/device/#device-procedure">Device Procedure</a> 에
+명시된 바와 같이 아래의 표와 같이 사용합니다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Topic for JSON</strong></td>
+<td>v1/sensors/me/tre</td>
+</tr>
+</tbody>
+</table>
+<p>그렇지만, 단말에서 MessagePack SDK를 이용하여 압축하여 전송하는 경우에는 아래 Topic을 사용하시어야 합니다. 중간에 <code class="docutils literal notranslate"><span class="pre">mp</span></code> 항목이 추가됩니다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Topic for MessagePack</strong></td>
+<td>v1/sensors/me/mp/tre</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<blockquote>
+<div><blockquote>
+<div>MessagePack 활용에 대한 예는 Smart[Fleet] Device Simulator에 적용되어 있습니다.</div></blockquote>
+</div></blockquote>
+<ul class="text-align-justify last simple">
+<li><a class="reference external" href="https://github.com/skt-smartfleet/device-simulator-nodejs">https://github.com/skt-smartfleet/device-simulator-nodejs</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="miscellaneous.html" class="btn btn-neutral float-right" title="12. Miscellaneous" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="simulator.html" class="btn btn-neutral" title="10. 테스트용 시뮬레이터" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright SK TELECOM.LTD. ALL RIGHTS RESERVED..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

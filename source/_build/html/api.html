@@ -1,0 +1,400 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6. API 규격 &mdash; Smart[Fleet] Platform 1.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. 메시지 포맷" href="message.html" />
+    <link rel="prev" title="5. Device 연동 절차" href="device.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Smart[Fleet] Platform
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Smart[Fleet] 플랫폼 소개</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">2. 주요 구성요소 (Entity Architecture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="procedure.html">3. 서비스 세부 절차</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity.html">4. 구성요소(Entity) 등록</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">5. Device 연동 절차</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. API 규격</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rest-api">6.1. REST API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#entity-model">6.2. Entity Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="message.html">7. 메시지 포맷</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataanalytics.html">8. Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdk.html">9. SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulator.html">10. 테스트용 시뮬레이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bestpractice.html">11. Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="miscellaneous.html">12. Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Smart[Fleet] Platform</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>6. API 규격</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api">
+<span id="api-specification"></span><h1>6. API 규격<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rest-api">
+<h2>6.1. REST API<a class="headerlink" href="#rest-api" title="Permalink to this headline">¶</a></h2>
+<p class="text-align-justify">Smart[Fleet] 플랫폼의 다음과 같은 REST API를 제공합니다. 상세한 내용은 <a class="reference external" href="https://app.swaggerhub.com/apis/tremoteye/tremoteyeapi/1.0.0">Smart[Fleet] REST API Web Document</a> 내용을 참고하시기 바랍니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">구분</th>
+<th class="head">APIs</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Auth</td>
+<td><ul class="first last simple">
+<li>로그인</li>
+<li>토큰 갱신</li>
+<li>비밀번호 변경</li>
+<li>임시비밀번호 변경</li>
+<li>사용자 이메일 검색</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>Company</td>
+<td><ul class="first last simple">
+<li>회사 정보 등록</li>
+<li>회사 정보 조회</li>
+<li>회사 정보 수정</li>
+<li>회사 삭제</li>
+<li>내 회사 정보 조회</li>
+<li>특정 Service Type에 속하는 회사 리스트 조회</li>
+<li>전체 회사 리스트 조회</li>
+<li>특정 Service Type에 속하는 협력사의 수 조회</li>
+<li>회사 관리자 등록</li>
+<li>회사 관리자 수정</li>
+<li>회사 관리자 삭제</li>
+<li>회사 관리자 리스트 조회</li>
+<li>소유한 차량 리스트 조회</li>
+<li>위임받은 차량 리스트 조회</li>
+<li>위임한 차량 리스트 조회</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>Director</td>
+<td><ul class="first last simple">
+<li>Director 등록</li>
+<li>Director 정보 조회</li>
+<li>Director 삭제</li>
+<li>특정 회사에 속하는 Director 리스트 조회</li>
+<li>특정 회사에 속하는 Director 수 조회</li>
+<li>관리하는 차량 리스트 조회</li>
+<li>운행한 Trip 리스트 조회</li>
+<li>최신 Trip 조회</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>Driver</td>
+<td><ul class="first last simple">
+<li>Driver 등록</li>
+<li>Driver 정보 조회</li>
+<li>Driver 정보 수정</li>
+<li>Driver 삭제</li>
+<li>Driver 리스트 조회</li>
+<li>Driver 수 조회</li>
+<li>운행한 Trip 리스트 조회</li>
+<li>최신 Trip 조회</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>Vehicle</td>
+<td><ul class="first last simple">
+<li>차량 등록</li>
+<li>차량 번호로 차량 조회</li>
+<li>차량 정보 조회</li>
+<li>차량 정보 수정</li>
+<li>차량 삭제</li>
+<li>ServiceType에 속하는 전체 차량 수 조회</li>
+<li>소유 차량 수 조회</li>
+<li>소유 차량중에 센서가 부착되지 않은 차량 수 조회</li>
+<li>현재 운행중인 차량 수 조회</li>
+<li>Director 설정</li>
+<li>Director 해제</li>
+<li>운행한 Trip 리스트 조회</li>
+<li>최신 Trip 조회</li>
+<li>최신 MicroTrip 조회</li>
+<li>차량 활성화/비활성화</li>
+<li>Driver 설정</li>
+<li>Driver 해제</li>
+<li>차량을 위임한 회사 리스트 조회</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>Sensor</td>
+<td><ul class="first last simple">
+<li>센서 등록</li>
+<li>Serial No로 센서 조회</li>
+<li>센서 정보 조회</li>
+<li>센서 정보 수정</li>
+<li>센서 삭제</li>
+<li>센서 최신 값 조회</li>
+<li>차량에 센서 장착</li>
+<li>차량에서 센서 분리</li>
+<li>센서 리스트 조회</li>
+<li>차량에 장착되지 않은 센서 리스트 조회</li>
+<li>ServiceType의 전체 센서 수</li>
+<li>소유한 전체 센서 수</li>
+<li>소유한 센서 중 차량에 장착되지 않은 센서 수</li>
+<li>RPC 전송</li>
+<li>RPC 결과 조회</li>
+<li>RPC 결과 리스트 조회</li>
+<li>최신 RPC 결과 조회</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>Trip</td>
+<td><ul class="first last simple">
+<li>MicroTrip 리스트 조회</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>Relation</td>
+<td><ul class="first last simple">
+<li>위임후보 회사 등록</li>
+<li>위임후보 회사 제외</li>
+<li>위임후보 회사 리스트 조회</li>
+<li>위임후보 회사에 차량 위임</li>
+<li>위임한 회사에서 차량 위임 해제</li>
+<li>Director에게 이용 가능한 차량 등록</li>
+<li>위임한 Director 정보 조회</li>
+<li>위임한 Director에서 차량 위임 해제</li>
+<li>Director에게 위임된 차량 리스트 조회</li>
+<li>Driver에게 이용가능한 차량 등록</li>
+<li>위임한 Driver 정보 조회</li>
+<li>위임한 Driver 차량 위임 해제</li>
+<li>Driver에게 위임된 차량 리스트 조회</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="entity-model">
+<h2>6.2. Entity Model<a class="headerlink" href="#entity-model" title="Permalink to this headline">¶</a></h2>
+<p class="text-align-justify">REST API에서는 다음과 같은 Entity들이 정의되어 있으며, 세부 데이터 모델 내용은 <a class="reference external" href="https://app.swaggerhub.com/apis/tremoteye/tremoteyeapi/1.0.0">Smart[Fleet] REST API Web Document</a> 내용을 참고하시기 바랍니다.</p>
+<ul class="simple">
+<li>JWT</li>
+<li>Company</li>
+<li>User</li>
+<li>Vehicle</li>
+<li>Sensor</li>
+<li>Trip</li>
+<li>MicroTrip</li>
+<li>CompanyToCompany</li>
+<li>CompanyToVehicle</li>
+<li>UserToVehicle</li>
+<li>RPCRequest</li>
+<li>RPCResponse</li>
+<li>RPCResult</li>
+<li>TextPageLink</li>
+<li>TimePageLink</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="message.html" class="btn btn-neutral float-right" title="7. 메시지 포맷" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="device.html" class="btn btn-neutral" title="5. Device 연동 절차" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright SK TELECOM.LTD. ALL RIGHTS RESERVED..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
