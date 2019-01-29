@@ -44,6 +44,7 @@ Requirements
 2. 각 센서는 ``lat`` , ``lon`` 값을 포함한다.
 3. 각 센서의 ``Microtrip`` 전송 주기는 5초 미만이다. 
 4. 단말기에서 정확한 trip 별 주행 거리 전송이 가능하면 trip 메세지 전송 시 dis 항목에 trip 별 주행 거리를 전송한다. 단말기에서 정확한 trip 별 주행 거리 전송이 불가하면 trip 메세지 전송 시 dis 항목을 제외한다. 
+5. 3Km 이상 주행한다.
 
 
 Driving Scoring APIs

@@ -440,7 +440,7 @@
 <td>BlackBox 이미지 업로드 리포트 메시지</td>
 </tr>
 <tr class="row-odd"><td>112</td>
-<td>BlackBox 센서 인식 이벤트 메시지</td>
+<td>BlackBox 인지 이벤트 메시지</td>
 </tr>
 <tr class="row-even"><td>113</td>
 <td>차량 내 온도 센서의 이벤트 메시지</td>
@@ -3042,6 +3042,46 @@
 <td>O</td>
 <td>신호등 알림 설정</td>
 </tr>
+<tr class="row-even"><td>sac</td>
+<td>Int</td>
+<td>O</td>
+<td>촬영 화각 설정</td>
+</tr>
+<tr class="row-odd"><td>saac</td>
+<td>Int</td>
+<td>O</td>
+<td>안전운전 도우미 설정</td>
+</tr>
+<tr class="row-even"><td>vcc</td>
+<td>Int</td>
+<td>O</td>
+<td>차종 설정</td>
+</tr>
+<tr class="row-odd"><td>aspvc</td>
+<td>Int</td>
+<td>O</td>
+<td>ADAS 스피커 볼륨 설정</td>
+</tr>
+<tr class="row-even"><td>marc</td>
+<td>Int</td>
+<td>O</td>
+<td>메모리 할당 비율 설정</td>
+</tr>
+<tr class="row-odd"><td>drmc</td>
+<td>Int</td>
+<td>O</td>
+<td>주행 녹화 모드 (표준, 타임랩스) 설정</td>
+</tr>
+<tr class="row-even"><td>prmc</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 녹화 모드 (표준, 타임랩스) 설정</td>
+</tr>
+<tr class="row-odd"><td>laoc</td>
+<td>Int</td>
+<td>O</td>
+<td>LCD 상시 켜짐 설정</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -3073,6 +3113,7 @@
 <li>주행</li>
 <li>주차</li>
 <li>OFF</li>
+<li>On</li>
 </ol>
 </td>
 </tr>
@@ -3090,6 +3131,16 @@
 <td>Int</td>
 <td>O</td>
 <td>블랙박스 모드변경 시간</td>
+</tr>
+<tr class="row-even"><td>psc</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 충격 수</td>
+</tr>
+<tr class="row-odd"><td>pmc</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 모션 수</td>
 </tr>
 </tbody>
 </table>
@@ -3292,6 +3343,66 @@
 <td>O</td>
 <td>신호등 알림 설정</td>
 </tr>
+<tr class="row-even"><td>sac</td>
+<td>Int</td>
+<td>O</td>
+<td>촬영 화각 설정</td>
+</tr>
+<tr class="row-odd"><td>saac</td>
+<td>Int</td>
+<td>O</td>
+<td>안전운전 도우미 설정</td>
+</tr>
+<tr class="row-even"><td>vcc</td>
+<td>Int</td>
+<td>O</td>
+<td>차종 설정</td>
+</tr>
+<tr class="row-odd"><td>aspvc</td>
+<td>Int</td>
+<td>O</td>
+<td>ADAS 스피커 볼륨 설정</td>
+</tr>
+<tr class="row-even"><td>marc</td>
+<td>Int</td>
+<td>O</td>
+<td>메모리 할당 비율 설정</td>
+</tr>
+<tr class="row-odd"><td>drmc</td>
+<td>Int</td>
+<td>O</td>
+<td>주행 녹화 모드 (표준, 타임랩스) 설정</td>
+</tr>
+<tr class="row-even"><td>prmc</td>
+<td>Int</td>
+<td>O</td>
+<td>주차 녹화 모드 (표준, 타임랩스) 설정</td>
+</tr>
+<tr class="row-odd"><td>laoc</td>
+<td>Int</td>
+<td>O</td>
+<td>LCD 상시 켜짐 설정</td>
+</tr>
+<tr class="row-even"><td>datc</td>
+<td>Int</td>
+<td>O</td>
+<td>날짜 및 시간 설정</td>
+</tr>
+<tr class="row-odd"><td>mff</td>
+<td>Int</td>
+<td>O</td>
+<td>메모리 포맷</td>
+</tr>
+<tr class="row-even"><td>crst</td>
+<td>Int</td>
+<td>O</td>
+<td>설정 초기화</td>
+</tr>
+<tr class="row-odd"><td>sdupt</td>
+<td>Int</td>
+<td>O</td>
+<td>안전운전 도우미 업데이트</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -3323,6 +3434,7 @@
 <li>주차 이미지</li>
 <li>주차 중 충격 이미지</li>
 <li>주행 중 큰 충격 이미지</li>
+<li>주차 중 충격 동영상 추가</li>
 </ol>
 </td>
 </tr>
@@ -3340,6 +3452,11 @@
 <td>Int</td>
 <td>O</td>
 <td>경도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>tm</td>
+<td>Int</td>
+<td>O</td>
+<td>이벤트 발생 시간</td>
 </tr>
 </tbody>
 </table>
@@ -3384,6 +3501,14 @@
 <li>LDW (Left)</li>
 <li>LDW (Right)</li>
 <li>FCW</li>
+<li>eCall</li>
+<li>주차중 전원 On 알림 (앱)</li>
+<li>FVMA 알림</li>
+<li>모뎀 전원오프 알림 (저전압)</li>
+<li>모뎀 전원오프 알림 (고온)</li>
+<li>모뎀 전원오프 알림 (주차시간)</li>
+<li>모뎀 전원오프 알림 (앱)</li>
+<li>모뎀 전원키 전원 오프 알림</li>
 </ol>
 </td>
 </tr>
