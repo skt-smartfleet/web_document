@@ -1409,7 +1409,7 @@ mod       Int      M         - 블랙박스 모드
                              0. 주행
                              1. 주차
                              2. OFF
-                             3. On
+                             3. ON
 lat       Int      O         위도 (WGS84)
 lon       Int      O         경도 (WGS84)
 tim       Int      O         블랙박스 모드변경 시간
