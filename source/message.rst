@@ -1742,6 +1742,69 @@ Result
         }
     }
 
+
+Device Turn-On
+~~~~~~~~~~~~~~~
+
+.. rst-class:: text-align-justify
+
+차량용 센서를 원격으로 Turn-On 하는 RPC 메세지를 정의합니다.
+
+.. _device-activation-request:
+
+Request
+^^^^^^^
+
+.. rst-class:: text-align-justify
+.. rst-class:: table-width-fix
+
+
+========  =======  ========  ========================================
+Key       Type     M/O       Description
+========  =======  ========  ========================================
+method    String   M         turnOnReq 로 명세  
+params    String   M         (null)
+========  =======  ========  ========================================
+
+:underline:`Example Code` :
+
+.. code-block:: json
+
+    {
+        "method" : "turnOnReq",
+        "params" : {
+        }
+    }
+
+
+Response
+^^^^^^^^
+단말의 RPC 수신 여부를 `Common Response Code <http://smart-fleet-docs.readthedocs.io/ko/latest/message/#common-response-code-for-rpc-result>`__ 에 따라 명세 합니다.
+
+
+Result
+^^^^^^
+
+.. rst-class:: table-width-fix
+.. rst-class:: text-align-justify
+
+========  =======  ========  =========================================================================
+Key       Type     M/O       Description
+========  =======  ========  =========================================================================
+result    Int      M         `resultCode <#common-response-code-for-rpc-result>`__ 에 정의된 제어 결과 추가 
+addInfo   String   M         (null)
+========  =======  ========  =========================================================================
+
+:underline:`Example Code` :
+
+.. code-block:: json
+
+    {
+        "result" : 2000,
+        "addInfo" : {
+        }
+    }
+
 Firmware Update
 ~~~~~~~~~~~~~~~
 
