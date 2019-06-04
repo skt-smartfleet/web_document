@@ -80,10 +80,8 @@ ty         설명
 6          ADAS 단말의 MicroTrip 메시지
 7          BlackBox 단말의 Trip 메시지
 8          BlackBox 단말의 MicroTrip 메시지 
-9          DTG 단말의 Trip 메세지
-10         DTG 단말의 MicroTrip 메시지
-11         AVN 단말의 Trip 메세지  
-12         AVN 단말의 MicroTrip 메시지
+9          DTAG 단말의 Trip 메세지
+10         DTAG 단말의 MicroTrip 메시지
 =========  ==================================
 
 이벤트 메세지 타입
@@ -106,6 +104,10 @@ ty         설명
 110        BlackBox 세팅 이벤트 메시지
 111        BlackBox 이미지 업로드 리포트 메시지
 112        BlackBox 인지 이벤트 메시지
+113        DTAG eCall 이벤트 메시지
+114        DTAG gSensor 이벤트 메시지
+115        DTAG Cheating 이벤트 메시지
+116        DTAG ColdStart 이벤트 메시지
 =========  ==================================
 
 
@@ -781,10 +783,10 @@ tim       Int      O         주차 시간 (or 주차 남은 시간) ``Mandatory
     }
 
 
-DTG
-~~~
+DTAG
+~~~~
 
-DTG 단말에서 발생한 데이터를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다.
+Driving Tag(DTAG) 단말에서 발생한 데이터를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다.
 
 Message Header
 ^^^^^^^^^^^^^^
@@ -808,12 +810,12 @@ pld                M         아래 각 페이로드 메시지를 참고
 Payload Type
 ^^^^^^^^^^^^^^
 
-.. _Trip_DTG:
+.. _Trip_DTAG:
 
-DTG Trip
+DTAG Trip
 #############
 
-DTG Trip 메세지는 DTG 단말을 장착한 차량이 주행을 완료한 경우에 사용하는 메시지 포맷입니다. 
+DTAG Trip 메세지는 DTAG 단말을 장착한 차량이 주행을 완료한 경우에 사용하는 메시지 포맷입니다. 
 
 .. rst-class:: table-width-fix
 .. rst-class:: text-align-justify
@@ -824,12 +826,6 @@ Key       Type     M/O       Description
 tid       Int      M         Trip 고유 번호
 lat       Int      M         운행 종료 시 위도 (WGS84)
 lon       Int      M         운행 종료 시 경도 (WGS84)
-dmid      String   O         DTG 모델명
-vin       String   O         차대 번호
-vcat      Int      O         차량 유형 정보
-vrid      String   O         자동차 등록 번호
-vbid      String   O         운송 사업 번호
-did       String   O         운전자 코드
 ========  =======  ========  ========================================================
 
 :underline:`Example Code` :
@@ -842,20 +838,18 @@ did       String   O         운전자 코드
         "pld" : {
             "tid" : 11123,
             "lon" : 127.114513,
-            "lat" : 37.380241,
-            "dmid" : "923adf023123",
-            "did" : "4c3e65f0-265a-11e8-a3f8-d3c31ebad2b2"
+            "lat" : 37.380241
         }
     }
 
-.. _Microtrip_DTG:
+.. _Microtrip_DTAG:
 
-DTG Microtrip
+DTAG Microtrip
 ##################
 
 .. rst-class:: text-align-justify
 
-DTG Microtrip 메세지는 DTG 단말에서 인지한 정보를 주기적으로 플랫폼에 전달하는  메시지 포맷입니다. 일반적으로는 ADAS와 GPS가 함께 있는 경우에 활용하며, 메시지는 ADAS 부착 차량의 운행 시작부터 운행 종료까지 주기적으로 전송합니다.
+DTAG Microtrip 메세지는 DTAG 단말에서 인지한 정보를 주기적으로 플랫폼에 전달하는 메시지 포맷입니다. 
 
 .. rst-class:: table-width-fix
 .. rst-class:: text-align-justify
@@ -865,27 +859,8 @@ Key       Type     M/O       Description
 ========  =======  ========  ======================================================================
 tid       Int      M         Trip 고유 번호
 clt       Int      M         단말기 기준 수집 시간
-dtr       Int      M         일일 주행 거리
-dctr      Int      M         누적 주행 거리
-sp        Int      M         차량 속도 (km/h)
-rpm       Int      M         RPM
-bsg       Int      M         0 (brake off), 1 (brake on)
-lat       Int      M         위도 (WGS84) 
-lon       Int      M         경도 (WGS84) 
-gan       Int      M         GPS 방위각 (0 ~ 359, 진북 기준)
-acx       String   M         가속도 x-axis (Vx, -1000 ~ +1000)
-acy       String   M         가속도 y-axis (Vy, -1000 ~ +1000)
-tmp       Int      O         DTG와 추가로 연결된 온도 정보 (Delimeter는 Comma, -999 ~ +999, 단위: °C)
-tploc     String   O         DTG와 연결된 온도 측정 위치 정보 (Delimeter는 Comma)
-door      Int      O         - 문 개폐와 관련된 Event 정보
-                             ====  ===================
-                             Bit   Description
-                             ====  ===================
-                             0     문닫힘 (Closed)
-                             1     문열림 (Opened)
-                             2     통신 불량
-                             3     Reaserved  
-                             ====  ===================
+lat       Int      M         운행 종료 시 위도 (WGS84)
+lon       Int      M         운행 종료 시 경도 (WGS84)
 ========  =======  ========  ======================================================================
 
 :underline:`Example Code` :
@@ -898,144 +873,10 @@ door      Int      O         - 문 개폐와 관련된 Event 정보
         "pld" : {
             "tid" : 11123,
             "lon" : 127.114513,
-            "lat" : 37.380241,
-            "sp" : 113,
-            "dtr" : 1,
-            "dctr" : 9800,
-            "rpm" : 2100,
-            "bsg" : 0,
-            "gag" : 90, 
-            "acx" : "150",
-            "acy" : "-150",
-            "tmp" : "-25, 0, 20", // 온도센서 3개 연결 예
-            "tploc" : "freezer, fridge, room tmp", // 온도센서 위치 예: 냉동고, 냉장고, 상온고 
-            "door" : "1"
+            "lat" : 37.380241
         }
     }
 
-
-
-AVN
-~~~~~~~~~~~~
-
-AVN 단말에서 발생한 데이터(차량에서 발생하는 CAN 데이터)를 플랫폼에 전달하기 위해 필요한 메시지를 정의합니다.
-
-Message Header
-^^^^^^^^^^^^^^
-
-.. rst-class:: table-width-fix
-.. rst-class:: text-align-justify
-
-========  =======  ========  ========================================
-Key       Type     M/O       Description
-========  =======  ========  ========================================
-ty        Int      M         - 전달하고자 하는 페이로드 타입
-
-                             11. Trip_AVN_
-                             12. Microtrip_AVN_
-ts        Int      O         정보 수집 시간
-pld                M         아래 각 페이로드 메시지를 참고
-========  =======  ========  ========================================
-
-
-Payload Type
-^^^^^^^^^^^^^^
-
-.. _Trip_AVN:
-
-
-
-AVN Trip
-#############
-
-AVN Trip 메시지는 AVN 단말을 장착한 차량이 주행을 완료한 경우에 사용하는 메시지 포맷입니다.
-
-.. rst-class:: table-width-fix
-.. rst-class:: text-align-justify
-
-========  =======  ========  ========================================================
-Key       Type     M/O       Description
-========  =======  ========  ========================================================
-tid       Int      M         Trip 고유 번호
-clt       Int      M         단말기 기준 수집 시간
-stlat     Int      M         운행 시작 시 위도 (WGS84)
-stlon     Int      M         운행 시작 시 경도 (WGS84)
-edlat     Int      M         운행 종료 시 위도 (WGS84)
-edlon     Int      M         운행 종료 시 경도 (WGS84)
-odo       Int      M         주행 완료 후 ODO
-========  =======  ========  ========================================================
-
-:underline:`Example Code` :
-
-.. code-block:: json
-
-    {
-        "ts" : 1505434907995,
-        "ty" : 11,
-        "pld" : {
-            "tid" : 11123,
-            "clt" : 1505434908001,
-            "stlat" : 37.380241,
-            "stlon" : 127.114513,
-            "edlat" : 37.390123,
-            "edlon" : 127.124654,
-            "odo" : 23401
-        }
-    }
-
-.. _Microtrip_AVN:
-
-AVN Microtrip
-##################
-
-.. rst-class:: text-align-justify
-
-AVN Microtrip 메시지는 AVN 단말에서 인지한 정보를 주기적으로 플랫폼에 전달하는 메시지 포맷입니다. 일반적으로는 GPS가 함께 있는 경우에 활용하며, 메시지는 단말기 부착 차량의 운행 시작부터 운행 종료까지 주기적으로 전송합니다.
-
-.. rst-class:: table-width-fix
-.. rst-class:: text-align-justify
-
-========  =======  ========  ======================================================================
-Key       Type     M/O       Description
-========  =======  ========  ======================================================================
-tid       Int      M         Trip 고유 번호
-clt       Int      M         단말기 기준 수집 시간
-lat       Int      M         위도 (WGS84)
-lon       Int      M         경도 (WGS84)
-sp        Int      O         차량속도 (km/h)
-bsg       Int      O         - 브레이크 상태
-                             0 : brake off
-                             1 : brake on
-sas       Int      O         핸들각도 (0~360)
-gr        Int      O         - 기어
-                             0 : Neutral, 1, 2, 3, 4, ...
-rgr       Int      O         - 후진
-                             0 : Rear Gear off
-                             1 : Rear Gear on
-tmp       Int      O         외기 온도
-========  =======  ========  ======================================================================
-
-:underline:`Example Code` :
-
-.. code-block:: json
-
-    {
-        "ts" : 1505434907995,
-        "ty" : 12,
-        "pld" : {
-            "tid" : 11123,
-            "clt" : 1505434908001,
-            "lon" : 127.114513,
-            "lat" : 37.380241,
-            "odo" : 23242,
-            "sp" : 63,
-            "bsg" : 0,
-            "sas" : 30,
-            "gr" : 4,
-            "rgr" : 0,
-            "tmp" : 27
-        }
-    }
 
 
 |br|
@@ -1068,8 +909,8 @@ pld                M         아래 각 페이로드 메시지를 참고
 Payload Type
 ~~~~~~~~~~~~
 
-Diagnostic Information
-^^^^^^^^^^^^^^^^^^^^^^
+Diagnostic Information [ty:101]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 OBD에서 인지한 차량 진단 코드(DTC)를 전송하는 메시지를 정의합니다.
 
@@ -1112,8 +953,8 @@ OBD에서 인지한 차량 진단 코드(DTC)를 전송하는 메시지를 정�
         }
     }
 
-Collision warning (Driving)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Collision warning (Driving) [ty:102]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 운행 중 OBD가 감지한 차량 접촉 사고에 대한 위치 정보를 전달하는 메세지를 정의합니다.
 
@@ -1142,8 +983,8 @@ dclon     Int      M         경도 (WGS84)
         }
     }
 
-Collision warning (Parking)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Collision warning (Parking) [ty:103]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. rst-class:: text-align-justify
 
@@ -1174,8 +1015,8 @@ plon      Int      M         경도 (WGS84)
       }
     }
 
-Battery Warning
-^^^^^^^^^^^^^^^^
+Battery Warning [ty:104]
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. rst-class:: text-align-justify
 
@@ -1203,8 +1044,8 @@ wbv       Int      M         배터리 전압
       }
     }
 
-Unplugged Warning
-^^^^^^^^^^^^^^^^^
+Unplugged Warning [ty:105]
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. rst-class:: text-align-justify
 
@@ -1234,8 +1075,8 @@ pt        Int      M         부착 시간
       }
     }
 
-Turn-off Warning
-^^^^^^^^^^^^^^^^
+Turn-off Warning [ty:106]
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. rst-class:: text-align-justify
 
@@ -1264,8 +1105,8 @@ OBD가 종료된 경우, 종료 이전에 종료에 대한 이유를 플랫폼�
       }
     }
 
-ADAS Event
-^^^^^^^^^^
+ADAS Event [ty:107]
+^^^^^^^^^^^^^^^^^^^
 
 ADAS에서 인지한 이벤트 정보를 전송하는 메시지 포맷입니다.
 
@@ -1329,8 +1170,8 @@ fcw       Int      M         - Forward Collision Warning
         }
     }
 
-BlackBox 부팅 이벤트
-^^^^^^^^^^^^^^^^^^^
+BlackBox 부팅 이벤트 [ty:108]
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 블랙박스가 정상적으로 부팅을 완료한 후에 플랫폼에 전달하는 이벤트 메세지입니다.
 
@@ -1393,8 +1234,8 @@ laoc      Int      O         LCD 상시 켜짐 설정
 ========  =======  ========  ========================================================
 
 
-BlackBox 모드 변경 이벤트
-^^^^^^^^^^^^^^^^^^^^^^
+BlackBox 모드 변경 이벤트 [ty:109]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 블랙박스가 주행 <-> 주차 모드로 상호 변경 시 전달하는 이벤트 메시지 입니다.
 
@@ -1420,8 +1261,8 @@ cam       Int      O         - 주차 단속 카메라
 ========  =======  ========  ========================================================
 
 
-BlackBox 사용자 세팅 이벤트 메시지
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+BlackBox 사용자 세팅 이벤트 메시지 [ty:110]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 사용자가 세팅한 블랙박스 설정 값 전달을 위한 이벤트 메시지입니다.
 
@@ -1482,8 +1323,8 @@ sdupt     Int      O         안전운전 도우미 업데이트
 ========  =======  ========  ========================================================
 
                         
-BlackBox 이미지 업로드 이벤트 메시지
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+BlackBox 이미지 업로드 이벤트 메시지 [ty:111]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 블랙박스 장치가 촬영하고 업로드한 이벤트를 전달하기 위한 메시지입니다.
 
@@ -1505,8 +1346,8 @@ tm        Int      O         이벤트 발생 시간
 ========  =======  ========  ========================================================
 
               
-BlackBox 인지 이벤트 메시지
-^^^^^^^^^^^^^^^^^^^^^^^^^
+BlackBox 인지 이벤트 메시지 [ty:112]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 블랙박스 장치가 인지한 차량 관련 이벤트 정보를 전달하기 위한 메시지입니다.
 
