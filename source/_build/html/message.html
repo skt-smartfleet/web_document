@@ -144,6 +144,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#blackbox-ty-110">7.3.2.10. BlackBox 사용자 세팅 이벤트 메시지 [ty:110]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#blackbox-ty-111">7.3.2.11. BlackBox 이미지 업로드 이벤트 메시지 [ty:111]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#blackbox-ty-112">7.3.2.12. BlackBox 인지 이벤트 메시지 [ty:112]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dtag-ecall-ty-113">7.3.2.13. DTAG eCall 이벤트 메시지 [ty:113]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dtag-gsensor-ty-114">7.3.2.14. DTAG gSensor 이벤트 메시지 [ty:114]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dtag-cheating-ty-115">7.3.2.15. DTAG Cheating 이벤트 메시지 [ty:115]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dtag-coldstart-ty-116">7.3.2.16. DTAG ColdStart 이벤트 메시지 [ty:116]</a></li>
 </ul>
 </li>
 </ul>
@@ -3199,6 +3203,185 @@
 <td>0</td>
 <td>인지 알림이 FCW 인 경우,
 차량의 선행 차량과의 간격 (단위 : Centimeter)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dtag-ecall-ty-113">
+<h4>7.3.2.13. DTAG eCall 이벤트 메시지 [ty:113]<a class="headerlink" href="#dtag-ecall-ty-113" title="Permalink to this headline">¶</a></h4>
+<p>DTAG 단말에서 인식한 응급 이벤트 정보를 전달하기 위한 메시지입니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>M</td>
+<td>연계된 Trip의 식별자</td>
+</tr>
+<tr class="row-odd"><td>lat</td>
+<td>Int</td>
+<td>O</td>
+<td>위도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>lon</td>
+<td>Int</td>
+<td>O</td>
+<td>경도 (WGS84)</td>
+</tr>
+<tr class="row-odd"><td>clt</td>
+<td>Int</td>
+<td>M</td>
+<td>단말기 기준 수집 시간</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dtag-gsensor-ty-114">
+<h4>7.3.2.14. DTAG gSensor 이벤트 메시지 [ty:114]<a class="headerlink" href="#dtag-gsensor-ty-114" title="Permalink to this headline">¶</a></h4>
+<p>DTAG 단말에서 인식한 G값 이벤트 정보를 전달하기 위한 메시지입니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>M</td>
+<td>연계된 Trip의 식별자</td>
+</tr>
+<tr class="row-odd"><td>lat</td>
+<td>Int</td>
+<td>O</td>
+<td>위도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>lon</td>
+<td>Int</td>
+<td>O</td>
+<td>경도 (WGS84)</td>
+</tr>
+<tr class="row-odd"><td>clt</td>
+<td>Int</td>
+<td>M</td>
+<td>단말기 기준 수집 시간</td>
+</tr>
+<tr class="row-even"><td>gvl</td>
+<td>Int</td>
+<td>M</td>
+<td>단말기에서 인식한 G 값</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dtag-cheating-ty-115">
+<h4>7.3.2.15. DTAG Cheating 이벤트 메시지 [ty:115]<a class="headerlink" href="#dtag-cheating-ty-115" title="Permalink to this headline">¶</a></h4>
+<p>블랙박스 장치가 촬영하고 업로드한 이벤트를 전달하기 위한 메시지입니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>M</td>
+<td>연계된 Trip의 식별자</td>
+</tr>
+<tr class="row-odd"><td>lat</td>
+<td>Int</td>
+<td>O</td>
+<td>위도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>lon</td>
+<td>Int</td>
+<td>O</td>
+<td>경도 (WGS84)</td>
+</tr>
+<tr class="row-odd"><td>clt</td>
+<td>Int</td>
+<td>M</td>
+<td>단말기 기준 수집 시간</td>
+</tr>
+<tr class="row-even"><td>cht</td>
+<td>Int</td>
+<td>M</td>
+<td>치팅으로 인식한 값</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dtag-coldstart-ty-116">
+<h4>7.3.2.16. DTAG ColdStart 이벤트 메시지 [ty:116]<a class="headerlink" href="#dtag-coldstart-ty-116" title="Permalink to this headline">¶</a></h4>
+<p>블랙박스 장치가 촬영하고 업로드한 이벤트를 전달하기 위한 메시지입니다.</p>
+<table border="1" class="table-width-fix text-align-justify docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="10%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Type</th>
+<th class="head">M/O</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tid</td>
+<td>Int</td>
+<td>M</td>
+<td>연계된 Trip의 식별자</td>
+</tr>
+<tr class="row-odd"><td>lat</td>
+<td>Int</td>
+<td>O</td>
+<td>위도 (WGS84)</td>
+</tr>
+<tr class="row-even"><td>lon</td>
+<td>Int</td>
+<td>O</td>
+<td>경도 (WGS84)</td>
+</tr>
+<tr class="row-odd"><td>clt</td>
+<td>Int</td>
+<td>M</td>
+<td>단말기 기준 수집 시간</td>
+</tr>
+<tr class="row-even"><td>ctime</td>
+<td>Int</td>
+<td>M</td>
+<td>콜드 스타트 데이터 값 (sec)</td>
 </tr>
 </tbody>
 </table>
